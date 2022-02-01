@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: reference_google_support.html 
+keywords: google, gcp, regions, google regions, gcp regions, storage class, standard storage class 
+summary: Cloud Tiering은 표준 스토리지 클래스와 대부분의 영역을 지원합니다. 
+---
+= 지원되는 Google Cloud 스토리지 클래스 및 지역
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Tiering은 표준 스토리지 클래스와 대부분의 Google Cloud 영역을 지원합니다.
+
+
+
+== 지원되는 액세스 계층
+
+Cloud Tiering은 비활성 데이터에 _Standard_access 계층을 사용합니다.
+
+
+
+== 지원되는 Google Cloud 지역
+
+Cloud Tiering은 다음 영역을 지원합니다.
+
+
+
+=== 미주
+
+* 아이오와
+* 로스앤젤레스
+* 몬트리올
+* N 버지니아
+* 오리건
+* 상파울루
+* 사우스캐롤라이나
+
+
+
+
+=== 아시아 태평양
+
+* 홍콩
+* 뭄바이
+* 오사카
+* 싱가포르
+* 시드니
+* 대만
+* 도쿄
+
+
+
+
+=== 유럽
+
+* 벨기에
+* 핀란드
+* 프랑크푸르트
+* 런던
+* 네덜란드
+* 취리히
+

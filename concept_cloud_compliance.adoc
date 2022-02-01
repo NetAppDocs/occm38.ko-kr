@@ -1,0 +1,162 @@
+---
+sidebar: sidebar 
+permalink: concept_cloud_compliance.html 
+keywords: artificial intelligence, ai, compliance, cloud compliance, dsar, personal data, personal information, sensitive, personal sensitive data, gdpr, hipaa, scans, scanning, azure netapp files, cloud volumes ontap, Amazon S3, database 
+summary: 'Cloud Compliance는 Cloud Manager의 데이터 개인 정보 보호 및 규정 준수 서비스로, 볼륨, Amazon S3 버킷 및 데이터베이스를 스캔하여 이러한 파일에 상주하는 개인적이고 민감한 데이터를 식별합니다. Cloud Compliance는 인공 지능(AI) 기반 기술을 사용하여 조직의 데이터 컨텍스트를 이해하고 중요한 데이터를 식별할 수 있도록 지원합니다.' 
+---
+= 클라우드 규정 준수에 대해 알아보십시오
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Compliance는 Cloud Manager의 데이터 개인 정보 보호 및 규정 준수 서비스로, 볼륨, Amazon S3 버킷 및 데이터베이스를 스캔하여 이러한 파일에 상주하는 개인적이고 민감한 데이터를 식별합니다. Cloud Compliance는 인공 지능(AI) 기반 기술을 사용하여 조직의 데이터 컨텍스트를 이해하고 중요한 데이터를 식별할 수 있도록 지원합니다.
+
+https://cloud.netapp.com/cloud-compliance["클라우드 규정 준수의 사용 사례에 대해 알아보십시오"^].
+
+
+
+== 피처
+
+Cloud Compliance는 규정 준수 노력을 지원할 수 있는 여러 가지 툴을 제공합니다. 클라우드 규정 준수를 통해 다음을 수행할 수 있습니다.
+
+* 개인 식별 정보(PII) 식별
+* GDPR, CCPA, PCI 및 HIPAA 개인 정보 보호 규정에서 요구하는 광범위한 중요 정보를 식별합니다
+* Data Subject Access Request(SAR)에 응답
+
+
+
+
+== 지원되는 작업 환경 및 데이터 소스
+
+Cloud Compliance는 다음 유형의 데이터 소스에서 데이터를 스캔할 수 있습니다.
+
+* AWS의 Cloud Volumes ONTAP
+* Azure의 Cloud Volumes ONTAP
+* Azure NetApp Files
+* Amazon S3
+* 데이터베이스가 어디에나 상주하는 데이터베이스(데이터베이스가 작업 환경에 상주할 필요는 없음)
+
+
+* 참고: * Azure NetApp Files의 경우 Cloud Compliance는 Cloud Manager와 동일한 지역에 있는 모든 볼륨을 스캔할 수 있습니다.
+
+
+
+== 비용
+
+* Cloud Compliance 사용 비용은 스캔 중인 데이터의 양에 따라 다릅니다. 2020년 10월 7일 현재 Cloud Manager 작업 공간에서 Cloud Compliance에서 스캔하는 첫 번째 1TB의 데이터는 무료입니다. 여기에는 Cloud Volumes ONTAP 볼륨, Azure NetApp Files 볼륨, Amazon S3 버킷 및 데이터베이스 스키마의 데이터가 포함됩니다. AWS 또는 Azure Marketplace에 가입해야 해당 시점 이후에 데이터를 계속 스캔할 수 있습니다. 을 참조하십시오 https://cloud.netapp.com/cloud-compliance#pricing["가격"^] 를 참조하십시오.
++
+link:task_deploy_cloud_compliance.html#subscribing-to-the-cloud-compliance-service["구독 방법을 알아보십시오"^].
+
+* Cloud Compliance를 설치하려면 클라우드 인스턴스를 구축해야 하는데, 클라우드 인스턴스가 배포된 클라우드 공급자가 이를 청구합니다. 를 참조하십시오 <<The Cloud Compliance instance,각 클라우드 공급자에 대해 구축된 인스턴스 유형입니다>>
+* Cloud Compliance는 Connector를 구축해야 합니다. 대부분의 경우 Cloud Manager에서 사용 중인 다른 스토리지 및 서비스로 인해 이미 Connector를 사용하고 있습니다. Connector 인스턴스를 사용하면 배포된 클라우드 공급자가 비용을 청구합니다. 를 참조하십시오 link:reference_cloud_mgr_reqs.html["각 클라우드 공급자에 대해 구축된 인스턴스 유형입니다"^].
+
+
+
+
+=== 데이터 전송 비용
+
+데이터 전송 비용은 설정에 따라 다릅니다. 클라우드 규정 준수 인스턴스 및 데이터 소스가 동일한 가용성 영역 및 지역에 있는 경우 데이터 전송 비용이 발생하지 않습니다. 하지만 Cloud Volumes ONTAP 클러스터 또는 S3 버킷과 같은 데이터 소스가 _different_Availability Zone 또는 지역에 있는 경우 클라우드 공급자가 데이터 전송 비용을 청구합니다. 자세한 내용은 다음 링크를 참조하십시오.
+
+* https://aws.amazon.com/ec2/pricing/on-demand/["AWS: Amazon EC2 가격"^]
+* https://azure.microsoft.com/en-us/pricing/details/bandwidth/["Microsoft Azure: 대역폭 가격 세부 정보"^]
+
+
+
+
+== 클라우드 규정 준수 방식
+
+높은 수준에서 클라우드 규정 준수는 다음과 같이 작동합니다.
+
+. Cloud Manager에서 Cloud Compliance 인스턴스를 구축합니다.
+. 하나 이상의 작업 환경 또는 데이터베이스에서 이 기능을 사용하도록 설정합니다.
+. Cloud Compliance는 AI 학습 프로세스를 사용하여 데이터를 스캔합니다.
+. Cloud Manager에서 * Compliance * 를 클릭하고 제공된 대시보드 및 보고 툴을 사용하여 규정 준수 작업을 지원합니다.
+
+
+
+
+== 클라우드 규정 준수 인스턴스
+
+Cloud Compliance를 활성화하면 Cloud Manager가 Connector와 동일한 서브넷에 Cloud Compliance 인스턴스를 구축합니다. link:concept_connectors.html["커넥터에 대해 자세히 알아보십시오."^]
+
+
+NOTE: Connector가 내부에 설치된 경우, 요청에 첫 번째 Cloud Volumes ONTAP 시스템과 동일한 VPC 또는 VNET에 클라우드 규정 준수 인스턴스를 배포합니다.
+
+image:diagram_cloud_compliance_instance.png["클라우드 공급자가 실행 중인 Cloud Manager 인스턴스와 Cloud Compliance 인스턴스를 보여주는 다이어그램입니다."]
+
+인스턴스에 대한 다음 사항에 유의하십시오.
+
+* Azure에서 클라우드 규정 준수는 512GB 디스크가 있는 Standard_D16s_v3 VM에서 실행됩니다.
+* AWS에서 Cloud Compliance는 500GB GP2 디스크를 사용하는 m5.4x대용량 인스턴스에서 실행됩니다.
++
+m5.4x4Large를 사용할 수 없는 지역에서는 Cloud Compliance가 대신 m4.4x4대형 인스턴스에서 실행됩니다.
+
++
+
+NOTE: 인스턴스/VM 유형의 변경 또는 크기 조정은 지원되지 않습니다. 제공된 크기를 사용해야 합니다.
+
+* 인스턴스의 이름은 _CloudCompliance_이며 생성된 해시(UUID)와 연결됩니다. 예: _CloudCompliance-16b6564-38ad-4080-9a92-36f5fd2f71c7_
+* Connector당 하나의 Cloud Compliance 인스턴스만 배포됩니다.
+* 클라우드 규정 준수 소프트웨어 업그레이드는 자동화되어 있으므로 걱정할 필요가 없습니다.
+
+
+
+TIP: Cloud Compliance는 지속적으로 데이터를 스캔하기 때문에 인스턴스는 항상 실행 상태를 유지해야 합니다.
+
+
+
+== 스캔 작동 방식
+
+Cloud Compliance를 활성화하고 스캔할 볼륨, 버킷 또는 데이터베이스 스키마를 선택한 후 즉시 데이터를 스캔하여 개인 데이터와 중요한 데이터를 식별합니다. 조직 데이터를 매핑하고 각 파일을 분류하며 데이터에서 엔터티 및 미리 정의된 패턴을 식별 및 추출합니다. 검사 결과는 개인 정보, 민감한 개인 정보 및 데이터 범주의 인덱스입니다.
+
+Cloud Compliance는 NFS 및 CIFS 볼륨을 마운트하여 다른 클라이언트와 같은 데이터에 연결합니다. CIFS 볼륨을 스캔하려면 Active Directory 자격 증명을 제공해야 하지만 NFS 볼륨은 읽기 전용으로 자동 액세스됩니다.
+
+image:diagram_cloud_compliance_scan.png["클라우드 공급자가 실행 중인 Cloud Manager 인스턴스와 Cloud Compliance 인스턴스를 보여주는 다이어그램입니다. Cloud Compliance 인스턴스는 NFS 및 CIFS 볼륨, S3 버킷 및 데이터베이스에 연결하여 데이터를 스캔합니다."]
+
+초기 스캔 후 Cloud Compliance는 각 볼륨을 지속적으로 검사하여 증분 변경 사항을 감지합니다(인스턴스 실행을 유지하는 것이 중요한 이유).
+
+에서 스캔을 활성화 및 비활성화할 수 있습니다 link:task_getting_started_compliance.html#enabling-and-disabling-compliance-scans-on-volumes["볼륨 레벨"^], 에서 , 및 에 있습니다 .
+
+
+
+== Cloud Compliance에서 인덱싱하는 정보입니다
+
+Cloud Compliance는 비정형 데이터(파일)에 범주를 수집, 인덱스 및 할당합니다. Cloud Compliance가 인덱싱하는 데이터에는 다음이 포함됩니다.
+
+표준 메타데이터:: Cloud Compliance는 파일 유형, 크기, 생성 및 수정 날짜 등 파일에 대한 표준 메타데이터를 수집합니다.
+개인 데이터:: 이메일 주소, 식별 번호 또는 신용 카드 번호와 같은 개인 식별 정보 link:task_controlling_private_data.html#personal-data["개인 데이터에 대해 자세히 알아보십시오"^].
+민감한 개인 데이터:: GDPR 및 기타 개인 정보 보호 규정에 정의된 의료 데이터, 인종 또는 정치적 의견과 같은 민감한 정보의 특별한 유형. link:task_controlling_private_data.html#sensitive-personal-data["중요한 개인 데이터에 대해 자세히 알아보십시오"^].
+범주:: Cloud Compliance는 스캔한 데이터를 다양한 유형의 범주로 나눕니다. 범주는 각 파일의 콘텐츠 및 메타데이터에 대한 AI 분석을 기반으로 하는 주제입니다. link:task_controlling_private_data.html#categories["범주에 대해 자세히 알아보십시오"^].
+이름 요소 인식:: Cloud Compliance는 AI를 사용하여 문서에서 자연인의 이름을 추출합니다. link:task_responding_to_dsar.html["데이터 주체 액세스 요청에 응답하는 방법에 대해 알아봅니다"^].
+
+
+
+
+== 네트워킹 개요
+
+Cloud Manager는 Connector 인스턴스의 인바운드 HTTP 연결을 지원하는 보안 그룹과 함께 Cloud Compliance 인스턴스를 배포합니다.
+
+SaaS 모드에서 Cloud Manager를 사용할 경우 Cloud Manager에 대한 연결이 HTTPS를 통해 제공되고 브라우저와 Cloud Compliance 인스턴스 간에 전송되는 프라이빗 데이터는 엔드-투-엔드 암호화로 보호됩니다. 즉, NetApp과 타사에서 해당 데이터를 읽을 수 없습니다.
+
+어떤 이유로든 SaaS 사용자 인터페이스 대신 로컬 사용자 인터페이스를 사용해야 하는 경우에도 가능합니다 link:task_managing_connectors.html#accessing-the-local-ui["로컬 UI에 액세스합니다"^].
+
+아웃바운드 규칙은 완전히 열립니다. 클라우드 규정 준수 소프트웨어를 설치 및 업그레이드하고 사용량 메트릭을 전송하려면 인터넷에 액세스해야 합니다.
+
+네트워킹 요구 사항이 엄격하면 link:task_deploy_cloud_compliance.html#reviewing-prerequisites["Cloud Compliance에서 접촉하는 엔드포인트에 대해 알아보십시오"^].
+
+
+
+== 규정 준수 정보에 대한 사용자 액세스
+
+각 사용자에게 할당된 역할은 Cloud Manager 내부 및 클라우드 규정 준수 내에서 서로 다른 기능을 제공합니다.
+
+* * Account Admins * 는 모든 작업 환경에 대한 규정 준수 설정을 관리하고 규정 준수 정보를 볼 수 있습니다.
+* * Workspace Admins * 는 액세스 권한이 있는 시스템에 대해서만 규정 준수 설정을 관리하고 규정 준수 정보를 볼 수 있습니다. 작업 영역 관리자가 Cloud Manager의 작업 환경에 액세스할 수 없는 경우 규정 준수 탭에서 작업 환경에 대한 규정 준수 정보를 볼 수 없습니다.
+* Cloud Compliance Viewer * 역할의 사용자는 규정 준수 정보를 보고 액세스 권한이 있는 시스템에 대한 보고서만 생성할 수 있습니다. 이러한 사용자는 볼륨, 버킷 또는 데이터베이스 스키마 스캔을 활성화/비활성화할 수 없습니다.
+
+
+link:reference_user_roles.html["Cloud Manager 역할에 대해 자세히 알아보십시오"^] 및 방법 을 참조하십시오 .

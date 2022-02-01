@@ -1,0 +1,248 @@
+---
+sidebar: sidebar 
+permalink: task_scanning_s3.html 
+keywords: cloud compliance, amazon s3, s3 buckets, amazon s3 buckets, scan s3 buckets, scan amazon s3 buckets, enable compliance s3, enable compliance on s3, s3 working environment 
+summary: Cloud Compliance는 Amazon S3 버킷을 스캔하여 S3 오브젝트 스토리지에 상주하는 개인적이고 민감한 데이터를 식별할 수 있습니다. Cloud Compliance는 NetApp 솔루션용으로 제작되었는지에 관계없이 모든 버킷을 스캔할 수 있습니다. 
+---
+= Amazon S3에 대한 클라우드 규정 준수 시작하기
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Compliance는 Amazon S3 버킷을 스캔하여 S3 오브젝트 스토리지에 상주하는 개인적이고 민감한 데이터를 식별할 수 있습니다. Cloud Compliance는 NetApp 솔루션용으로 제작되었는지에 관계없이 모든 버킷을 스캔할 수 있습니다.
+
+
+
+== 빠른 시작
+
+다음 단계를 따라 빠르게 시작하거나 나머지 섹션을 아래로 스크롤하여 자세한 내용을 확인하십시오.
+
+
+
+==== 클라우드 환경에서 S3 요구사항을 설정합니다
+
+[role="quick-margin-para"]
+IAM 역할 준비 및 Cloud Compliance에서 S3로 연결 설정 등 클라우드 환경이 클라우드 규정 준수 요구 사항을 충족할 수 있는지 확인합니다. <<Reviewing S3 prerequisites,전체 목록을 참조하십시오>>.
+
+
+
+==== 클라우드 규정 준수 인스턴스 구축
+
+[role="quick-margin-para"]
+link:task_deploy_cloud_compliance.html["Cloud Manager에서 클라우드 규정 준수 구축"^] 이미 배포된 인스턴스가 없는 경우
+
+
+
+==== S3 작업 환경에서 규정 준수를 활성화합니다
+
+[role="quick-margin-para"]
+Amazon S3 작업 환경을 선택하고 * 규정 준수 활성화 * 를 클릭한 다음 필요한 권한이 포함된 IAM 역할을 선택합니다.
+
+
+
+==== 스캔할 버킷을 선택합니다
+
+[role="quick-margin-para"]
+스캔하려는 버킷을 선택하면 클라우드 규정 준수 가 해당 버킷을 스캔하기 시작합니다.
+
+
+
+== S3 사전 요구 사항 검토
+
+다음 요구사항은 S3 버킷 스캔에만 적용됩니다.
+
+[[policy-requirements]]
+Cloud Compliance 인스턴스에 대해 IAM 역할을 설정합니다::
++
+--
+[source, json]
+----
+{
+  "Version": "2012-10-17",
+  "Statement": [
+      {
+          "Effect": "Allow",
+          "Action": [
+              "s3:Get*",
+              "s3:List*",
+              "s3:HeadBucket"
+          ],
+          "Resource": "*"
+      },
+      {
+          "Effect": "Allow",
+          "Action": [
+              "iam:GetPolicyVersion",
+              "iam:GetPolicy",
+              "iam:ListAttachedRolePolicies"
+          ],
+          "Resource": [
+              "arn:aws:iam::*:policy/*",
+              "arn:aws:iam::*:role/*"
+          ]
+      }
+  ]
+}
+----
+--
+Cloud Compliance에서 Amazon S3로 연결 제공::
++
+--
+VPC 엔드포인트를 생성할 때 Cloud Compliance 인스턴스에 해당하는 지역, VPC 및 라우트 테이블을 선택해야 합니다. 또한 S3 엔드포인트에 대한 트래픽을 활성화하는 아웃바운드 HTTPS 규칙을 추가하려면 보안 그룹을 수정해야 합니다. 그렇지 않으면, Cloud Compliance를 S3 서비스에 연결할 수 없습니다.
+
+문제가 발생하면 을 참조하십시오 https://aws.amazon.com/premiumsupport/knowledge-center/connect-s3-vpc-endpoint/["AWS 지원 지식 센터: 게이트웨이 VPC 엔드포인트를 사용하여 S3 버킷에 연결할 수 없는 이유는 무엇입니까?"^]
+
+또는 NAT 게이트웨이를 사용하여 연결을 제공하는 방법도 있습니다.
+
+
+NOTE: 프록시를 사용하여 인터넷을 통해 S3로 연결할 수는 없습니다.
+
+--
+
+
+
+
+== 클라우드 규정 준수 인스턴스 구축
+
+link:task_deploy_cloud_compliance.html["Cloud Manager에서 클라우드 규정 준수 구축"^] 이미 배포된 인스턴스가 없는 경우
+
+Cloud Manager가 이 AWS 계정에서 S3 버킷을 자동으로 검색하여 Amazon S3 작업 환경에 표시되도록 AWS Connector에 인스턴스를 구축해야 합니다.
+
+
+
+== S3 작업 환경에서 규정 준수 활성화
+
+사전 요구 사항을 확인한 후 Amazon S3에서 Cloud Compliance를 활성화합니다.
+
+.단계
+. Cloud Manager 상단에서 * 작업 환경 * 을 클릭합니다.
+. Amazon S3 작업 환경을 선택합니다.
++
+image:screenshot_s3_we.gif["Amazon S3 작업 환경 아이콘의 스크린샷"]
+
+. 오른쪽 창에서 * 준수 활성화 * 를 클릭합니다.
++
+image:screenshot_s3_enable_compliance.gif["서비스 패널에서 클라우드 규정 준수 서비스를 활성화하는 스크린샷"]
+
+. 메시지가 표시되면 가 있는 Cloud Compliance 인스턴스에 IAM 역할을 할당합니다 <<Requirements specific to S3,필요한 권한>>.
++
+image:screenshot_s3_compliance_iam_role.gif["클라우드 규정 준수를 위한 AWS IAM 역할 입력 스크린샷"]
+
+. 준수 활성화 * 를 클릭합니다.
+
+
+
+TIP: 스캔 구성 페이지에서 을 클릭하여 작업 환경에 대한 규정 준수 스캔을 활성화할 수도 있습니다 image:screenshot_gallery_options.gif[""] 버튼을 클릭하고 * 규정 준수 활성화 * 를 선택합니다.
+
+Cloud Manager는 IAM 역할을 인스턴스에 할당합니다.
+
+
+
+== S3 버킷에서 규정 준수 스캔 활성화 및 비활성화
+
+Cloud Manager를 사용하여 Amazon S3에서 Cloud Compliance를 사용하도록 설정한 후 다음 단계는 스캔할 버킷을 구성하는 것입니다.
+
+Cloud Manager가 검사할 S3 버킷이 있는 AWS 계정에서 실행 중인 경우 해당 버킷을 검색하고 Amazon S3 작업 환경에 표시합니다.
+
+클라우드 규정 준수도 가능합니다 <<Scanning buckets from additional AWS accounts,서로 다른 AWS 계정에 있는 S3 버킷을 스캔합니다>>.
+
+.단계
+. Amazon S3 작업 환경을 선택합니다.
+. 오른쪽 창에서 * 버킷 구성 * 을 클릭합니다.
++
+image:screenshot_s3_configure_buckets.gif["스캔할 S3 버킷을 선택하기 위해 버킷 구성을 클릭하는 스크린샷"]
+
+. 스캔할 버킷의 규정 준수를 활성화합니다.
++
+image:screenshot_s3_select_buckets.gif["스캔할 S3 버킷을 선택하는 스크린샷"]
+
+
+
+Cloud Compliance는 사용자가 활성화한 S3 버킷을 스캔하기 시작합니다. 오류가 있는 경우 오류를 해결하는 데 필요한 작업과 함께 상태 열에 표시됩니다.
+
+
+
+== 추가 AWS 계정에서 버킷 스캔
+
+해당 계정에서 역할을 할당하여 기존 Cloud Compliance 인스턴스에 액세스함으로써 다른 AWS 계정에 있는 S3 버킷을 스캔할 수 있습니다.
+
+.단계
+. S3 버킷을 스캔하려는 대상 AWS 계정으로 이동하여 * 다른 AWS 계정 * 을 선택하여 IAM 역할을 생성합니다.
++
+image:screenshot_iam_create_role.gif[""]
+
++
+다음을 수행하십시오.
+
++
+** Cloud Compliance 인스턴스가 있는 계정의 ID를 입력합니다.
+** 최대 CLI/API 세션 지속 시간 * 을 1시간에서 12시간으로 변경하고 변경 사항을 저장합니다.
+** Cloud Compliance IAM 정책을 연결합니다. 필요한 권한이 있는지 확인합니다.
++
+[source, json]
+----
+{
+  "Version": "2012-10-17",
+  "Statement": [
+      {
+          "Effect": "Allow",
+          "Action": [
+              "s3:Get*",
+              "s3:List*",
+              "s3:HeadBucket"
+          ],
+          "Resource": "*"
+      },
+  ]
+}
+----
+
+
+. Cloud Compliance 인스턴스가 있는 소스 AWS 계정으로 이동하여 인스턴스에 연결된 IAM 역할을 선택합니다.
++
+.. 최대 CLI/API 세션 지속 시간 * 을 1시간에서 12시간으로 변경하고 변경 사항을 저장합니다.
+.. Attach policies * 를 클릭한 다음 * Create policy * 를 클릭합니다.
+.. "STS:AssumeRole" 작업과 대상 계정에서 생성한 역할의 ARN을 포함하는 정책을 생성합니다.
++
+[source, json]
+----
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "sts:AssumeRole",
+            "Resource": "arn:aws:iam::<ADDITIONAL-ACCOUNT-ID>:role/<ADDITIONAL_ROLE_NAME>"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetPolicyVersion",
+                "iam:GetPolicy",
+                "iam:ListAttachedRolePolicies"
+            ],
+            "Resource": [
+                "arn:aws:iam::*:policy/*",
+                "arn:aws:iam::*:role/*"
+            ]
+        }
+    ]
+}
+----
++
+Cloud Compliance 인스턴스 프로필 계정이 이제 추가 AWS 계정에 액세스할 수 있습니다.
+
+
+
+. Amazon S3 Scan Configuration * 페이지로 이동하면 새 AWS 계정이 표시됩니다. Cloud Compliance는 새 계정의 작업 환경을 동기화하고 이 정보를 표시하는 데 몇 분 정도 걸릴 수 있습니다.
++
+image:screenshot_activate_and_select_buckets.png[""]
+
+. 준수 활성화 및 버킷 선택 * 을 클릭하고 스캔할 버킷을 선택합니다.
+
+
+Cloud Compliance는 귀사가 활성화한 새로운 S3 버킷을 스캔합니다.

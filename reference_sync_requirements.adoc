@@ -1,0 +1,508 @@
+---
+sidebar: sidebar 
+permalink: reference_sync_requirements.html 
+keywords: networking, nfs, cifs, smb, version, connection, google, gcp, azure, blob, service account, resource, permissions, networking, version, ntp, network, protocol, aws efs requirements, efs requirements, s3 requirements, azure blob requirements, blob requirements, azure netapp files, cifs requirements, smb requirements, cloud volumes service, google cloud storage, gcp, ibm cloud object storage, storagegrid, storage tier, blob storage tier, storage class, s3 storage class, nfs versions, smb versions 
+summary: 소스와 타겟이 지원되는지 확인하고 설정하여 데이터를 동기화할 준비를 합니다. 
+---
+= 소스 및 타겟 준비
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+소스와 타겟이 지원되는지 확인하고 설정하여 데이터를 동기화할 준비를 합니다.
+
+
+
+== 지원되는 동기화 관계
+
+Cloud Sync를 사용하면 소스에서 타겟으로 데이터를 동기화할 수 있습니다(이것을 _SYNC relationship_ 이라고 함). 시작하기 전에 지원되는 관계를 이해해야 합니다.
+
+[cols="20,25"]
+|===
+| 소스 위치 | 지원되는 타겟 위치 
+
+
+| AWS EFS  a| 
+* AWS EFS
+* 설치하고
+* Azure Blob
+* Azure NetApp Files(NFS)
+* Cloud Volumes ONTAP(NFS)
+* Cloud Volumes Service(NFS)
+* IBM 클라우드 오브젝트 스토리지
+* Google 클라우드 스토리지
+* NFS 서버
+* 사내 ONTAP 클러스터
+* StorageGRID
+
+
+
+
+| 설치하고  a| 
+* AWS EFS
+* 설치하고
+* Azure Blob
+* Azure NetApp Files
+* Cloud Volumes ONTAP
+* Cloud Volumes Service
+* IBM 클라우드 오브젝트 스토리지
+* Google 클라우드 스토리지
+* NFS 서버
+* 사내 ONTAP 클러스터
+* SMB 서버
+* StorageGRID
+
+
+
+
+| Azure Blob  a| 
+* AWS EFS
+* 설치하고
+* Azure Blob
+* Azure NetApp Files
+* Cloud Volumes ONTAP
+* Cloud Volumes Service
+* Google 클라우드 스토리지
+* IBM 클라우드 오브젝트 스토리지
+* NFS 서버
+* 사내 ONTAP 클러스터
+* SMB 서버
+* StorageGRID
+
+
+
+
+| Azure NetApp Files(NFS)  a| 
+* AWS EFS
+* 설치하고
+* Azure Blob
+* Azure NetApp Files(NFS)
+* Cloud Volumes ONTAP(NFS)
+* Cloud Volumes Service(NFS)
+* IBM 클라우드 오브젝트 스토리지
+* Google 클라우드 스토리지
+* NFS 서버
+* 사내 ONTAP 클러스터
+* StorageGRID
+
+
+
+
+| Azure NetApp Files(SMB)  a| 
+* 설치하고
+* Azure Blob
+* Azure NetApp Files(SMB)
+* Cloud Volumes ONTAP(SMB)
+* Cloud Volumes Service(SMB)
+* Google 클라우드 스토리지
+* IBM 클라우드 오브젝트 스토리지
+* 사내 ONTAP 클러스터
+* SMB 서버
+* StorageGRID
+
+
+
+
+| Cloud Volumes ONTAP(NFS)  a| 
+* AWS EFS
+* 설치하고
+* Azure Blob
+* Azure NetApp Files(NFS)
+* Cloud Volumes ONTAP(NFS)
+* Cloud Volumes Service(NFS)
+* IBM 클라우드 오브젝트 스토리지
+* Google 클라우드 스토리지
+* NFS 서버
+* 사내 ONTAP 클러스터
+* StorageGRID
+
+
+
+
+| Cloud Volumes ONTAP(SMB)  a| 
+* 설치하고
+* Azure Blob
+* Azure NetApp Files(SMB)
+* Cloud Volumes ONTAP(SMB)
+* Cloud Volumes Service(SMB)
+* Google 클라우드 스토리지
+* IBM 클라우드 오브젝트 스토리지
+* 사내 ONTAP 클러스터
+* SMB 서버
+* StorageGRID
+
+
+
+
+| Cloud Volumes Service(NFS)  a| 
+* AWS EFS
+* 설치하고
+* Azure Blob
+* Azure NetApp Files(NFS)
+* Cloud Volumes ONTAP(NFS)
+* Cloud Volumes Service(NFS)
+* IBM 클라우드 오브젝트 스토리지
+* Google 클라우드 스토리지
+* NFS 서버
+* 사내 ONTAP 클러스터
+* StorageGRID
+
+
+
+
+| Cloud Volumes Service(SMB)  a| 
+* 설치하고
+* Azure Blob
+* Azure NetApp Files(SMB)
+* Cloud Volumes ONTAP(SMB)
+* Cloud Volumes Service(SMB)
+* Google 클라우드 스토리지
+* IBM 클라우드 오브젝트 스토리지
+* 사내 ONTAP 클러스터
+* SMB 서버
+* StorageGRID
+
+
+
+
+| Google 클라우드 스토리지  a| 
+* AWS EFS
+* 설치하고
+* Azure Blob
+* Azure NetApp Files
+* Cloud Volumes ONTAP
+* Cloud Volumes Service
+* Google 클라우드 스토리지
+* IBM 클라우드 오브젝트 스토리지
+* NFS 서버
+* 사내 ONTAP 클러스터
+* SMB 서버
+* StorageGRID
+
+
+
+
+| IBM 클라우드 오브젝트 스토리지  a| 
+* AWS EFS
+* 설치하고
+* Azure Blob
+* Azure NetApp Files
+* Cloud Volumes ONTAP
+* Cloud Volumes Service
+* Google 클라우드 스토리지
+* IBM 클라우드 오브젝트 스토리지
+* NFS 서버
+* 사내 ONTAP 클러스터
+* SMB 서버
+* StorageGRID
+
+
+
+
+| NFS 서버  a| 
+* AWS EFS
+* 설치하고
+* Azure Blob
+* Azure NetApp Files(NFS)
+* Cloud Volumes ONTAP(NFS)
+* Cloud Volumes Service(NFS)
+* IBM 클라우드 오브젝트 스토리지
+* Google 클라우드 스토리지
+* NFS 서버
+* 사내 ONTAP 클러스터
+* StorageGRID
+
+
+
+
+| 사내 ONTAP 클러스터(NFS)  a| 
+* AWS EFS
+* 설치하고
+* Azure Blob
+* Azure NetApp Files(NFS)
+* Cloud Volumes ONTAP(NFS)
+* Cloud Volumes Service(NFS)
+* IBM 클라우드 오브젝트 스토리지
+* Google 클라우드 스토리지
+* NFS 서버
+* 사내 ONTAP 클러스터
+* StorageGRID
+
+
+
+
+| 사내 ONTAP 클러스터(SMB)  a| 
+* 설치하고
+* Azure Blob
+* Azure NetApp Files(SMB)
+* Cloud Volumes ONTAP(SMB)
+* Cloud Volumes Service(SMB)
+* Google 클라우드 스토리지
+* IBM 클라우드 오브젝트 스토리지
+* 사내 ONTAP 클러스터
+* SMB 서버
+* StorageGRID
+
+
+
+
+| ONTAP S3 스토리지  a| 
+* StorageGRID
+
+
+
+
+| SMB 서버  a| 
+* 설치하고
+* Azure Blob
+* Azure NetApp Files(SMB)
+* Cloud Volumes ONTAP(NFS)
+* Cloud Volumes Service(NFS)
+* IBM 클라우드 오브젝트 스토리지
+* Google 클라우드 스토리지
+* 사내 ONTAP 클러스터
+* SMB 서버
+* StorageGRID
+
+
+
+
+| StorageGRID  a| 
+* AWS EFS
+* 설치하고
+* Azure Blob
+* Azure NetApp Files
+* Cloud Volumes ONTAP
+* Cloud Volumes Service
+* IBM 클라우드 오브젝트 스토리지
+* Google 클라우드 스토리지
+* NFS 서버
+* 사내 ONTAP 클러스터
+* ONTAP S3 스토리지
+* SMB 서버
+* StorageGRID
+
+
+|===
+참고:
+
+. Blob 컨테이너가 타겟인 경우 특정 Azure Blob 저장소 계층을 선택할 수 있습니다.
++
+** 핫 스토리지
+** 멋진 보관
+
+
+. [[스토리지 클래스]] AWS S3가 대상일 때 특정 S3 스토리지 클래스를 선택할 수 있습니다.
++
+** 표준(기본 클래스)
+** 지능형 계층화
+** 표준 - 낮은 액세스 빈도
+** 단일 영역 - 낮은 액세스 빈도
+** 빙하
+** Glacier 딥 아카이브
+
+
+
+
+
+
+== 소스 및 타겟의 네트워킹
+
+* 소스 및 타겟에 데이터 브로커에 대한 네트워크 연결이 있어야 합니다.
++
+예를 들어, NFS 서버가 데이터 센터에 있고 데이터 브로커가 AWS에 있는 경우 네트워크에서 VPC로 네트워크 연결(VPN 또는 Direct Connect)이 필요합니다.
+
+* 소스, 타겟 및 데이터 브로커가 NTP(Network Time Protocol) 서비스를 사용하도록 구성하는 것이 좋습니다. 세 구성 요소 간의 시간 차이는 5분을 초과해서는 안 됩니다.
+
+
+
+
+== 소스 및 타겟 요구 사항
+
+소스와 타겟이 다음 요구 사항을 충족하는지 확인합니다.
+
+
+
+=== AWS S3 버킷 요구사항
+
+AWS S3 버킷이 다음 요구사항을 충족하는지 확인하십시오.
+
+
+
+==== AWS S3에 대해 지원되는 데이터 브로커 위치
+
+S3 스토리지를 포함하는 동기화 관계는 AWS 또는 사내에 데이터 브로커가 배포되어야 합니다. 두 경우 모두 설치하는 동안 Cloud Sync에서 데이터 브로커를 AWS 계정에 연결하라는 메시지를 표시합니다.
+
+* link:task_sync_installing_aws.html["AWS 데이터 브로커를 구축하는 방법을 알아보십시오"]
+* link:task_sync_installing_linux.html["Linux 호스트에 데이터 브로커를 설치하는 방법에 대해 알아보십시오"]
+
+
+
+
+==== 지원되는 AWS 영역
+
+중국 및 GovCloud(미국) 지역을 제외한 모든 지역이 지원됩니다.
+
+
+
+==== 다른 AWS 계정의 S3 버킷에 필요한 권한
+
+동기화 관계를 설정할 때 데이터 브로커와 연결되지 않은 AWS 계정에 상주하는 S3 버킷을 지정할 수 있습니다.
+
+link:media/aws_iam_policy_s3_bucket.json["이 JSON 파일에 포함된 권한"^] 데이터 브로커가 액세스할 수 있도록 해당 S3 버킷에 적용되어야 합니다. 이러한 사용 권한을 통해 데이터 브로커가 데이터를 버킷과 복사하거나 버킷의 오브젝트를 나열할 수 있습니다.
+
+JSON 파일에 포함된 권한에 대해서는 다음을 참조하십시오.
+
+. _<BucketName>_은(는) 데이터 브로커와 연결되지 않은 AWS 계정에 상주하는 버킷의 이름입니다.
+. _<RoleARN>_은(는) 다음 중 하나로 교체해야 합니다.
++
+** 데이터 브로커가 Linux 호스트에 수동으로 설치된 경우, _RoleARN_은 데이터 브로커를 배포할 때 AWS 자격 증명을 제공한 AWS 사용자의 ARN 이어야 합니다.
+** CloudFormation 템플릿을 사용하여 AWS에 데이터 브로커가 배포된 경우, _RoleARN_은 템플릿에 의해 생성된 IAM 역할의 ARN 이어야 합니다.
++
+EC2 콘솔로 이동하여 데이터 브로커 인스턴스를 선택하고 설명 탭에서 IAM 역할을 클릭하여 역할 ARN을 찾을 수 있습니다. 그런 다음 IAM 콘솔에서 역할 ARN이 포함된 요약 페이지를 볼 수 있습니다.
+
++
+image:screenshot_iam_role_arn.gif["역할 ARN을 보여 주는 AWS IAM 콘솔 스크린샷"]
+
+
+
+
+
+
+
+=== Azure Blob 스토리지 요구 사항
+
+Azure Blob 저장소가 다음 요구사항을 충족하는지 확인합니다.
+
+
+
+==== Azure Blob에 지원되는 데이터 브로커 위치
+
+동기화 관계에 Azure Blob 스토리지가 포함된 경우 데이터 브로커가 모든 위치에 있을 수 있습니다.
+
+
+
+==== 지원되는 Azure 지역
+
+중국, 미국 정부 및 미국 국방부 지역을 제외한 모든 지역이 지원됩니다.
+
+
+
+==== Azure Blob 및 NFS/SMB를 포함하는 관계에 필요한 연결 문자열입니다
+
+Azure Blob 컨테이너와 NFS 또는 SMB 서버 간에 동기화 관계를 생성할 때 Cloud Sync에 스토리지 계정 연결 문자열을 제공해야 합니다.
+
+image:screenshot_connection_string.gif["저장소 계정을 선택한 다음 액세스 키를 클릭하여 Azure 포털에서 사용할 수 있는 연결 문자열을 표시합니다."]
+
+두 Azure Blob 컨테이너 간에 데이터를 동기화하려면 연결 문자열에 가 포함되어야 합니다 https://docs.microsoft.com/en-us/azure/storage/common/storage-dotnet-shared-access-signature-part-1["공유 액세스 서명입니다"^] (SAS) Blob 컨테이너와 NFS 또는 SMB 서버 간에 동기화할 때 SAS를 사용할 수도 있습니다.
+
+SAS는 Blob 서비스 및 모든 리소스 유형(서비스, 컨테이너 및 개체)에 대한 액세스를 허용해야 합니다. 또한 SAS에는 다음과 같은 사용 권한이 포함되어야 합니다.
+
+* 소스 Blob 컨테이너의 경우 Read 및 List 입니다
+* 대상 Blob 컨테이너의 경우 읽기, 쓰기, 목록, 추가 및 만들기 가 있습니다
+
+
+image:screenshot_connection_string_sas.gif["스토리지 계정을 선택한 다음 공유 액세스 서명을 클릭하여 Azure 포털에서 사용할 수 있는 공유 액세스 서명을 표시합니다."]
+
+
+
+=== Azure NetApp Files 요구 사항
+
+Azure NetApp Files와 데이터를 동기화하거나에서 데이터를 동기화할 때 프리미엄 또는 울트라 서비스 수준을 사용합니다. 디스크 서비스 수준이 Standard인 경우 장애 및 성능 문제가 발생할 수 있습니다.
+
+
+TIP: 적합한 서비스 수준을 결정하는 데 도움이 필요한 경우 솔루션 설계자와 상의하십시오. 볼륨 크기와 볼륨 계층에 따라 처리량을 결정합니다.
+
+https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-service-levels#throughput-limits["Azure NetApp Files 서비스 수준 및 처리량 에 대해 자세히 알아보십시오"].
+
+
+
+=== Google Cloud Storage 버킷 요구 사항
+
+Google Cloud Storage 버킷이 다음 요구사항을 충족하는지 확인하십시오.
+
+
+
+==== Google Cloud Storage에 대한 지원 데이터 브로커 위치
+
+Google Cloud Storage를 포함한 동기화 관계는 GCP 또는 온프레미스에 구축된 데이터 브로커가 필요합니다. Cloud Sync는 동기화 관계를 생성할 때 데이터 브로커 설치 프로세스를 안내합니다.
+
+* link:task_sync_installing_gcp.html["GCP 데이터 브로커를 배포하는 방법에 대해 알아보십시오"]
+* link:task_sync_installing_linux.html["Linux 호스트에 데이터 브로커를 설치하는 방법에 대해 알아보십시오"]
+
+
+
+
+==== 지원되는 GCP 지역
+
+모든 지역이 지원됩니다.
+
+
+
+=== NFS 서버 요구 사항
+
+* NFS 서버는 NetApp 시스템이거나 NetApp이 아닌 시스템이 될 수 있습니다.
+* 파일 서버는 데이터 브로커 호스트가 내보내기를 액세스할 수 있도록 허용해야 합니다.
+* NFS 버전 3, 4.0, 4.1 및 4.2가 지원됩니다.
++
+서버에서 원하는 버전을 활성화해야 합니다.
+
+* ONTAP 시스템에서 NFS 데이터를 동기화하려면 SVM을 위한 NFS 내보내기 목록에 대한 액세스가 활성화되어 있는지 확인하십시오(vserver NFS modify -vserver_svm_name_-showmount 설정).
++
+
+NOTE: showmount의 기본 설정은 ONTAP 9.2부터 _enabled_입니다.
+
+
+
+
+
+=== ONTAP S3 스토리지 요구 사항
+
+ONTAP 9.7은 Amazon S3(Amazon Simple Storage Service)를 공개 미리보기로 지원합니다. link:https://www.netapp.com/us/media/tr-4814.pdf["Amazon S3에 대한 ONTAP 지원 에 대해 자세히 알아보십시오"^].
+
+ONTAP S3 스토리지를 포함하는 동기화 관계를 설정할 때 다음을 제공해야 합니다.
+
+* ONTAP S3에 연결된 LIF의 IP 주소입니다
+* ONTAP에서 사용하도록 구성된 액세스 키 및 암호 키입니다
+
+
+
+
+=== SMB 서버 요구 사항
+
+* SMB 서버는 NetApp 시스템 또는 NetApp이 아닌 시스템일 수 있습니다.
+* 파일 서버는 데이터 브로커 호스트가 내보내기를 액세스할 수 있도록 허용해야 합니다.
+* SMB 버전 1.0, 2.0, 2.1, 3.0 및 3.11이 지원됩니다.
+* "Administrators" 그룹에 소스 및 대상 폴더에 "모든 권한" 권한을 부여합니다.
++
+이 권한을 부여하지 않으면 데이터 브로커에 파일 또는 디렉터리에 대한 ACL을 가져올 수 있는 권한이 충분하지 않을 수 있습니다. 이 경우 "getxattr error 95" 오류가 발생합니다.
+
+
+
+
+
+==== 숨겨진 디렉토리 및 파일에 대한 SMB 제한
+
+SMB 제한은 SMB 서버 간에 데이터를 동기화할 때 숨겨진 디렉터리 및 파일에 영향을 줍니다. 소스 SMB 서버의 디렉토리 또는 파일이 Windows를 통해 숨겨진 경우 숨겨진 속성은 타겟 SMB 서버로 복제되지 않습니다.
+
+
+
+==== 대소문자 구분 제한 때문에 SMB 동기화 동작이 발생합니다
+
+SMB 프로토콜은 대/소문자를 구분하지 않으므로 대문자와 소문자가 동일하게 처리됩니다. 이 동작은 동기화 관계에 SMB 서버가 포함되어 있고 데이터가 이미 타겟에 존재하는 경우 덮어쓴 파일 및 디렉토리 복사 오류를 발생시킬 수 있습니다.
+
+예를 들어, 소스에 "A"라는 파일이 있고 대상에 "A"라는 이름의 파일이 있다고 가정해 보겠습니다. Cloud Sync가 "A"라는 파일을 대상에 복사하면 파일 "A"가 소스의 파일 "A"에 의해 덮어쓰여집니다.
+
+디렉토리의 경우 소스에 "b"라는 디렉토리가 있고 타겟에 "B"라는 디렉토리가 있다고 가정해 보겠습니다. Cloud Sync가 "b"라는 디렉토리를 타겟으로 복제하려고 하면 Cloud Sync에서 디렉토리가 이미 존재함을 나타냅니다. 따라서 Cloud Sync는 항상 "b"라는 이름의 디렉토리를 복사하지 못합니다.
+
+이 제한을 피하는 가장 좋은 방법은 데이터를 빈 디렉토리에 동기화하는 것입니다.
+
+
+
+== SnapMirror 대상에 대한 권한입니다
+
+동기화 관계의 소스가 SnapMirror 대상(읽기 전용)인 경우 "읽기/목록" 사용 권한으로 소스의 데이터를 타겟으로 동기화할 수 있습니다.

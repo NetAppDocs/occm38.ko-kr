@@ -1,0 +1,104 @@
+---
+sidebar: sidebar 
+permalink: task_sync_installing_gcp.html 
+keywords: data broker, install, gcp, google, networking, permissions, regions, install data broker in gcp, install in gcp, deploy in gcp, deploy data broker in gcp, install data broker in google, install in google, deploy in google, deploy data broker in google, networking requirements, port, ports, 443, port 443, ntp, network time protocol, gcp data broker, service account 
+summary: 동기화 관계를 생성할 때 GCP Data Broker 옵션을 선택하여 VPC의 새 가상 머신 인스턴스에 데이터 브로커 소프트웨어를 배포합니다. Cloud Sync는 설치 프로세스를 안내하지만 설치 준비에 도움이 되도록 이 페이지에서 요구 사항과 단계를 반복합니다. 
+---
+= Google Cloud Platform에서 데이터 브로커 설치
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+동기화 관계를 생성할 때 GCP Data Broker 옵션을 선택하여 VPC의 새 가상 머신 인스턴스에 데이터 브로커 소프트웨어를 배포합니다. Cloud Sync는 설치 프로세스를 안내하지만 설치 준비에 도움이 되도록 이 페이지에서 요구 사항과 단계를 반복합니다.
+
+클라우드 또는 사내에 있는 기존 Linux 호스트에 데이터 브로커를 설치할 수도 있습니다. link:task_sync_installing_linux.html["자세한 정보"].
+
+
+
+== 지원되는 GCP 지역
+
+모든 지역이 지원됩니다.
+
+
+
+== 네트워킹 요구 사항
+
+* 데이터 브로커는 포트 443을 통해 Cloud Sync 서비스를 폴링할 수 있도록 아웃바운드 인터넷 연결이 필요합니다.
++
+Cloud Sync는 GCP에서 데이터 브로커를 배포할 때 필요한 아웃바운드 통신을 지원하는 보안 그룹을 생성합니다.
+
++
+아웃바운드 연결을 제한해야 하는 경우 를 참조하십시오 link:reference_sync_networking.html["데이터 브로커가 연락하는 끝점 목록입니다"].
+
+* 소스, 타겟 및 데이터 브로커가 NTP(Network Time Protocol) 서비스를 사용하도록 구성하는 것이 좋습니다. 세 구성 요소 간의 시간 차이는 5분을 초과해서는 안 됩니다.
+
+
+
+
+== GCP에서 데이터 브로커를 배포하는 데 필요한 권한입니다
+
+데이터 브로커를 배포하는 GCP 사용자에게 다음과 같은 권한이 있는지 확인합니다.
+
+[source, yaml]
+----
+- compute.networks.list
+- compute.regions.list
+- deploymentmanager.deployments.create
+- deploymentmanager.deployments.delete
+- deploymentmanager.operations.get
+- iam.serviceAccounts.list
+----
+
+
+== 서비스 계정에 필요한 권한입니다
+
+데이터 브로커를 배포할 때 다음과 같은 권한이 있는 서비스 계정을 선택해야 합니다.
+
+[source, yaml]
+----
+- logging.logEntries.create
+- resourcemanager.projects.get
+- storage.buckets.get
+- storage.buckets.list
+- storage.objects.*
+----
+
+
+== 데이터 브로커 설치
+
+동기화 관계를 생성할 때 GCP에서 데이터 브로커를 설치할 수 있습니다.
+
+.단계
+. 새 동기화 만들기 * 를 클릭합니다.
+. 동기화 관계 정의 * 페이지에서 소스 및 대상을 선택하고 * 계속 * 을 클릭합니다.
++
+Data Broker* 페이지가 나타날 때까지 단계를 완료하십시오.
+
+. 데이터 브로커 * 페이지에서 * 데이터 브로커 * 를 클릭한 다음 * Google Cloud Platform * 을 선택합니다.
++
+이미 데이터 브로커가 있는 경우 을 클릭해야 합니다 image:screenshot_plus_icon.gif["더하기 아이콘이 있는 경우의 스크린샷"] 아이콘을 먼저 클릭합니다.
+
++
+image:screenshot_create_data_broker.gif["AWS, Azure, GCP 및 온프레미스 데이터 브로커 중에서 선택할 수 있는 Data Broker 페이지의 스크린샷"]
+
+. 데이터 브로커의 이름을 입력하고 * 계속 * 을 클릭합니다.
+. 메시지가 표시되면 Google 계정으로 로그인합니다.
++
+이 양식은 Google에서 소유하고 호스팅됩니다. 자격 증명이 NetApp에 제공되지 않습니다.
+
+. 프로젝트 및 서비스 계정을 선택한 다음 데이터 브로커의 위치를 선택합니다.
++
+image:screenshot_data_broker_gcp.gif["Google Cloud에서 데이터 브로커를 구축하는 데 필요한 정보를 보여주는 스크린샷"]
+
+. 데이터 브로커를 사용할 수 있게 되면 Cloud Sync에서 * 계속 * 을 클릭합니다.
++
+인스턴스를 구축하는 데 약 5~10분이 소요됩니다. Cloud Sync 서비스에서 진행 상황을 모니터링할 수 있으며, 이 경우 인스턴스를 사용할 수 있을 때 자동으로 새로 고쳐집니다.
+
+. 마법사의 페이지를 완료하여 새 동기화 관계를 생성합니다.
+
+
+GCP에 데이터 브로커를 구축하고 새 동기화 관계를 생성했습니다. 이 데이터 브로커를 추가 동기화 관계에 사용할 수 있습니다.

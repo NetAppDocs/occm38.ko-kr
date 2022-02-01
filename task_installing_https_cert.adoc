@@ -1,0 +1,85 @@
+---
+sidebar: sidebar 
+permalink: task_installing_https_cert.html 
+keywords: https certificate, certificate, adding, installing, ca, certificate authority, format, encoding, renewing 
+summary: '기본적으로 Cloud Manager는 웹 콘솔에 대한 HTTPS 액세스를 위해 자체 서명된 인증서를 사용합니다. CA(인증 기관)에서 서명한 인증서를 설치하면 자체 서명된 인증서보다 보안 보호가 향상됩니다.' 
+---
+= 보안 액세스를 위한 HTTPS 인증서 관리
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+기본적으로 Cloud Manager는 웹 콘솔에 대한 HTTPS 액세스를 위해 자체 서명된 인증서를 사용합니다. CA(인증 기관)에서 서명한 인증서를 설치하면 자체 서명된 인증서보다 보안 보호가 향상됩니다.
+
+
+
+== 시작하기 전에
+
+Cloud Manager 설정을 변경하려면 먼저 Connector를 생성해야 합니다. link:concept_connectors.html#how-to-create-a-connector["자세히 알아보기"].
+
+
+
+== HTTPS 인증서 설치
+
+보안 액세스를 위해 CA에서 서명한 인증서를 설치합니다.
+
+.단계
+. Cloud Manager 콘솔의 오른쪽 상단에서 설정 아이콘을 클릭하고 * HTTPS 설정 * 을 선택합니다.
++
+image:screenshot_settings_icon.gif["Cloud Manager 콘솔의 오른쪽 위에 설정 아이콘이 표시된 스크린샷"]
+
+. HTTPS 설정 페이지에서 인증서 서명 요청(CSR)을 생성하거나 고유한 CA 서명 인증서를 설치하여 인증서를 설치합니다.
++
+[cols="25,75"]
+|===
+| 옵션을 선택합니다 | 설명 
+
+
+| CSR을 생성합니다  a| 
+.. 커넥터 호스트의 호스트 이름 또는 DNS(일반 이름)를 입력한 다음 * CSR 생성 * 을 클릭합니다.
++
+Cloud Manager는 인증서 서명 요청을 표시합니다.
+
+.. CSR을 사용하여 CA에 SSL 인증서 요청을 제출합니다.
++
+인증서는 PEM(Privacy Enhanced Mail) Base-64로 인코딩된 X.509 형식을 사용해야 합니다.
+
+.. 서명된 인증서의 내용을 복사하여 인증서 필드에 붙여 넣은 다음 * 설치 * 를 클릭합니다.
+
+
+
+
+| 고유한 CA 서명 인증서를 설치합니다  a| 
+.. CA 서명 인증서 설치 * 를 선택합니다.
+.. 인증서 파일과 개인 키를 모두 로드한 다음 * 설치 * 를 클릭합니다.
++
+인증서는 PEM(Privacy Enhanced Mail) Base-64로 인코딩된 X.509 형식을 사용해야 합니다.
+
+
+
+|===
+
+
+Cloud Manager는 이제 CA 서명 인증서를 사용하여 보안 HTTPS 액세스를 제공합니다. 다음 이미지는 보안 액세스를 위해 구성된 Cloud Manager 시스템을 보여줍니다.
+
+image:screenshot_https_cert.gif["스크린샷: 서명된 인증서를 설치한 후 HTTPS 설정 페이지를 표시합니다. 이 페이지에는 인증서 속성과 인증서를 갱신할 수 있는 옵션이 표시됩니다."]
+
+
+
+== Cloud Manager HTTPS 인증서를 갱신하는 중입니다
+
+Cloud Manager 웹 콘솔에 안전하게 액세스하려면 만료되기 전에 Cloud Manager HTTPS 인증서를 갱신해야 합니다. 만료되기 전에 인증서를 갱신하지 않으면 사용자가 HTTPS를 사용하여 웹 콘솔에 액세스할 때 경고가 나타납니다.
+
+.단계
+. Cloud Manager 콘솔의 오른쪽 상단에서 설정 아이콘을 클릭하고 * HTTPS 설정 * 을 선택합니다.
++
+만료 날짜를 포함하여 Cloud Manager 인증서에 대한 세부 정보가 표시됩니다.
+
+. HTTPS 인증서 갱신 * 을 클릭하고 단계에 따라 CSR을 생성하거나 고유한 CA 서명 인증서를 설치합니다.
+
+
+Cloud Manager는 새로운 CA 서명 인증서를 사용하여 안전한 HTTPS 액세스를 제공합니다.

@@ -1,0 +1,136 @@
+---
+sidebar: sidebar 
+permalink: task_creating_connectors_azure.html 
+keywords: create connector in Azure, create connector in azure, create connector in gcp, launch connector in Azure, launch connector in azure, launch connector in gcp, deploy connector in Azure, deploy connector in azure, deploy connector in gcp 
+summary: 대부분의 Cloud Manager 기능을 사용하려면 계정 관리자가 Connector를 배포해야 합니다. Connector를 사용하면 Cloud Manager에서 퍼블릭 클라우드 환경 내의 리소스와 프로세스를 관리할 수 있습니다. 
+---
+= Cloud Manager에서 Azure에 커넥터 생성
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+대부분의 Cloud Manager 기능을 사용하려면 계정 관리자가 _Connector_를 배포해야 합니다. link:concept_connectors.html["커넥터가 필요한 시기를 알아보십시오"]. Connector를 사용하면 Cloud Manager에서 퍼블릭 클라우드 환경 내의 리소스와 프로세스를 관리할 수 있습니다.
+
+이 페이지에서는 Cloud Manager에서 직접 Azure에 Connector를 생성하는 방법을 설명합니다. 또한 에 대한 옵션도 있습니다 link:task_launching_azure_mktp.html["Azure Marketplace에서 Connector를 생성합니다"], 또는 을 눌러 로 이동합니다 .
+
+이러한 단계는 계정 관리자 역할을 가진 사용자가 완료해야 합니다. 작업 영역 관리자가 연결선을 만들 수 없습니다.
+
+
+TIP: 첫 번째 Cloud Volumes ONTAP 작업 환경을 생성할 때 커넥터가 아직 없는 경우 Cloud Manager에서 커넥터를 생성하라는 메시지를 표시합니다.
+
+
+
+== Azure 권한을 설정하여 Connector를 만듭니다
+
+Cloud Manager에서 Connector를 배포하기 전에 Azure 계정에 올바른 권한이 있는지 확인해야 합니다.
+
+.단계
+. Connector에 대한 Azure 정책을 사용하여 사용자 지정 역할을 생성합니다.
++
+.. 를 다운로드합니다 https://s3.amazonaws.com/occm-sample-policies/Policy_for_Setup_As_Service_Azure.json["Connector에 대한 Azure 정책입니다"^].
++
+
+TIP: 링크를 마우스 오른쪽 단추로 클릭하고 * 다른 이름으로 링크 저장... * 을 클릭하여 파일을 다운로드합니다.
+
+.. 할당 범위에 Azure 구독 ID를 추가하여 JSON 파일을 수정합니다.
++
+* 예 *
+
++
+[source, json]
+----
+"AssignableScopes": [
+"/subscriptions/d333af45-0d07-4154-943d-c25fbzzzzzzz",
+],
+----
+.. JSON 파일을 사용하여 Azure에서 사용자 지정 역할을 생성합니다.
++
+다음 예에서는 Azure CLI 2.0을 사용하여 사용자 지정 역할을 생성하는 방법을 보여 줍니다.
+
++
+az 역할 정의 create -- role-definition C:\Policy_for_Setup_as_Service_Azure.json
+
++
+이제 _Azure SetupAsService_라는 사용자 지정 역할이 있어야 합니다.
+
+
+
+. Cloud Manager에서 Connector를 배포할 사용자에게 역할을 할당합니다.
++
+.. Subscriptions * 서비스를 열고 사용자의 구독을 선택합니다.
+.. IAM(액세스 제어) * 을 클릭합니다.
+.. Add * > * Add role assignment * 를 클릭한 후 권한을 추가합니다.
++
+*** Azure SetupAsService * 역할을 선택합니다.
++
+
+NOTE: Azure SetupAsService 는 에 제공된 기본 이름입니다 https://mysupport.netapp.com/site/info/cloud-manager-policies["Azure용 커넥터 배포 정책"^]. 역할에 다른 이름을 선택한 경우 대신 해당 이름을 선택합니다.
+
+*** Azure AD 사용자, 그룹 또는 응용 프로그램 * 에 대한 액세스를 할당합니다.
+*** 사용자 계정을 선택합니다.
+*** 저장 * 을 클릭합니다.
+
+
+
+
+
+
+이제 Azure 사용자는 Cloud Manager에서 Connector를 배포하는 데 필요한 권한을 갖게 됩니다.
+
+
+
+== Azure에서 커넥터 만들기
+
+Cloud Manager를 사용하면 사용자 인터페이스에서 직접 Azure에 Connector를 생성할 수 있습니다.
+
+.무엇을 &#8217;필요로 할거야
+* 를 클릭합니다 https://mysupport.netapp.com/site/info/cloud-manager-policies["필수 권한"^] 를 참조하십시오.
+* Azure 구독.
+* 선택한 Azure 지역에서 VNET 및 서브넷입니다.
+
+
+.단계
+. 처음 작업 환경을 만드는 경우 * 작업 환경 추가 * 를 클릭하고 화면의 지시를 따릅니다. 그렇지 않으면 * 커넥터 * 드롭다운을 클릭하고 * 커넥터 추가 * 를 선택합니다.
++
+image:screenshot_connector_add.gif["머리글의 연결선 아이콘 및 연결선 추가 동작을 보여 주는 스크린샷"]
+
+. 시작 * 을 클릭합니다.
+. 클라우드 공급자로 * Microsoft Azure * 를 선택합니다.
++
+Connector는 만들고 있는 작업 환경 유형과 활성화할 서비스에 대한 네트워크 연결이 있어야 합니다.
+
++
+link:reference_networking_cloud_manager.html["Connector의 네트워킹 요구 사항에 대해 자세히 알아보십시오"].
+
+. 필요한 항목을 검토하고 * 계속 * 을 클릭합니다.
+. 메시지가 표시되면 Microsoft 계정에 로그인합니다. 이 계정에는 가상 컴퓨터를 만드는 데 필요한 권한이 있어야 합니다.
++
+이 양식은 Microsoft에서 소유하고 호스팅됩니다. 자격 증명이 NetApp에 제공되지 않습니다.
+
++
+
+TIP: 이미 Azure 계정에 로그인한 경우 Cloud Manager는 해당 계정을 자동으로 사용합니다. 계정이 여러 개인 경우 먼저 로그아웃해야 올바른 계정을 사용할 수 있습니다.
+
+. 필요한 정보를 제공합니다.
++
+** * VM 인증 *: 가상 머신의 이름과 사용자 이름, 암호 또는 공개 키를 입력합니다.
+** * 기본 설정 *: Azure 가입, Azure 지역 및 새 리소스 그룹을 생성할지 기존 리소스 그룹을 사용할지 여부를 선택합니다.
+** * 네트워크 *: VNET 및 서브넷을 선택하고, 공용 IP 주소를 활성화할지 여부를 선택한 다음 선택적으로 프록시 구성을 지정합니다.
+** * 보안 그룹 *: 새 보안 그룹을 생성할지 또는 인바운드 HTTP, HTTPS 및 SSH 액세스를 허용하는 기존 보안 그룹을 선택할지 여부를 선택합니다.
++
+
+NOTE: 커넥터 를 시작하지 않으면 커넥터로 들어오는 트래픽이 없습니다. HTTP 및 HTTPS는 에 대한 액세스를 제공합니다 link:concept_connectors.html#the-local-user-interface["로컬 UI"]이는 드문 경우지만 사용할 수 있습니다. SSH는 문제 해결을 위해 호스트에 연결해야 하는 경우에만 필요합니다.
+
+
+
+. Create * 를 클릭합니다.
++
+가상 시스템은 약 7분 내에 준비되어야 합니다. 프로세스가 완료될 때까지 페이지를 유지해야 합니다.
+
+
+
+작업 영역 관리자가 이러한 커넥터를 사용하여 Cloud Volumes ONTAP 시스템을 만들 수 있도록 작업 영역과 커넥터를 연결해야 합니다. Account Admins만 있는 경우에는 Connector를 작업 영역과 연결할 필요가 없습니다. 계정 관리자는 기본적으로 Cloud Manager의 모든 작업 영역에 액세스할 수 있습니다. link:task_setting_up_cloud_central_accounts.html#associating-connectors-with-workspaces["자세한 정보"].

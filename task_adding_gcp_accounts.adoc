@@ -1,0 +1,99 @@
+---
+sidebar: sidebar 
+permalink: task_adding_gcp_accounts.html 
+keywords: permissions, gcp, data tiering, tiering, setup, requirements, account for data tiering, account for tiering, interoperable, interoperability, interoperable storage access keys, access keys 
+summary: 데이터 계층화를 위해 Cloud Volumes ONTAP 9.6 시스템과 함께 사용되는 커넥터 VM 인스턴스 및 스토리지 액세스 키와 관련된 자격 증명을 Cloud Manager에서 두 가지 유형의 Google Cloud Platform 자격 증명을 관리할 수 있습니다. 
+---
+= Cloud Manager의 GCP 자격 증명 및 구독 관리
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager에서 두 가지 유형의 Google Cloud Platform 자격 증명을 관리할 수 있습니다. 하나는 Connector VM 인스턴스와 연결된 자격 증명이고 다른 하나는 용 Cloud Volumes ONTAP 9.6 시스템과 함께 사용되는 스토리지 액세스 키입니다 link:concept_data_tiering.html["데이터 계층화"].
+
+
+
+== Marketplace 구독을 GCP 자격 증명과 연결합니다
+
+GCP에서 Connector를 구축하면 Cloud Manager가 Connector VM 인스턴스와 연결된 기본 자격 증명 세트를 생성합니다. Cloud Manager에서 Cloud Volumes ONTAP를 구축하는 데 사용하는 자격 증명입니다.
+
+언제든지 이러한 자격 증명과 연결된 마켓플레이스 구독을 변경할 수 있습니다. 구독을 통해 선불 종량제 Cloud Volumes ONTAP 시스템을 생성하고 다른 NetApp 클라우드 서비스를 사용할 수 있습니다.
+
+.단계
+. Cloud Manager 콘솔의 오른쪽 위에서 설정 아이콘을 클릭하고 * 자격 증명 * 을 선택합니다.
+. 자격 증명 집합 위로 마우스를 가져가서 작업 메뉴를 클릭합니다.
+. 메뉴에서 * Associate Subscription * 을 클릭합니다.
++
+image:screenshot_gcp_add_subscription.gif["메뉴에서 GCP 자격 증명에 대한 구독을 추가할 수 있는 자격 증명 페이지의 스크린샷."]
+
+. 드롭다운 목록에서 Google Cloud 프로젝트 및 구독을 선택하거나 * 구독 추가 * 를 클릭하고 다음 단계에 따라 새 구독을 만듭니다.
++
+image:screenshot_gcp_associate.gif["Google Cloud 자격 증명을 위해 선택한 Google Cloud 프로젝트 및 가입 스크린샷"]
+
+. Associate * 를 클릭합니다.
+
+
+
+
+== Cloud Volumes ONTAP 9.6을 사용하여 데이터 계층화를 위해 GCP 계정 설정 및 추가
+
+에 대한 Cloud Volumes ONTAP 9.6 시스템을 활성화하려면 link:concept_data_tiering.html["데이터 계층화"]스토리지 관리자 권한이 있는 서비스 계정에 대한 스토리지 액세스 키를 Cloud Manager에 제공해야 합니다. Cloud Manager에서는 액세스 키를 사용하여 데이터 계층화를 위한 클라우드 스토리지 버킷의 설정 및 관리를 지원합니다.
+
+
+TIP: Cloud Volumes ONTAP 9.7에서 데이터 계층화를 사용하려면 의 4단계를 따릅니다 link:task_getting_started_gcp.html["Google 클라우드 플랫폼에서 Cloud Volumes ONTAP 시작하기"].
+
+
+
+=== Google Cloud Storage의 서비스 계정 및 액세스 키 설정
+
+서비스 계정을 사용하면 Cloud Manager에서 데이터 계층화에 사용되는 Cloud Storage 버킷을 인증하고 액세스할 수 있습니다. Google Cloud Storage가 누가 요청을 하는지 알 수 있도록 키가 필요합니다.
+
+.단계
+. GCP IAM 콘솔을 열고 을 클릭합니다 https://cloud.google.com/iam/docs/creating-custom-roles#creating_a_custom_role["스토리지 관리자 역할이 있는 서비스 계정을 생성합니다"^].
++
+image:screenshot_gcp_service_account_role.gif["서비스 계정의 스토리지 관리자 역할 선택을 보여 주는 GCP IAM 콘솔 스크린샷"]
+
+. 로 이동합니다 https://console.cloud.google.com/storage/settings["GCP 스토리지 설정"^].
+. 메시지가 표시되면 프로젝트를 선택합니다.
+. 상호 운용성 * 탭을 클릭합니다.
+. 아직 수행하지 않았다면 * 상호 운용성 액세스 사용 * 을 클릭하십시오.
+. 서비스 계정의 액세스 키 * 에서 * 서비스 계정의 키 생성 * 을 클릭합니다.
+. 1단계에서 만든 서비스 계정을 선택합니다.
++
+image:screenshot_gcp_access_key.gif["새 액세스 키에 대해 선택한 서비스 계정을 보여 주는 GCP 스토리지 콘솔 스크린샷"]
+
+. 키 만들기 * 를 클릭합니다.
+. 액세스 키와 암호를 복사합니다.
++
+데이터 계층화에 GCP 계정을 추가할 때 Cloud Manager에 이 정보를 입력해야 합니다.
+
+
+
+
+
+=== Cloud Manager에 GCP 계정 추가
+
+이제 서비스 계정에 대한 액세스 키를 사용하여 Cloud Manager에 추가할 수 있습니다.
+
+Cloud Manager 설정을 변경하려면 먼저 Connector를 생성해야 합니다. link:concept_connectors.html#how-to-create-a-connector["자세히 알아보기"].
+
+.단계
+. Cloud Manager 콘솔의 오른쪽 위에서 설정 아이콘을 클릭하고 * 자격 증명 * 을 선택합니다.
++
+image:screenshot_settings_icon.gif["Cloud Manager 콘솔의 오른쪽 위에 설정 아이콘이 표시된 스크린샷"]
+
+. 자격 증명 추가 * 를 클릭하고 * Google Cloud * 를 선택합니다.
+. 서비스 계정의 액세스 키와 암호를 입력합니다.
++
+이 키를 통해 Cloud Manager에서 데이터 계층화를 위한 클라우드 스토리지 버킷을 설정할 수 있습니다.
+
+. 정책 요구 사항이 충족되었는지 확인한 다음 * 계정 생성 * 을 클릭합니다.
+
+
+이제 Cloud Volumes ONTAP 9.6 시스템의 개별 볼륨에서 데이터 계층화를 생성, 수정 또는 복제할 수 있습니다. 자세한 내용은 을 참조하십시오 link:task_tiering.html["비활성 데이터를 저비용 오브젝트 스토리지로 계층화"].
+
+그러나 하기 전에 Cloud Volumes ONTAP가 상주하는 서브넷이 개인 Google 액세스용으로 구성되어 있는지 확인하십시오. 자세한 지침은 을 참조하십시오 https://cloud.google.com/vpc/docs/configure-private-google-access["Google Cloud 설명서: 개인 Google Access 구성"^].

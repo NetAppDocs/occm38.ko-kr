@@ -1,0 +1,120 @@
+---
+sidebar: sidebar 
+permalink: task_creating_connectors_gcp.html 
+keywords: create connector in GCP, create connector in azure, create connector in gcp, launch connector in GCP, launch connector in azure, launch connector in gcp, deploy connector in GCP, deploy connector in azure, deploy connector in gcp 
+summary: 대부분의 Cloud Manager 기능을 사용하려면 계정 관리자가 Connector를 배포해야 합니다. Connector를 사용하면 Cloud Manager에서 퍼블릭 클라우드 환경 내의 리소스와 프로세스를 관리할 수 있습니다. 
+---
+= Cloud Manager에서 GCP에 Connector 생성
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+대부분의 Cloud Manager 기능을 사용하려면 계정 관리자가 _Connector_를 배포해야 합니다. link:concept_connectors.html["커넥터가 필요한 시기를 알아보십시오"]. Connector를 사용하면 Cloud Manager에서 퍼블릭 클라우드 환경 내의 리소스와 프로세스를 관리할 수 있습니다.
+
+이 페이지에서는 Cloud Manager에서 직접 GCP에서 Connector를 생성하는 방법을 설명합니다. 또한 에 대한 옵션도 있습니다 link:task_installing_linux.html["소프트웨어를 다운로드하여 자신의 호스트에 설치합니다"].
+
+이러한 단계는 계정 관리자 역할을 가진 사용자가 완료해야 합니다. 작업 영역 관리자가 연결선을 만들 수 없습니다.
+
+
+TIP: 첫 번째 Cloud Volumes ONTAP 작업 환경을 생성할 때 커넥터가 아직 없는 경우 Cloud Manager에서 커넥터를 생성하라는 메시지를 표시합니다.
+
+
+
+== 커넥터 생성을 위한 GCP 권한 설정
+
+Cloud Manager에서 Connector를 구축하기 전에 GCP 계정에 올바른 권한이 있고 Connector VM에 대해 서비스 계정이 설정되어 있는지 확인해야 합니다.
+
+.단계
+. NetApp Cloud Central에서 Cloud Manager를 배포하는 GCP 사용자에게 의 권한이 있는지 확인합니다 https://occm-sample-policies.s3.amazonaws.com/Setup_As_Service_3.7.3_GCP.yaml["GCP에 대한 커넥터 배포 정책"^].
++
+https://cloud.google.com/iam/docs/creating-custom-roles#iam-custom-roles-create-gcloud["YAML 파일을 사용하여 맞춤형 역할을 생성할 수 있습니다"^] 그런 다음 사용자에게 연결합니다. gcloud 명령줄을 사용하여 역할을 생성해야 합니다.
+
+. Cloud Manager에서 프로젝트에서 Cloud Volumes ONTAP 시스템을 만들고 관리하는 데 필요한 권한이 있는 서비스 계정을 설정합니다.
++
+Cloud Manager에서 서비스 계정을 생성하면 Connector VM에 이 서비스 계정을 연결합니다.
+
++
+.. https://cloud.google.com/iam/docs/creating-custom-roles#iam-custom-roles-create-gcloud["GCP에서 역할을 생성합니다"^] 여기에는 에 정의된 권한이 포함됩니다. gcloud 명령줄을 사용해야 합니다.
++
+이 YAML 파일에 포함된 사용 권한은 2a단계의 사용 권한과 다릅니다.
+
+.. https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account["GCP 서비스 계정을 생성하고 방금 생성한 사용자 지정 역할을 적용합니다"^].
+.. 다른 프로젝트에 Cloud Volumes ONTAP를 배포하려는 경우 https://cloud.google.com/iam/docs/granting-changing-revoking-access#granting-console["Cloud Manager 역할을 가진 서비스 계정을 해당 프로젝트에 추가하여 액세스 권한을 부여합니다"^]. 각 프로젝트에 대해 이 단계를 반복해야 합니다.
+
+
+
+
+이제 GCP 사용자에게 Cloud Manager에서 Connector를 생성하는 데 필요한 권한이 있으며 Connector VM에 대한 서비스 계정이 설정됩니다.
+
+
+
+== Google Cloud API 활성화
+
+Connector와 Cloud Volumes ONTAP를 구축하려면 여러 API가 필요합니다.
+
+.단계
+. https://cloud.google.com/apis/docs/getting-started#enabling_apis["프로젝트에서 다음 Google Cloud API를 활성화합니다"^].
++
+** Cloud Deployment Manager V2 API
+** 클라우드 로깅 API
+** Cloud Resource Manager API를 참조하십시오
+** 컴퓨팅 엔진 API
+** IAM(Identity and Access Management) API
+
+
+
+
+
+
+== GCP에서 커넥터를 생성하는 중입니다
+
+Cloud Manager를 사용하면 사용자 인터페이스에서 직접 GCP에서 Connector를 생성할 수 있습니다.
+
+.무엇을 &#8217;필요로 할거야
+* 를 클릭합니다 https://mysupport.netapp.com/site/info/cloud-manager-policies["필수 권한"^] Google Cloud 계정용.
+* Google Cloud 프로젝트.
+* Cloud Volumes ONTAP를 생성 및 관리하는 데 필요한 권한이 있는 서비스 계정입니다.
+* Google Cloud 지역에서 VPC 및 서브넷을 선택할 수 있습니다.
+
+
+.단계
+. 처음 작업 환경을 만드는 경우 * 작업 환경 추가 * 를 클릭하고 화면의 지시를 따릅니다. 그렇지 않으면 * 커넥터 * 드롭다운을 클릭하고 * 커넥터 추가 * 를 선택합니다.
++
+image:screenshot_connector_add.gif["머리글의 연결선 아이콘 및 연결선 추가 동작을 보여 주는 스크린샷"]
+
+. 시작 * 을 클릭합니다.
+. 클라우드 공급자로 * Google Cloud Platform * 을 선택합니다.
++
+Connector는 만들고 있는 작업 환경 유형과 활성화할 서비스에 대한 네트워크 연결이 있어야 합니다.
+
++
+link:reference_networking_cloud_manager.html["Connector의 네트워킹 요구 사항에 대해 자세히 알아보십시오"].
+
+. 필요한 항목을 검토하고 * 계속 * 을 클릭합니다.
+. 메시지가 표시되면 Google 계정에 로그인합니다. 이 계정에는 가상 머신 인스턴스를 생성하는 데 필요한 권한이 있어야 합니다.
++
+이 양식은 Google에서 소유하고 호스팅됩니다. 자격 증명이 NetApp에 제공되지 않습니다.
+
+. 필요한 정보를 제공합니다.
++
+** * 기본 설정 *: 가상 머신 인스턴스의 이름을 입력하고 필요한 권한이 있는 프로젝트 및 서비스 계정을 지정합니다.
+** * 위치 *: 인스턴스의 영역, 영역, VPC 및 서브넷을 지정합니다.
+** * 네트워크*: 공용 IP 주소를 사용할지 여부를 선택하고 선택적으로 프록시 구성을 지정합니다.
+** * 방화벽 정책 *: 새 방화벽 정책을 생성할지 또는 인바운드 HTTP, HTTPS 및 SSH 액세스를 허용하는 기존 방화벽 정책을 선택할지 여부를 선택합니다.
++
+
+NOTE: 커넥터 를 시작하지 않으면 커넥터로 들어오는 트래픽이 없습니다. HTTP 및 HTTPS는 에 대한 액세스를 제공합니다 link:concept_connectors.html#the-local-user-interface["로컬 UI"]이는 드문 경우지만 사용할 수 있습니다. SSH는 문제 해결을 위해 호스트에 연결해야 하는 경우에만 필요합니다.
+
+
+
+. Create * 를 클릭합니다.
++
+인스턴스는 약 7분 내에 준비되어야 합니다. 프로세스가 완료될 때까지 페이지를 유지해야 합니다.
+
+
+
+작업 영역 관리자가 이러한 커넥터를 사용하여 Cloud Volumes ONTAP 시스템을 만들 수 있도록 작업 영역과 커넥터를 연결해야 합니다. Account Admins만 있는 경우에는 Connector를 작업 영역과 연결할 필요가 없습니다. 계정 관리자는 기본적으로 Cloud Manager의 모든 작업 영역에 액세스할 수 있습니다. link:task_setting_up_cloud_central_accounts.html#associating-connectors-with-workspaces["자세한 정보"].

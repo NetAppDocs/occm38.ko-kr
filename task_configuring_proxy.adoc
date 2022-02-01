@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: task_configuring_proxy.html 
+keywords: proxy, proxy server, proxy, internet 
+summary: 회사 정책에 따라 인터넷에 대한 모든 HTTP 통신에 프록시 서버를 사용해야 하는 경우, 해당 프록시 서버를 사용하도록 Cloud Manager를 구성해야 합니다. 프록시 서버는 클라우드 또는 네트워크에 있을 수 있습니다. 
+---
+= 프록시 서버를 사용하도록 커넥터 구성
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+회사 정책에 따라 인터넷에 대한 모든 HTTP 통신에 프록시 서버를 사용해야 하는 경우 해당 프록시 서버를 사용하도록 커넥터를 구성해야 합니다. 프록시 서버는 클라우드 또는 네트워크에 있을 수 있습니다.
+
+커넥터가 관리하는 프록시 서버(HA 중개자 포함)와 Cloud Volumes ONTAP 시스템을 사용하도록 커넥터를 구성하는 경우 모두 프록시 서버를 사용합니다.
+
+.단계
+. https://docs.netapp.com/us-en/occm/task_logging_in.html["Cloud Manager SaaS 인터페이스에 로그인합니다"^] Connector 인스턴스에 대한 네트워크 연결이 있는 컴퓨터에서
++
+커넥터에 공용 IP 주소가 없는 경우 VPN 연결이 필요하거나 Connector와 동일한 네트워크에 있는 점프 호스트에서 연결해야 합니다.
+
+. Connector * 드롭다운을 클릭한 다음 * Go to local UI * 를 클릭하여 특정 Connector를 선택합니다.
++
+image:screenshot_connector_local_ui.gif["머리글의 연결선 아이콘 및 로컬 UI로 이동 동작을 보여 주는 스크린샷"]
+
++
+Connector에서 실행되는 Cloud Manager 인터페이스는 새 브라우저 탭에 로드됩니다.
+
+. Cloud Manager 콘솔의 오른쪽 상단에서 설정 아이콘을 클릭하고 * Cloud Manager 설정 * 을 선택합니다.
++
+image:screenshot_settings_icon.gif["Cloud Manager 콘솔의 오른쪽 위에 설정 아이콘이 표시된 스크린샷"]
+
+. HTTP 프록시 아래에서 구문을 사용하여 서버를 입력합니다 http://_address:port_[], 서버에 기본 인증이 필요한 경우 사용자 이름과 암호를 지정한 다음 * 저장 * 을 클릭합니다.
++
+
+NOTE: Cloud Manager는 @ 문자를 포함하는 암호를 지원하지 않습니다.
+
+
+
+프록시 서버를 지정하면 AutoSupport 메시지를 보낼 때 프록시 서버를 사용하도록 새 Cloud Volumes ONTAP 시스템이 자동으로 구성됩니다. 사용자가 Cloud Volumes ONTAP 시스템을 생성하기 전에 프록시 서버를 지정하지 않은 경우 시스템 관리자를 사용하여 각 시스템의 AutoSupport 옵션에서 프록시 서버를 수동으로 설정해야 합니다.

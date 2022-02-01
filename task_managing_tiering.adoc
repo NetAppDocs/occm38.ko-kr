@@ -1,0 +1,130 @@
+---
+sidebar: sidebar 
+permalink: task_managing_tiering.html 
+keywords: discover, volumes, report, hot, cold, inactive, active, capacity, used capacity, savings, health, failed 
+summary: 첫 번째 ONTAP 클러스터에서 데이터를 검색하고 계층화했으면 추가 볼륨의 데이터를 계층화하거나 추가 클러스터를 검색할 수 있습니다. 
+---
+= 클러스터에서 데이터 계층화 관리
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+ONTAP 클러스터에서 데이터 계층화를 설정했으므로 이제 추가 볼륨의 데이터를 계층화하고, 볼륨의 계층화 정책을 변경하는 등의 작업을 수행할 수 있습니다.
+
+
+
+== 추가 볼륨의 데이터 계층화
+
+새 볼륨을 생성한 후 등 언제든지 추가 볼륨에 대한 데이터 계층화를 설정할 수 있습니다.
+
+.단계
+. Cloud Manager 상단에서 * Tiering * 을 클릭합니다.
+. 클러스터 대시보드 * 에서 클러스터에 대한 * 계층 볼륨 * 을 클릭합니다.
+. 각 볼륨에 대해 을 클릭합니다 image:screenshot_edit_icon.gif["볼륨 계층화를 위해 표의 각 행 끝에 표시되는 편집 아이콘의 스크린샷"] 아이콘을 클릭하고 계층화 정책을 선택한 다음 필요에 따라 냉각 날짜를 조정하고 * 적용 * 을 클릭합니다.
++
+link:concept_cloud_tiering.html#volume-tiering-policies["볼륨 계층화 정책에 대해 자세히 알아보십시오"].
+
++
+image:https://docs.netapp.com/us-en/cloud-tiering/media/screenshot_volumes_select.gif["소스 볼륨 선택 페이지에서 선택한 볼륨을 보여 주는 스크린샷"]
+
++
+
+TIP: 오브젝트 스토리지는 처음에 클러스터에 대한 계층화를 설정할 때 이미 구성되어 있으므로 구성할 필요가 없습니다. ONTAP는 이러한 볼륨의 비활성 데이터를 동일한 오브젝트 저장소로 계층화합니다.
+
+. 완료되면 * 닫기 * 를 클릭합니다.
+
+
+
+
+== 볼륨의 계층화 정책 변경
+
+볼륨에 대한 계층화 정책을 변경하면 ONTAP에서 콜드 데이터를 오브젝트 스토리지에 계층화하는 방식이 변경됩니다. 이 변경 사항은 정책을 변경하는 순간부터 시작되며, 볼륨에 대한 후속 계층화 동작만 변경됩니다.
+
+.단계
+. Cloud Manager 상단에서 * Tiering * 을 클릭합니다.
+. 클러스터 대시보드 * 에서 클러스터에 대한 * 계층 볼륨 * 을 클릭합니다.
+. 를 클릭합니다 image:screenshot_edit_icon.gif["볼륨 계층화를 위해 표의 각 행 끝에 표시되는 편집 아이콘의 스크린샷"] 아이콘을 클릭하고 계층화 정책을 선택한 다음 필요에 따라 냉각 날짜를 조정하고 * 적용 * 을 클릭합니다.
++
+link:concept_cloud_tiering.html#volume-tiering-policies["볼륨 계층화 정책에 대해 자세히 알아보십시오"].
+
+
+
+
+
+== 애그리게이트에서 계층화 설정 관리
+
+각 애그리게이트에는 조정할 수 있는 두 가지 설정이 있습니다. 즉, 계층화 충만 임계값과 비활성 데이터 보고가 설정되었는지 여부를 나타냅니다.
+
+계층화 전체 임계값::
++
+--
+임계값을 더 높은 수로 설정하면 계층화를 수행하기 전에 성능 계층에 저장해야 하는 데이터의 양이 증가합니다. 이 기능은 애그리게이트가 최대 용량에 근접할 때만 계층화하도록 설계된 솔루션에 유용할 수 있습니다.
+
+--
+비활성 데이터 보고::
++
+--
+
+TIP: 비활성 데이터 및 절약 기회를 식별하는 데 도움이 되므로 IDR을 계속 사용하는 것이 좋습니다. 데이터 계층화가 Aggregate에서 활성화된 경우 IDR은 활성화 상태를 유지해야 합니다.
+
+--
+
+
+.단계
+. Cloud Manager 상단에서 * Tiering * 을 클릭합니다.
+. Cloud Tiering * 페이지에서 클러스터의 메뉴 아이콘을 클릭하고 * 애그리게이트 관리 * 를 선택합니다.
++
+image:https://docs.netapp.com/us-en/cloud-tiering/media/screenshot_manage_aggregates.gif["클러스터 및 확장된 작업 메뉴를 보여 주는 클러스터 대시보드 스크린샷"]
+
+. 애그리게이트 관리 * 페이지에서 을 클릭합니다 image:screenshot_edit_icon.gif["집계 관리를 위해 테이블의 각 행 끝에 표시되는 편집 아이콘의 스크린샷"] 테이블의 집계 아이콘
+. 전체 임계값을 수정하고 비활성 데이터 보고를 활성화 또는 비활성화할지 여부를 선택합니다.
++
+image:https://docs.netapp.com/us-en/cloud-tiering/media/screenshot_edit_aggregate.gif["계층화 충만 임계값을 수정하는 슬라이더와 비활성 데이터 보고를 활성화 또는 비활성화하는 버튼을 보여 주는 스크린샷."]
+
+. 적용 * 을 클릭합니다.
+
+
+
+
+== 클러스터의 계층화 정보 검토
+
+클라우드 계층에 있는 데이터의 양과 디스크에 있는 데이터의 양을 확인하려는 경우가 있을 수 있습니다. 또는 클러스터 디스크에서 핫 데이터와 콜드 데이터의 양을 확인할 수도 있습니다. Cloud Tiering은 각 클러스터에 대해 이 정보를 제공합니다.
+
+.단계
+. Cloud Manager 상단에서 * Tiering * 을 클릭합니다.
+. 클러스터 대시보드 * 에서 클러스터에 대한 * 추가 정보 * 를 클릭합니다.
++
+image:https://docs.netapp.com/us-en/cloud-tiering/media/screenshot_more_info.gif["각 클러스터의 클러스터 대시보드에서 사용할 수 있는 추가 정보 버튼을 보여 주는 스크린샷"]
+
+. 클러스터에 대한 세부 정보를 검토합니다.
++
+예를 들면 다음과 같습니다.
+
++
+image:https://docs.netapp.com/us-en/cloud-tiering/media/screenshot_cluster_info.gif["사용된 총 용량, 클러스터 사용된 용량, 클러스터 정보 및 오브젝트 스토리지 정보를 자세히 설명하는 클러스터 보고서를 보여 주는 스크린샷"]
+
+
+
+
+
+== 운영 상태 수정
+
+장애가 발생할 수 있습니다. 이 경우 Cloud Tiering은 클러스터 대시보드에 "Failed" 운영 상태를 표시합니다. 상태는 ONTAP 시스템 및 Cloud Manager의 상태를 반영합니다.
+
+.단계
+. 작동 상태가 "Failed(실패)"인 모든 클러스터를 식별합니다.
++
+image:https://docs.netapp.com/us-en/cloud-tiering/media/screenshot_tiering_health.gif["클러스터에 대한 실패한 계층화 상태를 보여 주는 스크린샷"]
+
+. 에 마우스를 올려 놓습니다 image:https://docs.netapp.com/us-en/cloud-tiering/media/screenshot_info_icon.gif["실패 이유를 보여 주는 i 아이콘의 스크린샷"] 아이콘을 클릭하여 실패 원인을 확인합니다.
+. 문제 해결:
++
+.. ONTAP 클러스터가 작동 중이고 객체 스토리지 공급자에 대한 인바운드 및 아웃바운드 연결이 있는지 확인합니다.
+.. Cloud Manager가 Cloud Tiering 서비스, 오브젝트 저장소 및 해당 서비스가 검색하는 ONTAP 클러스터에 대한 아웃바운드 연결을 사용하는지 확인합니다.
+
+
+

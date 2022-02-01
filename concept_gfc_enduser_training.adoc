@@ -1,0 +1,32 @@
+---
+sidebar: sidebar 
+permalink: concept_gfc_enduser_training.html 
+keywords: global file cache, training 
+summary: 글로벌 파일 캐시를 통해 공유 파일에 액세스하는 모범 사례를 사용자에게 교육해야 합니다. 
+---
+= 최종 사용자 교육
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+글로벌 파일 캐시를 통해 공유 파일에 액세스하는 모범 사례를 사용자에게 교육해야 합니다.
+
+이 단계는 최종 사용자 구현 단계인 글로벌 파일 캐시 배포의 마지막 단계입니다.
+
+최종 사용자 온보딩 프로세스를 준비하고 간소화하려면 아래의 이메일 템플릿을 사용하여 최종 사용자에게 "중앙 데이터" 환경에서 작업이 의미하는 바를 교육하십시오. 이렇게 하면 사용자가 글로벌 파일 캐시 솔루션의 모든 이점을 활용할 수 있습니다. 또한 필요한 경우 "교육" 사용자에게 공유할 수 있는 동영상을 게시했습니다.
+
+다음 리소스를 최종 사용자에게 사용자 지정하고 전달하면 최종 사용자가 롤아웃할 수 있도록 준비할 수 있습니다.
+
+* 사용자 교육 비디오link:https://www.youtube.com/watch?v=RYvhnTz4bEA["최종 사용자 교육 비디오"^]
+* 이메일 템플릿link:https://repo.cloudsync.netapp.com/gfc/Global%20File%20Cache%20Onboarding%20Email.emltpl["MAC 이메일 템플릿(.emltpl)"]
++
+link:https://docs.netapp.com/us-en/occm/media/Global_File_Cache_Onboarding_Email.msg["Windows 이메일 템플릿(.msg)"]
+
+* 온보딩 커뮤니케이션link:https://repo.cloudsync.netapp.com/gfc/Global%20File%20Cache%20Customer%20Onboarding%20-%20Draft.docx["Word 문서(.docx)"]
+
+
+의 12장을 참조하십시오 link:https://repo.cloudsync.netapp.com/gfc/NetApp%20GFC%20-%20User%20Guide.pdf["NetApp 글로벌 파일 캐시 사용자 가이드 를 참조하십시오"^] 추가 자료를 참조하십시오.

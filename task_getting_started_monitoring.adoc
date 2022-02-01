@@ -1,0 +1,182 @@
+---
+sidebar: sidebar 
+permalink: task_getting_started_monitoring.html 
+keywords: monitoring, cloud insights, tenant, acquisition unit, iops, throughput, latency, performance, cloud volumes ontap performance, volume performance 
+summary: Cloud Volumes ONTAP 성능 모니터링을 시작하려면 몇 가지 단계를 완료하십시오. 
+---
+= AWS에서 Cloud Volumes ONTAP 모니터링
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP 성능 모니터링을 시작하려면 몇 가지 단계를 완료하십시오.
+
+
+
+== 빠른 시작
+
+다음 단계를 따라 빠르게 시작하거나 나머지 섹션으로 스크롤하여 자세한 내용을 확인하십시오.
+
+
+
+==== 구성에 대한 지원을 확인합니다
+
+[role="quick-margin-para"]
+AWS, Cloud Volumes ONTAP in AWS에 Cloud Manager 3.8.4 이상을 새로 설치해야 하며 새로운 Cloud Insights 고객이어야 합니다.
+
+
+
+==== 새 시스템이나 기존 시스템에서 모니터링을 활성화합니다
+
+* 새로운 작업 환경: 작업 환경을 만들 때 모니터링을 활성 상태로 유지해야 합니다(기본적으로 활성화됨).
+* 기존 작업 환경: 작업 환경을 선택하고 * 모니터링 시작 * 을 클릭합니다.
+
+
+
+
+==== 성능 데이터를 봅니다
+
+[role="quick-margin-para"]
+Monitoring * 을 클릭하고 볼륨의 성능 데이터를 확인합니다.
+
+
+
+==== Cloud Insights에 가입하십시오
+
+[role="quick-margin-para"]
+30일 무료 평가판이 끝나기 전에 구독하여 Cloud Manager 및 Cloud Insights 내에서 성능 데이터를 계속 확인하십시오. https://docs.netapp.com/us-en/cloudinsights/concept_subscribing_to_cloud_insights.html["구독 방법을 알아보십시오"^].
+
+
+
+== 요구 사항
+
+다음 요구 사항을 읽고 지원되는 구성이 있는지 확인합니다.
+
+지원되는 Cloud Manager 버전입니다:: Cloud Manager 3.8.4 이상을 새로 설치해야 합니다. 모니터링 서비스를 사용하려면 새 인프라가 필요하므로 새 설치가 필요합니다. 이 인프라는 Cloud Manager 3.8.4의 새로운 설치부터 사용할 수 있습니다.
+지원되는 Cloud Volumes ONTAP 버전:: AWS의 모든 Cloud Volumes ONTAP 버전
+Cloud Insights 요구 사항:: 새 Cloud Insights 고객이어야 합니다. Cloud Insights 테넌트가 이미 있는 경우에는 모니터링이 지원되지 않습니다.
+Cloud Central의 이메일 주소입니다:: Cloud Central 사용자 계정의 이메일 주소는 회사 이메일 주소여야 합니다. Cloud Insights 테넌트를 생성할 때 Gmail 및 Hotmail과 같은 무료 이메일 도메인은 지원되지 않습니다.
+획득 장치에 대한 네트워킹::
++
+--
+획득 장치는 다음 두 개의 끝점을 사용하여 Cloud Insights와 통신합니다. 획득 장치 서버와 Cloud Insights 사이에 방화벽이 있는 경우 방화벽 규칙을 구성할 때 다음 엔드포인트가 필요합니다.
+
+....
+https://aulogin.<Cloud Insights Domain>
+https://<your-tenant-ID>.<Cloud Insights Domain>
+....
+예를 들면 다음과 같습니다.
+
+....
+https://aulogin.c01.cloudinsights.netapp.com
+https://cg0c586a-ee05-45rb-a5ac-333b5ae7718d7.c01.cloudinsights.netapp.com
+....
+Cloud Insights 도메인 및 테넌트 ID를 확인하는 데 도움이 필요한 경우 제품 내 채팅을 통해 문의하십시오.
+
+--
+커넥터용 네트워킹::
++
+--
+ https://<your-short-tenant-ID>.<Cloud Insights Domain>
+예를 들면 다음과 같습니다.
+
+ https://abcd12345.c01.cloudinsights.netapp.com
+테넌트 호스트 URL을 확인하는 데 도움이 필요한 경우 제품 내 채팅을 통해 문의하실 수 있습니다.
+
+--
+
+
+
+
+== 새 시스템에서 모니터링 활성화
+
+모니터링 서비스는 작업 환경 마법사에서 기본적으로 설정됩니다. 옵션을 활성 상태로 유지해야 합니다.
+
+.단계
+. Create Cloud Volumes ONTAP * 를 클릭합니다.
+. 클라우드 공급자로 Amazon Web Services를 선택하고 단일 노드 또는 HA 시스템을 선택합니다.
+. 세부 정보 및 자격 증명 페이지를 입력합니다.
+. 서비스 페이지에서 서비스를 활성화된 상태로 두고 * 계속 * 을 클릭합니다.
++
+image:screenshot_monitoring.gif["작업 환경 마법사에서 설정할 수 있는 모니터링 서비스 스크린샷"]
+
+
+
+
+
+== 기존 시스템에서 모니터링을 활성화합니다
+
+작업 환경에서 언제든지 모니터링이 가능합니다.
+
+.단계
+. Cloud Manager 상단에서 * 작업 환경 * 을 클릭합니다.
+. 작업 환경을 선택합니다.
+. 오른쪽 창에서 * 모니터링 시작 * 을 클릭합니다.
++
+image:screenshot_enable_monitoring.gif["[작업 환경을 선택한 후 작업 환경 탭에서 사용할 수 있는 모니터링 사용 아이콘을 보여 주는 스크린샷."]
+
+
+
+
+
+== 볼륨 모니터링
+
+각 볼륨의 IOPS, 처리량, 지연 시간을 확인하여 성능을 모니터링합니다.
+
+.단계
+. Cloud Manager 상단에서 * 모니터링 * 을 클릭합니다.
+. 필요한 정보를 얻으려면 대시보드의 콘텐츠를 필터링합니다.
++
+** 특정 작업 환경을 선택합니다.
+** 다른 기간을 선택하십시오.
+** 특정 SVM을 선택합니다.
+** 특정 볼륨을 검색합니다.
++
+다음 이미지는 이러한 각 옵션을 강조합니다.
+
++
+image:screenshot_filter_options.gif["대시보드의 콘텐츠를 필터링하는 데 사용할 수 있는 옵션을 보여 주는 모니터링 탭의 스크린샷"]
+
+
+
+. 표에서 볼륨을 클릭하여 행을 확장하고 IOPS, 처리량, 지연 시간의 일정을 봅니다.
++
+image:screenshot_vol_performance.gif["볼륨의 성능 데이터 스크린샷."]
+
+. 데이터를 사용하여 성능 문제를 식별하여 사용자와 앱에 미치는 영향을 최소화합니다.
+
+
+
+
+== Cloud Insights에서 추가 정보 얻기
+
+Cloud Manager의 모니터링 탭은 볼륨에 대한 기본 성능 데이터를 제공합니다. 브라우저에서 Cloud Insights 웹 인터페이스로 이동하여 보다 심층적인 모니터링을 수행하고 Cloud Volumes ONTAP 시스템에 대한 경고를 구성할 수 있습니다.
+
+.단계
+. Cloud Manager 상단에서 * 모니터링 * 을 클릭합니다.
+. Cloud Insights * 링크를 클릭합니다.
++
+image:screenshot_cloud_insights.gif["모니터링 탭의 오른쪽 상단에서 사용할 수 있는 Cloud Insights 링크를 보여 주는 스크린샷"]
+
+
+
+Cloud Insights가 새 브라우저 탭에서 열립니다. 도움이 필요한 경우 을 참조하십시오 https://docs.netapp.com/us-en/cloudinsights["Cloud Insights 설명서"^].
+
+
+
+== 모니터링 비활성화
+
+더 이상 Cloud Volumes ONTAP를 모니터링하지 않으려는 경우 언제든지 서비스를 비활성화할 수 있습니다.
+
+
+NOTE: 각 작업 환경에서 모니터링을 사용하지 않도록 설정한 경우 EC2 인스턴스를 직접 삭제해야 합니다. 인스턴스의 이름은 _AcquisionUnit_이며 생성된 해시(UUID)와 연결됩니다. 예: _ AcquisionUnit - FAN7FqeH _
+
+.단계
+. Cloud Manager 상단에서 * 작업 환경 * 을 클릭합니다.
+. 작업 환경을 선택합니다.
+. 오른쪽 창에서 을 클릭합니다 image:screenshot_gallery_options.gif["작업 환경을 선택한 후 서비스 창에 표시되는 옵션 아이콘의 스크린샷"] 아이콘을 클릭하고 * 스캔 비활성화 * 를 선택합니다.
+

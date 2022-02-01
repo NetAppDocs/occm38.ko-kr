@@ -1,0 +1,107 @@
+---
+sidebar: sidebar 
+permalink: concept_cvs_aws.html 
+keywords: cloud volumes service for aws, cloud volumes, cloud volumes service subscription, access key, secret key 
+summary: NetApp Cloud Volumes Service for AWS는 NFS 및 SMB에서 All-Flash 성능을 통해 NAS 볼륨을 제공하는 클라우드 네이티브 파일 서비스입니다. 이 서비스를 사용하면 기존 애플리케이션을 포함한 모든 워크로드를 AWS 클라우드에서 실행할 수 있습니다. 
+---
+= Cloud Volumes Service for AWS에 대해 자세히 알아보십시오
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetApp Cloud Volumes Service for AWS는 NFS 및 SMB에서 All-Flash 성능을 통해 NAS 볼륨을 제공하는 클라우드 네이티브 파일 서비스입니다. 이 서비스를 사용하면 기존 애플리케이션을 포함한 모든 워크로드를 AWS 클라우드에서 실행할 수 있습니다.
+
+
+
+== Cloud Volumes Service for AWS의 이점
+
+Cloud Volumes Service for AWS는 다음과 같은 이점을 제공합니다.
+
+* 따라서 스토리지 디바이스를 구성하거나 관리할 필요가 없습니다
+* NFSv3 및 NFSv4.1, SMB 3.0 및 3.1.1 NAS 프로토콜 지원
+* 다음과 같은 지원을 통해 Linux 및 Windows ECS(Elastic Container Service) 인스턴스에 안전하게 액세스할 수 있습니다.
++
+** Amazon Linux 2, Red Hat Enterprise Linux 7.5, SLES 12 SP3 및 Ubuntu 16.04 LTS
+** Windows Server 2008 R2, Windows Server 2012 R2 및 Windows Server 2016을 지원합니다
+
+
+* 번들 및 용량제 가격 선택 가능
+
+
+
+
+== 비용
+
+Cloud Volumes Service for AWS에서 생성된 볼륨은 Cloud Manager를 통해 청구되지 않는 서비스 가입에 따라 부과됩니다.
+
+Cloud Manager에서 AWS 환경을 위한 Cloud Volumes Service 또는 볼륨을 검색하는 데 비용이 부과되지 않습니다.
+
+
+
+== 시작하기 전에
+
+* Cloud Manager를 사용하면 기존 Cloud Volumes Service for AWS 구독 및 볼륨을 검색할 수 있습니다. 를 참조하십시오 https://docs.netapp.com/us-en/cloud_volumes/aws/media/cvs_aws_account_setup.pdf["NetApp Cloud Volumes Service for AWS 계정 설정 가이드 를 참조하십시오"^] 구독을 아직 설정하지 않은 경우 Cloud Manager에서 AWS 구독 및 볼륨을 추가하려면 각 지역에 대해 이 설정 프로세스를 따라야 합니다.
+* Cloud Volumes API 키와 암호 키를 얻어야 Cloud Manager에 제공할 수 있습니다. https://docs.netapp.com/us-en/cloud_volumes/aws/reference_cloud_volume_apis.html#finding-the-api-url-api-key-and-secret-key["자세한 내용은 Cloud Volumes Service for AWS 설명서를 참조하십시오"^].
+
+
+
+
+== 빠른 시작
+
+다음 단계를 수행하여 빠르게 시작하거나 다음 섹션으로 이동하여 자세한 내용을 확인하십시오.
+
+
+
+==== 구성에 대한 지원을 확인합니다
+
+[role="quick-margin-para"]
+Cloud Volumes Service용 AWS를 설정했으며 이 중 하나를 구독해야 합니다 https://aws.amazon.com/marketplace/search/results?x=0&y=0&searchTerms=netapp+cloud+volumes+service["AWS 마켓플레이스에서의 NetApp Cloud Volumes Service 오퍼링"^].
+
+
+
+==== Cloud Volumes Service for AWS 구독을 추가합니다
+
+[role="quick-margin-para"]
+Cloud Volumes Service for AWS 서브스크립션을 기반으로 볼륨에 대한 작업 환경을 생성해야 합니다.
+
+
+
+==== 클라우드 볼륨을 생성합니다
+
+[role="quick-margin-para"]
+이 구독에 대해 이미 존재하는 클라우드 볼륨이 새로운 작업 환경에 나타납니다. 그렇지 않으면 Cloud Manager에서 새 볼륨을 생성합니다.
+
+
+
+==== 클라우드 볼륨을 마운트합니다
+
+[role="quick-margin-para"]
+새 클라우드 볼륨을 AWS 인스턴스에 마운트하여 사용자가 스토리지를 사용할 수 있도록 합니다.
+
+
+
+== 도움말 보기
+
+Cloud Manager 채팅을 사용하여 일반적인 서비스 질문을 할 수 있습니다.
+
+클라우드 볼륨과 관련된 기술 지원 문제의 경우 Cloud Volumes Service 사용자 인터페이스의 "지원" 탭에 있는 20자리 "930" 일련 번호를 사용하십시오. 웹 티켓을 열거나 지원을 요청할 때 이 지원 ID를 사용하십시오. Cloud Volumes Service 사용자 인터페이스에서 지원을 받으려면 Cloud Volumes Service 일련 번호를 활성화해야 합니다. https://docs.netapp.com/us-en/cloud_volumes/aws/task_activating_support_entitlement.html["이러한 단계는 여기에 설명되어 있습니다"^].
+
+
+
+== 제한 사항
+
+* Cloud Manager는 Cloud Volumes Service 볼륨을 사용할 때 작업 환경 간의 데이터 복제를 지원하지 않습니다.
+* Cloud Manager에서 Cloud Volumes Service for AWS 구독을 제거하는 것은 지원되지 않습니다. 이 작업은 Cloud Volumes Service for AWS 인터페이스를 통해서만 수행할 수 있습니다.
+
+
+
+
+== 관련 링크
+
+* https://cloud.netapp.com/cloud-volumes-service-for-aws["NetApp Cloud Central: AWS용 Cloud Volumes Service"^]
+* https://docs.netapp.com/us-en/cloud_volumes/aws/["NetApp Cloud Volumes Service for AWS 설명서"^]
+

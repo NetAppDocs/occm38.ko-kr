@@ -1,0 +1,109 @@
+---
+sidebar: sidebar 
+permalink: concept_cloud_central_accounts.html 
+keywords: accounts, workspaces, Connector, users, cloud central, admin, Account Admin, Workspace Admin, account settings, workspaces, users, connector, service connector, user accounts, what are users, what is a workspace, users and workspaces 
+summary: Cloud Central 계정은 멀티 테넌시를 제공하고 Cloud Manager 내에서 격리된 작업 영역의 사용자와 리소스를 구성할 수 있도록 합니다. 
+---
+= 계정 설정: 사용자, 작업 영역, 커넥터 및 구독
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+A_Cloud Central account_는 멀티 테넌시를 제공하고 Cloud Manager 내에서 격리된 작업 공간의 사용자와 리소스를 구성할 수 있도록 합니다.
+
+예를 들어, 여러 사용자가 _worksaces_라는 격리된 환경에서 Cloud Volumes ONTAP 시스템을 배포하고 관리할 수 있습니다. 이러한 작업 영역은 다른 사용자가 공유하지 않는 한 표시되지 않습니다.
+
+Cloud Manager에 처음 액세스하면 Cloud Central 계정을 선택하거나 생성하라는 메시지가 표시됩니다.
+
+image:screenshot_account_selection.gif["Cloud Manager를 생성하려는 Cloud Central 계정을 묻는 Cloud Manager 설정 마법사 스크린샷"]
+
+그런 다음 계정 관리자는 사용자, 작업 영역, 커넥터 및 구독을 관리하여 이 계정의 설정을 수정할 수 있습니다.
+
+image:screenshot_account_settings.gif["사용자, 작업 영역 및 커넥터를 관리할 수 있는 계정 설정 위젯을 보여 주는 스크린샷"]
+
+단계별 지침은 을 참조하십시오 link:task_setting_up_cloud_central_accounts.html["Cloud Central 계정 설정"].
+
+
+
+== 계정 설정
+
+Cloud Manager의 계정 설정 위젯을 사용하면 계정 관리자가 Cloud Central 계정을 관리할 수 있습니다. 방금 계정을 만든 경우 처음부터 다시 시작할 수 있습니다. 그러나 이미 계정을 설정한 경우에는 계정과 연결된 사용자, 작업 영역, 커넥터 및 구독이 _ALL_으로 표시됩니다.
+
+
+
+== 사용자
+
+계정 설정에 표시되는 사용자는 Cloud Central 계정에 연결하는 NetApp Cloud Central 사용자입니다. 사용자를 계정과 연결하고 해당 계정에서 하나 이상의 작업 공간을 만들면 해당 사용자가 Cloud Manager에서 작업 환경을 만들고 관리할 수 있습니다.
+
+사용자를 연결할 때 역할을 할당합니다.
+
+* _계정 관리자_: Cloud Manager에서 모든 작업을 수행할 수 있습니다.
+* _Workspace 관리자_: 할당된 작업 영역에서 자원을 작성하고 관리할 수 있습니다.
+* _Cloud Compliance Viewer_: 규정 준수 정보를 보고 액세스 권한이 있는 시스템에 대한 보고서를 생성할 수만 있습니다.
+
+
+
+
+== 작업 공간
+
+Cloud Manager에서 작업 공간은 다른 작업 환경과 _ 작업 환경 _ 의 수를 분리합니다. 계정 관리자가 해당 작업 영역에 관리자를 연결해야만 작업 영역 관리자가 작업 영역의 작업 환경에 액세스할 수 있습니다.
+
+작업 환경은 스토리지 시스템을 나타냅니다.
+
+* 단일 노드 Cloud Volumes ONTAP 시스템 또는 HA 쌍
+* 네트워크의 온-프레미스 ONTAP 클러스터
+* NetApp 프라이빗 스토리지 구성의 ONTAP 클러스터
+
+
+
+
+== 커넥터
+
+Connector를 사용하면 Cloud Manager에서 퍼블릭 클라우드 환경 내의 리소스와 프로세스를 관리할 수 있습니다. Connector는 클라우드 공급업체에 구축하는 가상 머신 인스턴스 또는 구성한 온프레미스 호스트에서 실행됩니다.
+
+Connector를 두 개 이상의 NetApp 클라우드 데이터 서비스와 함께 사용할 수 있습니다. 예를 들어, Connector for Cloud Manager가 이미 있는 경우 Cloud Tiering 서비스를 설정할 때 선택할 수 있습니다.
+
+
+
+== 구독
+
+계정 설정 위젯은 선택한 계정과 연결된 NetApp 구독을 표시합니다.
+
+클라우드 공급자의 마켓플레이스에서 Cloud Manager를 구독하면 Cloud Central로 리디렉션되어 구독을 저장하고 특정 계정에 연결해야 합니다.
+
+구독한 후에는 계정 설정 위젯에서 각 구독을 사용할 수 있습니다. 현재 보고 있는 계정과 연결된 구독만 표시됩니다.
+
+구독의 이름을 바꾸고 하나 이상의 계정에서 구독을 연결 해제할 수 있습니다.
+
+예를 들어, 두 개의 계정이 있고 각각 별도의 구독을 통해 비용이 청구된다고 가정해 보겠습니다. Cloud Volume ONTAP 작업 환경을 생성할 때 해당 계정의 사용자가 실수로 잘못된 구독을 선택하지 않도록 계정 중 하나에서 구독을 연결 해제할 수 있습니다.
+
+
+
+== 예
+
+다음 예에서는 계정을 설정하는 방법을 보여 줍니다.
+
+
+NOTE: 이어지는 두 예제 이미지 모두에서 Connector와 Cloud Volumes ONTAP 시스템은 실제로 클라우드 중심 고객 _ 에 상주하지 않습니다. 이들 이미지는 클라우드 공급자에서 실행되고 있습니다. 각 구성 요소 간의 관계를 개념적으로 나타낸 것입니다.
+
+
+
+=== 예 1
+
+다음 예제에서는 두 개의 작업 영역을 사용하여 격리된 환경을 만드는 계정을 보여 줍니다. 첫 번째 작업 공간은 운영 환경이고 두 번째는 개발 환경입니다.
+
+image:diagram_cloud_central_accounts_one.png["두 개의 작업 영역이 포함된 단일 Cloud Central 계정을 보여 주는 다이어그램 각 작업 영역은 동일한 Connector와 연결되어 있으며 각 작업 영역 관리자는 고유한 작업 영역 관리자를 가지고 있습니다"]
+
+
+
+=== 예 2
+
+다음은 두 개의 개별 Cloud Central 계정을 사용하여 가장 높은 수준의 멀티 테넌시를 보여 주는 또 다른 예입니다. 예를 들어, 서비스 공급자는 하나의 계정에서 Cloud Manager를 사용하여 고객에게 서비스를 제공하는 동시에 다른 계정을 사용하여 부서 중 하나의 재해 복구를 제공할 수 있습니다.
+
+계정 2에는 별도의 커넥터가 2개 포함되어 있습니다. 시스템이 다른 지역이나 별도의 클라우드 공급자에 있는 경우 이러한 문제가 발생할 수 있습니다.
+
+image:diagram_cloud_central_accounts_two.png["두 개의 Cloud Central 계정을 보여 주는 다이어그램으로, 각 계정에는 여러 개의 작업 공간과 연결된 Workspace 관리자가 있습니다."]

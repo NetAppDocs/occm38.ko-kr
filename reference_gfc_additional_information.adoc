@@ -1,0 +1,38 @@
+---
+sidebar: sidebar 
+permalink: reference_gfc_additional_information.html 
+keywords: global file cache 
+summary: 다음 링크를 사용하여 글로벌 파일 캐시 및 기타 NetApp 제품에 대해 자세히 알아보십시오. 
+---
+= 추가 정보
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+다음 링크를 사용하여 글로벌 파일 캐시 및 기타 NetApp 제품에 대해 자세히 알아보십시오.
+
+* 글로벌 파일 캐시 FAQ
++
+** 자주 묻는 질문과 대답 목록을 참조하십시오 link:https://cloud.netapp.com/global-file-cache-faq["여기"^]
+
+
+* link:https://repo.cloudsync.netapp.com/gfc/NetApp%20GFC%20-%20User%20Guide.pdf["NetApp 글로벌 파일 캐시 사용자 가이드 를 참조하십시오"^]
+* NetApp 제품 설명서
++
+** NetApp 클라우드 제품에 대한 자세한 내용은 추가 설명서를 참조하십시오 https://docs.netapp.com/us-en/cloud/["여기"^]
+** 모든 NetApp 제품에 대한 추가 설명서를 참조하십시오 https://docs.netapp.com["여기"^]
+
+
+* Cloud Volumes ONTAP를 사용하는 글로벌 파일 캐시 사용자에 대한 고객 지원은 다음 채널을 통해 제공됩니다.
++
+** 문제 해결 안내, 사례 관리, 기술 자료, 다운로드, 도구, 그리고 더 많은 것을 link:https://cloud.netapp.com/gfc-support["여기"^]
+** 에서 NetApp Support에 로그인합니다 https://mysupport.netapp.com[] NSS 자격 증명을 사용합니다
+** P1 문제에 대한 즉각적인 지원은 +1 856.481.3990 (옵션 2)으로 문의하십시오.
+
+
+* Cloud Volumes Services 및 Azure NetApp Files를 활용하는 글로벌 파일 캐시 사용자에 대한 고객 지원은 공급자로부터의 표준 지원을 통해 제공됩니다. Google 고객 지원 센터 또는 Microsoft 고객 지원 센터에 각각 문의하십시오.
+

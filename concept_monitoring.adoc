@@ -1,0 +1,97 @@
+---
+sidebar: sidebar 
+permalink: concept_monitoring.html 
+keywords: concepts, how cloud insights works, how monitoring works, features, monitoring features, cloud insights features, cost, monitoring 
+summary: NetApp의 Cloud Insights 서비스를 활용하는 Cloud Manager는 모든 Cloud Volumes ONTAP 인스턴스의 상태와 성능에 대한 통찰력을 제공하고 클라우드 스토리지 환경의 성능을 문제 해결과 최적화할 수 있도록 지원합니다. 
+---
+= 모니터링 서비스에 대해 자세히 알아보십시오
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+활용할 수 있습니다 https://cloud.netapp.com/cloud-insights["NetApp Cloud Insights 서비스"]Cloud Manager를 사용하면 Cloud Volumes ONTAP 인스턴스의 상태와 성능을 쉽게 파악하고 클라우드 스토리지 환경의 성능을 문제 해결 및 최적화할 수 있습니다.
+
+
+
+== 피처
+
+* 모든 볼륨을 자동으로 모니터링합니다
+* IOPS, 처리량, 지연 시간 측면에서 볼륨 성능 데이터를 봅니다
+* 성능 문제를 식별하여 사용자와 앱의 영향을 최소화합니다
+
+
+
+
+== 지원되는 클라우드 공급자
+
+모니터링 서비스는 Cloud Volumes ONTAP for AWS에서 지원됩니다.
+
+
+
+== 비용
+
+모니터링은 현재 미리 보기로 사용할 수 있습니다. 활성화는 무료입니다. Cloud Manager를 사용하면 VPC에서 가상 머신을 실행하여 모니터링을 쉽게 할 수 있습니다. 이 VM은 클라우드 공급자가 비용을 청구합니다.
+
+
+
+== Cloud Insights를 Cloud Manager와 함께 사용하는 방법
+
+고수준에서 Cloud Insights와 Cloud Manager의 통합은 다음과 같이 작동합니다.
+
+. Cloud Volumes ONTAP에서 모니터링 서비스를 활성화합니다.
+. Cloud Manager가 환경을 구성합니다. 다음과 같은 작업을 수행합니다.
++
+.. Cloud Insights 테넌트(_environment_라고도 함)를 생성하고 Cloud Central 계정의 모든 사용자를 테넌트에 연결합니다.
+.. Cloud Insights의 30일 무료 평가판을 사용할 수 있습니다.
+.. VPC에 획득 장치라고 하는 가상 시스템을 구축하여 볼륨을 쉽게 모니터링할 수 있습니다(이 VM은 위의 비용 섹션에 설명되어 있음).
+.. 획득 장치를 Cloud Volumes ONTAP 및 Cloud Insights 테넌트에 연결합니다.
+
+
+. Cloud Manager에서 모니터링을 클릭하고 성능 데이터를 사용하여 문제를 해결하고 성능을 최적화할 수 있습니다.
+
+
+다음 이미지는 이러한 구성 요소 간의 관계를 보여줍니다.
+
+image:diagram_cloud_insights.png["AWS의 Cloud Manager, Cloud Volumes ONTAP 및 획득 장치를 보여주는 개념도입니다."]
+
+
+
+=== 획득 장치
+
+모니터링을 활성화하면 Cloud Manager는 Connector와 동일한 서브넷에 획득 장치를 배포합니다.
+
+획득 장치 _ 는 Cloud Volumes ONTAP에서 성능 데이터를 수집하여 Cloud Insights 테넌트로 전송합니다. 그런 다음 Cloud Manager가 해당 데이터를 쿼리하여 사용자에게 제공합니다.
+
+획득 장치 인스턴스에 대해 다음 사항에 유의하십시오.
+
+* 획득 장치는 100GB GP2 볼륨을 가진 T3.xLarge 인스턴스에서 실행됩니다.
+* 인스턴스의 이름은 _AcquisionUnit_이며 생성된 해시(UUID)와 연결됩니다. 예: _ AcquisionUnit - FAN7FqeH _
+* 커넥터당 하나의 획득 장치만 배치됩니다.
+* 모니터링 탭의 성능 정보에 액세스하려면 인스턴스가 실행 중이어야 합니다.
+
+
+
+
+=== Cloud Insights 테넌트
+
+Cloud Manager는 모니터링을 설정할 때 _tenant_를 설정합니다. Cloud Insights 테넌트를 사용하면 획득 장치가 수집하는 성능 데이터에 액세스할 수 있습니다. 테넌트는 NetApp Cloud Insights 서비스 내의 보안 데이터 파티션입니다.
+
+
+
+=== Cloud Insights 웹 인터페이스
+
+Cloud Manager의 모니터링 탭은 볼륨에 대한 기본 성능 데이터를 제공합니다. 브라우저에서 Cloud Insights 웹 인터페이스로 이동하여 보다 심층적인 모니터링을 수행하고 Cloud Volumes ONTAP 시스템에 대한 경고를 구성할 수 있습니다.
+
+
+
+=== 무료 평가판 및 구독
+
+Cloud Manager를 사용하면 Cloud Insights 30일 무료 평가판을 통해 클라우드 관리자 내에서 성능 데이터를 제공하고 Cloud Insights Standard Edition에서 제공하는 기능을 탐색할 수 있습니다.
+
+무료 평가판이 끝날 때까지 구독해야 합니다. 그렇지 않으면 Cloud Insights 테넌트가 삭제됩니다. Cloud Manager에서 모니터링 기능을 계속 사용하려면 Basic, Standard 또는 Premium Edition에 가입해야 합니다.
+
+https://docs.netapp.com/us-en/cloudinsights/concept_subscribing_to_cloud_insights.html["Cloud Insights 구독 방법에 대해 알아보십시오"^].

@@ -1,0 +1,24 @@
+---
+sidebar: sidebar 
+permalink: task_logging_in.html 
+keywords: logging in, log in, sign in, signing in, cloud central, netapp cloud central, user account 
+summary: 'Cloud Manager 인터페이스는 로 이동하여 SaaS 기반 사용자 인터페이스를 통해 액세스할 수 있습니다 https://cloudmanager.netapp.com[].' 
+---
+= Cloud Manager에 로그인
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager 인터페이스는 로 이동하여 SaaS 기반 사용자 인터페이스를 통해 액세스할 수 있습니다 https://cloudmanager.netapp.com[].
+
+.단계
+. 웹 브라우저를 열고 로 이동합니다 https://cloudmanager.netapp.com[].
+. NetApp Cloud Central 자격 증명을 사용하여 로그인합니다.
++
+image:screenshot_login.gif["Cloud Central의 로그인 화면"]
+
+

@@ -1,0 +1,58 @@
+---
+sidebar: sidebar 
+permalink: task_discovering_ontap.html 
+keywords: ontap, cluster, discover, manage, discovering, fas, aff, discover onprem, discover aff cluster, discover cluster, add cluster 
+summary: Cloud Manager를 사용하면 사내 환경, NetApp 프라이빗 스토리지 구성 및 IBM 클라우드에서 ONTAP 클러스터를 검색할 수 있습니다. ONTAP 클러스터 검색을 통해 스토리지를 프로비저닝하고, 데이터를 복제하고, 콜드 데이터를 사내 클러스터에서 클라우드로 계층화할 수 있습니다. 
+---
+= ONTAP 클러스터 검색
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+Cloud Manager를 사용하면 사내 환경, NetApp 프라이빗 스토리지 구성 및 IBM 클라우드에서 ONTAP 클러스터를 검색할 수 있습니다. ONTAP 클러스터 검색을 사용하면 스토리지를 프로비저닝하고, 데이터를 복제하고, 데이터를 백업하고, 콜드 데이터를 사내 클러스터에서 클라우드로 계층화할 수 있습니다.
+
+.무엇을 &#8217;필요로 할거야
+* 클라우드 공급자 또는 구내에 설치된 커넥터.
++
+콜드 데이터를 클라우드에 계층화하려면 콜드 데이터를 계층화할 위치에 따라 Connector의 요구사항을 검토해야 합니다.
+
++
+** link:concept_connectors.html["커넥터에 대해 자세히 알아보십시오"]
+** link:task_managing_connectors.html["커넥터 간 전환"]
+** link:concept_cloud_tiering.html["Cloud Tiering에 대해 알아보십시오"]
+
+
+* 클러스터를 Cloud Manager에 추가하는 admin 사용자 계정의 클러스터 관리 IP 주소 및 암호
++
+Cloud Manager는 HTTPS를 사용하여 ONTAP 클러스터를 검색합니다. 사용자 지정 방화벽 정책을 사용하는 경우 다음 요구 사항을 충족해야 합니다.
+
++
+** 커넥터 호스트는 포트 443을 통한 아웃바운드 HTTPS 액세스를 허용해야 합니다.
++
+Connector가 클라우드에 있는 경우 모든 아웃바운드 통신은 미리 정의된 보안 그룹에서 허용됩니다.
+
+** ONTAP 클러스터는 포트 443을 통한 인바운드 HTTPS 액세스를 허용해야 합니다.
++
+기본 "관리" 방화벽 정책은 모든 IP 주소에서 인바운드 HTTPS 액세스를 허용합니다. 이 기본 정책을 수정하거나 자체 방화벽 정책을 만든 경우 HTTPS 프로토콜을 해당 정책에 연결하고 Connector 호스트에서 액세스를 활성화해야 합니다.
+
+
+
+
+
+.단계
+. 작업 환경 페이지에서 * 작업 환경 추가 * 를 클릭하고 * 온-프레미스 ONTAP * 를 선택합니다.
+. 메시지가 표시되면 연결선을 만듭니다.
++
+자세한 내용은 위의 링크를 참조하십시오.
+
+. ONTAP 클러스터 세부 정보 * 페이지에서 클러스터 관리 IP 주소, admin 사용자 계정의 암호 및 클러스터 위치를 입력합니다.
++
+image:screenshot_discover_ontap.gif["클러스터 관리 IP 주소, 사용자 이름 및 암호, 클러스터 위치로 선택한 온-프레미스의 ONTAP 클러스터 세부 정보 페이지 예를 보여 주는 스크린샷"]
+
+. 세부 정보 페이지에서 작업 환경의 이름과 설명을 입력한 다음 * GO * 를 클릭합니다.
+
+
+Cloud Manager가 클러스터를 검색합니다. 이제 볼륨을 생성하고, 클러스터에서 데이터를 복제하고, 클라우드로 데이터 계층화를 설정하고, 볼륨을 클라우드에 백업하고, System Manager를 실행하여 고급 작업을 수행할 수 있습니다.

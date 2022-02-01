@@ -1,0 +1,433 @@
+---
+settings:
+  name: Cloud Manager 3.8
+  nss_product: OnCommand Cloud Manager
+  downlevel: true
+  internal:
+    pdf_enabled: false
+  prod:
+    pdf_enabled: true
+    harmony_enabled: false
+  langs: ko-kr,us-en,ja-jp,zh-cn
+sidebar:
+  entries:
+  - title: Cloud Manager 문서
+    url: "/index.html"
+  - title: 릴리스 정보
+    entries:
+    - title: 클라우드 관리자
+      entries:
+      - title: 새로운 소식
+        url: "/reference_new_occm.html"
+      - title: SaaS로 전환
+        url: "/concept_saas.html"
+      - title: 알려진 문제
+        url: "/reference_issues.html"
+      - title: 알려진 제한 사항
+        url: "/reference_limitations.html"
+    - title: Cloud Volumes ONTAP
+      url: https://docs.netapp.com/us-en/cloud-volumes-ontap/
+  - title: 중요한 변화
+    url: "/reference_key_changes.html"
+  - title: Cloud Manager를 시작하십시오
+    entries:
+    - title: Cloud Manager에 대해 자세히 알아보십시오
+      url: "/concept_overview.html"
+    - title: 네트워킹 개요
+      url: "/reference_networking.html"
+    - title: Cloud Central에 가입하십시오
+      url: "/task_signing_up.html"
+    - title: Cloud Manager에 로그인합니다
+      url: "/task_logging_in.html"
+    - title: Cloud Central 계정을 설정합니다
+      entries:
+      - title: Cloud Central 계정에 대해 알아보십시오
+        url: "/concept_cloud_central_accounts.html"
+      - title: 계정을 설정합니다
+        url: "/task_setting_up_cloud_central_accounts.html"
+    - title: 커넥터를 설정합니다
+      entries:
+      - title: 커넥터에 대해 자세히 알아보십시오
+        url: "/concept_connectors.html"
+      - title: 네트워킹 요구 사항
+        url: "/reference_networking_cloud_manager.html"
+      - title: AWS에서 커넥터를 생성합니다
+        url: "/task_creating_connectors_aws.html"
+      - title: Azure에서 커넥터를 만듭니다
+        url: "/task_creating_connectors_azure.html"
+      - title: GCP에서 커넥터를 생성합니다
+        url: "/task_creating_connectors_gcp.html"
+    - title: 다음 단계로 넘어갑니다
+      url: "/reference_whats_next.html"
+  - title: Cloud Volumes ONTAP 관리
+    entries:
+    - title: 학습
+      entries:
+      - title: 개요
+        url: "/concept_overview_cvo.html"
+      - title: 스토리지
+        entries:
+        - title: 디스크와 애그리게이트
+          url: "/concept_storage.html"
+        - title: 데이터 계층화
+          url: "/concept_data_tiering.html"
+        - title: 스토리지 관리
+          url: "/concept_storage_management.html"
+        - title: Flash Cache를 참조하십시오
+          url: "/concept_flash_cache.html"
+        - title: WORM 스토리지
+          url: "/concept_worm.html"
+      - title: 고가용성 쌍
+        entries:
+        - title: AWS의 HA 쌍
+          url: "/concept_ha.html"
+        - title: Azure의 HA 쌍
+          url: "/concept_ha_azure.html"
+      - title: 평가 중
+        url: "/concept_evaluating.html"
+      - title: 라이센싱
+        url: "/concept_licensing.html"
+      - title: 보안
+        url: "/concept_security.html"
+      - title: 성능
+        url: "/concept_performance.html"
+      - title: 지원되는 구성
+        url: https://docs.netapp.com/us-en/cloud-volumes-ontap/index.html
+      - title: 지원 지역
+        url: https://cloud.netapp.com/cloud-volumes-global-regions
+      - title: 기본 구성
+        url: "/reference_default_configs.html"
+    - title: AWS에서 시작하십시오
+      entries:
+      - title: 빠른 시작
+        url: "/task_getting_started_aws.html"
+      - title: 구성을 계획합니다
+        url: "/task_planning_your_config.html"
+      - title: 네트워크 설정
+        entries:
+        - title: 네트워킹 요구 사항
+          url: "/reference_networking_aws.html"
+        - title: AWS 전송 게이트웨이를 설정합니다
+          url: "/task_setting_up_transit_gateway.html"
+        - title: AWS의 보안 그룹 규칙
+          url: "/reference_security_groups.html"
+      - title: AWS KMS를 설정합니다
+        url: "/task_setting_up_kms.html"
+      - title: AWS에서 시스템을 시작합니다
+        url: "/task_deploying_otc_aws.html"
+      - title: AWS C2S에서 시작하십시오
+        url: https://docs.netapp.com/us-en/occm/media/c2s.pdf
+    - title: Azure에서 시작하십시오
+      entries:
+      - title: 빠른 시작
+        url: "/task_getting_started_azure.html"
+      - title: 구성을 계획합니다
+        url: "/task_planning_your_config_azure.html"
+      - title: 네트워크 설정
+        url: "/reference_networking_azure.html"
+      - title: Azure에서 시스템을 시작합니다
+        url: "/task_deploying_otc_azure.html"
+    - title: GCP에서 시작하십시오
+      entries:
+      - title: 빠른 시작
+        url: "/task_getting_started_gcp.html"
+      - title: 구성을 계획합니다
+        url: "/task_planning_your_config_gcp.html"
+      - title: 네트워크 설정
+        url: "/reference_networking_gcp.html"
+      - title: 고객이 관리하는 암호화 키를 사용합니다
+        url: "/task_setting_up_gcp_encryption.html"
+      - title: GCP에서 시스템을 시작합니다
+        url: "/task_deploying_gcp.html"
+    - title: 스토리지 프로비저닝 및 관리
+      entries:
+      - title: 볼륨, 애그리게이트 및 LUN 생성
+        url: "/task_provisioning_storage.html"
+      - title: 볼륨 및 애그리게이트 관리
+        url: "/task_managing_storage.html"
+      - title: 비활성 데이터를 오브젝트 스토리지에 계층화합니다
+        url: "/task_tiering.html"
+      - title: 스토리지 VM 관리
+        url: "/task_managing_svms.html"
+      - title: ONTAP를 영구 스토리지로 사용합니다
+        url: "/task_connecting_kubernetes.html"
+      - title: NetApp 암호화로 볼륨 암호화
+        url: "/task_encrypting_volumes.html"
+    - title: 데이터 복제
+      url: "/task_replicating_data.html"
+    - title: 성능을 모니터링합니다
+      entries:
+      - title: 모니터링에 대해 자세히 알아보십시오
+        url: "/concept_monitoring.html"
+      - title: 시작하십시오
+        url: "/task_getting_started_monitoring.html"
+    - title: 랜섬웨어 보호 향상
+      url: "/task_protecting_ransomware.html"
+    - title: 관리
+      entries:
+      - title: 선불 종량제 시스템을 등록합니다
+        url: "/task_registering.html"
+      - title: Cloud Volumes ONTAP를 설정합니다
+        url: "/task_setting_up_ontap_cloud.html"
+      - title: BYOL 라이센스 관리
+        url: "/task_managing_licenses.html"
+      - title: 소프트웨어 업데이트
+        url: "/task_updating_ontap_cloud.html"
+      - title: 시스템 구성을 수정합니다
+        url: "/task_modifying_ontap_cloud.html"
+      - title: 시스템을 중지하고 시동합니다
+        url: "/task_managing_state.html"
+      - title: AWS 비용 모니터링
+        url: "/task_monitoring_costs.html"
+      - title: Cloud Volumes ONTAP에 연결합니다
+        url: "/task_connecting_to_otc.html"
+      - title: 기존 시스템을 추가합니다
+        url: "/task_adding_ontap_cloud.html"
+      - title: 시스템을 삭제합니다
+        url: "/task_deleting_working_env.html"
+  - title: 파일 서비스를 사용하여 볼륨 프로비저닝
+    entries:
+    - title: Azure NetApp Files
+      entries:
+      - title: Azure NetApp Files에 대해 자세히 알아보십시오
+        url: "/concept_azure_netapp_files.html"
+      - title: Azure NetApp Files를 설정합니다
+        url: "/task_manage_anf.html"
+      - title: 볼륨 생성 및 관리
+        url: "/task_manage_anf_volumes.html"
+    - title: AWS 환경을 위한 Cloud Volumes Service
+      entries:
+      - title: Cloud Volumes Service for AWS에 대해 자세히 알아보십시오
+        url: "/concept_cvs_aws.html"
+      - title: 클라우드 볼륨을 구축 및 관리
+        url: "/task_manage_cvs_aws.html"
+      - title: 클라우드 볼륨 스냅샷을 관리합니다
+        url: "/task_manage_cloud_volumes_snapshots.html"
+      - title: 참조하십시오
+        entries:
+        - title: 서비스 수준 및 할당된 용량
+          url: "/reference_cvs_service_levels_and_quotas.html"
+        - title: Windows AD 서버에 대한 AWS 보안 그룹 설정
+          url: "/reference_security_groups_windows_ad_servers.html"
+    - title: GCP용 Cloud Volumes Service
+      entries:
+      - title: Cloud Volumes Service for GCP에 대해 알아보십시오
+        url: "/concept_cvs_gcp.html"
+      - title: Cloud Volumes Service for GCP를 설정합니다
+        url: "/task_setup_cvs_gcp.html"
+      - title: 클라우드 볼륨 생성 및 관리
+        url: "/task_manage_cvs_gcp.html"
+      - title: 클라우드 볼륨 스냅샷을 관리합니다
+        url: "/task_manage_cloud_volumes_gcp_snapshots.html"
+  - title: ONTAP 클러스터 관리
+    entries:
+    - title: ONTAP 클러스터에 대해 알아보십시오
+      url: "/task_discovering_ontap.html"
+    - title: ONTAP 볼륨 관리
+      url: "/task_provisioning_ontap.html"
+  - title: 클라우드에 백업
+    entries:
+    - title: 클라우드 백업에 대해 자세히 알아보십시오
+      url: "/concept_backup_to_cloud.html"
+    - title: 시작하십시오
+      entries:
+      - title: Amazon S3에 백업
+        url: "/task_backup_to_s3.html"
+      - title: Azure Blob 저장소에 백업
+        url: "/task_backup_to_azure.html"
+      - title: 사내 ONTAP 시스템에서 백업합니다
+        url: "/task_backup_from_onprem.html"
+    - title: 백업 관리 및 데이터 복원
+      url: "/task_managing_backups.html"
+  - title: 데이터를 복사하고 동기화합니다
+    entries:
+    - title: Cloud Sync에 대해 자세히 알아보십시오
+      url: "/concept_cloud_sync.html"
+    - title: 시작하십시오
+      entries:
+      - title: 빠른 시작
+        url: "/task_sync_quick_start.html"
+      - title: 소스와 타겟을 준비합니다
+        url: "/reference_sync_requirements.html"
+      - title: 네트워킹을 준비합니다
+        url: "/reference_sync_networking.html"
+      - title: 데이터 브로커를 설치하는 방법
+        entries:
+        - title: AWS에 설치
+          url: "/task_sync_installing_aws.html"
+        - title: Azure에 설치합니다
+          url: "/task_sync_installing_azure.html"
+        - title: GCP에 설치합니다
+          url: "/task_sync_installing_gcp.html"
+        - title: Linux 호스트에 설치합니다
+          url: "/task_sync_installing_linux.html"
+      - title: 동기화 관계를 생성합니다
+        url: "/task_sync_creating_relationships.html"
+      - title: 동기화 관계에 대한 비용 지불
+        url: "/task_sync_licensing.html"
+    - title: 자습서
+      entries:
+      - title: 공유 간에 ACL을 복사합니다
+        url: "/task_sync_copying_acls.html"
+      - title: 사용 중인 NFS 데이터를 암호화합니다
+        url: "/task_sync_nfs_encryption.html"
+    - title: 동기화 관계를 관리합니다
+      url: "/task_sync_managing_relationships.html"
+    - title: API를 참조하십시오
+      url: "/api_sync.html"
+    - title: FAQ 를 참조하십시오
+      url: "/faq_sync.html"
+  - title: 개인정보 데이터 보호 파악
+    entries:
+    - title: 클라우드 규정 준수에 대해 알아보십시오
+      url: "/concept_cloud_compliance.html"
+    - title: 시작하십시오
+      entries:
+      - title: 클라우드 규정 준수 구현
+        url: "/task_deploy_cloud_compliance.html"
+      - title: 데이터 소스에서 스캔을 활성화합니다
+        entries:
+        - title: Cloud Volumes ONTAP and Azure NetApp Files를 참조하십시오
+          url: "/task_getting_started_compliance.html"
+        - title: Amazon S3 버킷
+          url: "/task_scanning_s3.html"
+        - title: 데이터베이스 스키마
+          url: "/task_scanning_databases.html"
+        - title: 사내 ONTAP 데이터
+          url: "/task_scanning_onprem.html"
+    - title: 데이터에 대한 가시성 및 제어 기능 확보
+      url: "/task_controlling_private_data.html"
+    - title: 보고서를 생성합니다
+      url: "/task_generating_compliance_reports.html"
+    - title: SAR에 응답합니다
+      url: "/task_responding_to_dsar.html"
+    - title: 클라우드 규정 준수 해제
+      url: "/task_managing_compliance.html"
+    - title: FAQ 를 참조하십시오
+      url: "/faq_cloud_compliance.html"
+  - title: 실시간 글로벌 파일 공유를 활성화합니다
+    entries:
+    - title: 글로벌 파일 캐시에 대해 알아보십시오
+      url: "/concept_gfc.html"
+    - title: 글로벌 파일 캐시 배포를 시작하기 전에
+      url: "/concept_before_you_begin_to_deploy_gfc.html"
+    - title: 시작하기
+      url: "/task_gfc_getting_started.html"
+    - title: Global File Cache Edge 구축을 시작하기 전에
+      url: "/download_gfc_resources.html"
+    - title: Global File Cache Edge 구축
+      url: "/task_deploy_gfc_edge_instances.html"
+    - title: 최종 사용자 교육
+      url: "/concept_gfc_enduser_training.html"
+    - title: 추가 정보
+      url: "/reference_gfc_additional_information.html"
+  - title: 클라우드 컴퓨팅 비용 최적화
+    entries:
+    - title: 컴퓨팅 서비스에 대해 자세히 알아보십시오
+      url: "/concept_compute.html"
+    - title: 시작하십시오
+      url: "/task_getting_started_compute.html"
+  - title: 데이터를 클라우드에 계층화
+    entries:
+    - title: Cloud Tiering에 대해 알아보십시오
+      url: "/concept_cloud_tiering.html"
+    - title: 시작하십시오
+      entries:
+      - title: 데이터를 Amazon S3에 계층화합니다
+        url: "/task_tiering_onprem_aws.html"
+      - title: Azure Blob 저장소에 데이터 계층화
+        url: "/task_tiering_onprem_azure.html"
+      - title: 데이터를 Google Cloud Storage에 계층화합니다
+        url: "/task_tiering_onprem_gcp.html"
+      - title: 데이터를 StorageGRID에 계층화합니다
+        url: "/task_tiering_onprem_storagegrid.html"
+    - title: 라이센스를 설정합니다
+      url: "/task_licensing_cloud_tiering.html"
+    - title: 데이터 계층화 관리
+      url: "/task_managing_tiering.html"
+    - title: FAQ 를 참조하십시오
+      url: "/faq_cloud_tiering.html"
+    - title: 참조하십시오
+      entries:
+      - title: 지원되는 Amazon S3 스토리지 클래스 및 지역
+        url: "/reference_aws_support.html"
+      - title: 지원되는 Azure 액세스 계층 및 지역
+        url: "/reference_azure_support.html"
+      - title: 지원되는 Google Cloud 스토리지 클래스 및 지역
+        url: "/reference_google_support.html"
+  - title: Amazon S3 버킷을 봅니다
+    url: "/task_viewing_amazon_s3.html"
+  - title: Cloud Manager 관리
+    entries:
+    - title: 시스템 ID를 찾습니다
+      url: "/task_finding_system_id.html"
+    - title: 커넥터 관리
+      entries:
+      - title: 기존 커넥터 관리
+        url: "/task_managing_connectors.html"
+      - title: 커넥터를 작성하는 더 많은 방법
+        entries:
+        - title: 커넥터 호스트 요구 사항
+          url: "/reference_cloud_mgr_reqs.html"
+        - title: AWS Marketplace에서 생성
+          url: "/task_launching_aws_mktp.html"
+        - title: Azure Marketplace에서 생성
+          url: "/task_launching_azure_mktp.html"
+        - title: 소프트웨어를 수동으로 설치합니다
+          url: "/task_installing_linux.html"
+      - title: 기본 구성
+        url: "/reference_connector_default_config.html"
+    - title: 자격 증명 관리
+      entries:
+      - title: 설치하고
+        entries:
+        - title: AWS 자격 증명에 대해 알아보십시오
+          url: "/concept_accounts_aws.html"
+        - title: AWS 자격 증명 관리
+          url: "/task_adding_aws_accounts.html"
+      - title: Azure를 지원합니다
+        entries:
+        - title: Azure 자격 증명에 대해 알아보십시오
+          url: "/concept_accounts_azure.html"
+        - title: Azure 자격 증명을 관리합니다
+          url: "/task_adding_azure_accounts.html"
+      - title: GCP
+        entries:
+        - title: GCP 자격 증명에 대해 알아보십시오
+          url: "/concept_accounts_gcp.html"
+        - title: GCP 자격 증명을 관리합니다
+          url: "/task_adding_gcp_accounts.html"
+      - title: NetApp Support 사이트 자격 증명
+        url: "/task_adding_nss_accounts.html"
+    - title: 계정을 관리합니다
+      url: "/task_managing_cloud_central_accounts.html"
+    - title: HTTPS 인증서를 설치합니다
+      url: "/task_installing_https_cert.html"
+    - title: 작업 환경을 제거합니다
+      url: "/task_removing.html"
+    - title: 프록시 설정을 구성합니다
+      url: "/task_configuring_proxy.html"
+    - title: Azure에서 CIFS 잠금을 재정의합니다
+      url: "/task_overriding_cifs_locks.html"
+    - title: 참조하십시오
+      entries:
+      - title: 사용자 역할
+        url: "/reference_user_roles.html"
+      - title: 권한
+        url: "/reference_permissions.html"
+      - title: AWS 마켓플레이스 페이지를 참조하십시오
+        url: "/reference_aws_marketplace.html"
+  - title: API 및 자동화 사용
+    entries:
+    - title: API 개발자 가이드 를 참조하십시오
+      url: https://docs.netapp.com/us-en/occm/api.html
+    - title: DevOps 툴을 사용하여 자동화
+      url: "/reference_infrastructure_as_code.html"
+  - title: 문제를 해결합니다
+    url: https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services
+  - title: 관련 링크
+    url: "/reference_additional_info.html"
+  - title: 이전 버전
+    url: "/reference_earlier_versions.html"
+  - title: 법적 고지
+    url: "/reference_legal_notices.html"

@@ -1,0 +1,497 @@
+---
+sidebar: sidebar 
+permalink: reference_networking_gcp.html 
+keywords: networking, network, requirements, connection, connections, subnet, vpn, internet, proxy, HTTP, private, proxy server, routing, firewall, autosupport, connection, jump host, outbound, ports, tiering, data tiering, bucket, private google access, set up data tiering, data tiering requirement, gcp networking, google networking, shared vpc, host project, service project 
+summary: Cloud Volumes ONTAP 시스템이 올바르게 작동할 수 있도록 Google 클라우드 플랫폼 네트워킹을 설정합니다. 여기에는 커넥터 및 Cloud Volumes ONTAP에 대한 네트워킹이 포함됩니다. 
+---
+= GCP에서 Cloud Volumes ONTAP를 구축 및 관리하기 위한 네트워킹 요구사항
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP 시스템이 올바르게 작동할 수 있도록 Google 클라우드 플랫폼 네트워킹을 설정합니다. 여기에는 커넥터 및 Cloud Volumes ONTAP에 대한 네트워킹이 포함됩니다.
+
+
+
+== Cloud Volumes ONTAP에 대한 요구사항
+
+GCP에서 다음 요구사항을 충족해야 합니다.
+
+가상 프라이빗 클라우드::
++
+--
+공유 VPC를 사용하면 여러 프로젝트에서 가상 네트워크를 구성하고 중앙에서 관리할 수 있습니다. _host project_에서 공유 VPC 네트워크를 설정하고 _service project_에서 Connector 및 Cloud Volumes ONTAP 가상 머신 인스턴스를 배포할 수 있습니다. https://cloud.google.com/vpc/docs/shared-vpc["Google Cloud 설명서: 공유 VPC 개요"^].
+
+공유 VPC를 사용할 때 유일한 요구 사항은 을 제공하는 것입니다 https://cloud.google.com/compute/docs/access/iam#compute.networkUser["네트워크 사용자 역할을 계산합니다"^] 커넥터 서비스 계정으로 이동합니다. Cloud Manager는 호스트 프로젝트에서 방화벽, VPC 및 서브넷을 쿼리하기 위해 이러한 권한이 필요합니다.
+
+--
+Cloud Volumes ONTAP에 대한 아웃바운드 인터넷 액세스::
++
+--
+라우팅 및 방화벽 정책은 Cloud Volumes ONTAP가 AutoSupport 메시지를 보낼 수 있도록 다음 엔드포인트에 대한 HTTP/HTTPS 트래픽을 허용해야 합니다.
+
+* https://support.netapp.com/aods/asupmessage 으로 문의하십시오
+* https://support.netapp.com/asupprod/post/1.0/postAsup 으로 문의하십시오
++
+link:task_setting_up_ontap_cloud.html["AutoSupport 구성 방법을 알아보십시오"].
+
+
+
+--
+IP 주소 수입니다::
++
+--
+Cloud Manager는 GCP에서 Cloud Volumes ONTAP용 SVM 관리 LIF를 생성하지 않습니다.
+
+
+TIP: LIF는 물리적 포트와 연결된 IP 주소입니다. SnapCenter와 같은 관리 툴을 사용하려면 SVM 관리 LIF가 필요합니다.
+
+--
+방화벽 규칙:: Cloud Manager에서 방화벽 규칙을 생성할 수 있으므로 이 규칙을 생성할 필요가 없습니다. 직접 사용해야 하는 경우 아래 나열된 방화벽 규칙을 참조하십시오.
+데이터 계층화를 위해 Cloud Volumes ONTAP에서 Google 클라우드 스토리지로 연결::
++
+--
+Cloud Manager에서 데이터 계층화를 설정하는 데 필요한 추가 단계는 를 참조하십시오 link:task_tiering.html["콜드 데이터를 저비용 오브젝트 스토리지로 계층화"].
+
+--
+다른 네트워크의 ONTAP 시스템에 대한 연결::
++
+--
+자세한 지침은 을 참조하십시오 https://cloud.google.com/vpn/docs/concepts/overview["Google Cloud 설명서: Cloud VPN 개요"^].
+
+--
+
+
+
+
+== 커넥터 요구 사항
+
+Connector가 공용 클라우드 환경 내에서 리소스와 프로세스를 관리할 수 있도록 네트워킹을 설정합니다. 가장 중요한 단계는 다양한 엔드포인트에 대한 아웃바운드 인터넷 액세스를 보장하는 것입니다.
+
+
+TIP: 네트워크에서 인터넷에 대한 모든 통신에 프록시 서버를 사용하는 경우 설정 페이지에서 프록시 서버를 지정할 수 있습니다. 을 참조하십시오 link:task_configuring_proxy.html["프록시 서버를 사용하도록 Connector 구성"].
+
+
+
+=== 대상 네트워크에 연결
+
+커넥터를 사용하려면 Cloud Volumes ONTAP를 배포할 VPC 및 VNets에 대한 네트워크 연결이 필요합니다.
+
+예를 들어 회사 네트워크에 커넥터를 설치하는 경우 Cloud Volumes ONTAP를 실행하는 VPC 또는 VNET에 대한 VPN 연결을 설정해야 합니다.
+
+
+
+=== 아웃바운드 인터넷 액세스
+
+Connector를 사용하려면 공용 클라우드 환경 내의 리소스와 프로세스를 관리하기 위한 아웃바운드 인터넷 액세스가 필요합니다. Connector는 GCP에서 리소스를 관리할 때 다음 끝점에 연결합니다.
+
+[cols="43,57"]
+|===
+| 엔드포인트 | 목적 
+
+
+| https://www.googleapis.com 으로 문의하십시오 | Connector가 GCP에서 Cloud Volumes ONTAP를 구축 및 관리하기 위해 Google API에 연락할 수 있도록 설정합니다. 
+
+
+| https://api.services.cloud.netapp.com:443 으로 문의하십시오 | NetApp Cloud Central에 API 요청 
+
+
+| https://cloud.support.netapp.com.s3.us-west-1.amazonaws.com 으로 문의하십시오 | 소프트웨어 이미지, 매니페스트 및 템플릿에 대한 액세스를 제공합니다. 
+
+
+| https://repo.cloud.support.netapp.com 으로 문의하십시오 | Cloud Manager 종속성을 다운로드하는 데 사용됩니다. 
+
+
+| http://repo.mysql.com/ 으로 문의하십시오 | MySQL 다운로드에 사용됩니다. 
+
+
+| https://cognito-idp.us-east-1.amazonaws.com\https://cognito-identity.us-east-1.amazonaws.com\https://sts.amazonaws.com\https://cloud-support-netapp-com-accelerated.s3.amazonaws.com | Connector가 매니페스트, 템플릿 및 Cloud Volumes ONTAP 업그레이드 이미지에 액세스하고 다운로드할 수 있도록 합니다. 
+
+
+| https://cloudmanagerinfraprod.azurecr.io 으로 문의하십시오 | Docker를 실행하는 인프라에 대한 컨테이너 구성 요소의 소프트웨어 이미지에 액세스하고 Cloud Manager와의 서비스 통합을 위한 솔루션을 제공합니다. 
+
+
+| https://kinesis.us-east-1.amazonaws.com 으로 문의하십시오 | NetApp에서 감사 레코드의 데이터를 스트리밍할 수 있습니다. 
+
+
+| https://cloudmanager.cloud.netapp.com 으로 문의하십시오 | Cloud Central 계정을 포함한 Cloud Manager 서비스와 통신합니다. 
+
+
+| https://netapp-cloud-account.auth0.com 으로 문의하십시오 | NetApp Cloud Central과 통신하여 중앙 집중식 사용자 인증 제공 
+
+
+| https://mysupport.netapp.com 으로 문의하십시오 | NetApp AutoSupport과 커뮤니케이션: 
+
+
+| https://support.netapp.com/svcgw\https://support.netapp.com/ServiceGW/entitlement\https://eval.lic.netapp.com.s3.us-west-1.amazonaws.com\https://cloud-support-netapp-com.s3.us-west-1.amazonaws.com | 시스템 라이센스 및 지원 등록을 위해 NetApp과 커뮤니케이션 
+
+
+| https://ipa-signer.cloudmanager.netapp.com 으로 문의하십시오 | Cloud Manager에서 라이센스 생성(예: Cloud Volumes ONTAP용 FlexCache 라이센스) 
+
+
+| https://packages.cloud.google.com/yum \https://github.com/NetApp/trident/releases/download/ 으로 문의하십시오 | Cloud Volumes ONTAP 시스템을 Kubernetes 클러스터에 연결하는 데 필요합니다. 엔드포인트를 통해 NetApp Trident를 설치할 수 있습니다. 
+
+
+ a| 
+다음과 같은 다양한 타사 위치:
+
+* https://repo1.maven.org/maven2 으로 문의하십시오
+* https://oss.sonatype.org/content/repositories 으로 문의하십시오
+* https://repo.typesafe.org 으로 문의하십시오
+
+
+타사 위치는 변경될 수 있습니다.
+| 업그레이드하는 동안 Cloud Manager는 타사 종속성을 위한 최신 패키지를 다운로드합니다. 
+|===
+SaaS 사용자 인터페이스에서 거의 모든 작업을 수행해야 하지만 로컬 사용자 인터페이스는 Connector에서 계속 사용할 수 있습니다. 웹 브라우저를 실행하는 컴퓨터는 다음 끝점에 연결되어 있어야 합니다.
+
+[cols="43,57"]
+|===
+| 엔드포인트 | 목적 
+
+
+| 커넥터 호스트입니다  a| 
+Cloud Manager 콘솔을 로드하려면 웹 브라우저에서 호스트의 IP 주소를 입력해야 합니다.
+
+클라우드 공급자에 대한 연결에 따라 호스트에 할당된 프라이빗 IP 또는 공용 IP를 사용할 수 있습니다.
+
+* 개인 IP는 VPN이 있고 가상 네트워크에 직접 연결할 수 있는 경우 작동합니다
+* 공용 IP는 모든 네트워킹 시나리오에서 작동합니다
+
+
+어떤 경우든 보안 그룹 규칙이 승인된 IP 또는 서브넷에서의 액세스만 허용하도록 하여 네트워크 액세스를 보호해야 합니다.
+
+
+
+| https://auth0.com\https://cdn.auth0.com\https://netapp-cloud-account.auth0.com\https://services.cloud.netapp.com | 웹 브라우저는 NetApp Cloud Central을 통해 중앙 집중식 사용자 인증을 위해 이러한 엔드포인트에 연결됩니다. 
+
+
+| https://widget.intercom.io 으로 문의하십시오 | 제품 내에서 NetApp 클라우드 전문가와 상담할 수 있는 채팅을 제공합니다. 
+|===
+
+
+== Cloud Volumes ONTAP의 방화벽 규칙
+
+Cloud Manager는 Cloud Manager 및 Cloud Volumes ONTAP가 성공적으로 운영하는 데 필요한 인바운드 및 아웃바운드 규칙을 포함하는 GCP 방화벽 규칙을 생성합니다. 테스트 목적으로 또는 자체 보안 그룹을 사용하려는 경우 포트를 참조할 수 있습니다.
+
+Cloud Volumes ONTAP의 방화벽 규칙에는 인바운드 및 아웃바운드 규칙이 모두 필요합니다.
+
+
+
+=== 인바운드 규칙
+
+미리 정의된 보안 그룹의 인바운드 규칙 소스는 0.0.0.0/0입니다.
+
+[cols="10,10,80"]
+|===
+| 프로토콜 | 포트 | 목적 
+
+
+| 모든 ICMP | 모두 | 인스턴스에 Ping을 수행 중입니다 
+
+
+| HTTP | 80 | 클러스터 관리 LIF의 IP 주소를 사용하여 System Manager 웹 콘솔에 대한 HTTP 액세스 
+
+
+| HTTPS | 443 | 클러스터 관리 LIF의 IP 주소를 사용하여 System Manager 웹 콘솔에 대한 HTTPS 액세스 
+
+
+| SSH를 클릭합니다 | 22 | 클러스터 관리 LIF 또는 노드 관리 LIF의 IP 주소에 SSH를 액세스할 수 있습니다 
+
+
+| TCP | 111 | NFS에 대한 원격 프로시저 호출 
+
+
+| TCP | 139 | CIFS에 대한 NetBIOS 서비스 세션입니다 
+
+
+| TCP | 161-162 | 단순한 네트워크 관리 프로토콜 
+
+
+| TCP | 445 | Microsoft SMB/CIFS over TCP 및 NetBIOS 프레임 
+
+
+| TCP | 635 | NFS 마운트 
+
+
+| TCP | 749 | Kerberos 
+
+
+| TCP | 2049 | NFS 서버 데몬 
+
+
+| TCP | 3260 | iSCSI 데이터 LIF를 통한 iSCSI 액세스 
+
+
+| TCP | 4045 | NFS 잠금 데몬 
+
+
+| TCP | 4046 | NFS에 대한 네트워크 상태 모니터 
+
+
+| TCP | 10000입니다 | NDMP를 사용한 백업 
+
+
+| TCP | 11104 | SnapMirror에 대한 인터클러스터 통신 세션의 관리 
+
+
+| TCP | 11105 | 인터클러스터 LIF를 사용하여 SnapMirror 데이터 전송 
+
+
+| UDP입니다 | 111 | NFS에 대한 원격 프로시저 호출 
+
+
+| UDP입니다 | 161-162 | 단순한 네트워크 관리 프로토콜 
+
+
+| UDP입니다 | 635 | NFS 마운트 
+
+
+| UDP입니다 | 2049 | NFS 서버 데몬 
+
+
+| UDP입니다 | 4045 | NFS 잠금 데몬 
+
+
+| UDP입니다 | 4046 | NFS에 대한 네트워크 상태 모니터 
+
+
+| UDP입니다 | 4049 | NFS rquotad 프로토콜 
+|===
+
+
+=== 아웃바운드 규칙
+
+Cloud Volumes ONTAP에 대해 미리 정의된 보안 그룹은 모든 아웃바운드 트래픽을 엽니다. 허용 가능한 경우 기본 아웃바운드 규칙을 따릅니다. 더 엄격한 규칙이 필요한 경우 고급 아웃바운드 규칙을 사용합니다.
+
+
+
+==== 기본 아웃바운드 규칙
+
+Cloud Volumes ONTAP에 대해 미리 정의된 보안 그룹에는 다음과 같은 아웃바운드 규칙이 포함됩니다.
+
+[cols="20,20,60"]
+|===
+| 프로토콜 | 포트 | 목적 
+
+
+| 모든 ICMP | 모두 | 모든 아웃바운드 트래픽 
+
+
+| 모든 TCP | 모두 | 모든 아웃바운드 트래픽 
+
+
+| 모든 UDP | 모두 | 모든 아웃바운드 트래픽 
+|===
+
+
+==== 고급 아웃바운드 규칙
+
+아웃바운드 트래픽에 대해 엄격한 규칙이 필요한 경우 다음 정보를 사용하여 Cloud Volumes ONTAP의 아웃바운드 통신에 필요한 포트만 열 수 있습니다.
+
+
+NOTE: 소스는 Cloud Volumes ONTAP 시스템의 인터페이스(IP 주소)입니다.
+
+[cols="10,10,6,20,20,34"]
+|===
+| 서비스 | 프로토콜 | 포트 | 출처 | 목적지 | 목적 
+
+
+.18+| Active Directory를 클릭합니다 | TCP | 88 | 노드 관리 LIF | Active Directory 포리스트입니다 | Kerberos V 인증 
+
+
+| UDP입니다 | 137 | 노드 관리 LIF | Active Directory 포리스트입니다 | NetBIOS 이름 서비스입니다 
+
+
+| UDP입니다 | 138 | 노드 관리 LIF | Active Directory 포리스트입니다 | NetBIOS 데이터그램 서비스 
+
+
+| TCP | 139 | 노드 관리 LIF | Active Directory 포리스트입니다 | NetBIOS 서비스 세션입니다 
+
+
+| TCP 및 UDP | 389 | 노드 관리 LIF | Active Directory 포리스트입니다 | LDAP를 지원합니다 
+
+
+| TCP | 445 | 노드 관리 LIF | Active Directory 포리스트입니다 | Microsoft SMB/CIFS over TCP 및 NetBIOS 프레임 
+
+
+| TCP | 464 | 노드 관리 LIF | Active Directory 포리스트입니다 | Kerberos V 변경 및 암호 설정(set_change) 
+
+
+| UDP입니다 | 464 | 노드 관리 LIF | Active Directory 포리스트입니다 | Kerberos 키 관리 
+
+
+| TCP | 749 | 노드 관리 LIF | Active Directory 포리스트입니다 | Kerberos V 변경 및 암호 설정(RPCSEC_GSS) 
+
+
+| TCP | 88 | 데이터 LIF(NFS, CIFS, iSCSI) | Active Directory 포리스트입니다 | Kerberos V 인증 
+
+
+| UDP입니다 | 137 | 데이터 LIF(NFS, CIFS) | Active Directory 포리스트입니다 | NetBIOS 이름 서비스입니다 
+
+
+| UDP입니다 | 138 | 데이터 LIF(NFS, CIFS) | Active Directory 포리스트입니다 | NetBIOS 데이터그램 서비스 
+
+
+| TCP | 139 | 데이터 LIF(NFS, CIFS) | Active Directory 포리스트입니다 | NetBIOS 서비스 세션입니다 
+
+
+| TCP 및 UDP | 389 | 데이터 LIF(NFS, CIFS) | Active Directory 포리스트입니다 | LDAP를 지원합니다 
+
+
+| TCP | 445 | 데이터 LIF(NFS, CIFS) | Active Directory 포리스트입니다 | Microsoft SMB/CIFS over TCP 및 NetBIOS 프레임 
+
+
+| TCP | 464 | 데이터 LIF(NFS, CIFS) | Active Directory 포리스트입니다 | Kerberos V 변경 및 암호 설정(set_change) 
+
+
+| UDP입니다 | 464 | 데이터 LIF(NFS, CIFS) | Active Directory 포리스트입니다 | Kerberos 키 관리 
+
+
+| TCP | 749 | 데이터 LIF(NFS, CIFS) | Active Directory 포리스트입니다 | Kerberos V 변경 및 암호 설정(RPCSEC_GSS) 
+
+
+.3+| 클러스터 | 모든 교통 정보 | 모든 교통 정보 | 모든 LIF가 하나의 노드에 있습니다 | 다른 노드의 모든 LIF | 인터클러스터 통신(Cloud Volumes ONTAP HA에만 해당) 
+
+
+| TCP | 3000입니다 | 노드 관리 LIF | HA 중재자 | ZAPI 호출(Cloud Volumes ONTAP HA 전용) 
+
+
+| ICMP | 1 | 노드 관리 LIF | HA 중재자 | 활성 상태 유지(Cloud Volumes ONTAP HA만 해당) 
+
+
+| DHCP를 선택합니다 | UDP입니다 | 68 | 노드 관리 LIF | DHCP를 선택합니다 | 처음으로 설정하는 DHCP 클라이언트 
+
+
+| DHCPS | UDP입니다 | 67 | 노드 관리 LIF | DHCP를 선택합니다 | DHCP 서버 
+
+
+| DNS | UDP입니다 | 53 | 노드 관리 LIF 및 데이터 LIF(NFS, CIFS) | DNS | DNS 
+
+
+| NDMP | TCP | 18600–18699 | 노드 관리 LIF | 대상 서버 | NDMP 복제 
+
+
+| SMTP | TCP | 25 | 노드 관리 LIF | 메일 서버 | AutoSupport에 사용할 수 있는 SMTP 경고 
+
+
+.4+| SNMP를 선택합니다 | TCP | 161 | 노드 관리 LIF | 서버 모니터링 | SNMP 트랩으로 모니터링 
+
+
+| UDP입니다 | 161 | 노드 관리 LIF | 서버 모니터링 | SNMP 트랩으로 모니터링 
+
+
+| TCP | 162 | 노드 관리 LIF | 서버 모니터링 | SNMP 트랩으로 모니터링 
+
+
+| UDP입니다 | 162 | 노드 관리 LIF | 서버 모니터링 | SNMP 트랩으로 모니터링 
+
+
+.2+| SnapMirror를 참조하십시오 | TCP | 11104 | 인터클러스터 LIF | ONTAP 인터클러스터 LIF | SnapMirror에 대한 인터클러스터 통신 세션의 관리 
+
+
+| TCP | 11105 | 인터클러스터 LIF | ONTAP 인터클러스터 LIF | SnapMirror 데이터 전송 
+
+
+| Syslog를 클릭합니다 | UDP입니다 | 514 | 노드 관리 LIF | Syslog 서버 | Syslog 메시지를 전달합니다 
+|===
+
+
+== 커넥터의 방화벽 규칙
+
+Connector의 방화벽 규칙에는 인바운드 및 아웃바운드 규칙이 모두 필요합니다.
+
+
+
+=== 인바운드 규칙
+
+미리 정의된 방화벽 규칙의 인바운드 규칙 소스는 0.0.0.0/0입니다.
+
+[cols="10,10,80"]
+|===
+| 프로토콜 | 포트 | 목적 
+
+
+| SSH를 클릭합니다 | 22 | 커넥터 호스트에 대한 SSH 액세스를 제공합니다 
+
+
+| HTTP | 80 | 클라이언트 웹 브라우저에서 로컬 사용자 인터페이스로 HTTP 액세스를 제공합니다 
+
+
+| HTTPS | 443 | 클라이언트 웹 브라우저에서 로컬 사용자 인터페이스로 HTTPS 액세스를 제공합니다 
+|===
+
+
+=== 아웃바운드 규칙
+
+Connector에 대해 미리 정의된 방화벽 규칙은 모든 아웃바운드 트래픽을 엽니다. 허용 가능한 경우 기본 아웃바운드 규칙을 따릅니다. 더 엄격한 규칙이 필요한 경우 고급 아웃바운드 규칙을 사용합니다.
+
+
+
+==== 기본 아웃바운드 규칙
+
+Connector에 대해 미리 정의된 방화벽 규칙에는 다음과 같은 아웃바운드 규칙이 포함됩니다.
+
+[cols="20,20,60"]
+|===
+| 프로토콜 | 포트 | 목적 
+
+
+| 모든 TCP | 모두 | 모든 아웃바운드 트래픽 
+
+
+| 모든 UDP | 모두 | 모든 아웃바운드 트래픽 
+|===
+
+
+==== 고급 아웃바운드 규칙
+
+아웃바운드 트래픽에 대해 엄격한 규칙이 필요한 경우 다음 정보를 사용하여 Connector의 아웃바운드 통신에 필요한 포트만 열 수 있습니다.
+
+
+NOTE: 소스 IP 주소는 커넥터 호스트입니다.
+
+[cols="5*"]
+|===
+| 서비스 | 프로토콜 | 포트 | 목적지 | 목적 
+
+
+.9+| Active Directory를 클릭합니다 | TCP | 88 | Active Directory 포리스트입니다 | Kerberos V 인증 
+
+
+| TCP | 139 | Active Directory 포리스트입니다 | NetBIOS 서비스 세션입니다 
+
+
+| TCP | 389 | Active Directory 포리스트입니다 | LDAP를 지원합니다 
+
+
+| TCP | 445 | Active Directory 포리스트입니다 | Microsoft SMB/CIFS over TCP 및 NetBIOS 프레임 
+
+
+| TCP | 464 | Active Directory 포리스트입니다 | Kerberos V 변경 및 암호 설정(set_change) 
+
+
+| TCP | 749 | Active Directory 포리스트입니다 | Active Directory Kerberos V 변경 및 암호 설정(RPCSEC_GSS) 
+
+
+| UDP입니다 | 137 | Active Directory 포리스트입니다 | NetBIOS 이름 서비스입니다 
+
+
+| UDP입니다 | 138 | Active Directory 포리스트입니다 | NetBIOS 데이터그램 서비스 
+
+
+| UDP입니다 | 464 | Active Directory 포리스트입니다 | Kerberos 키 관리 
+
+
+| API 호출 및 AutoSupport | HTTPS | 443 | 아웃바운드 인터넷 및 ONTAP 클러스터 관리 LIF | API는 GCP 및 ONTAP를 호출하고 AutoSupport 메시지를 NetApp에 보냅니다 
+
+
+| API 호출 | TCP | 3000입니다 | ONTAP 클러스터 관리 LIF | ONTAP에 대한 API 호출 
+
+
+| DNS | UDP입니다 | 53 | DNS | Cloud Manager에서 DNS Resolve에 사용됩니다 
+|===

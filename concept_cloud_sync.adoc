@@ -1,0 +1,140 @@
+---
+sidebar: sidebar 
+permalink: concept_cloud_sync.html 
+keywords: cloud sync, overview, conceptual, how, data broker, service 
+summary: NetApp Cloud Sync 서비스는 데이터를 클라우드 또는 온프레미스의 모든 타겟으로 간단하고 안전하며 자동화된 방법으로 마이그레이션합니다. 
+---
+= Cloud Sync 개요
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetApp Cloud Sync 서비스는 데이터를 클라우드 또는 온프레미스의 모든 타겟으로 간단하고 안전하며 자동화된 방법으로 마이그레이션합니다. StorageGRID는 파일 기반 NAS 데이터 세트(NFS 또는 SMB), Amazon S3(Simple Storage Service) 오브젝트 형식, NetApp Cloud Sync ® 어플라이언스 또는 기타 클라우드 공급자 오브젝트 저장소 등 그 어떤 형태이든 변환 및 이동할 수 있습니다.
+
+
+
+== 피처
+
+Cloud Sync에 대한 개요는 다음 비디오에서 확인할 수 있습니다.
+
+video::oZNJtLvgNfQ[youtube, width=848,height=480]
+
+
+== Cloud Sync의 작동 방식
+
+Cloud Sync는 데이터 브로커, Cloud Manager를 통해 사용 가능한 클라우드 기반 인터페이스, 소스 및 타겟으로 구성된 서비스형 소프트웨어(SaaS) 플랫폼입니다.
+
+다음 이미지는 Cloud Sync 구성 요소 간의 관계를 보여줍니다.
+
+image:diagram_cloud_sync_overview.gif["소스에서 타겟으로 데이터가 흐르는 개념적 이미지. 데이터 브로커 소프트웨어는 중재자의 역할을 수행하고 작업을 위해 Cloud Sync 서비스를 폴링합니다."]
+
+NetApp 데이터 브로커 소프트웨어는 소스에서 타겟으로 데이터를 동기화합니다(일명 A_SYNC Relationship _). AWS, Azure, Google Cloud Platform 또는 온프레미스에서 데이터 브로커를 실행할 수 있습니다. 데이터 브로커는 포트 443을 통해 아웃바운드 인터넷 연결을 필요로 하므로 Cloud Sync 서비스와 통신하고 다른 서비스 및 리포지토리에 연결할 수 있습니다. link:reference_sync_networking.html["끝점 목록을 봅니다"].
+
+초기 복사 후 서비스는 사용자가 설정한 일정에 따라 변경된 데이터를 동기화합니다.
+
+
+
+== 지원되는 스토리지 유형입니다
+
+Cloud Sync는 다음과 같은 스토리지 유형을 지원합니다.
+
+* 모든 NFS 서버
+* 모든 SMB 서버
+* AWS EFS
+* 설치하고
+* Azure Blob
+* Azure NetApp Files
+* Cloud Volumes Service
+* Cloud Volumes ONTAP
+* Google 클라우드 스토리지
+* IBM 클라우드 오브젝트 스토리지
+* 사내 ONTAP 클러스터
+* ONTAP S3 스토리지
+* StorageGRID
+
+
+link:reference_sync_requirements.html["지원되는 동기화 관계를 검토합니다"].
+
+
+
+== 비용
+
+Cloud Sync 사용과 관련된 비용에는 리소스 비용 및 서비스 비용이라는 두 가지 유형이 있습니다.
+
+리소스 비용:: 리소스 요금은 클라우드에서 데이터 브로커를 실행하는 데 필요한 컴퓨팅 및 스토리지 비용과 관련이 있습니다.
+서비스 요금:: 14일 무료 평가판이 종료된 후 동기화 관계에 대한 비용을 지불할 수 있는 두 가지 방법이 있습니다. 첫 번째 옵션은 AWS 또는 Azure에서 가입하는 것입니다. 가입 서비스를 이용하면 시간 또는 연간 요금을 지불할 수 있습니다. 두 번째 옵션은 NetApp에서 직접 라이센스를 구매하는 것입니다. 자세한 내용은 다음 섹션을 참조하십시오.
+
+
+
+
+=== 마켓플레이스 구독
+
+AWS 또는 Azure에서 Cloud Sync 서비스를 구독하면 시간 단위로 지불하거나 연간 비용을 지불할 수 있습니다. link:task_sync_licensing.html["AWS 또는 Azure를 통해 가입할 수 있습니다"]를 선택합니다.
+
+시간별 구독::
++
+--
+* https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-sync-service?tab=PlansAndPrice["Azure에서 가격을 확인할 수 있습니다"^]
+* https://aws.amazon.com/marketplace/pp/B01LZV5DUJ["AWS에서 용량제 가격 보기"^]
+
+
+--
+연간 구독::
++
+--
+https://aws.amazon.com/marketplace/pp/B06XX5V3M2["AWS에서 연간 가격 보기"^]
+
+--
+
+
+
+
+=== NetApp이 라이센스를 구입해야 합니다
+
+동기화 관계를 맺는 데 필요한 또 다른 방법은 NetApp에서 라이센스를 직접 구매하는 것입니다. 각 라이센스를 통해 최대 20개의 동기화 관계를 생성할 수 있습니다.
+
+AWS 또는 Azure 구독에서 이러한 라이센스를 사용할 수 있습니다. 예를 들어, 동기화 관계가 25개 있는 경우 라이센스를 사용하여 처음 20개 동기화 관계에 대한 비용을 지불하고 나머지 5개 동기화 관계를 사용하여 AWS 또는 Azure에서 사용한 만큼만 비용을 지불할 수 있습니다.
+
+link:task_sync_licensing.html["라이센스를 구매하여 Cloud Sync에 추가하는 방법에 대해 알아보십시오"].
+
+
+
+=== 사용권 조항
+
+BYOL(Bring Your Own License)을 Cloud Sync 서비스로 구매하는 고객은 라이센스 소유 권한과 관련된 제한 사항을 숙지해야 합니다.
+
+* 고객은 BYOL 라이센스를 제공 날짜로부터 1년을 초과하지 않는 기간 동안 활용할 수 있습니다.
+* 고객은 BYOL 라이센스를 활용하여 소스와 타겟(각각 "동기화 관계") 간에 총 20개의 개별 연결을 설정할 수 있습니다.
+* 고객의 사용 권한은 고객이 20개의 동기화 관계 제한에 도달했는지 여부에 관계없이 1년 라이센스 기간이 종료될 때 만료됩니다.
+* 고객이 라이센스를 갱신하기로 선택한 경우 이전 라이센스 부여에서 연결된 사용되지 않은 동기화 관계가 라이센스 갱신으로 롤오버되지 않습니다.
+
+
+
+
+== 데이터 개인 정보 보호
+
+NetApp은 Cloud Sync 서비스를 사용하면서 제공한 자격 증명에 대한 액세스 권한을 가지고 있지 않습니다. 자격 증명은 네트워크에 상주하는 데이터 브로커 컴퓨터에 직접 저장됩니다.
+
+선택한 구성에 따라 새 관계를 만들 때 Cloud Sync에서 자격 증명을 묻는 메시지가 나타날 수 있습니다. 예를 들어, SMB 서버를 포함하는 관계를 설정하거나 AWS에서 데이터 브로커를 구축할 때
+
+이러한 자격 증명은 항상 데이터 브로커 자체에 직접 저장됩니다. 데이터 브로커는 온프레미스 또는 클라우드 계정 등 네트워크 내 시스템에 상주합니다. 자격 증명은 NetApp에서 사용할 수 없습니다.
+
+자격 증명은 HashiCorp Vault를 사용하여 데이터 브로커 컴퓨터에서 로컬로 암호화됩니다.
+
+
+
+== 제한 사항
+
+* Cloud Sync는 중국에서 지원되지 않습니다.
+* 중국 외에 다음 지역에서는 Cloud Sync 데이터 브로커가 지원되지 않습니다.
++
+** AWS GovCloud(미국)
+** Azure 미국 정부
+** Azure US DoD를 참조하십시오
+
+
+

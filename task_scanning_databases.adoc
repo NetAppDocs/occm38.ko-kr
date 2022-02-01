@@ -1,0 +1,145 @@
+---
+sidebar: sidebar 
+permalink: task_scanning_databases.html 
+keywords: cloud compliance, enable cloud compliance, outbound internet, endpoints, cloud compliance internet, web browser connectivity, cloud compliance access, privacy, compliance, databases, database schemas, Oracle, SAP HANA, SQL Server, MongoDB, PostgreSQL 
+summary: Cloud Compliance를 사용하여 데이터베이스 스키마 스캔을 시작하려면 몇 가지 단계를 완료하십시오. 
+---
+= 데이터베이스 스키마를 검색하는 중입니다
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Compliance를 사용하여 데이터베이스 스키마 스캔을 시작하려면 몇 가지 단계를 완료하십시오.
+
+
+
+== 빠른 시작
+
+다음 단계를 따라 빠르게 시작하거나 나머지 섹션으로 스크롤하여 자세한 내용을 확인하십시오.
+
+
+
+==== 데이터베이스 사전 요구 사항을 검토합니다
+
+[role="quick-margin-para"]
+데이터베이스가 지원되고 데이터베이스에 연결하는 데 필요한 정보가 있는지 확인합니다.
+
+
+
+==== 클라우드 규정 준수 인스턴스 구축
+
+[role="quick-margin-para"]
+link:task_deploy_cloud_compliance.html["Cloud Manager에서 클라우드 규정 준수 구축"^] 이미 배포된 인스턴스가 없는 경우
+
+
+
+==== 데이터베이스 서버를 추가합니다
+
+[role="quick-margin-para"]
+액세스할 데이터베이스 서버를 추가합니다.
+
+
+
+==== 스키마를 선택합니다
+
+[role="quick-margin-para"]
+스캔할 스키마를 선택합니다.
+
+
+
+== 사전 요구 사항 검토
+
+Cloud Compliance를 설정하기 전에 다음 사전 요구 사항을 검토하여 지원되는 구성이 있는지 확인하십시오.
+
+
+
+=== 지원되는 데이터베이스
+
+Cloud Compliance는 다음 데이터베이스에서 스키마를 스캔할 수 있습니다.
+
+* MongoDB
+* 오라클
+* PostgreSQL
+* SAP HANA를 참조하십시오
+* SQL Server(MSSQL)
+
+
+
+IMPORTANT: 데이터베이스에서 통계 수집 기능 * 을 활성화해야 합니다.
+
+
+
+=== 데이터베이스 요구 사항
+
+Cloud Compliance 인스턴스에 연결할 수 있는 모든 데이터베이스는 호스팅 위치에 관계없이 검색할 수 있습니다. 데이터베이스에 연결하려면 다음 정보만 필요합니다.
+
+* IP 주소 또는 호스트 이름입니다
+* 포트
+* 서비스 이름(Oracle 데이터베이스 액세스에만 해당)
+* 스키마에 대한 읽기 액세스를 허용하는 자격 증명
++
+사용자 이름과 암호를 선택할 때는 검사할 모든 스키마와 테이블에 대한 읽기 권한이 있는 스키마를 선택해야 합니다. 필요한 모든 권한을 사용하여 클라우드 규정 준수 시스템에 대한 전용 사용자를 생성하는 것이 좋습니다.
+
+
+
+* 참고: * MongoDB의 경우 읽기 전용 관리자 역할이 필요합니다.
+
+
+
+== 데이터베이스 서버 추가
+
+이(가) 있어야 합니다 link:task_deploy_cloud_compliance.html["Cloud Manager에 이미 클라우드 규정 준수 인스턴스를 배포했습니다"^].
+
+스키마가 있는 데이터베이스 서버를 추가합니다.
+
+. Scan Configuration_ 페이지에서 * DB 서버 추가 * 버튼을 클릭합니다.
++
+image:screenshot_compliance_add_db_server_button.png["DB 서버 추가 버튼을 클릭할 수 있는 스캔 구성 페이지의 스크린 샷"]
+
+. 필요한 정보를 입력하여 데이터베이스 서버를 식별합니다.
++
+.. 데이터베이스 유형을 선택합니다.
+.. 데이터베이스에 연결할 포트와 호스트 이름 또는 IP 주소를 입력합니다.
+.. Oracle 데이터베이스의 경우 서비스 이름을 입력합니다.
+.. 클라우드 규정 준수 가 서버에 액세스할 수 있도록 자격 증명을 입력합니다.
+.. DB 서버 추가 * 를 클릭합니다.
++
+image:screenshot_compliance_add_db_server_dialog.png["데이터베이스를 식별할 수 있는 DB 서버 추가 페이지의 스크린샷"]
+
+
+
+
+
+데이터베이스가 작업 디렉토리 목록에 추가됩니다.
+
+
+
+== 데이터베이스 스키마에서 규정 준수 검사를 활성화 및 비활성화합니다
+
+언제든지 스키마 스캔을 중지하거나 시작할 수 있습니다.
+
+. Scan Configuration_ 페이지에서 구성하려는 데이터베이스의 * Configuration * 버튼을 클릭합니다.
++
+image:screenshot_compliance_db_server_config.png["구성 버튼을 선택할 수 있는 Scan Configuration(스캔 구성) 페이지의 스크린 샷"]
+
+. 슬라이더를 오른쪽으로 이동하여 스캔할 스키마를 선택합니다.
++
+image:screenshot_compliance_select_schemas.png["스캔할 스키마를 선택할 수 있는 스캔 구성 페이지의 스크린 샷"]
+
+
+
+Cloud Compliance는 사용자가 활성화한 데이터베이스 스키마 스캔을 시작합니다. 오류가 있는 경우 오류를 해결하는 데 필요한 작업과 함께 상태 열에 표시됩니다.
+
+
+
+== Cloud Manager에서 데이터베이스 제거
+
+특정 데이터베이스를 더 이상 스캔하지 않으려는 경우 Cloud Manager 인터페이스에서 해당 데이터베이스를 삭제하고 모든 스캔을 중지할 수 있습니다.
+
+Scan Configuration_ 페이지에서 을 클릭합니다 image:screenshot_gallery_options.gif["자세히 단추"] 단추를 클릭한 다음 * DB 서버 제거 * 를 클릭합니다.
+
+image:screenshot_compliance_remove_db.png["스캔 구성 페이지의 DB 서버 제거 단추 스크린샷"]

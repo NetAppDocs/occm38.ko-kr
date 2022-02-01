@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: concept_compute.html 
+keywords: concepts, how cloud analyzer works, compute, compute costs, compute savings 
+summary: Cloud Manager는 Spot의 Cloud Analyzer 서비스를 활용하여 클라우드 컴퓨팅 지출에 대한 상위 수준의 비용 분석을 수행하고 잠재적인 비용 절감을 파악할 수 있습니다. 
+---
+= 컴퓨팅 서비스에 대해 자세히 알아보십시오
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+활용할 수 있습니다 https://spot.io/products/cloud-analyzer/["Spot's Cloud Analyzer 서비스"^]Cloud Manager를 사용하면 클라우드 컴퓨팅 지출에 대한 상위 수준의 비용 분석을 제공하고 잠재적 비용 절감을 식별할 수 있습니다.
+
+Cloud Analyzer는 클라우드 비용에 대한 가시성과 통찰력을 제공하기 위해 고급 분석을 사용하는 클라우드 인프라 관리 솔루션입니다. 이 도구를 사용하면 이러한 비용을 최적화할 수 있는 위치를 확인할 수 있으며, 몇 번의 클릭만으로 Spot의 지속적인 최적화 제품 포트폴리오를 사용하여 최적화를 구현할 수 있습니다.
+
+
+
+== 피처
+
+* 해당 월의 현재 비용, 예상 월 비용, 누락된 비용 등을 보여 주는 비용 분석
+* 예상 추가 비용 절감을 포함하여 계정별 지출 효율성 보기
+* Spot's Cloud Analyzer에 대한 링크를 통해 모든 계정의 지출에 대한 자세한 정보를 확인할 수 있습니다
+
+
+
+
+== 지원되는 클라우드 공급자
+
+이 서비스는 AWS에서 지원됩니다.
+
+
+
+== 비용
+
+Cloud Manager를 통해 이 서비스를 무료로 사용할 수 있습니다.
+
+
+
+== Cloud Analyzer를 Cloud Manager와 함께 사용하는 방법
+
+고수준에서 Cloud Analyzer와 Cloud Manager의 통합은 다음과 같이 작동합니다.
+
+. Compute * 를 클릭하고 AWS 마스터 지급인 계정을 연결합니다.
+. NetApp은 다음과 같이 환경을 구성합니다.
++
+.. Spot 플랫폼에 조직을 만듭니다.
+.. Spot에 환영 이메일을 보냅니다.
++
+Cloud Central 및 Cloud Manager에서 사용하는 것과 동일한 SSO(Single Sign-On) 자격 증명을 사용하여 Spot 서비스에 로그인할 수 있습니다.
+
+.. Cloud Analyzer에서 AWS 계정 데이터 처리를 시작합니다.
+
+
+. Cloud Manager에서 컴퓨팅 페이지를 새로고침하면 정보를 사용하여 이전, 현재 및 향후 클라우드 비용에 대한 통찰력을 얻을 수 있습니다.
+. 언제든지 * Get Full Analysis * 를 클릭하여 Spot's Cloud Analyzer로 이동하면 클라우드 지출과 비용 절감 기회를 완벽하게 분석할 수 있습니다.
+
+
+
+
+== 데이터 보안
+
+Cloud Analyzer 데이터는 사용되지 않을 때 암호화되며 계정에 대한 자격 증명은 저장되지 않습니다.

@@ -1,0 +1,150 @@
+---
+sidebar: sidebar 
+permalink: task_planning_your_config_azure.html 
+keywords: license, disk, storage, size, write speed, volume usage, explore, standard, premium, byol, capacity, limit, configurations, virtual machine, vm, regions, supported disks, disk types, premium storage, standard storage, use profile, thin provisioning, deduplication, compression, Cloud Volumes ONTAP explore, Cloud Volumes ONTAP standard, Cloud Volumes ONTAP premium, Cloud Volumes ONTAP byol, shared instance, dedicated instance, write speed, high write speed, normal write speed, network information, worksheet, limit, limits, storage limits, volume limit, aggregate limit, maximum volume size, maximum aggregate size 
+summary: Azure에서 Cloud Volumes ONTAP를 구축할 때 워크로드 요구사항에 맞게 사전 구성된 시스템을 선택하거나 고유한 구성을 생성할 수 있습니다. 자신의 구성을 선택하는 경우 사용 가능한 옵션을 이해해야 합니다. 
+---
+= Azure에서 Cloud Volumes ONTAP 구성 계획
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Azure에서 Cloud Volumes ONTAP를 구축할 때 워크로드 요구사항에 맞게 사전 구성된 시스템을 선택하거나 고유한 구성을 생성할 수 있습니다. 자신의 구성을 선택하는 경우 사용 가능한 옵션을 이해해야 합니다.
+
+
+
+== 라이센스 유형을 선택합니다
+
+Cloud Volumes ONTAP는 사용한 만큼만 지불하는 BYOL(Bring Your Own License)이라는 두 가지 가격 옵션으로 제공됩니다. 선불 종량제 의 경우 Explore, Standard 또는 Premium의 세 가지 라이센스 중에서 선택할 수 있습니다. 각 라이센스는 용량과 컴퓨팅 옵션을 다르게 제공합니다.
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_configs_azure_97.html["Azure에서 Cloud Volumes ONTAP 9.7 구성 지원"^]
+
+
+
+== 스토리지 제한 이해
+
+Cloud Volumes ONTAP 시스템의 물리적 용량 제한은 라이센스에 연결되어 있습니다. 추가 제한은 애그리게이트 및 볼륨 크기에 영향을 줍니다. 구성을 계획할 때 이러한 제한 사항을 숙지해야 합니다.
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_limits_azure_97.html["Azure에서 Cloud Volumes ONTAP 9.7의 스토리지 제한"]
+
+
+
+== Azure에서 시스템 사이징
+
+Cloud Volumes ONTAP 시스템을 사이징하면 성능 및 용량 요구사항을 충족하는 데 도움이 될 수 있습니다. VM 유형, 디스크 유형 및 디스크 크기를 선택할 때 고려해야 할 몇 가지 주요 사항은 다음과 같습니다.
+
+가상 머신 유형입니다::
++
+--
+* https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-general#dsv2-series["Azure 설명서: 범용 가상 머신 크기"^]
+* https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-memory#dsv2-series-11-15["Azure 설명서: 메모리에 최적화된 가상 머신 크기"^]
+
+
+--
+Azure 디스크 유형입니다::
++
+--
+HA 시스템은 프리미엄 페이지 Blob을 사용합니다. 한편, 단일 노드 시스템에서는 두 가지 유형의 Azure 관리 디스크를 사용할 수 있습니다.
+
+* _Premium SSD 관리 디스크_ 높은 비용으로 I/O 집약적인 작업 부하에 높은 성능을 제공합니다.
+* _Standard SSD Managed Disks_는 낮은 IOPS가 필요한 워크로드에 일관된 성능을 제공합니다.
+* _표준 HDD 관리 디스크 _ 는 높은 IOPS가 필요하지 않고 비용을 절감하려는 경우에 적합합니다.
++
+이러한 디스크의 사용 사례에 대한 자세한 내용은 를 참조하십시오 https://docs.microsoft.com/en-us/azure/virtual-machines/disks-types["Microsoft Azure 설명서: Azure에서 사용할 수 있는 디스크 유형은 무엇입니까?"^].
+
+
+
+--
+Azure 디스크 크기입니다::
++
+--
+
+TIP: Aggregate의 모든 디스크는 동일한 크기여야 합니다.
+
+디스크 크기를 선택할 때는 몇 가지 요소를 고려해야 합니다. 디스크 크기는 스토리지에 대한 비용 지불, 애그리게이트에서 생성할 수 있는 볼륨 크기, Cloud Volumes ONTAP에 사용할 수 있는 총 용량 및 스토리지 성능에 영향을 줍니다.
+
+Azure 프리미엄 스토리지의 성능은 디스크 크기와 관련이 있습니다. 디스크가 클수록 IOPS와 처리량이 높아집니다. 예를 들어 1TB 디스크를 선택하면 500GB 디스크보다 더 높은 성능을 얻을 수 있습니다.
+
+표준 스토리지의 디스크 크기 간에는 성능 차이가 없습니다. 필요한 용량에 따라 디스크 크기를 선택해야 합니다.
+
+IOPS 및 디스크 크기별 처리량은 Azure를 참조하십시오.
+
+* https://azure.microsoft.com/en-us/pricing/details/managed-disks/["Microsoft Azure: 관리형 디스크 가격"^]
+* https://azure.microsoft.com/en-us/pricing/details/storage/page-blobs/["Microsoft Azure: 페이지 Blob 가격 책정"^]
+
+
+--
+
+
+
+
+== Flash Cache를 지원하는 구성 선택
+
+Azure의 Cloud Volumes ONTAP 구성에는 Cloud Volumes ONTAP이 성능 향상을 위해 _ Flash Cache _ 로 사용하는 로컬 NVMe 스토리지가 포함됩니다. link:concept_flash_cache.html["Flash Cache에 대해 자세히 알아보십시오"].
+
+
+
+== Azure 네트워크 정보 워크시트
+
+Azure에서 Cloud Volumes ONTAP를 구축할 때는 가상 네트워크에 대한 세부 정보를 지정해야 합니다. 워크시트를 사용하여 관리자로부터 정보를 수집할 수 있습니다.
+
+[cols="30,70"]
+|===
+| Azure 정보 | 귀사의 가치 
+
+
+| 지역 |  
+
+
+| VNet(가상 네트워크) |  
+
+
+| 서브넷 |  
+
+
+| 네트워크 보안 그룹(자체 사용 시) |  
+|===
+
+
+== 쓰기 속도 선택
+
+Cloud Manager를 사용하면 단일 노드 Cloud Volumes ONTAP 시스템에 대해 쓰기 속도 설정을 선택할 수 있습니다. 쓰기 속도를 선택하기 전에 고속 쓰기 속도를 사용할 때 정상 및 높음 설정의 차이점과 위험 및 권장 사항을 이해해야 합니다.
+
+
+
+==== 일반 쓰기 속도와 높은 쓰기 속도 간의 차이
+
+정상적인 쓰기 속도를 선택하면 데이터가 디스크에 직접 기록되므로 계획되지 않은 시스템 중단 시 데이터 손실 가능성이 줄어듭니다.
+
+빠른 쓰기 속도를 선택하면 데이터가 디스크에 쓰기 전에 메모리에 버퍼링되어 쓰기 성능이 향상됩니다. 이 캐싱으로 인해 계획되지 않은 시스템 중단이 발생할 경우 데이터 손실이 발생할 수 있습니다.
+
+계획되지 않은 시스템 중단 시 손실될 수 있는 데이터 양은 마지막 두 정합성 보장 지점의 스팬입니다. 정합성 보장 지점은 버퍼링된 데이터를 디스크에 쓰는 작업을 가리킵니다. 정합성 보장 지점은 쓰기 로그가 꽉 찼거나 10초 후에(둘 중 먼저 도래하는 시점)에 발생합니다. 그러나 AWS EBS 볼륨 성능은 정합성 보장 지점 처리 시간에 영향을 미칠 수 있습니다.
+
+
+
+==== 빠른 쓰기 속도 사용 시기
+
+워크로드에 빠른 쓰기 성능이 필요하고 계획되지 않은 시스템 운영 중단 시 데이터 손실 위험을 감수할 수 있는 경우 빠른 쓰기 속도가 가장 좋습니다.
+
+
+
+==== 빠른 쓰기 속도 사용 시 권장 사항
+
+빠른 쓰기 속도를 설정하는 경우 애플리케이션 계층에서 쓰기 보호가 보장되어야 합니다.
+
+
+
+== 볼륨 사용 프로필 선택
+
+ONTAP에는 필요한 총 스토리지 양을 줄일 수 있는 몇 가지 스토리지 효율성 기능이 포함되어 있습니다. Cloud Manager에서 볼륨을 생성할 때 이러한 기능을 사용하도록 설정하는 프로필이나 기능을 사용하지 않도록 설정하는 프로필을 선택할 수 있습니다. 사용할 프로파일을 결정하는 데 도움이 되도록 이러한 기능에 대해 자세히 알아 두어야 합니다.
+
+NetApp 스토리지 효율성 기능은 다음과 같은 이점을 제공합니다.
+
+씬 프로비저닝:: 에서는 실제 스토리지 풀에 있는 것보다 더 많은 논리적 스토리지를 호스트 또는 사용자에게 제공합니다. 스토리지 공간을 사전에 할당하는 대신 데이터가 기록될 때 스토리지 공간을 각 볼륨에 동적으로 할당합니다.
+중복 제거:: 동일한 데이터 블록을 찾아 단일 공유 블록에 대한 참조로 대체하여 효율성을 향상시킵니다. 이 기술은 동일한 볼륨에 상주하는 중복된 데이터 블록을 제거하여 스토리지 용량 요구 사항을 줄여줍니다.
+압축:: 1차, 2차 및 아카이브 스토리지의 볼륨 내에서 데이터를 압축하여 데이터를 저장하는 데 필요한 물리적 용량을 줄입니다.
+

@@ -1,0 +1,63 @@
+---
+sidebar: sidebar 
+permalink: task_setting_up_ontap_cloud.html 
+keywords: set up, setting up, ntp, time, synch, autosupport, asup, ems, lif, svm, backup, configuration files, config, snapcenter, snapdrive, ntp server, svm management lif, management lif 
+summary: Cloud Volumes ONTAP를 구축한 후에는 NTP를 사용하여 시스템 시간을 동기화하고 System Manager 또는 CLI에서 몇 가지 선택적 작업을 수행하여 시스템 시간을 설정할 수 있습니다. 
+---
+= Cloud Volumes ONTAP 설정
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP를 구축한 후에는 NTP를 사용하여 시스템 시간을 동기화하고 System Manager 또는 CLI에서 몇 가지 선택적 작업을 수행하여 시스템 시간을 설정할 수 있습니다.
+
+[cols="30,70"]
+|===
+| 작업 | 설명 
+
+
+| NTP를 사용하여 시스템 시간을 동기화합니다  a| 
+NTP 서버를 지정하면 네트워크 시스템 간의 시간이 동기화되어 시간 차이로 인한 문제를 방지할 수 있습니다.
+
+CIFS 서버를 설정할 때 Cloud Manager API를 사용하거나 사용자 인터페이스에서 NTP 서버를 지정합니다.
+
+* link:task_managing_storage.html#modifying-the-cifs-server["CIFS 서버 수정"]
+* link:api.html["Cloud Manager API 개발자 가이드 를 참조하십시오"^]
+
+
+예를 들어, AWS의 단일 노드 시스템에 대한 API는 다음과 같습니다.
+
+image:screenshot_ntp_server_api.gif["NTP API 호출을 보여 주는 Swagger 인터페이스의 스크린샷입니다."]
+
+
+
+| 선택 사항: AutoSupport를 구성합니다 | AutoSupport은 시스템의 상태를 능동적으로 모니터링하고 기본적으로 NetApp 기술 지원 팀에 메시지를 자동으로 보냅니다. 인스턴스를 시작하기 전에 계정 관리자가 프록시 서버를 Cloud Manager에 추가한 경우 Cloud Volumes ONTAP은 해당 프록시 서버를 AutoSupport 메시지에 사용하도록 구성됩니다. AutoSupport를 테스트하여 메시지를 보낼 수 있는지 확인해야 합니다. 자세한 내용은 System Manager 도움말 또는 을 참조하십시오 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["ONTAP 9 시스템 관리 참조"^]. 
+
+
+| 선택 사항: Cloud Manager를 AutoSupport 프록시로 구성합니다  a| 
+환경에 AutoSupport 메시지를 보내는 프록시 서버가 필요한 경우 클라우드 관리자가 프록시 역할을 하도록 구성할 수 있습니다. 인터넷 액세스를 제외한 Cloud Manager의 구성은 필요하지 않습니다. Cloud Volumes ONTAP용 CLI로 이동하여 다음 명령을 실행하면 됩니다.
+
+....
+system node autosupport modify -proxy-url <cloud-manager-ip-address>
+....
+
+
+| 선택 사항: EMS를 구성합니다 | EMS(이벤트 관리 시스템)는 Cloud Volumes ONTAP 시스템에서 발생하는 이벤트에 대한 정보를 수집하고 표시합니다. 이벤트 알림을 수신하려면 이벤트 대상(이메일 주소, SNMP 트랩 호스트 또는 syslog 서버)과 이벤트 경로를 특정 이벤트 심각도에 대해 설정할 수 있습니다. CLI를 이용하여 EMS를 구성할 수 있다. 자세한 내용은 를 참조하십시오 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-ems/home.html["ONTAP 9 EMS 구성 익스프레스 가이드"^]. 
+
+
+| 선택 사항: 여러 AWS 가용성 영역의 HA 시스템을 위한 SVM 관리 네트워크 인터페이스(LIF)를 생성합니다  a| 
+Windows용 SnapCenter 또는 SnapDrive를 HA 쌍으로 사용하려면 스토리지 가상 시스템(SVM) 관리 네트워크 인터페이스(LIF)가 필요합니다. 여러 AWS 가용성 영역에서 HA 쌍을 사용할 때는 SVM 관리 LIF에서 _floating_IP 주소를 사용해야 합니다.
+
+HA 쌍을 시작할 때 Cloud Manager에서 부동 IP 주소를 지정하라는 메시지를 표시합니다. IP 주소를 지정하지 않은 경우 System Manager 또는 CLI에서 직접 SVM 관리 LIF를 생성할 수 있습니다. 다음 예에서는 CLI에서 LIF를 생성하는 방법을 보여줍니다.
+
+....
+network interface create -vserver svm_cloud -lif svm_mgmt -role data -data-protocol none -home-node cloud-01 -home-port e0a -address 10.0.2.126 -netmask 255.255.255.0 -status-admin up -firewall-policy mgmt
+....
+
+
+| 선택 사항: 구성 파일의 백업 위치를 변경합니다 | Cloud Volumes ONTAP는 올바르게 작동하는 데 필요한 구성 가능한 옵션에 대한 정보가 포함된 구성 백업 파일을 자동으로 생성합니다. 기본적으로 Cloud Volumes ONTAP는 8시간마다 파일을 커넥터 호스트에 백업합니다. 백업을 대체 위치로 전송하려면 데이터 센터 또는 AWS에서 위치를 FTP 또는 HTTP 서버로 변경할 수 있습니다. 예를 들어, FAS 스토리지 시스템의 백업 위치가 이미 있을 수 있습니다. CLI를 사용하여 백업 위치를 변경할 수 있습니다. 를 참조하십시오 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["ONTAP 9 시스템 관리 참조"^]. 
+|===

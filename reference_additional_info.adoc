@@ -1,0 +1,87 @@
+---
+sidebar: sidebar 
+permalink: reference_additional_info.html 
+keywords: community, forums, help, support, videos, policies, json, api, ontap, release notes, bugs, limitations, known issues, permissions, apis, flexcache, common vulnerabilities and exposures, cve, security 
+summary: 비디오, 포럼, 지원을 비롯한 다양한 리소스를 통해 도움을 얻고 Cloud Manager 및 Cloud Volumes ONTAP에 대한 자세한 정보를 확인할 수 있습니다. 
+---
+= 도움을 받을 수 있는 곳 및 자세한 정보를 얻을 수 있는 곳
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+비디오, 포럼, 지원을 비롯한 다양한 리소스를 통해 도움을 얻고 Cloud Manager 및 Cloud Volumes ONTAP에 대한 자세한 정보를 확인할 수 있습니다.
+
+* https://mysupport.netapp.com/GPS/ECMLS2588181.html["NetApp Cloud Volumes ONTAP 지원"^]
++
+지원 리소스에 액세스하여 Cloud Volumes ONTAP 관련 문제를 해결하고 도움을 받으십시오.
+
+* https://www.youtube.com/playlist?list=PLdXI3bZJEw7lnoRo8FBKsX1zHbK8AQOoT["Cloud Manager 및 Cloud Volumes ONTAP 비디오"^]
++
+Cloud Volumes ONTAP 구축 및 관리 방법과 하이브리드 클라우드에서 데이터를 복제하는 방법을 보여주는 비디오를 시청하십시오.
+
+* https://mysupport.netapp.com/site/info/cloud-manager-policies["Cloud Manager에 대한 정책"^]
++
+Cloud Manager에서 클라우드 공급자의 작업을 수행하는 데 필요한 권한이 포함된 JSON 파일을 다운로드합니다.
+
+* link:api.html["Cloud Manager API 개발자 가이드 를 참조하십시오"^]
++
+API 개요, API 사용 방법의 예 및 API 참조를 읽어 보십시오.
+
+* Cloud Volumes ONTAP 교육
++
+** https://learningcenter.netapp.com/LC?ObjectType=WBT&ObjectID=00368390["Cloud Volumes ONTAP 기본 원리"^]
+** https://learningcenter.netapp.com/LC?ObjectType=WBT&ObjectID=00369436["Azure용 Cloud Volumes ONTAP 배포 및 관리"^]
+** https://learningcenter.netapp.com/LC?ObjectType=WBT&ObjectID=00376094["AWS를 위한 Cloud Volumes ONTAP 구축 및 관리"^]
+
+
+* 기술 보고서
++
+** https://www.netapp.com/us/media/tr-4383.pdf["NetApp 기술 보고서 4383: 애플리케이션 워크로드를 포함한 Amazon Web Services의 Cloud Volumes ONTAP 성능 특성"^]
+** https://www.netapp.com/us/media/tr-4671.pdf["NetApp 기술 보고서 4671: 애플리케이션 워크로드를 포함한 Azure의 Cloud Volumes ONTAP 성능 특성"^]
+** https://www.netapp.com/us/media/tr-4816.pdf["NetApp 기술 보고서 4816: Cloud Volumes ONTAP for Google Cloud의 성능 특성"^]
+
+
+* SVM 재해 복구
++
+SVM 재해 복구는 SVM 데이터를 비동기 미러링하고 소스 SVM에서 타겟 SVM으로 구성을 수행하는 것입니다. 소스 SVM을 더 이상 사용할 수 없는 경우 데이터 액세스를 위해 타겟 SVM을 빠르게 활성화할 수 있습니다.
+
++
+** https://library.netapp.com/ecm/ecm_get_file/ECMLP2839856["Cloud Volumes ONTAP 9 SVM 재해 복구 준비 Express 가이드"^]
++
+재해 복구 준비를 위해 대상 SVM을 빠르게 구성하는 방법에 대해 설명합니다.
+
+** https://library.netapp.com/ecm/ecm_get_file/ECMLP2839857["Cloud Volumes ONTAP 9 SVM 재해 복구 익스프레스 가이드 를 참조하십시오"^]
++
+재해 발생 후 타겟 SVM을 빠르게 활성화한 다음 소스 SVM을 다시 활성화하는 방법을 설명합니다.
+
+
+
+* http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-fc-mgmt/home.html["빠른 데이터 액세스를 위한 FlexCache 볼륨 전원 가이드"^]
++
+에서는 데이터 액세스를 가속하기 위해 동일한 클러스터 또는 원본 볼륨과 다른 클러스터에서 FlexCache 볼륨을 생성하고 관리하는 방법에 대해 설명합니다.
+
+* https://security.netapp.com/advisory/["보안 권고"^]
++
+ONTAP을 포함한 NetApp 제품에 대한 알려진 취약점(CVE)을 파악합니다. ONTAP 설명서에 따라 Cloud Volumes ONTAP의 보안 취약점을 해결할 수 있습니다.
+
+* http://docs.netapp.com/ontap-9/index.jsp["ONTAP 9 문서 센터"^]
++
+ONTAP를 사용하는 데 도움이 되는 Cloud Volumes ONTAP 제품 설명서를 참조하십시오.
+
+* https://community.netapp.com/t5/Cloud-Data-Services/ct-p/CDS["NetApp 커뮤니티: 클라우드 데이터 서비스"^]
++
+동료와 소통하고, 질문을 하고, 아이디어를 교환하고, 리소스를 찾고, 모범 사례를 공유합니다.
+
+* http://cloud.netapp.com/["NetApp Cloud Central에서"^]
++
+클라우드를 위한 추가 NetApp 제품 및 솔루션에 대한 정보를 찾아보십시오.
+
+* http://docs.netapp.com["NetApp 제품 설명서"^]
++
+NetApp 제품 설명서에서 지침, 리소스, 답변을 찾아보십시오.
+
+

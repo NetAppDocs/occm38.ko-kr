@@ -1,0 +1,32 @@
+---
+sidebar: sidebar 
+permalink: reference_whats_next.html 
+keywords: get started, create working environments, manage settings 
+summary: 로그인한 후 Cloud Manager를 설정했으므로 사용자는 작업 환경을 생성하고 검색을 시작할 수 있습니다. 
+---
+= 다음 단계로 넘어갑니다
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+로그인한 후 Cloud Manager를 설정했으므로 사용자는 작업 환경을 생성하고 검색을 시작할 수 있습니다.
+
+* link:task_getting_started_aws.html["Cloud Volumes ONTAP for AWS 시작하기"]
+* link:task_getting_started_azure.html["Azure용 Cloud Volumes ONTAP를 시작하십시오"]
+* link:task_getting_started_gcp.html["Cloud Volumes ONTAP for Google Cloud를 시작해 보십시오"]
+* link:task_manage_anf.html["Azure NetApp Files를 설정합니다"]
+* link:task_manage_cvs_aws.html["Cloud Volumes Service for AWS 설정"]
+* link:task_discovering_ontap.html["사내 ONTAP 클러스터를 검색합니다"]
+* link:task_viewing_amazon_s3.html["Amazon S3 버킷을 검색합니다"]
+
+
+관리자인 경우 첫 번째 커넥터를 생성한 후 Cloud Manager 설정을 관리할 수 있습니다.
+
+* link:concept_connectors.html["커넥터에 대해 자세히 알아보십시오"]
+* link:task_installing_https_cert.html["보안 액세스를 위해 HTTPS 인증서를 관리합니다"]
+* link:task_configuring_proxy.html["프록시 설정을 구성합니다"]
+

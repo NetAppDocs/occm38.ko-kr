@@ -1,0 +1,70 @@
+---
+sidebar: sidebar 
+permalink: concept_azure_netapp_files.html 
+keywords: azure netapp files, cost, price, features, azure netapp files features, anf, supported regions, azure regions, azure netapp files regions 
+summary: Azure NetApp Files을 사용하는 기업은 클라우드를 리팩토링할 필요 없이 Azure에서 성능 집약적이고 지연 시간에 민감한 핵심 비즈니스 크리티컬 애플리케이션을 마이그레이션 및 실행할 수 있습니다. 
+---
+= Azure NetApp Files에 대해 자세히 알아보십시오
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Azure NetApp Files을 사용하는 기업은 클라우드를 리팩토링할 필요 없이 Azure에서 성능 집약적이고 지연 시간에 민감한 핵심 비즈니스 크리티컬 애플리케이션을 마이그레이션 및 실행할 수 있습니다.
+
+
+
+== 피처
+
+* 다중 프로토콜을 지원하므로 Linux 및 Windows 애플리케이션 모두의 "리프트 및 이동"이 Azure에서 원활하게 실행됩니다.
+* 여러 성능 계층을 통해 워크로드 성능 요구사항에 맞춰 조정할 수 있습니다.
+* SAP HANA, GDPR 및 HIPPA를 비롯한 주요 인증을 통해 가장 까다로운 워크로드를 Azure로 마이그레이션할 수 있습니다.
+
+
+
+
+== 추가 기능은 Cloud Manager에서 제공됩니다
+
+* NFS 또는 SMB 데이터를 Cloud Manager에서 Azure NetApp Files로 직접 마이그레이션 데이터 마이그레이션은 NetApp의 Cloud Sync 서비스를 통해 수행할 수 있습니다. link:concept_cloud_sync.html["자세한 정보"].
+* 클라우드 규정 준수 는 인공 지능(AI) 중심 기술을 사용하여 데이터 컨텍스트를 이해하고 Azure NetApp Files 계정에 상주하는 중요한 데이터를 식별할 수 있도록 지원합니다. link:concept_cloud_compliance.html["자세한 정보"].
+
+
+
+
+== 비용
+
+https://azure.microsoft.com/pricing/details/netapp/["Azure NetApp Files 가격 보기"^].
+
+가입 및 충전은 Cloud Manager가 아닌 Azure NetApp Files 서비스에서 관리합니다.
+
+
+
+== 지원 지역
+
+https://cloud.netapp.com/cloud-volumes-global-regions["지원되는 Azure 지역을 봅니다"^].
+
+
+
+== 액세스를 요청하는 중입니다
+
+에서 Azure NetApp Files에 대한 액세스 권한을 부여해야 합니다 https://aka.ms/azurenetappfiles["온라인 요청 제출"^]. 계속 진행하려면 Azure NetApp Files 팀의 승인을 기다려야 합니다.
+
+
+
+== 도움말 보기
+
+Azure NetApp Files와 관련된 기술 지원 문제의 경우 Azure 포털을 사용하여 Microsoft에 지원 요청을 기록하십시오. 연결된 Microsoft 구독을 선택하고 * 저장소 * 에서 * Azure NetApp Files * 서비스 이름을 선택합니다. Microsoft 지원 요청을 작성하는 데 필요한 나머지 정보를 제공합니다.
+
+Cloud Sync 및 Azure NetApp Files 관련 문제의 경우, Cloud Sync 서비스에서 직접 Cloud Sync 일련 번호를 사용하여 NetApp으로 시작할 수 있습니다. Cloud Manager의 링크를 통해 Cloud Sync 서비스에 액세스해야 합니다. https://docs.netapp.com/us-en/cloudsync/reference_additional_info.html["Cloud Sync 지원을 활성화하는 프로세스를 봅니다"^].
+
+
+
+== 관련 링크
+
+* https://cloud.netapp.com/azure-netapp-files["NetApp 클라우드 센트럴: Azure NetApp Files"^]
+* https://docs.microsoft.com/azure/azure-netapp-files/["Azure NetApp Files 설명서"^]
+* https://docs.netapp.com/us-en/cloudsync/index.html["Cloud Sync 설명서"^]
+

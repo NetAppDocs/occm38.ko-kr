@@ -1,0 +1,148 @@
+---
+sidebar: sidebar 
+permalink: faq_saas.html 
+keywords: faq, frequently asked questions, questions 
+summary: 이 FAQ는 새로운 Cloud Manager SaaS 릴리즈와 관련된 주요 질문에 답변합니다. 
+---
+= Cloud Manager SaaS에 대한 FAQ
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+이 FAQ는 새로운 Cloud Manager SaaS 릴리즈와 관련된 주요 질문에 답변합니다.
+
+
+
+== 2020년 8월 3일에 Cloud Manager SaaS 릴리스에 도입된 기능은 무엇입니까?
+
+* * 통합 API 및 UI *
++
+모든 NetApp ONTAP 기반 스토리지 솔루션을 위한 통합된 중앙 집중식 API 제어 플레인을 통해 고객이 다음을 관리 및 제어할 수 있도록 지원합니다.
+
++
+** Azure NetApp Files
+** AWS 환경을 위한 Cloud Volumes Service
+** Google Cloud용 Cloud Volumes Service
+** Cloud Volumes ONTAP
+
+
+* * NetApp 데이터 서비스와의 원활한 통합 *
++
+원활한 통합을 위해 스토리지 솔루션과 쉽게 통합할 수 있는 데이터 서비스가 기본으로 제공됩니다.
+
+* * 여러 환경의 중앙 집중식 관리 *
++
+이제 여러 환경을 간편하게 구축하고 관리할 수 있습니다. 이전 릴리즈를 사용하면 고객이 원하는 모든 위치에 Cloud Manager 인스턴스를 구축해야 했습니다. 새로운 릴리즈에서 Cloud Manager 에이전트의 이름이 _Connector_로 바뀝니다.
+
++
+여러 NetApp Cloud Central 계정 또는 커넥터를 사용하는 사용자는 다른 계정과 환경 간에 쉽게 전환할 수 있습니다.
+
+* * API 및 UI * 용 공개 엔드포인트
++
+새로운 릴리즈를 사용하면 를 통해 Cloud Manager의 API 및 GUI에 안전하게 액세스할 수 있습니다  https://cloudmanager.netapp.com[].
+
+
+
+
+
+== VPC/VNET에 구축된 Cloud Manager 인스턴스는 어떻게 됩니까?
+
+앞서 언급했듯이 고객의 네트워크에 배포된 Cloud Manager 인스턴스는 이제 _ Connector _ 라고 합니다.
+
+Connector의 역할이 변경되지 않았습니다. 고객의 퍼블릭 클라우드 네트워크 내에서 리소스와 프로세스를 관리하는 것과 동일한 목적을 가지고 있습니다.
+
+
+
+== SaaS 플랫폼을 사용 중인 커넥터를 제거할 수 있습니까?
+
+아니요, 그렇지 않습니다. Connector는 퍼블릭 클라우드 환경 내에서 Cloud Volumes ONTAP 구축 및 관리, Cloud Backup Service 지원, 클라우드 규정 준수 배포 등과 같은 리소스 및 프로세스를 관리하는 데 사용했던 것과 동일한 소프트웨어입니다.
+
+
+
+== VPC에 배포된 인스턴스를 통해 로컬로 사용한 것과 동일한 방식으로 Cloud Manager를 사용할 수 있습니까?
+
+예. * 커넥터 * 메뉴를 클릭하고 * 로컬 UI * 로 이동 을 클릭하거나 웹 브라우저에 직접 Connector의 IP 주소를 입력하여 이 작업을 수행할 수 있습니다.
+
+
+
+== Cloud Manager SaaS로 이동하기 위해 마이그레이션이나 특정 조치가 필요합니까?
+
+아무 것도 필요하지 않습니다. 로 이동합니다 https://cloudmanager.netapp.com[] 작업을 시작합니다. Cloud Manager에 대한 액세스는 승인된 사용자에게만 허용됩니다.
+
+
+
+== Cloud Volumes ONTAP 또는 저장하는 데이터가 다른 곳으로 변경되었습니까?
+
+아니요 VPC 또는 VNET에서 항상 관리되어 왔습니다.
+
+
+
+== Cloud Manager SaaS 플랫폼의 엔드포인트는 어디에 있습니까?
+
+NetApp이 퍼블릭 클라우드에서 안전하게 운영합니다.
+
+
+
+== Cloud Manager SaaS 서비스 계층에 저장된 데이터 또는 메타데이터는 어떤 유형입니까?
+
+Cloud Manager SaaS 서비스 계층에는 데이터가 저장되지 않습니다.
+
+SaaS 플랫폼은 사용자의 웹 브라우저와 로컬 커넥터 또는 Cloud Manager에 통합된 다른 NetApp 서비스 간의 API 호출(NetApp 서명 인증서를 사용하는 HTTPS)을 위한 보안 파이프라인으로 사용됩니다.
+
+
+
+== VPC/VNET에 구축된 Connector는 어떤 데이터 또는 메타데이터를 저장합니까?
+
+Connector/Cloud Manager가 변경되지 않았습니다. 이전 릴리즈에서와 동일한 데이터가 저장됩니다. Cloud Volumes ONTAP 구축 및 관리, Cloud Backup Service 지원, 클라우드 규정 준수 배포 및 사용 등과 같은 퍼블릭 클라우드 환경 내에서 리소스 및 프로세스를 관리하는 데 필요한 메타데이터만 보유합니다( 참조) link:concept_connectors.html["커넥터에 대해 자세히 알아보십시오"] 페이지를 참조하십시오.
+
+
+
+== 데이터 및 메타데이터 경로는 무엇입니까?
+
+Connector에서 고객으로 데이터가 HTTPS를 통해 전송되고 NetApp 인증서로 암호화되며 서명됩니다. SaaS 기반 UI는 클라이언트 웹 브라우저와 Connector 간의 보안 파이프라인 역할을 합니다. 즉, Connector의 데이터는 권한이 있는 사용자만 액세스할 수 있습니다.
+
+클라우드 규정 준수 서비스를 활용하는 고객의 경우, 이제 엔드 투 엔드로 암호화됩니다 웹 브라우저와 Connector 간에 키 교환이 수행되므로 NetApp에서는 데이터를 읽을 수 없습니다. https://cloud.netapp.com/cloud-compliance["클라우드 규정 준수 에 대해 자세히 알아보십시오"^].
+
+
+
+== SaaS 엔드포인트를 통해 클라우드 규정 준수 서비스를 사용할 경우 GDPR이 영향을 미칩니까?
+
+데이터는 엔드 투 엔드로 암호화됩니다 웹 브라우저와 Connector 간에 키 교환이 수행되므로 NetApp에서는 데이터를 읽을 수 없습니다.
+
+
+
+== SaaS 기반 UI 및 API에서 Connector에 액세스하는 데 사용되는 네트워크 방향 액세스는 어떤 종류입니까?
+
+* 고객의 VPC/VNET와 SaaS 기반 UI 간의 통신은 오직 _outbound_입니다. 즉, Connector에서만 시작됩니다.
+* Connector는 보안 채널에서 SaaS 기반 서비스 계층의 업데이트를 폴링합니다.
+* 모든 API 호출은 인증과 권한 부여를 사용하여 액세스를 보호합니다.
++
+즉, 네트워크의 추가 포트/끝점을 열 필요가 없습니다.
+
+* 사용자의 브라우저 클라이언트와 SaaS 기반 UI 간의 통신은 NetApp 서명 인증서를 통해 HTTPS를 사용합니다.
+
+
+
+
+== 로그인 흐름이 변경되었습니까?
+
+아니요, 로그인 흐름은 이전 릴리즈와 동일하게 유지되었습니다. 사용자가 로그인(SSO 또는 자격 증명)하면 이전과 마찬가지로 Auth0에 대해 인증됩니다.
+
+다음 사항에 유의하십시오.
+
+* SSO 또는 페더레이션을 사용하는 경우 사용 중인 보안 절차는 그대로 유지됩니다. 액세스는 회사의 시설에서 연합됩니다. 페더레이션 액세스를 사용할 때 보안을 강화하기 위해 회사의 재량에 따라 MFA를 추가할 수 있습니다.
+* 역할 또는 권한에 대한 변경 사항은 없습니다. Cloud Central 계정에 등록된 사용자만 SaaS 기반 엔드포인트에 액세스할 수 있습니다.
+* 클라이언트 브라우저에서 타사 쿠키가 허용되지 않는 구성이나 익명 모드 사용은 현재 지원되지 않습니다.
+
+
+
+
+== SaaS 기반 Cloud Manager(SOC2, FedRAMP 등)를 준수합니까?
+
+Cloud Manager는 SOC2 인증을 획득하는 중입니다.
+
+FedRAMP 인증을 준수하기 위해 FedRAMP를 필요로 하는 고객은 SaaS 기반 UI를 사용할 수 없습니다.

@@ -1,0 +1,114 @@
+---
+sidebar: sidebar 
+permalink: task_managing_licenses.html 
+keywords: license, licensing, install, updating license, system license, add system license, adding a system license, byol license, add byol license, update byol license, nlf, license generator, backup license, add backup license, update backup license 
+summary: Cloud Volumes ONTAP BYOL 시스템 라이센스를 추가하여 용량을 추가하고, 기존 시스템 라이센스를 업데이트하고, 클라우드 백업에 대한 BYOL 라이센스를 관리합니다. 
+---
+= Cloud Volumes ONTAP용 BYOL 라이센스 관리
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP BYOL 시스템 라이센스를 추가하여 용량을 추가하고, 기존 시스템 라이센스를 업데이트하고, 클라우드 백업에 대한 BYOL 라이센스를 관리합니다.
+
+
+
+== 시스템 라이센스 관리
+
+Cloud Volumes ONTAP BYOL 시스템에 여러 개의 라이센스를 구매하여 368TB 이상의 용량을 할당할 수 있습니다. 예를 들어, 2개의 라이센스를 구입하여 최대 736TB의 용량을 Cloud Volumes ONTAP에 할당할 수 있습니다. 또는 4개의 라이센스를 구입하여 최대 1.4PB를 구입할 수 있습니다.
+
+단일 노드 시스템 또는 HA 쌍에 대해 구매할 수 있는 라이센스 수는 무제한입니다.
+
+
+
+=== 시스템 라이센스 파일을 가져오는 중입니다
+
+대부분의 경우 Cloud Manager는 NetApp Support 사이트 계정을 사용하여 라이센스 파일을 자동으로 가져올 수 있습니다. 그러나 그렇지 않으면 라이센스 파일을 수동으로 업로드해야 합니다. 라이센스 파일이 없는 경우 netapp.com 에서 얻을 수 있습니다.
+
+.단계
+. 로 이동합니다 https://register.netapp.com/register/getlicensefile["NetApp 라이센스 파일 생성기"^] 를 입력하고 NetApp Support 사이트 자격 증명을 사용하여 로그인합니다.
+. 비밀번호를 입력하고 제품을 선택한 다음 일련 번호를 입력하고 개인정보 보호정책을 읽고 동의했는지 확인한 다음 * 제출 * 을 클릭합니다.
++
+* 예 *
+
++
+image:screenshot_license_generator.gif["스크린샷: 암호, 제품(NetApp Cloud Volumes ONTAP BYOL for AWS) 및 제품 일련 번호를 포함하여 NetApp 라이센스 파일 생성기 웹 페이지의 예를 보여줍니다."]
+
+. 이메일 또는 직접 다운로드를 통해 serialnumber.nlf JSON 파일을 수신할지 여부를 선택합니다.
+
+
+
+
+=== 새 시스템 라이센스 추가
+
+언제든지 새 BYOL 시스템 라이센스를 추가하여 Cloud Volumes ONTAP BYOL 시스템에 368TB의 용량을 추가로 할당할 수 있습니다.
+
+.단계
+. Cloud Manager에서 Cloud Volumes ONTAP BYOL 작업 환경을 엽니다.
+. 메뉴 아이콘을 클릭한 다음 * 라이센스 * 를 클릭합니다.
++
+image:screenshot_menu_license.gif["작업 환경의 메뉴 아이콘을 보여 주는 스크린샷 라이센스 옵션을 사용하면 라이센스 파일을 업로드할 수 있습니다."]
+
+. CVO 시스템 라이센스 추가 * 를 클릭합니다.
++
+image:screenshot_system_license.gif["시스템 라이센스를 추가하고 시스템 라이센스를 업데이트하는 단추를 보여 주는 Cloud Volumes ONTAP 시스템 라이센스 스크린샷."]
+
+. 일련 번호를 입력하거나 라이센스 파일을 업로드하도록 선택합니다.
+. 라이선스 추가 * 를 클릭합니다.
+
+
+Cloud Manager는 Cloud Volumes ONTAP 시스템에 새 라이센스 파일을 설치합니다.
+
+
+
+=== 시스템 라이센스를 업데이트하는 중입니다
+
+NetApp 담당자에게 연락하여 BYOL 구독을 갱신하면 Cloud Manager는 NetApp에서 새 라이센스를 자동으로 얻어 Cloud Volumes ONTAP 시스템에 설치합니다.
+
+Cloud Manager가 보안 인터넷 연결을 통해 라이센스 파일에 액세스할 수 없는 경우 직접 파일을 얻은 다음 파일을 Cloud Manager에 수동으로 업로드할 수 있습니다.
+
+.단계
+. Cloud Manager에서 Cloud Volumes ONTAP BYOL 작업 환경을 엽니다.
+. 메뉴 아이콘을 클릭한 다음 * 라이센스 * 를 클릭합니다.
+. CVO 시스템 라이센스 업데이트 * 를 클릭합니다.
++
+image:screenshot_system_license.gif["시스템 라이센스를 추가하고 시스템 라이센스를 업데이트하는 단추를 보여 주는 Cloud Volumes ONTAP 시스템 라이센스 스크린샷."]
+
+. 파일 업로드 * 를 클릭하고 라이센스 파일을 선택합니다.
+. Update License * 를 클릭합니다.
+
+
+Cloud Manager는 Cloud Volumes ONTAP 시스템에서 라이센스를 업데이트합니다.
+
+
+
+== Backup BYOL 라이센스 추가 및 업데이트
+
+BYOL 라이센스 페이지를 사용하여 Backup BYOL 라이센스를 추가 또는 업데이트합니다.
+
+.단계
+. Cloud Manager에서 Cloud Volumes ONTAP BYOL 작업 환경을 엽니다.
+. 메뉴 아이콘을 클릭한 다음 * 라이센스 * 를 클릭합니다.
++
+image:screenshot_menu_license.gif["작업 환경의 메뉴 아이콘을 보여 주는 스크린샷 라이센스 옵션을 사용하면 라이센스 파일을 업로드할 수 있습니다."]
+
+. 새 라이센스를 추가하거나 기존 라이센스를 업데이트할 것인지에 따라 * 백업 라이센스 추가 * 또는 * 백업 라이센스 업데이트 * 를 클릭합니다.
++
+image:screenshot_backup_byol_license.png["백업 라이센스 추가 및 업데이트 버튼이 포함된 BYOL 라이센스 페이지를 보여주는 스크린샷"]
+
+. 라이센스 정보를 입력하고 * 라이센스 추가 * 를 클릭합니다.
++
+** 일련 번호가 있는 경우 * Enter Backup BYOL Serial Number * 옵션을 선택하고 일련 번호를 입력합니다.
+** 백업 라이센스 파일이 있는 경우 * Backup BYOL 라이센스 업로드 * 옵션을 선택하고 표시되는 메시지에 따라 파일을 첨부합니다.
++
+image:screenshot_backup_byol_license_add.png["Backup BYOL 라이센스를 추가하는 페이지를 보여 주는 스크린샷"]
+
+
+
+
+
+Cloud Manager는 Backup to Cloud 서비스가 활성화되도록 라이센스를 추가하거나 업데이트합니다.

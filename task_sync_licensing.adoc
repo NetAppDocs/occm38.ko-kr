@@ -1,0 +1,85 @@
+---
+sidebar: sidebar 
+permalink: task_sync_licensing.html 
+keywords: license, subscription, registering, subscribing, subscribing in aws, subscribing in azure, subscribing to aws, subscribing to azure, aws marketplace, azure marketplace, netapp license, byol license, purchase a license, license settings, pay for relationships, paygo, annual, pay-as-you-go 
+summary: 14일 무료 평가판이 종료된 후 동기화 관계에 대한 비용을 지불할 수 있는 두 가지 방법이 있습니다. 첫 번째 옵션은 사용한 만큼만 지불하는 것입니다. 두 번째 옵션은 NetApp에서 직접 라이센스를 구매하는 것입니다. 
+---
+= 무료 평가판이 종료된 후 동기화 관계에 대한 비용을 지불합니다
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+14일 무료 평가판이 종료된 후 동기화 관계에 대한 비용을 지불할 수 있는 두 가지 방법이 있습니다. 첫 번째 옵션은 AWS 또는 Azure에서 용량제 또는 연간 결제를 구독하는 것입니다. 두 번째 옵션은 NetApp에서 직접 라이센스를 구매하는 것입니다.
+
+AWS 또는 Azure 구독에서 NetApp의 라이센스를 사용할 수 있습니다. 예를 들어, 동기화 관계가 25개 있는 경우 라이센스를 사용하여 처음 20개 동기화 관계에 대한 비용을 지불하고 나머지 5개 동기화 관계를 사용하여 AWS 또는 Azure에서 사용한 만큼만 비용을 지불할 수 있습니다.
+
+link:concept_cloud_sync.html["라이센스 작동 방식에 대해 자세히 알아보십시오"].
+
+.무료 평가판이 끝난 후 즉시 결제하지 않으면 어떻게 합니까?
+****
+추가 관계를 만들 수 없습니다. 기존 관계는 삭제되지 않지만 라이선스를 구독하거나 입력할 때까지 관계를 변경할 수 없습니다.
+
+****
+
+
+== AWS 구독
+
+AWS를 사용하면 사용한 만큼만 지불하거나 연간 단위로 비용을 지불할 수 있습니다.
+
+.선불 종량제 단계
+. 동기화 > 라이선스 * 를 클릭합니다.
+. AWS * 를 선택합니다
+. 구독 * 을 클릭한 다음 * 계속 * 을 클릭합니다.
+. AWS Marketplace에서 구독한 다음 Cloud Sync 서비스에 다시 로그인하여 등록을 완료합니다.
++
+다음 비디오는 프로세스를 보여 줍니다.
+
++
+video::video_cloud_sync_registering.mp4[width=848,height=480]
+
+
+.연간 지불 절차
+. https://aws.amazon.com/marketplace/pp/B06XX5V3M2["AWS 마켓플레이스 페이지로 이동합니다"^].
+. 구독 * 으로 계속 * 을 클릭합니다.
+. 계약 옵션을 선택하고 * 계약 작성 * 을 클릭합니다.
+
+
+
+
+== Azure에서 구독
+
+Azure를 사용하면 사용한 만큼만 지불하거나 연간 단위로 비용을 지불할 수 있습니다.
+
+관련 구독에 참가자 또는 소유자 권한이 있는 Azure 사용자 계정입니다.
+
+.단계
+. 동기화 > 라이선스 * 를 클릭합니다.
+. Azure * 를 선택합니다.
+. 구독 * 을 클릭한 다음 * 계속 * 을 클릭합니다.
+. Azure 포털에서 * 생성 * 을 클릭하고 옵션을 선택한 다음 * 구독 * 을 클릭합니다.
++
+월간 * 을 선택하여 시간당 결제하거나, * Yearly * 를 선택하여 1년 단위로 선불로 결제합니다.
+
+. 배포가 완료되면 알림 팝업에서 SaaS 리소스의 이름을 클릭합니다.
+. Cloud Sync로 돌아가려면 * 계정 구성 * 을 클릭합니다.
++
+다음 비디오는 프로세스를 보여 줍니다.
+
++
+video::video_cloud_sync_registering_azure.mp4[width=848,height=480]
+
+
+
+
+== NetApp에서 라이센스를 구매하여 Cloud Sync에 추가
+
+동기화 관계를 사전에 결제하려면 하나 이상의 라이센스를 구입하여 Cloud Sync 서비스에 추가해야 합니다.
+
+.단계
+. 라이센스를 mailto:ng-cloudsync-contact@netapp.com?subject=Cloud%20Sync%20Service%20-%20BYOL%20License%20Purchase%20Request[NetApp 문의]까지 구입하십시오.
+. Cloud Manager에서 * 동기화 > 라이선스 * 를 클릭합니다.
+. 라이센스 추가 * 를 클릭하고 라이센스를 추가합니다.
+

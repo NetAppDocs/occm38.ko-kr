@@ -1,0 +1,185 @@
+---
+sidebar: sidebar 
+permalink: faq_cloud_tiering.html 
+keywords: faq, questions, requirements, service connector, object store, object storage, aws, azure, bucket, cluster, aggregate, s3, storage class, standard, inactive data reporting, auto, volume tiering policy, policy, tiering policy, snapshot, cold, inactive, infrequent 
+summary: 이 FAQ는 질문에 대한 간단한 답변을 찾는 경우에 도움이 될 수 있습니다. 
+---
+= Cloud Tiering 기술 FAQ
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+이 FAQ는 질문에 대한 간단한 답변을 찾는 경우에 도움이 될 수 있습니다.
+
+
+
+== ONTAP
+
+다음 질문은 ONTAP과 관련이 있습니다.
+
+
+
+=== ONTAP 클러스터에 대한 요구사항은 무엇입니까?
+
+콜드 데이터의 계층화 위치에 따라 달라짐 다음을 참조하십시오.
+
+* link:task_tiering_onprem_aws.html#preparing-your-ontap-clusters["사내 ONTAP 클러스터에서 Amazon S3로 데이터 계층화"]
+* link:task_tiering_onprem_azure.html#preparing-your-ontap-clusters["사내 ONTAP 클러스터에서 Azure Blob 스토리지로 데이터 계층화"]
+* link:task_tiering_onprem_gcp.html#preparing-your-ontap-clusters["사내 ONTAP 클러스터에서 Google 클라우드 스토리지로 데이터 계층화"]
+* link:task_tiering_onprem_storagegrid.html#preparing-your-ontap-clusters["사내 ONTAP 클러스터에서 StorageGRID로 데이터 계층화"]
+
+
+
+
+=== Cloud Tiering은 비활성 데이터 보고를 지원합니까?
+
+예. Cloud Tiering은 각 애그리게이트에 대해 비활성 데이터 보고를 지원합니다. 이 설정을 통해 저비용 오브젝트 스토리지로 계층화할 수 있는 비활성 데이터의 양을 파악할 수 있습니다.
+
+
+
+=== NAS 볼륨 및 SAN 볼륨의 데이터를 계층화할 수 있습니까?
+
+Cloud Tiering을 사용하면 NAS 볼륨에서 퍼블릭 클라우드로, SAN 볼륨에서 StorageGRID를 사용하여 프라이빗 클라우드로 데이터를 계층화할 수 있습니다.
+
+
+
+=== Cloud Volumes ONTAP는 어떻습니까?
+
+Cloud Volumes ONTAP 시스템이 있는 경우 클러스터 대시보드에서 하이브리드 클라우드 인프라의 데이터 계층화에 대한 전체 뷰를 볼 수 있습니다.
+
+클러스터 대시보드에서 운영 상태, 현재 절감 효과, 절약 기회, 볼륨 및 Aggregate와 같은 온프레미스 ONTAP 클러스터와 유사한 계층화 정보를 확인할 수 있습니다.
+
+Cloud Volumes ONTAP 시스템은 Cloud Tiering에서 읽기 전용입니다. Cloud Tiering에서 Cloud Volumes ONTAP의 데이터 계층화를 설정할 수 없습니다. Cloud Manager의 작업 환경부터 동일한 방법으로 계층화를 설정할 수 있습니다.
+
+
+
+== 오브젝트 스토리지
+
+다음 질문은 오브젝트 스토리지와 관련이 있습니다.
+
+
+
+=== 어떤 오브젝트 스토리지 공급자가 지원됩니까?
+
+S3 프로토콜을 사용하는 Amazon S3, Azure Blob 스토리지, Google Cloud Storage 및 StorageGRID가 지원됩니다.
+
+
+
+=== 나만의 버킷/컨테이너를 사용할 수 있습니까?
+
+예, 가능합니다. 데이터 계층화를 설정할 때는 새 버킷/컨테이너를 추가하거나 기존 버킷/컨테이너를 선택할 수 있습니다.
+
+
+
+=== 지원되는 지역은 어디입니까?
+
+* link:reference_aws_support.html["지원되는 AWS 영역"]
+* link:reference_azure_support.html["지원되는 Azure 지역"]
+* link:reference_google_support.html["지원되는 Google Cloud 지역"]
+
+
+
+
+=== 지원되는 S3 스토리지 클래스는 무엇입니까?
+
+Cloud Tiering은 _Standard_,_Standard - Infrequent Access_,_One Zone-IA_ 또는 _Intelligent_storage 클래스에 대한 데이터 계층화를 지원합니다. 을 참조하십시오 link:reference_aws_support.html["지원되는 S3 스토리지 클래스"] 를 참조하십시오.
+
+
+
+=== 어떤 Azure Blob 액세스 계층이 지원됩니까?
+
+Cloud Tiering은 비활성 데이터에 _hot_access 계층을 자동으로 사용합니다.
+
+
+
+=== Google Cloud Storage에서 지원되는 스토리지 클래스는 무엇입니까?
+
+Cloud Tiering은 비활성 데이터에 _Standard_Storage 클래스를 사용합니다.
+
+
+
+=== Cloud Tiering은 전체 클러스터에 대해 하나의 오브젝트 저장소를 사용합니까, 아니면 애그리게이트당 하나를 사용합니까?
+
+전체 클러스터에 대해 하나의 오브젝트 저장소
+
+
+
+=== 계층화에 관계없이 데이터를 이동할 수 있도록 정책을 오브젝트 저장소에 적용할 수 있습니까?
+
+아니요. Cloud Tiering은 오브젝트 저장소에서 데이터를 이동하거나 삭제하는 오브젝트 라이프사이클 관리 규칙을 지원하지 않습니다.
+
+
+
+== 커넥터
+
+다음 질문은 커넥터와 관련이 있습니다.
+
+
+
+=== 커넥터를 어디에 설치해야 합니까?
+
+* 데이터를 S3로 계층화할 때 Connector를 AWS VPC 또는 사내에 배치할 수 있습니다.
+* 데이터를 Blob 스토리지로 계층화할 때 Connector는 Azure VNET에 상주해야 합니다.
+* 데이터를 Google 클라우드 스토리지로 계층화할 때 Connector는 Google Cloud Platform VPC에 상주해야 합니다.
+* 데이터를 StorageGRID로 계층화할 때 커넥터는 사내 Linux 호스트에 상주해야 합니다.
+
+
+
+
+== 네트워킹
+
+다음 질문은 네트워킹과 관련이 있습니다.
+
+
+
+=== 네트워킹 요구 사항은 무엇입니까?
+
+* ONTAP 클러스터는 포트 443을 통해 객체 스토리지 공급자에 대한 HTTPS 연결을 시작합니다.
++
+ONTAP는 오브젝트 스토리지 간에 데이터를 읽고 씁니다. 오브젝트 스토리지는 한 번도 시작되고, 응답 하기만 합니다.
+
+* StorageGRID의 경우 ONTAP 클러스터는 사용자가 지정한 포트를 통해 StorageGRID에 HTTPS 연결을 시작합니다(계층화 설정 중에 포트 구성 가능).
+* Connector는 포트 443을 통해 ONTAP 클러스터, 오브젝트 저장소 및 Cloud Tiering 서비스에 아웃바운드 HTTPS 연결을 필요로 합니다.
+
+
+자세한 내용은 다음을 참조하십시오.
+
+* link:task_tiering_onprem_aws.html["사내 ONTAP 클러스터에서 Amazon S3로 데이터 계층화"]
+* link:task_tiering_onprem_azure.html["사내 ONTAP 클러스터에서 Azure Blob 스토리지로 데이터 계층화"]
+* link:task_tiering_onprem_gcp.html["사내 ONTAP 클러스터에서 Google 클라우드 스토리지로 데이터 계층화"]
+* link:task_tiering_onprem_storagegrid.html["사내 ONTAP 클러스터에서 StorageGRID로 데이터 계층화"]
+
+
+
+
+== 권한
+
+다음 질문은 권한과 관련이 있습니다.
+
+
+
+=== AWS에 필요한 사용 권한은 무엇입니까?
+
+권한이 필요합니다 link:task_tiering_onprem_aws#preparing-amazon-s3["S3 버킷을 관리합니다"].
+
+
+
+=== Azure에 필요한 사용 권한은 무엇입니까?
+
+Cloud Manager에 제공해야 하는 권한 이외에 추가 권한이 필요하지 않습니다.
+
+
+
+=== Google Cloud Platform에 필요한 사용 권한은 무엇입니까?
+
+스토리지 액세스 키가 있는 서비스 계정에는 스토리지 관리자 권한이 필요합니다.
+
+
+
+=== StorageGRID에 필요한 권한은 무엇입니까?
+
+link:task_tiering_onprem_storagegrid.html#preparing-storagegrid["S3 권한이 필요합니다"].

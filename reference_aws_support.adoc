@@ -1,0 +1,78 @@
+---
+sidebar: sidebar 
+permalink: reference_aws_support.html 
+keywords: aws, amazon, s3, support, regions, storage classes 
+summary: Cloud Tiering은 여러 S3 스토리지 클래스와 대부분의 영역을 지원합니다. 
+---
+= 지원되는 S3 스토리지 클래스 및 지역
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Tiering은 여러 S3 스토리지 클래스와 대부분의 영역을 지원합니다.
+
+
+
+== 지원되는 S3 스토리지 클래스
+
+Cloud Tiering은 수명주기 규칙을 적용하여 30일 후에 데이터가 _Standard_Storage 클래스에서 다른 스토리지 클래스로 전환될 수 있습니다. 다음 스토리지 클래스 중에서 선택할 수 있습니다.
+
+* 표준 - 낮은 액세스 빈도
+* 단일 영역 - IA
+* 지능형
+
+
+표준을 선택하면 데이터가 해당 스토리지 클래스에 유지됩니다.
+
+https://aws.amazon.com/s3/storage-classes/["S3 스토리지 클래스에 대해 알아보십시오"^].
+
+
+
+== 지원되는 AWS 영역
+
+Cloud Tiering은 다음 AWS 영역을 지원합니다.
+
+
+
+==== 아시아 태평양
+
+* 뭄바이
+* 서울
+* 싱가포르
+* 시드니
+* 도쿄
+
+
+
+
+==== 유럽
+
+* 프랑크푸르트
+* 아일랜드
+* 런던
+* 파리
+* 스톡홀름
+
+
+
+
+==== 북미
+
+* 캐나다 중부
+* GovCloud(미국 - 서부) – ONTAP 9.3부터
+* 미국 동부(N. 버지니아)
+* 미국 동부(오하이오)
+* 미국 서부(북미 캘리포니아)
+* 미국 서부(오리건주)
+
+
+
+
+==== 남아메리카
+
+* 상파울루
+

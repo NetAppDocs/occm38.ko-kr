@@ -1,0 +1,30 @@
+---
+sidebar: sidebar 
+permalink: reference_infrastructure_as_code.html 
+keywords: terraform, terraform provider, automation, automating 
+summary: 이 페이지의 리소스를 사용하여 Cloud Manager 및 Cloud Volumes ONTAP를 코드로서 인프라에 통합하는 데 도움을 받으십시오. 
+---
+= 코드로서 인프라를 위한 자동화 리소스
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+이 페이지의 리소스를 사용하여 Cloud Manager 및 Cloud Volumes ONTAP를 과 통합하는 데 도움을 받으십시오 https://www.netapp.com/us/info/what-is-infrastructure-as-code-iac.aspx["코드로서의 인프라"^].
+
+DevOps 팀은 다양한 툴을 사용하여 새로운 환경의 설정을 자동화함으로써 인프라를 코드로 처리할 수 있습니다. 이러한 도구 중 하나는 Terraform입니다. DevOps 팀에서 Cloud Manager를 사용하여 Cloud Volumes ONTAP를 자동화하고 인프라와 코드로 통합하는 Terraform 공급자를 개발했습니다.
+
+https://registry.terraform.io/providers/NetApp/netapp-cloudmanager/latest["NetApp-cloudmManager 공급자 보기"^].
+
+* 관련 링크 *
+
+* https://cloud.netapp.com/blog/using-cloud-manager-rest-apis-with-federated-access["NetApp 클라우드 블로그: Federated Access에서 Cloud Manager REST API 사용"^]
+* https://cloud.netapp.com/blog/cloud-automation-with-cloud-volumes-ontap-rest["NetApp 클라우드 블로그: Cloud Volumes ONTAP 및 REST를 통한 클라우드 자동화"^]
+* https://cloud.netapp.com/blog/automated-data-cloning-for-cloud-based-testing["NetApp 클라우드 블로그: 클라우드 기반 소프트웨어 애플리케이션 테스트를 위한 자동화된 데이터 복제"^]
+* https://blog.netapp.com/infrastructure-as-code-accelerated-with-ansible-netapp/["NetApp 블로그: Ansible + NetApp을 사용하여 IAC(Infrastructure-as-Code) 가속화"^]
+* https://netapp.io/configuration-management-and-automation/["NetApp thePub: 구성 관리 및 amp; Ansible을 통한 자동화"^]
+* https://netapp.io/2019/03/25/simplicity-at-its-finest-roles-for-ansible-ontap-use/["NetApp thePub: Ansible ONTAP에서 사용하는 역할"^]
+

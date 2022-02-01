@@ -1,0 +1,35 @@
+---
+sidebar: sidebar 
+permalink: task_finding_system_id.html 
+keywords: system id, id, cloud manager system id 
+summary: 시작하려면 NetApp 담당자가 Cloud Manager 시스템을 식별하는 시스템 ID를 물을 것입니다. ID는 일반적으로 라이센스 및 문제 해결 목적으로 사용됩니다. 
+---
+= Cloud Manager 시스템 ID 찾기
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+시작하려면 NetApp 담당자가 Cloud Manager 시스템 ID를 물어볼 수 있습니다. ID는 일반적으로 라이센스 및 문제 해결 목적으로 사용됩니다.
+
+Cloud Manager 설정을 변경하려면 먼저 Connector를 생성해야 합니다. link:concept_connectors.html#how-to-create-a-connector["자세히 알아보기"].
+
+.단계
+. Cloud Manager 콘솔의 오른쪽 위에서 설정 아이콘을 클릭합니다.
++
+image:screenshot_settings_icon.gif["Cloud Manager 콘솔의 오른쪽 위에 설정 아이콘이 표시된 스크린샷"]
+
+. 지원 대시보드 * 를 클릭합니다.
++
+시스템 ID가 오른쪽 상단에 나타납니다.
+
++
+* 예 *
+
++
+image:screenshot_system_id.gif["지원 대시보드에 표시되는 Cloud Manager의 시스템 ID를 보여 주는 스크린샷"]
+
+

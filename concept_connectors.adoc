@@ -1,0 +1,148 @@
+---
+sidebar: sidebar 
+permalink: concept_connectors.html 
+keywords: concept, connectors, learn about connectors, service connectors, what are connectors, what is a connector, what\'s a connector, days, 14 days 
+summary: 대부분의 경우 클라우드나 온프레미스 네트워크에 커넥터를 구축해야 합니다. Connector를 사용하면 Cloud Manager에서 퍼블릭 클라우드 환경 내의 리소스와 프로세스를 관리할 수 있습니다. 
+---
+= 커넥터에 대해 자세히 알아보십시오
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+대부분의 경우 계정 관리자는 클라우드 또는 온-프레미스 네트워크에 _Connector_를 배포해야 합니다. Connector를 사용하면 Cloud Manager에서 퍼블릭 클라우드 환경 내의 리소스와 프로세스를 관리할 수 있습니다.
+
+
+
+== 커넥터가 필요한 경우
+
+Connector는 Cloud Manager에서 다음 기능을 사용해야 합니다.
+
+* Cloud Volumes ONTAP
+* 온프레미스 ONTAP 클러스터
+* 클라우드 규정 준수
+* 쿠버네티스
+* 클라우드로 백업
+* 모니터링
+* 사내 계층화
+* 글로벌 파일 캐시
+* Amazon S3 버킷 검색
+
+
+커넥터는 Azure NetApp Files, Cloud Volumes Service 또는 Cloud Sync에 * _not_ * 필수 항목입니다.
+
+
+NOTE: Azure NetApp Files를 설정 및 관리하는 데 커넥터가 필요하지 않지만, Azure NetApp Files 데이터를 스캔하기 위해 클라우드 규정 준수를 사용하려면 커넥터가 필요합니다.
+
+
+
+== 지원되는 위치
+
+커넥터는 다음 위치에서 지원됩니다.
+
+* Amazon Web Services에서 직접 지원합니다
+* Microsoft Azure를 참조하십시오
+* Google 클라우드
+* 온프레미스
+
+
+
+NOTE: Google Cloud에서 Cloud Volumes ONTAP 시스템을 만들려면 Google Cloud에서도 Connector가 실행 중이어야 합니다. 다른 위치에서 실행 중인 커넥터는 사용할 수 없습니다.
+
+
+
+== 커넥터는 계속 작동 중이어야 합니다
+
+커넥터는 항상 작동 상태를 유지해야 합니다. 이는 여러분이 제공하는 서비스의 지속적인 상태 및 운영에 중요합니다.
+
+예를 들어, Connector는 Cloud Volumes ONTAP PAYGO 시스템의 상태 및 작동에 있어 핵심 구성 요소입니다. 커넥터가 꺼져 있는 경우, Cloud Volumes ONTAP PAYGO 시스템은 커넥터와의 통신이 14일 이상 끊긴 후 종료됩니다.
+
+
+
+== 커넥터 작성 방법
+
+작업 영역 관리자가 Cloud Volumes ONTAP 작업 환경을 만들고 위에 나열된 다른 기능을 사용하려면 계정 관리자가 커넥터를 만들어야 합니다.
+
+계정 관리자는 다음과 같은 여러 가지 방법으로 커넥터를 만들 수 있습니다.
+
+* Cloud Manager에서 직접(권장)
++
+** link:task_creating_connectors_aws.html["AWS에서 생성"]
+** link:task_creating_connectors_azure.html["Azure에서 생성"]
+** link:task_creating_connectors_gcp.html["GCP에서 생성"]
+
+
+* link:task_launching_aws_mktp.html["다운로드: AWS 마켓플레이스"]
+* link:task_launching_azure_mktp.html["다운로드: Azure 마켓플레이스"]
+* link:task_installing_linux.html["기존 Linux 호스트에서 소프트웨어를 다운로드하고 설치합니다"]
+
+
+첫 번째 Cloud Volumes ONTAP 작업 환경을 생성할 때 커넥터가 아직 없는 경우 Cloud Manager에서 커넥터를 생성하라는 메시지를 표시합니다.
+
+
+
+== 권한
+
+Connector를 만들려면 특정 권한이 필요하며 Connector 인스턴스 자체에 다른 권한 집합이 필요합니다.
+
+
+
+=== Connector를 만들 수 있는 권한
+
+Cloud Manager에서 Connector를 생성하는 사용자는 선택한 클라우드 공급자에 인스턴스를 배포하기 위한 특정 권한이 필요합니다. Cloud Manager는 Connector를 생성할 때 권한 요구 사항을 상기시킵니다.
+
+https://mysupport.netapp.com/site/info/cloud-manager-policies["각 클라우드 공급자에 대한 정책을 봅니다"^].
+
+
+
+=== Connector 인스턴스에 대한 권한
+
+Connector는 사용자를 대신하여 작업을 수행하려면 특정 클라우드 공급자 권한이 필요합니다. 예를 들어, Cloud Volumes ONTAP를 구축하고 관리하는 경우를 들 수 있습니다.
+
+Cloud Manager에서 직접 Connector를 생성하면 Cloud Manager에서 필요한 권한이 있는 Connector가 생성됩니다. 당신이 해야 할 일은 아무것도 없습니다.
+
+AWS Marketplace, Azure Marketplace 또는 소프트웨어를 수동으로 설치하여 직접 Connector를 생성하는 경우 올바른 권한이 있는지 확인해야 합니다.
+
+https://mysupport.netapp.com/site/info/cloud-manager-policies["각 클라우드 공급자에 대한 정책을 봅니다"^].
+
+
+
+== 여러 커넥터를 사용하는 경우
+
+경우에 따라 하나의 커넥터만 필요할 수 있지만 둘 이상의 커넥터가 필요할 수 있습니다.
+
+다음은 몇 가지 예입니다.
+
+* 멀티 클라우드 환경(AWS 및 Azure)을 사용 중이라면 AWS에, Azure에 각각 Connector를 설치하고, 각 는 이러한 환경에서 실행되는 Cloud Volumes ONTAP 시스템을 관리합니다.
+* 서비스 공급자는 Cloud Central 계정 하나를 사용하여 고객에게 서비스를 제공하는 한편, 다른 계정을 사용하여 부서 중 하나의 재해 복구를 제공할 수 있습니다. 각 계정에는 별도의 커넥터가 있습니다.
+
+
+
+
+== 커넥터 간 전환 시기
+
+첫 번째 Connector를 만들면 Cloud Manager는 사용자가 생성한 각 추가 작업 환경에 대해 해당 Connector를 자동으로 사용합니다. 추가 커넥터를 만든 후에는 각 Connector에 해당하는 작업 환경을 보기 위해 커넥터 사이를 전환해야 합니다.
+
+link:task_managing_connectors.html#switch-between-connectors["커넥터 간 전환 방법에 대해 알아보십시오"].
+
+
+
+== 로컬 사용자 인터페이스입니다
+
+에서 거의 모든 작업을 수행해야 합니다 https://cloudmanager.netapp.com["SaaS 사용자 인터페이스"^]로컬 사용자 인터페이스는 Connector에서 계속 사용할 수 있습니다. 이 인터페이스는 커넥터 자체에서 수행해야 하는 몇 가지 작업에 필요합니다.
+
+* link:task_configuring_proxy.html["프록시 서버 설정"]
+* 패치 설치(일반적으로 NetApp 직원과 협력하여 패치 설치)
+* AutoSupport 메시지 다운로드(일반적으로 문제가 있을 때 NetApp 담당자가 지시)
+
+
+link:task_managing_connectors.html#accessing-the-local-ui["로컬 UI에 액세스하는 방법을 알아보십시오"].
+
+
+
+== 커넥터 업그레이드
+
+Connector는 소프트웨어가 있는 한 소프트웨어를 최신 버전으로 자동 업데이트합니다 link:reference_networking_cloud_manager.html["아웃바운드 인터넷 액세스"] 를 클릭하여 소프트웨어 업데이트를 얻습니다.

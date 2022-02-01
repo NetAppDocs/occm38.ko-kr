@@ -1,0 +1,85 @@
+---
+sidebar: sidebar 
+permalink: task_getting_started_compute.html 
+keywords: compute, cloud insights, cloud analyzer, connect cloud analyzer, connect master payer account, connect payer account, aws payer account 
+summary: Spot의 Cloud Analyzer에서 클라우드 컴퓨팅 비용을 심층 분석하기 위해 몇 가지 단계를 완료합니다. 
+---
+= 클라우드 컴퓨팅 비용 최적화를 시작하십시오
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+AWS 계정을 연결한 다음 분석을 통해 클라우드 컴퓨팅 비용을 최적화해 보십시오.
+
+
+
+== Cloud Analyzer을 AWS 계정에 연결합니다
+
+Compute * 를 클릭하고 AWS 지급인 계정을 연결합니다.
+
+.단계
+. Compute(계산) * 를 클릭합니다.
+. 시작에 AWS 자격 증명 추가 * 를 클릭합니다.
+. 페이지의 단계에 따라 AWS 계정을 연결합니다.
++
+.. AWS 마스터 지급인 계정에 로그인합니다.
+.. AWS 계정에 비용 및 사용 보고서 설정
+.. CloudFormation 템플릿을 실행합니다.
+.. Spot RoleARN을 붙여 넣습니다.
++
+https://help.spot.io/cloud-analyzer/connect-your-aws-account-2/["이 단계에 대한 자세한 내용을 봅니다"^].
+
++
+image:screenshot_compute_add_account.gif["연결 페이지에서 사용할 수 있는 각 필드를 보여 주는 스크린샷"]
+
+
+
+
+
+Cloud Analyzer에서 AWS 계정 데이터 처리를 시작합니다. 계정이 여러 개인 경우 Cloud Analyzer는 마스터 지급인 계정에 연결된 모든 계정에 대해 읽기 전용 기능으로 시작합니다. 이러한 계정의 잠재적 절감 효과에 대한 자세한 내용을 보려면 계정을 연결해야 합니다. 해당 프로세스에 대한 자세한 내용은 아래 섹션에서 확인할 수 있습니다.
+
+
+
+== 컴퓨팅 비용을 분석합니다
+
+Cloud Analyzer에서 계정 데이터를 처리한 후 컴퓨팅 탭에는 이전, 현재 및 향후 클라우드 비용에 대한 통찰력이 표시됩니다.
+
+image:screenshot_compute_dashboard.gif["Cloud Manager의 비용 분석 페이지를 보여 주는 스크린샷 이 페이지에는 아래 텍스트에 설명된 정보가 포함되어 있습니다."]
+
+월-일 비용:: 현재 달부터 현재까지의 총 워크로드 비용입니다.
+예상 비용:: 사용 패턴 분석을 기반으로 월말에 예측된 비용.
+지난 주에 비용을 절감하지 못했습니다:: 스폿 인스턴스 및 예약을 최적화하여 이전 7일 내에 달성할 수 있었던 비용 절감 효과
+최고의 AWS 계정 비용 효율성::
++
+--
+각 계정에는 현재 및 추가 잠재적 절감을 기준으로 효율성 점수가 할당됩니다. 추가 비용 절감은 SPOT 및 예약된 인스턴스를 사용하여 추가 절약할 수 있는 양을 나타냅니다.
+
+다음 조치를 통해 고객을 더욱 최적화할 수 있습니다.
+
+* * 세부 정보 보기 *: Spot's Cloud Analyzer로 이동하여 비용 최적화 기회를 확인하십시오.
+* * 연결 *: 아직 관리되지 않은 계정을 연결합니다. 계정을 연결하는 마법사로 이동합니다.
+
+
+--
+상위 AWS 계정:: 비용 기준으로 상위 10개 계정을 보여 주는 막대 그래프입니다. 이 그래프는 지난 30일 동안의 지출 활동을 기반으로 합니다.
+
+
+https://help.spot.io/cloud-analyzer/cost-analysis/["Spot's Cloud Analyzer에서 제공하는 비용 분석 페이지에 대해 자세히 알아보십시오"^].
+
+
+
+== 자세한 분석 및 권장 사항은 Cloud Analyzer를 참조하십시오
+
+언제든지 * Get Full Analysis * 를 클릭하여 더 많은 차트 및 분석, 심층 권장 사항, 사용 사례 최적화 분석(컨테이너, ElasticApps 및 예약) 등에 액세스할 수 있습니다.
+
+다음은 Cloud Analyzer에서 확인할 수 있는 예입니다.
+
+image:screenshot_compute_dashboard_spot.gif["Spot's Cloud Analyzer의 비용 분석 페이지를 보여 주는 스크린샷"]
+
+* https://spot.io/products/cloud-analyzer/["Cloud Analyzer의 기능에 대한 자세한 내용은 제품 페이지 를 참조하십시오"^].
+* https://help.spot.io/cloud-analyzer/["Cloud Analyzer 사용에 대한 도움말은 Spot 설명서를 참조하십시오"^].
+

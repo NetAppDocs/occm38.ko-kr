@@ -1,0 +1,153 @@
+---
+sidebar: sidebar 
+permalink: task_adding_aws_accounts.html 
+keywords: permissions, aws, policy, iam, iam role, role, granting, policy, iam policy, iam user, access keys, arn, cloud provider accounts, aws, cloud provider profile, json, iam, credentials, adding credentials, add credentials 
+summary: 다른 AWS 계정에 Cloud Volumes ONTAP를 구축하려는 경우 해당 계정에 필요한 권한을 제공한 다음 세부 정보를 Cloud Manager에 추가해야 합니다. 사용 권한을 제공하는 방법은 Cloud Manager에 AWS 키를 제공할지, 아니면 신뢰할 수 있는 계정에서 역할의 ARN을 제공하는지에 따라 달라집니다. 
+---
+= Cloud Manager의 AWS 자격 증명 및 구독 관리
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP 시스템을 생성할 때 해당 시스템에서 사용할 AWS 자격 증명과 구독을 선택해야 합니다. 여러 AWS 구독을 관리하는 경우 자격 증명 페이지에서 각 AWS 자격 증명을 서로 다른 AWS 자격 증명에 할당할 수 있습니다.
+
+Cloud Manager에 AWS 자격 증명을 추가하기 전에 해당 계정에 필요한 권한을 제공해야 합니다. Cloud Manager에서 사용 권한을 통해 해당 AWS 계정 내의 리소스와 프로세스를 관리할 수 있습니다. 사용 권한을 제공하는 방법은 Cloud Manager에 AWS 키를 제공할지, 아니면 신뢰할 수 있는 계정에서 역할의 ARN을 제공하는지에 따라 달라집니다.
+
+
+NOTE: Cloud Manager에서 Connector를 구축한 경우 Cloud Manager는 Connector를 구축한 계정에 대한 AWS 자격 증명을 자동으로 추가합니다. 기존 시스템에 Connector 소프트웨어를 수동으로 설치한 경우에는 이 초기 계정이 추가되지 않습니다. link:concept_accounts_aws.html["AWS 자격 증명 및 권한에 대해 알아보십시오"].
+
+* 선택 *
+
+* <<Granting permissions by providing AWS keys>>
+* <<Granting permissions by assuming IAM roles in other accounts>>
+
+
+.AWS 자격 증명을 안전하게 회전하려면 어떻게 해야 합니까?
+****
+Cloud Manager를 사용하면 몇 가지 방법으로 AWS 자격 증명을 제공할 수 있습니다. 예를 들어, Connector 인스턴스와 연관된 IAM 역할이나 신뢰할 수 있는 계정에서 IAM 역할을 가정하거나 AWS 액세스 키를 제공하여 AWS 자격 증명을 제공할 수 있습니다. link:concept_accounts_aws.html["AWS 자격 증명 및 권한에 대해 자세히 알아보십시오"].
+
+처음 두 옵션을 사용할 때 Cloud Manager는 AWS 보안 토큰 서비스를 사용하여 지속적으로 회전하는 임시 자격 증명을 얻습니다. 이 프로세스는 모범 사례이며 자동으로 수행되며 안전합니다.
+
+Cloud Manager에 AWS 액세스 키를 제공하는 경우 Cloud Manager에서 키를 정기적으로 업데이트하여 키를 회전해야 합니다. 이는 완전히 수동으로 진행되는 프로세스입니다.
+
+****
+
+
+== AWS 키를 제공하여 권한 부여
+
+Cloud Manager에 IAM 사용자를 위한 AWS 키를 제공하려면 해당 사용자에게 필요한 권한을 부여해야 합니다. Cloud Manager IAM 정책은 Cloud Manager에서 사용할 수 있는 AWS 작업 및 리소스를 정의합니다.
+
+.단계
+. 에서 Cloud Manager IAM 정책을 다운로드합니다 https://mysupport.netapp.com/site/info/cloud-manager-policies["Cloud Manager 정책 페이지"^].
+. IAM 콘솔에서 Cloud Manager IAM 정책의 텍스트를 복사하여 붙여넣어 고유한 정책을 생성합니다.
++
+https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html["AWS 설명서: IAM 정책 생성"^]
+
+. IAM 역할 또는 IAM 사용자에 정책을 연결합니다.
++
+** https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create.html["AWS 설명서: IAM 역할 생성"^]
+** https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html["AWS 설명서: IAM 정책 추가 및 제거"^]
+
+
+
+
+이제 계정에 필요한 권한이 있습니다. <<Adding AWS credentials to Cloud Manager,이제 Cloud Manager에 추가할 수 있습니다>>.
+
+
+
+== 다른 계정에서 IAM 역할을 가정하여 권한 부여
+
+IAM 역할을 사용하여 Connector 인스턴스를 구축한 소스 AWS 계정과 다른 AWS 계정 간에 신뢰 관계를 설정할 수 있습니다. 그런 다음 Cloud Manager에 신뢰할 수 있는 계정의 IAM 역할 ARN을 제공합니다.
+
+.단계
+. Cloud Volumes ONTAP를 배포하려는 대상 계정으로 이동하여 * 다른 AWS 계정 * 을 선택하여 IAM 역할을 생성합니다.
++
+다음을 수행하십시오.
+
++
+** Connector 인스턴스가 있는 계정의 ID를 입력합니다.
+** 에서 사용할 수 있는 Cloud Manager IAM 정책을 연결합니다 https://mysupport.netapp.com/site/info/cloud-manager-policies["Cloud Manager 정책 페이지"^].
++
+image:screenshot_iam_create_role.gif["AWS IAM 콘솔에서 역할 생성 페이지를 보여 주는 스크린샷 신뢰할 수 있는 엔터티 유형 선택 에서 다른 AWS 계정이 선택됩니다."]
+
+
+
+. Connector 인스턴스가 있는 소스 계정으로 이동하여 인스턴스에 연결된 IAM 역할을 선택합니다.
++
+.. Attach policies * 를 클릭한 다음 * Create policy * 를 클릭합니다.
+.. "STS:AssumeRole" 작업과 대상 계정에서 생성한 역할의 ARN을 포함하는 정책을 생성합니다.
++
+* 예 *
+
++
+[source, json]
+----
+{
+ "Version": "2012-10-17",
+ "Statement": {
+   "Effect": "Allow",
+   "Action": "sts:AssumeRole",
+   "Resource": "arn:aws:iam::ACCOUNT-B-ID:role/ACCOUNT-B-ROLENAME"
+}
+}
+----
+
+
+
+
+이제 계정에 필요한 권한이 있습니다. <<Adding AWS credentials to Cloud Manager,이제 Cloud Manager에 추가할 수 있습니다>>.
+
+
+
+== Cloud Manager에 AWS 자격 증명 추가
+
+필요한 권한이 있는 AWS 계정을 제공한 후 해당 계정의 자격 증명을 Cloud Manager에 추가할 수 있습니다. 그러면 해당 계정에서 Cloud Volumes ONTAP 시스템을 시작할 수 있습니다.
+
+.단계
+. Cloud Manager 콘솔의 오른쪽 위에서 설정 아이콘을 클릭하고 * 자격 증명 * 을 선택합니다.
++
+image:screenshot_settings_icon.gif["Cloud Manager 콘솔의 오른쪽 위에 설정 아이콘이 표시된 스크린샷"]
+
+. 자격 증명 추가 * 를 클릭하고 * AWS * 를 선택합니다.
+. AWS 키 또는 신뢰할 수 있는 IAM 역할의 ARN을 제공합니다.
+. 정책 요구 사항이 충족되었는지 확인하고 * 계속 * 을 클릭합니다.
+. 자격 증명과 연결할 선불 종량제 구독을 선택하거나, 구독 기간이 아직 없는 경우 * 구독 추가 * 를 클릭합니다.
++
+용량제 Cloud Volumes ONTAP 시스템을 생성하려면 AWS 자격 증명을 AWS 마켓플레이스의 Cloud Volumes ONTAP 서브스크립션과 연결해야 합니다.
+
+. 추가 * 를 클릭합니다.
+
+
+이제 새 작업 환경을 만들 때 세부 정보 및 자격 증명 페이지에서 다른 자격 증명 세트로 전환할 수 있습니다.
+
+image:screenshot_accounts_switch_aws.gif["세부 정보 및 amp;Credentials 페이지에서 계정 전환 을 클릭한 후 클라우드 공급자 계정 간 선택을 보여 주는 스크린샷"]
+
+
+
+== AWS 구독을 자격 증명에 연결
+
+AWS 자격 증명을 Cloud Manager에 추가한 후 AWS Marketplace 구독을 해당 자격 증명과 연결할 수 있습니다. 구독을 통해 선불 종량제 Cloud Volumes ONTAP 시스템을 생성하고 다른 NetApp 클라우드 서비스를 사용할 수 있습니다.
+
+Cloud Manager에 자격 증명을 이미 추가한 후에 AWS Marketplace 구독을 연결할 수 있는 두 가지 시나리오가 있습니다.
+
+* 처음에 Cloud Manager에 자격 증명을 추가했을 때 구독을 연결하지 않았습니다.
+* 기존 AWS Marketplace 구독을 새 구독으로 교체하려고 합니다.
+
+
+Cloud Manager 설정을 변경하려면 먼저 Connector를 생성해야 합니다. link:concept_connectors.html#how-to-create-a-connector["자세히 알아보기"].
+
+.단계
+. Cloud Manager 콘솔의 오른쪽 위에서 설정 아이콘을 클릭하고 * 자격 증명 * 을 선택합니다.
+. 자격 증명 집합 위로 마우스를 가져가서 작업 메뉴를 클릭합니다.
+. 메뉴에서 * Associate Subscription * 을 클릭합니다.
++
+image:screenshot_aws_add_subscription.gif["메뉴에서 AWS 자격 증명에 대한 구독을 추가할 수 있는 자격 증명 페이지의 스크린샷."]
+
+. 드롭다운 목록에서 구독을 선택하거나 * 구독 추가 * 를 클릭하고 단계에 따라 새 구독을 만듭니다.
++
+video::video_subscribing_aws.mp4[width=848,height=480]
+

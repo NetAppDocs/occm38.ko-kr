@@ -1,0 +1,259 @@
+---
+sidebar: sidebar 
+permalink: download_gfc_resources.html 
+keywords: global file cache, edge 
+summary: 원격 사무소에 Global File Cache Edge 소프트웨어를 설치하기 전에 알아야 할 여러 가지 요구 사항이 있습니다. 
+---
+= 글로벌 파일 캐시 에지 인스턴스를 배포하기 전에
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+원격 사무소에 Global File Cache Edge 소프트웨어를 설치하기 전에 알아야 할 여러 가지 요구 사항이 있습니다.
+
+
+
+== 필요한 리소스를 다운로드합니다
+
+지사에서 사용할 글로벌 파일 캐시 가상 템플릿, 소프트웨어 설치 패키지 및 추가 참조 문서를 다운로드합니다.
+
+* Windows Server 2016 가상 템플릿:
++
+https://repo.cloudsync.netapp.com/gfc/2K16_GFC_1_0_18_OVF.zip["NetApp GFC(VMware vSphere 6.5 이상)를 포함한 Windows Server 2016.OVA"^]
+
+
+* Windows Server 2019 가상 템플릿:
++
+https://repo.cloudsync.netapp.com/gfc/2K19_GFC_1_0_18_OVF.zip["NetApp GFC(VMware vSphere 6.5 이상)를 포함한 Windows Server 2019.OVA"^]
+
+
+* 글로벌 파일 캐시 에지 소프트웨어:
++
+https://repo.cloudsync.netapp.com/gfc/GFC-1-0-0-21-Release.exe["NetApp GFC 소프트웨어(.EXE)"^]
+
+* 글로벌 파일 캐시 문서:
++
+link:https://repo.cloudsync.netapp.com/gfc/NetApp%20GFC%20-%20User%20Guide.pdf["NetApp 글로벌 파일 캐시 사용자 가이드 를 참조하십시오"^]
+
+
+
+
+
+== Global File Cache Edge 설계 및 구축
+
+요구 사항에 따라 지사의 동시 사용자 세션을 기반으로 하나 이상의 Global File Cache Edge 인스턴스를 구축해야 할 수도 있습니다. Edge 인스턴스는 지사 내의 최종 사용자에게 가상 파일 공유를 제공하며, 연결된 Global File Cache Core 인스턴스에서 투명하게 확장됩니다. 글로벌 파일 캐시 에지에는 지점 내에 캐시된 파일이 포함된 Ds:\' NTFS 볼륨이 포함되어야 합니다.
+
+
+NOTE: Global File Cache Edge의 경우 을 이해하는 것이 중요합니다 link:concept_before_you_begin_to_deploy_gfc.html#sizing-guidelines["사이징 지침"^]. 이렇게 하면 글로벌 파일 캐시 구축을 위한 올바른 설계를 만드는 데 도움이 됩니다. 또한 확장, 리소스 가용성 및 이중화 측면에서 환경에 적합한 것을 결정해야 합니다.
+
+
+
+=== 글로벌 파일 캐시 에지 인스턴스
+
+Global File Cache Edge 인스턴스를 배포할 때는 Windows Server 2016 Standard 또는 Datacenter Edition 또는 Windows Server 2019 Standard 또는 Datacenter Edition을 배포하거나 Global File Cache".OVA" 또는 ".vhd" 템플릿을 사용하여 단일 VM을 프로비저닝해야 합니다. 여기에는 선택한 Windows Server 운영 체제와 글로벌 파일 캐시 소프트웨어가 포함됩니다.
+
+
+
+==== 빠른 단계
+
+. 글로벌 파일 캐시 가상 템플릿, Windows Server 2016 VM 또는 Windows Server 2019 Standard 또는 Datacenter Edition을 배포합니다.
+. VM이 네트워크에 연결되어 있고 도메인에 연결되어 있으며 RDP를 통해 액세스할 수 있는지 확인합니다.
+. 최신 Global File Cache Edge 소프트웨어를 설치합니다.
+. 글로벌 파일 캐시 관리 서버 및 코어 인스턴스를 식별합니다.
+. 글로벌 파일 캐시 에지 인스턴스를 구성합니다.
+
+
+
+
+== 글로벌 파일 캐시 에지 요구 사항
+
+Global File Cache Edge는 Windows Server 2016 및 2019를 지원하는 모든 플랫폼에서 작동하도록 설계되어 원격 사무실 등에 단순화된 IT를 제공합니다. 매우 중요한 점은, 몇 가지 기본 레벨 요구사항을 충족하는 거의 모든 경우에 글로벌 파일 캐시를 기존 하드웨어 인프라, 가상화 또는 하이브리드/퍼블릭 클라우드 환경에 구축할 수 있다는 것입니다.
+
+Global File Cache Edge를 사용하려면 최적의 기능을 위해 다음과 같은 하드웨어 및 소프트웨어 리소스가 필요합니다. 전체 사이징 지침에 대한 자세한 내용은 을 참조하십시오 link:concept_before_you_begin_to_deploy_gfc.html#sizing-guidelines["사이징 지침"].
+
+
+
+=== 강화된 서버 어플라이언스
+
+글로벌 파일 캐시 설치 패키지는 모든 Microsoft Windows Server 인스턴스에 강화된 소프트웨어 어플라이언스를 만듭니다. 전역 파일 캐시 패키지를 제거하지 마십시오. 글로벌 파일 캐시를 제거하면 서버 인스턴스의 기능에 영향을 미치며 서버 인스턴스를 완전히 재구성해야 할 수 있습니다.
+
+
+
+=== 물리적 하드웨어 요구 사항
+
+* 최소 4개의 CPU 코어
+* 최소 16GB RAM
+* 전용 단일 또는 중복 1Gbps NIC
+* 10K RPM SAS HDD 또는 SSD(권장)
+* Write-Back(후기입) 캐싱 기능이 활성화된 RAID 컨트롤러
+
+
+
+
+=== 가상 구축 요구 사항
+
+하이퍼바이저 플랫폼은 스토리지 서브시스템(예: 지연 시간)의 성능 저하로 알려져 있습니다. 글로벌 파일 캐시를 사용하여 성능을 최적화하려면 SSD가 있는 물리적 서버 인스턴스를 사용하는 것이 좋습니다.
+
+가상 환경에서 최상의 성능을 얻으려면 물리적 호스트 요구 사항 외에 다음과 같은 요구 사항 및 리소스 예약을 충족해야 합니다.
+
+Microsoft Hyper-V 2012 R2 이상:
+
+* 프로세서(CPU): CPU는 * Static *: Minimum: 4 vCPU 코어로 설정해야 합니다.
+* 메모리(RAM): 최소: 16GB * 정적 * 으로 설정.
+* 하드 디스크 프로비저닝: 하드 디스크는 * 고정 디스크 * 로 구성해야 합니다.
+
+
+VMware vSphere 6.x 이상:
+
+* 프로세서(CPU): CPU 주기 예약을 설정해야 합니다. 최소 4개의 vCPU 코어 @ 10000MHz.
+* 메모리(RAM): 최소: 16GB 예약.
+* 하드 디스크 프로비저닝:
++
+** 디스크 프로비저닝은 일반 프로비저닝 Eager Zeroed * 로 설정해야 합니다.
+** 하드 디스크 공유는 * High * 로 설정해야 합니다.
+** Microsoft Windows에서 전역 파일 캐시 드라이브를 제거 가능한 것으로 표시하는 것을 방지하려면 vSphere Client를 사용하여 Devices.Hotplug를 * False * 로 설정해야 합니다.
+
+
+* 네트워킹: 네트워크 인터페이스를 * VMXNET3 * (VM 도구 필요)로 설정해야 합니다.
+
+
+글로벌 파일 캐시는 Windows Server 2016 및 2019에서 실행되므로 가상화 플랫폼은 운영 체제를 지원할 뿐 아니라 VM의 게스트 운영 체제의 성능과 VM 도구 같은 VM의 관리를 향상시키는 유틸리티와의 통합이 필요합니다.
+
+
+
+=== 파티션 크기 조정 요구 사항
+
+* C:\ - 최소 250GB(시스템/부팅 볼륨)
+* D:\ - 최소 1TB(글로벌 파일 캐시 지능형 파일 캐시의 경우 별도의 데이터 볼륨 *)
+
+
+* 최소 크기는 활성 데이터 세트의 2배입니다. 캐시 볼륨(D:\)은 확장할 수 있으며 Microsoft Windows NTFS 파일 시스템의 제한 사항에 의해서만 제한됩니다.
+
+
+
+=== 글로벌 파일 캐시 지능형 파일 캐시 디스크 요구 사항
+
+글로벌 파일 캐시 지능형 파일 캐시 디스크(D:\)의 디스크 지연 시간은 최대 0.5ms 미만의 평균 I/O 디스크 지연 시간과 동시 사용자당 1MiBps 처리량을 제공해야 합니다.
+
+자세한 내용은 를 참조하십시오 link:https://repo.cloudsync.netapp.com/gfc/NetApp%20GFC%20-%20User%20Guide.pdf["NetApp 글로벌 파일 캐시 사용자 가이드 를 참조하십시오"^].
+
+
+
+=== 네트워킹
+
+* 방화벽: 글로벌 파일 캐시 에지 및 관리 서버와 코어 인스턴스 간에 TCP 포트를 허용해야 합니다.
++
+글로벌 파일 캐시 TCP 포트: 443(HTTPS-LMS), 6618–6630.
+
+* 네트워크 최적화 장치(예: Riverbed Steelhead)는 글로벌 파일 캐시 특정 포트(TCP 6618-6630)를 통과하도록 구성해야 합니다.
+
+
+
+
+=== 클라이언트 워크스테이션 및 응용 프로그램 모범 사례
+
+Global File Cache는 고객의 환경에 투명하게 통합되므로 사용자는 엔터프라이즈 애플리케이션을 실행하는 클라이언트 워크스테이션을 사용하여 중앙 집중화된 데이터에 액세스할 수 있습니다. 글로벌 파일 캐시를 사용하면 직접 드라이브 매핑 또는 DFS 네임스페이스를 통해 데이터에 액세스할 수 있습니다. 글로벌 파일 캐시 패브릭, 지능형 파일 캐싱 및 소프트웨어의 주요 측면에 대한 자세한 내용은 을 참조하십시오 link:concept_before_you_begin_to_deploy_gfc.html["글로벌 파일 캐시 배포를 시작하기 전에"^] 섹션을 참조하십시오.
+
+최적의 환경과 성능을 보장하려면 글로벌 파일 캐시 사용자 가이드에 설명된 Microsoft Windows 클라이언트 요구 사항 및 모범 사례를 준수해야 합니다. 이는 모든 버전의 Microsoft Windows에 적용됩니다.
+
+자세한 내용은 를 참조하십시오 link:https://repo.cloudsync.netapp.com/gfc/NetApp%20GFC%20-%20User%20Guide.pdf["NetApp 글로벌 파일 캐시 사용자 가이드 를 참조하십시오"^].
+
+
+
+=== 방화벽 및 안티바이러스 모범 사례
+
+Global File Cache는 가장 일반적인 바이러스 백신 애플리케이션 제품군이 글로벌 파일 캐시와 호환되는지 확인하기 위해 합당한 노력을 기울이지만, NetApp은 이러한 프로그램 또는 관련 업데이트, 서비스 팩 또는 수정으로 인한 비호환성 또는 성능 문제를 보증하지 않습니다.
+
+Global File Cache는 Global File Cache 지원 인스턴스(Core 또는 Edge)에 모니터링 또는 바이러스 백신 솔루션의 설치 또는 응용 프로그램을 권장하지 않습니다. 솔루션을 선택 또는 정책에 따라 설치할 경우 다음과 같은 Best Practice 및 권장 사항이 적용되어야 합니다. 일반적인 바이러스 백신 제품군에 대해서는 의 부록 A를 참조하십시오 link:https://repo.cloudsync.netapp.com/gfc/NetApp%20GFC%20-%20User%20Guide.pdf["NetApp 글로벌 파일 캐시 사용자 가이드 를 참조하십시오"^].
+
+
+
+=== 방화벽 설정
+
+* Microsoft 방화벽:
++
+** 방화벽 설정을 기본값으로 유지합니다.
+** 권장 사항: Microsoft 방화벽 설정 및 서비스는 기본 설정인 OFF로 두고 표준 Global File Cache Edge 인스턴스에는 시작되지 않습니다.
+** 권장 사항: Microsoft 방화벽 설정 및 서비스를 기본 설정인 ON으로 두고 도메인 컨트롤러 역할도 실행하는 Edge 인스턴스에 대해 시작합니다.
+
+
+* 기업 방화벽:
++
+** 글로벌 파일 캐시 코어 인스턴스는 TCP 포트 6618-6630에서 수신 대기합니다. 글로벌 파일 캐시 에지 인스턴스가 이러한 TCP 포트에 연결될 수 있는지 확인합니다.
+** 글로벌 파일 캐시 인스턴스는 TCP 포트 443(HTTPS)에서 글로벌 파일 캐시 관리 서버와 통신해야 합니다.
+
+
+* 네트워크 최적화 솔루션/장치는 글로벌 파일 캐시 특정 포트를 통과하도록 구성해야 합니다.
+
+
+
+
+=== 바이러스 백신 모범 사례
+
+이 섹션에서는 전역 파일 캐시를 실행하는 Windows Server 인스턴스에서 바이러스 백신 소프트웨어를 실행할 때의 요구 사항을 이해하는 데 도움이 됩니다. Global File Cache는 Cylance, McAfee, Symantec, Sophos, Trend Micro, Kaspersky와 Windows Defender는 글로벌 파일 캐시와 함께 사용됩니다.
+
+
+NOTE: Edge 어플라이언스에 바이러스 백신을 추가하면 사용자 성능에 10 ~ 20%의 영향을 줄 수 있습니다.
+
+자세한 내용은 를 참조하십시오 link:https://repo.cloudsync.netapp.com/gfc/NetApp%20GFC%20-%20User%20Guide.pdf["NetApp 글로벌 파일 캐시 사용자 가이드 를 참조하십시오"^].
+
+
+
+==== 제외 항목을 구성합니다
+
+바이러스 백신 소프트웨어 또는 기타 타사 인덱싱 또는 스캔 유틸리티는 Edge 인스턴스의 D:\를 스캔해서는 안 됩니다. 이러한 Edge 서버 드라이브 D:\를 스캔하면 전체 캐시 네임스페이스에 대한 많은 파일 열기 요청이 발생합니다. 이로 인해 WAN을 통해 데이터 센터에서 최적화되는 모든 파일 서버로 파일이 가져오게 됩니다. Edge 인스턴스에 WAN 연결 플러딩과 불필요한 로드가 발생하여 성능이 저하됩니다.
+
+D:\ 드라이브 외에 일반적으로 다음과 같은 글로벌 파일 캐시 디렉터리 및 프로세스는 모든 바이러스 백신 응용 프로그램에서 제외되어야 합니다.
+
+* 'C:\Program Files\TalonFAST\'
+* 'C:\Program Files\TalonFAST\Bin\LLMClientService.exe'
+* 'C:\Program Files\TalonFAST\Bin\LMServerService.exe'
+* 'C:\Program Files\TalonFAST\Bin\Optimus.exe'
+* 'C:\Program Files\TalonFAST\Bin\tafsexport.exe'
+* 'C:\Program Files\TalonFAST\Bin\tafsuils.exe'
+* 'C:\Program Files\TalonFAST\Bin\tapp.exe'
+* 'C:\Program Files\TalonFAST\Bin\TFS.exe'
+* 'C:\Program Files\TalonFAST\Bin\TService.exe'
+* 'C:\Program Files\TalonFAST\Bin\tum.exe'
+* 'C:\Program Files\TalonFAST\FastDebugLogs\'
+* 'C:\Windows\System32\drivers\tfast.sys'
+* `\?\TafsMtPt:\ 또는 \\?\TafsMtPt * '
+* "\Device\TalonCacheFS\"
+* '\\?\GLOBALROOT\Device\TalonCacheFS\'
+* '\\?\GLOBALROOT\Device\TalonCacheFS\ *'
+
+
+
+
+== NetApp 지원 정책
+
+글로벌 파일 캐시 인스턴스는 Windows Server 2016 및 2019 플랫폼에서 실행되는 기본 애플리케이션으로서 글로벌 파일 캐시용으로 특별히 설계되었습니다. 글로벌 파일 캐시를 사용하려면 디스크, 메모리, 네트워크 인터페이스, 네트워크 인터페이스 등의 플랫폼 리소스에 또한 이러한 리소스에 대한 높은 수요를 처리할 수 있습니다. 가상 배포에는 메모리/CPU 예약 및 고성능 디스크가 필요합니다.
+
+* 글로벌 파일 캐시의 지사 구축 시 글로벌 파일 캐시를 실행하는 서버에서 지원되는 서비스 및 애플리케이션은 다음으로 제한됩니다.
++
+** DNS/DHCP를 선택합니다
+** Active Directory 도메인 컨트롤러(글로벌 파일 캐시는 별도의 볼륨에 있어야 함)
+** 인쇄 서비스
+** Microsoft System Center Configuration Manager(SCCM)
+** 글로벌 파일 캐시 승인 클라이언트 측 시스템 에이전트 및 바이러스 백신 애플리케이션
+
+
+* NetApp 지원 및 유지 관리는 글로벌 파일 캐시에만 적용됩니다.
+* 데이터베이스 서버, 메일 서버 등과 같이 일반적으로 리소스 집약적인 업무용 소프트웨어 지원되지 않습니다.
+* 고객은 글로벌 파일 캐시를 실행하는 서버에 설치될 수 있는 글로벌 파일 캐시 소프트웨어가 아닌 소프트웨어에 대해 책임을 집니다.
++
+** 타사 소프트웨어 패키지로 인해 소프트웨어 또는 리소스가 Global File Cache와 충돌하거나 성능이 저하될 경우 Global File Cache의 지원 조직은 고객이 Global File Cache를 실행하는 서버에서 소프트웨어를 비활성화하거나 제거하도록 요구할 수 있습니다.
+** 글로벌 파일 캐시 애플리케이션을 실행하는 서버에 추가되는 모든 소프트웨어의 설치, 통합, 지원 및 업그레이드에 대한 책임은 고객에게 있습니다.
+
+
+* 바이러스 백신 도구 및 라이센스 에이전트와 같은 시스템 관리 유틸리티/에이전트가 공존할 수 있습니다. 그러나 위에 나열된 지원되는 서비스 및 응용 프로그램을 제외하고 이러한 응용 프로그램은 글로벌 파일 캐시에서 지원되지 않으며 위와 동일한 지침을 계속 따라야 합니다.
++
+** 추가된 소프트웨어의 모든 설치, 통합, 지원 및 업그레이드에 대한 책임은 고객에게 있습니다.
+** 고객이 글로벌 파일 캐시(Global File Cache)와 소프트웨어 또는 리소스가 충돌하거나 성능이 저하된 것으로 의심되거나 원인이 되는 타사 소프트웨어 패키지를 설치하는 경우, 글로벌 파일 캐시의 지원 조직에서 소프트웨어를 비활성화/제거해야 할 필요가 있을 수 있습니다.
+
+
+

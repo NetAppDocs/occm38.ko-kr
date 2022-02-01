@@ -1,0 +1,176 @@
+---
+sidebar: sidebar 
+permalink: task_getting_started_compliance.html 
+keywords: cloud compliance, get started, enable cloud compliance, cifs credentials, smb credentials, outbound internet, endpoints, cloud compliance internet, web browser connectivity, cloud compliance access, privacy, compliance, dp volumes, data protection volumes 
+summary: AWS 또는 Azure의 Azure NetApp Files 또는 Cloud Volumes ONTAP용 Cloud Compliance를 시작하려면 몇 단계를 완료하십시오. 
+---
+= Cloud Volumes ONTAP 및 Azure NetApp Files용 클라우드 규정 준수 시작하기
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP 또는 Azure NetApp Files용 클라우드 규정 준수를 시작하려면 몇 단계를 완료하십시오.
+
+
+
+== 빠른 시작
+
+다음 단계를 따라 빠르게 시작하거나 나머지 섹션으로 스크롤하여 자세한 내용을 확인하십시오.
+
+
+
+==== 클라우드 규정 준수 인스턴스 구축
+
+[role="quick-margin-para"]
+link:task_deploy_cloud_compliance.html["Cloud Manager에서 클라우드 규정 준수 구축"^] 이미 배포된 인스턴스가 없는 경우
+
+
+
+==== 작업 환경에서 클라우드 규정 준수 지원
+
+[role="quick-margin-para"]
+Cloud Compliance * 를 클릭하고 * Configuration * 탭을 선택한 다음 특정 작업 환경에 대한 규정 준수 검사를 활성화합니다.
+
+
+
+==== 볼륨에 대한 액세스를 확인합니다
+
+[role="quick-margin-para"]
+이제 Cloud Compliance를 사용하도록 설정했으므로 볼륨에 액세스할 수 있는지 확인합니다.
+
+* 클라우드 규정 준수 인스턴스에는 각 Cloud Volumes ONTAP 서브넷 또는 Azure NetApp Files 서브넷에 대한 네트워크 연결이 필요합니다.
+* Cloud Volumes ONTAP의 보안 그룹은 클라우드 규정 준수 인스턴스로부터 인바운드 연결을 허용해야 합니다.
+* NFS 볼륨 엑스포트 정책은 Cloud Compliance 인스턴스에서 액세스할 수 있어야 합니다.
+* Cloud Compliance는 CIFS 볼륨을 검색하려면 Active Directory 자격 증명이 필요합니다.
++
+Cloud Compliance * > * Scan Configuration * > * Edit CIFS Credentials * 를 클릭하고 자격 증명을 입력합니다. 자격 증명은 읽기 전용일 수 있지만 관리자 자격 증명을 제공하면 Cloud Compliance에서 상승된 권한이 필요한 데이터를 읽을 수 있습니다.
+
+
+
+
+
+==== 스캔할 볼륨을 구성합니다
+
+[role="quick-margin-para"]
+스캔할 볼륨을 선택하면 Cloud Compliance에서 스캔을 시작합니다.
+
+
+
+== 클라우드 규정 준수 인스턴스 구축
+
+link:task_deploy_cloud_compliance.html["Cloud Manager에서 클라우드 규정 준수 구축"^] 이미 배포된 인스턴스가 없는 경우
+
+
+
+== 작업 환경에서 클라우드 규정 준수 지원
+
+. Cloud Manager 상단에서 * Cloud Compliance * 를 클릭한 다음 * Configuration * 탭을 선택합니다.
++
+image:screenshot_cloud_compliance_we_scan_config.png["Cloud Compliance 인스턴스를 구축한 직후 Scan Configuration 탭의 스크린샷"]
+
+. 작업 환경의 모든 볼륨을 스캔하려면 * Activate Compliance for All Volumes * 를 클릭합니다.
++
+작업 환경의 특정 볼륨만 스캔하려면 * 를 클릭하거나 볼륨 * 을 선택한 다음 스캔할 볼륨을 선택합니다.
+
+
+
+을 참조하십시오 <<Enabling and disabling compliance scans on volumes,볼륨에서 규정 준수 검사 활성화 및 비활성화>> 를 참조하십시오.
+
+Cloud Compliance는 각 작업 환경에서 데이터 스캔을 시작합니다. Cloud Compliance에서 초기 스캔을 마치면 Compliance 대시보드에서 결과를 얻을 수 있습니다. 소요되는 시간은 데이터 양에 따라 다릅니다. 몇 분 또는 몇 시간이 걸릴 수도 있습니다.
+
+
+
+== Cloud Compliance에서 볼륨에 액세스할 수 있는지 확인
+
+네트워킹, 보안 그룹 및 엑스포트 정책을 확인하여 Cloud Compliance에서 볼륨에 액세스할 수 있는지 확인합니다. CIFS 볼륨에 액세스할 수 있도록 Cloud Compliance에 CIFS 자격 증명을 제공해야 합니다.
+
+.단계
+. 클라우드 규정 준수 인스턴스와 Cloud Volumes ONTAP 또는 Azure NetApp Files용 볼륨이 포함된 각 네트워크 간에 네트워크 연결이 있는지 확인하십시오.
++
+
+NOTE: Azure NetApp Files의 경우 Cloud Compliance는 Cloud Manager와 동일한 지역에 있는 볼륨만 스캔할 수 있습니다.
+
+. Cloud Volumes ONTAP의 보안 그룹이 클라우드 규정 준수 인스턴스의 인바운드 트래픽을 허용하는지 확인합니다.
++
+Cloud Compliance 인스턴스의 IP 주소에 있는 트래픽에 대한 보안 그룹을 열거나 가상 네트워크 내부에서 발생하는 모든 트래픽에 대해 보안 그룹을 열 수 있습니다.
+
+. NFS 볼륨 엑스포트 정책에 Cloud Compliance 인스턴스의 IP 주소가 포함되어 각 볼륨의 데이터에 액세스할 수 있는지 확인합니다.
+. CIFS를 사용하는 경우 CIFS 볼륨을 스캔할 수 있도록 Active Directory 자격 증명을 사용하여 Cloud Compliance를 제공합니다.
++
+.. Cloud Manager 상단에서 * Cloud Compliance * 를 클릭합니다.
+.. Configuration * 탭을 클릭합니다.
++
+image:screenshot_cifs_credentials.gif["콘텐츠 창의 오른쪽 상단에서 사용할 수 있는 스캔 상태 단추를 보여 주는 규정 준수 탭의 스크린샷"]
+
+.. 각 작업 환경에서 * CIFS 자격 증명 편집 * 을 클릭하고 Cloud Compliance가 시스템의 CIFS 볼륨에 액세스하는 데 필요한 사용자 이름과 암호를 입력합니다.
++
+자격 증명은 읽기 전용일 수 있지만 관리자 자격 증명을 제공하면 Cloud Compliance에서 상승된 사용 권한이 필요한 모든 데이터를 읽을 수 있습니다. 자격 증명은 Cloud Compliance 인스턴스에 저장됩니다.
+
++
+자격 증명을 입력한 후 모든 CIFS 볼륨이 성공적으로 인증되었다는 메시지가 표시됩니다.
+
++
+image:screenshot_cifs_status.gif["스캔 구성 페이지와 CIFS 자격 증명이 성공적으로 제공된 Cloud Volumes ONTAP 시스템 1개를 보여 주는 스크린샷입니다."]
+
+
+
+. Scan Configuration_ 페이지에서 * View Details * 를 클릭하여 각 CIFS 및 NFS 볼륨의 상태를 검토하고 오류를 수정합니다.
++
+예를 들어, 다음 이미지는 3개의 볼륨을 보여 줍니다. 그 중 하나는 Cloud Compliance 인스턴스와 볼륨 간의 네트워크 연결 문제로 인해 Cloud Compliance에서 스캔할 수 없는 볼륨입니다.
+
++
+image:screenshot_compliance_volume_details.gif["스캔 구성에서 View Details(세부정보 보기) 페이지의 스크린샷으로, 이 중 하나는 Cloud Compliance(클라우드 규정 준수)와 볼륨 간의 네트워크 연결로 인해 스캔되지 않습니다."]
+
+
+
+
+
+== 볼륨에서 규정 준수 검사 활성화 및 비활성화
+
+스캔 구성 페이지에서 언제든지 작업 환경에서 볼륨 스캔을 중지하거나 시작할 수 있습니다. 모든 볼륨을 검사하는 것이 좋습니다.
+
+image:screenshot_volume_compliance_selection.png["개별 볼륨 스캔을 활성화 또는 비활성화할 수 있는 스캔 구성 페이지의 스크린샷."]
+
+[cols="40,50"]
+|===
+| 대상: | 방법은 다음과 같습니다. 
+
+
+| 볼륨 스캔을 비활성화합니다 | 볼륨 슬라이더를 왼쪽으로 이동합니다 
+
+
+| 모든 볼륨에 대한 스캔을 비활성화합니다 | 모든 볼륨에 대해 * 준수 활성화 * 슬라이더를 왼쪽으로 이동합니다 
+
+
+| 볼륨 스캔을 활성화합니다 | 볼륨 슬라이더를 오른쪽으로 이동합니다 
+
+
+| 모든 볼륨 스캔을 활성화합니다 | 모든 볼륨에 대해 * 준수 활성화 * 슬라이더를 오른쪽으로 이동합니다 
+|===
+
+TIP: 작업 환경에 추가된 새 볼륨은 * Activate Compliance for All Volumes * 설정이 활성화된 경우에만 자동으로 스캔됩니다. 이 설정을 비활성화하면 작업 환경에서 새로 생성한 각 볼륨에 대해 스캐닝을 활성화해야 합니다.
+
+
+
+== 데이터 보호 볼륨을 검색하는 중입니다
+
+기본적으로 데이터 보호(DP) 볼륨은 외부에서 노출되지 않고 Cloud Compliance에서 액세스할 수 없기 때문에 스캔되지 않습니다. 일반적으로 이러한 볼륨은 온프레미스 ONTAP 클러스터에서 SnapMirror 작업을 위한 타겟 볼륨입니다.
+
+처음에 Cloud Compliance 볼륨 목록은 이러한 볼륨을 _Type_ * DP * 로 식별하며 _Status_ * Not Scanning * 및 _Required Action_ * DP 볼륨에 대한 액세스 사용 * 을 표시합니다.
+
+image:screenshot_cloud_compliance_dp_volumes.png["데이터 보호 볼륨을 스캔하도록 선택할 수 있는 DP 볼륨에 대한 액세스 활성화 버튼이 표시된 스크린샷"]
+
+이러한 데이터 보호 볼륨을 스캔하려는 경우:
+
+. 페이지 맨 위에 있는 * DP 볼륨에 대한 액세스 활성화 * 버튼을 클릭합니다.
+. 스캔할 각 DP 볼륨을 활성화하거나 모든 볼륨 * 컨트롤에 대해 * 규정 준수 활성화 를 사용하여 모든 DP 볼륨을 포함한 모든 볼륨을 활성화합니다.
+
+
+활성화되면 Cloud Compliance는 규정 준수를 위해 활성화된 각 DP 볼륨에서 NFS 공유를 생성하여 검색할 수 있습니다. 공유 내보내기 정책은 클라우드 규정 준수 인스턴스에서만 액세스를 허용합니다.
+
+
+NOTE: 소스 ONTAP 시스템에서 처음에 NFS 볼륨으로 생성된 볼륨만 볼륨 목록에 표시됩니다. 처음에 CIFS로 생성된 소스 볼륨은 현재 Cloud Compliance에 표시되지 않습니다.

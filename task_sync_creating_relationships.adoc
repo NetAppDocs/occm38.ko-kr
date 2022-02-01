@@ -1,0 +1,103 @@
+---
+sidebar: sidebar 
+permalink: task_sync_creating_relationships.html 
+keywords: sync, relationship, create, tags, settings, create a relationship, creating relationships, bucket setup, tags 
+summary: 동기화 관계를 생성하면 Cloud Sync 서비스는 소스에서 타겟으로 파일을 복사합니다. 초기 복사 후, 서비스는 24시간마다 변경된 데이터를 동기화합니다. 
+---
+= 동기화 관계를 생성하는 중입니다
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+동기화 관계를 생성하면 Cloud Sync 서비스는 소스에서 타겟으로 파일을 복사합니다. 초기 복사 후, 서비스는 24시간마다 변경된 데이터를 동기화합니다.
+
+아래 단계에서는 NFS 서버에서 S3 버킷으로 동기화 관계를 설정하는 방법을 보여 주는 예를 제공합니다.
+
+.단계
+. Cloud Manager에서 * Sync * 를 클릭합니다.
+. 동기화 관계 정의 * 페이지에서 소스 및 대상을 선택합니다.
++
+다음 단계에서는 NFS 서버에서 S3 버킷으로 동기화 관계를 생성하는 방법의 예를 제공합니다.
+
++
+image:screenshot_nfs_to_s3.gif["NFS를 소스로, S3를 새로운 동기화 관계의 타겟으로 표시하는 스크린샷"]
+
+. NFS 서버 * 페이지에서 AWS에 동기화할 NFS 서버의 IP 주소 또는 정규화된 도메인 이름을 입력합니다.
+. Data Broker * 페이지에서 프롬프트에 따라 AWS, Azure 또는 Google Cloud Platform에서 데이터 브로커 가상 컴퓨터를 만들거나 기존 Linux 호스트에 데이터 브로커 소프트웨어를 설치합니다.
++
+자세한 내용은 다음 페이지를 참조하십시오.
+
++
+** link:task_sync_installing_aws.html["AWS에서 데이터 브로커 설치"]
+** link:task_sync_installing_azure.html["Azure에서 데이터 브로커 설치"]
+** link:task_sync_installing_gcp.html["GCP에서 데이터 브로커를 설치하는 중입니다"]
+** link:task_sync_installing_linux.html["Linux 호스트에 데이터 브로커 설치"]
+
+
+. 데이터 브로커를 설치한 후 * 계속 * 을 클릭합니다.
++
+다음 그림은 AWS에 데이터 브로커가 성공적으로 구축된 모습입니다.
+
++
+image:screenshot_created_instance.gif["이 스크린샷은 성공적으로 배포된 인스턴스를 보여 줍니다. 인터페이스에는 AWS 네트워킹을 포함한 인스턴스에 대한 세부 정보가 표시됩니다."]
+
+. [[FILTER](* 디렉터리*) 페이지에서 최상위 디렉터리나 하위 디렉터리를 선택합니다.
++
+Cloud Sync에서 내보내기를 검색할 수 없는 경우 * 내보내기 수동 추가 * 를 클릭하고 NFS 내보내기 이름을 입력합니다.
+
++
+
+NOTE: NFS 서버에 둘 이상의 디렉토리를 동기화하려는 경우 작업을 완료한 후 동기화 관계를 추가로 생성해야 합니다.
+
+. AWS S3 버킷 * 페이지에서 버킷을 선택합니다.
++
+** 드릴다운하여 버킷 내의 기존 폴더를 선택하거나 버킷 내에서 생성한 새 폴더를 선택합니다.
+** 목록에 추가 * 를 클릭하여 AWS 계정과 연결되지 않은 S3 버킷을 선택합니다. link:reference_sync_requirements.html#s3["S3 버킷에 특정 권한을 적용해야 합니다"].
+
+
+. Bucket 설정 * 페이지에서 Bucket을 설정합니다.
++
+** S3 버킷 암호화를 사용하도록 설정한 다음 AWS KMS 키를 선택하고 KMS 키의 ARN을 입력하거나 AES-256 암호화를 선택합니다.
+** S3 스토리지 클래스를 선택합니다. link:reference_sync_requirements.html#storage-classes["지원되는 스토리지 클래스를 봅니다"].
++
+image:screenshot_bucket_setup.gif["이 스크린샷은 암호화에 대해 예 또는 아니요 를 선택하고 동기화된 데이터에 대해 특정 S3 저장소 클래스를 선택할 수 있는 Bucket 설정 페이지를 보여 줍니다."]
+
+
+
+. 설정 * 페이지에서 소스 파일 및 폴더가 대상 위치에서 동기화 및 유지되는 방식을 정의합니다.
++
+스케줄:: 향후 동기화를 위한 반복 일정을 선택하거나 동기화 일정을 해제합니다. 1분마다 데이터를 동기화하도록 관계를 예약할 수 있습니다.
+다시 시도:: Cloud Sync에서 파일을 건너뛰기 전에 동기화를 재시도할 횟수를 정의합니다.
+최근에 수정된 파일:: 예약된 동기화 전에 최근에 수정된 파일을 제외하도록 선택합니다.
+소스에서 파일 삭제::
++
+--
+이 옵션을 활성화하면 데이터 브로커에서 local.json 파일의 매개 변수도 변경해야 합니다. 파일을 열고 _workers.transferrer.delete-on-source_ 라는 매개 변수를 * true * 로 변경합니다.
+
+--
+대상에서 파일 삭제:: 파일이 소스에서 삭제된 경우 대상 위치에서 파일을 삭제하도록 선택합니다. 기본값은 대상 위치에서 파일을 삭제하지 않는 것입니다.
+개체 태그 지정:: AWS S3가 동기화 관계의 타겟인 경우 Cloud Sync는 S3 오브젝트를 동기화 작업과 관련된 메타데이터와 태그합니다. 사용자 환경에서 S3 오브젝트 태그 지정을 사용하지 않도록 설정할 수 있습니다. 태깅을 사용하지 않으면 Cloud Sync에 영향을 주지 않습니다. Cloud Sync는 동기화 메타데이터를 다른 방식으로 저장합니다.
+파일 형식:: 파일, 디렉토리 및 심볼 링크 등 각 동기화에 포함할 파일 유형을 정의합니다.
+파일 확장명 제외::
++
+--
+video::video_file_extensions.mp4[width=840,height=240]
+--
+파일 크기:: 파일 크기나 특정 크기 범위에 있는 파일에 관계없이 모든 파일을 동기화하도록 선택합니다.
+수정한 날짜:: 마지막으로 수정한 날짜, 특정 날짜 이후 수정된 파일, 특정 날짜 이전 또는 시간 범위 사이에 관계없이 모든 파일을 선택합니다.
+
+
+. 관계 태그 * 페이지에서 최대 9개의 관계 태그를 입력한 다음 * 계속 * 을 클릭합니다.
++
+Cloud Sync 서비스는 S3 버킷에 동기화되는 각 오브젝트에 태그를 할당합니다.
+
+. 동기화 관계에 대한 세부 정보를 검토한 다음 * 관계 생성 * 을 클릭합니다.
+
+
+결과 *
+
+Cloud Sync가 소스와 타겟 간의 데이터 동기화를 시작합니다.

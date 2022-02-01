@@ -1,0 +1,50 @@
+---
+sidebar: sidebar 
+permalink: concept_worm.html 
+keywords: worm, write once, read many, snaplock, enterprise, retain, retention, period 
+summary: 'Cloud Volumes ONTAP 시스템에서 WORM(Write Once, Read Many) 스토리지를 활성화하여 지정된 보존 기간 동안 수정되지 않은 형식으로 파일을 보존할 수 있습니다. WORM 파일은 파일 레벨에서 보호됩니다.' 
+---
+= WORM 스토리지
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP 시스템에서 WORM(Write Once, Read Many) 스토리지를 활성화하여 지정된 보존 기간 동안 수정되지 않은 형식으로 파일을 보존할 수 있습니다. WORM 스토리지는 엔터프라이즈 모드에서 SnapLock 기술을 기반으로 하며, 이는 WORM 파일이 파일 레벨에서 보호됨을 의미합니다.
+
+파일이 WORM 스토리지에 커밋된 후에는 보존 기간이 만료된 후에도 수정할 수 없습니다. 변조 방지 시계는 WORM 파일의 보존 기간이 경과된 시점을 결정합니다.
+
+보존 기간이 경과한 후에는 더 이상 필요하지 않은 파일을 삭제해야 합니다.
+
+[discrete]
+=== WORM 스토리지를 활성화하는 중입니다
+
+새로운 작업 환경을 생성할 때 Cloud Volumes ONTAP 시스템에서 WORM 스토리지를 활성화할 수 있습니다. 여기에는 활성화 코드 지정 및 파일의 기본 보존 기간 설정이 포함됩니다. Cloud Manager 인터페이스의 오른쪽 아래에 있는 채팅 아이콘을 사용하여 활성화 코드를 얻을 수 있습니다.
+
+
+NOTE: 개별 볼륨에서 WORM 스토리지를 활성화할 수 없음 -- WORM은 시스템 레벨에서 활성화해야 합니다.
+
+다음 이미지는 작업 환경을 생성할 때 WORM 스토리지를 활성화하는 방법을 보여줍니다.
+
+image:screenshot_enabling_worm.gif["에는 새 작업 환경을 생성할 때 사용할 수 있는 WORM 옵션이 나와 있습니다."]
+
+[discrete]
+=== WORM에 파일 커밋 중
+
+애플리케이션을 사용하여 NFS 또는 CIFS를 통해 WORM에 파일을 커밋하거나 ONTAP CLI를 사용하여 파일을 WORM에 자동으로 커밋할 수 있습니다. 또한 WORM 추가 가능 파일을 사용하여 로그 정보와 같이 점증적으로 기록된 데이터를 보존할 수 있습니다.
+
+Cloud Volumes ONTAP 시스템에서 WORM 스토리지를 활성화한 후에는 모든 WORM 스토리지 관리에 ONTAP CLI를 사용해야 합니다. 자세한 지침은 을 참조하십시오 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-arch-con/home.html["ONTAP 설명서"^].
+
+
+NOTE: WORM 스토리지에 대한 Cloud Volumes ONTAP 지원은 SnapLock 엔터프라이즈 모드와 동일합니다.
+
+[discrete]
+=== 제한 사항
+
+* AWS 또는 Azure에서 직접 디스크를 삭제하거나 이동하는 경우, 만료 날짜 전에 볼륨을 삭제할 수 있습니다.
+* WORM 스토리지가 활성화된 경우 오브젝트 스토리지에 대한 데이터 계층화를 설정할 수 없습니다.
+* WORM 스토리지를 활성화하려면 클라우드 백업을 비활성화해야 합니다.
+

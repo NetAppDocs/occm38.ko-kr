@@ -1,0 +1,84 @@
+---
+sidebar: sidebar 
+permalink: concept_saas.html 
+keywords: cloud manager, Connector, user interface, ui, interface, cloud, saas, saas interface 
+summary: 또한 Cloud Manager를 위한 서비스형 소프트웨어 경험을 소개했습니다. 새로운 경험을 통해 Cloud Manager를 더욱 쉽게 사용하고 NetApp은 하이브리드 클라우드 인프라를 관리하는 추가 기능을 제공할 수 있습니다. 
+---
+= Cloud Manager를 SaaS로 전환
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+또한 Cloud Manager를 위한 서비스형 소프트웨어 경험을 소개했습니다. 새로운 경험을 통해 Cloud Manager를 더욱 쉽게 사용하고 NetApp은 하이브리드 클라우드 인프라를 관리하는 추가 기능을 제공할 수 있습니다.
+
+
+
+== Cloud Manager의 이전 경험
+
+Cloud Manager 소프트웨어는 이전에 사용자 인터페이스와 클라우드 공급업체에 요청을 보낸 관리 계층으로 구성되어 있었습니다. 시작하려면 클라우드 네트워크 또는 사내 네트워크에 Cloud Manager를 구축한 다음 해당 인스턴스에서 실행되는 사용자 인터페이스에 액세스해야 합니다.
+
+그 경험은 변했습니다.
+
+
+
+== 새로운 SaaS 환경
+
+Cloud Manager 인터페이스는 이제 NetApp Cloud Central에서 로그인하는 SaaS 기반 사용자 인터페이스를 통해 액세스할 수 있습니다. 네트워크에서 실행되는 소프트웨어를 통해 더 이상 사용자 인터페이스에 액세스할 필요가 없습니다.
+
+대부분의 경우 클라우드 또는 온프레미스 네트워크에 _Connector_를 배포해야 합니다. Connector는 Cloud Volumes ONTAP 및 기타 클라우드 데이터 서비스를 관리하는 데 필요한 소프트웨어입니다. Connector는 실제로 설치한 기존 Cloud Manager 소프트웨어와 동일합니다.
+
+
+
+== 이점
+
+이 SaaS 기반 접근 방식은 다음과 같은 몇 가지 이점을 제공합니다.
+
+* 사용자 환경에 소프트웨어를 배포할 필요 없이 Azure NetApp Files 및 Cloud Volumes Service에 추가 관리 기능을 제공할 수 있습니다.
+* Cloud Central 계정 간에 쉽게 전환할 수 있습니다.
++
+사용자가 여러 Cloud Central 계정에 연결되어 있는 경우 언제든지 사용자 설정 메뉴에서 다른 계정으로 변경할 수 있습니다. 그런 다음 해당 계정과 연결된 커넥터와 작업 환경을 볼 수 있습니다.
+
++
+image:screenshot_switch_account.gif[""]
+
+* 다른 네트워크 또는 다른 클라우드 공급자에 설치된 커넥터(현재 Cloud Manager 소프트웨어로 알고 있는 것) 간에 쉽게 전환할 수 있습니다.
++
+image:screenshot_switch_service_connector.gif[""]
+
+
+
+
+
+== 로컬 사용자 인터페이스입니다
+
+SaaS 사용자 인터페이스에서 거의 모든 작업을 수행해야 하지만 로컬 사용자 인터페이스는 Connector에서 계속 사용할 수 있습니다. 이 인터페이스는 커넥터 자체에서 수행해야 하는 몇 가지 작업에 필요합니다.
+
+* 프록시 서버 설정
+* 패치 설치
+* AutoSupport 메시지를 다운로드하는 중입니다
+
+
+SaaS 사용자 인터페이스에서 직접 로컬 사용자 인터페이스에 액세스할 수 있습니다.
+
+image:screenshot_local_ui.gif[""]
+
+
+
+== 인스턴스, VM 및 시스템 유형 변경
+
+Cloud Manager의 새로운 기능과 향후 기능에 적절한 리소스를 제공하기 위해 다음과 같이 필요한 최소 인스턴스, VM 및 시스템 유형을 변경했습니다.
+
+* AWS:T3.xLarge
+* Azure:DS3 v2
+* GCP: n1-standard-4
+
+
+시스템 유형을 업그레이드하면 새로운 Kubernetes 환경, 글로벌 파일 캐시, 모니터링 등과 같은 기능에 액세스할 수 있습니다.
+
+이러한 기본 크기는 지원되는 최소값입니다 link:reference_cloud_mgr_reqs.html["CPU 및 RAM 요구 사항을 기반으로 합니다"].
+
+Cloud Manager에서 커넥터의 시스템 유형을 변경하는 지침을 표시합니다.

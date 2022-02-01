@@ -1,0 +1,60 @@
+---
+sidebar: sidebar 
+permalink: concept_accounts_azure.html 
+keywords: cloud provider accounts, azure, azure accounts, service principal, multiple accounts, permissions, policy, policies, subscriptions, credentials 
+summary: Cloud Manager를 사용하면 Cloud Volumes ONTAP 구축 시 사용할 Azure 자격 증명을 선택할 수 있습니다. 초기 Azure 자격 증명을 사용하여 모든 Cloud Volumes ONTAP 시스템을 배포하거나 추가 자격 증명을 추가할 수 있습니다. 
+---
+= Azure 자격 증명 및 권한
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager를 사용하면 Cloud Volumes ONTAP 구축 시 사용할 Azure 자격 증명을 선택할 수 있습니다. 초기 Azure 자격 증명을 사용하여 모든 Cloud Volumes ONTAP 시스템을 배포하거나 추가 자격 증명을 추가할 수 있습니다.
+
+
+
+== 초기 Azure 자격 증명
+
+Cloud Manager에서 Connector를 배포하는 경우 Connector 가상 머신을 배포할 수 있는 권한이 있는 Azure 계정을 사용해야 합니다. 필요한 권한이 에 나열됩니다 https://mysupport.netapp.com/site/info/cloud-manager-policies["Azure용 커넥터 배포 정책"^].
+
+Cloud Manager가 Azure에 Connector 가상 머신을 구축하면 가 활성화됩니다 https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview["시스템에서 할당한 관리 ID입니다"^] 가상 머신에서 사용자 지정 역할을 생성하고 가상 머신에 할당합니다. 이 역할은 Cloud Manager에 해당 Azure 구독 내의 리소스 및 프로세스를 관리할 수 있는 권한을 제공합니다. link:reference_permissions.html#what-cloud-manager-does-with-azure-permissions["Cloud Manager에서 사용 권한을 사용하는 방법을 검토합니다"].
+
+image:diagram_permissions_initial_azure.png["Cloud Central에서 Azure 계정 및 구독에 Cloud Manager를 배포하는 방법을 보여 주는 개념적 이미지입니다. 시스템에서 할당한 관리 ID가 활성화되고 사용자 지정 역할이 Cloud Manager 가상 머신에 할당됩니다."]
+
+Cloud Volumes ONTAP에 대한 새 작업 환경을 생성할 때 Cloud Manager는 기본적으로 다음과 같은 Azure 자격 증명을 선택합니다.
+
+image:screenshot_accounts_select_azure.gif["세부 정보 및 amp;Credentials 페이지의 계정 전환 옵션을 보여 주는 스크린샷"]
+
+
+
+== 관리되는 ID에 대한 추가 Azure 구독
+
+관리되는 ID는 Connector를 시작한 구독과 연결됩니다. 다른 Azure 구독을 선택하려면 를 수행해야 합니다 link:task_adding_azure_accounts.html#associating-additional-azure-subscriptions-with-a-managed-identity["관리되는 ID를 해당 구독과 연결합니다"].
+
+
+
+== 추가 Azure 자격 증명
+
+다른 Azure 자격 증명을 사용하여 Cloud Volumes ONTAP를 배포하려는 경우 에서 필요한 권한을 부여해야 합니다 link:task_adding_azure_accounts.html["Azure Active Directory에서 서비스 보안 주체 만들기 및 설정"] 각 Azure 계정에 대해. 다음 그림에서는 두 개의 추가 계정을 보여 줍니다. 각 계정에는 권한을 제공하는 서비스 보안 주체와 사용자 지정 역할이 설정되어 있습니다.
+
+image:diagram_permissions_multiple_azure.png["사용자 지정 역할 및 관리 ID를 통해 권한을 받는 초기 Azure 계정과 사용자 지정 역할 및 서비스 보안 주체를 통해 권한을 받는 두 개의 추가 계정을 보여 주는 개념 이미지입니다."]
+
+그러면 됩니다 link:task_adding_azure_accounts.html#adding-azure-accounts-to-cloud-manager["Cloud Manager에 계정 자격 증명을 추가합니다"] AD 서비스 보안 주체에 대한 세부 정보를 제공합니다.
+
+다른 자격 증명 세트를 추가한 후 새 작업 환경을 만들 때 자격 증명으로 전환할 수 있습니다.
+
+image:screenshot_accounts_switch_azure.gif["세부 정보 및 amp;Credentials 페이지에서 계정 전환 을 클릭한 후 클라우드 공급자 계정 간 선택을 보여 주는 스크린샷"]
+
+.Marketplace 구축 및 온프레미스 배포는 어떻습니까?
+****
+위 섹션에서는 NetApp Cloud Central에서 제공하는 Connector의 권장 구축 방법에 대해 설명합니다. 에서 Azure에 Connector를 배포할 수도 있습니다 link:task_launching_azure_mktp.html["Azure 마켓플레이스 를 참조하십시오"], 그리고 당신은 할 수 있다 .
+
+Marketplace를 사용하는 경우 사용 권한이 동일한 방식으로 제공됩니다. Connector에 대해 관리되는 ID를 수동으로 만들고 설정한 다음 추가 계정에 대한 사용 권한을 제공하면 됩니다.
+
+온-프레미스 배포의 경우 Connector에 대해 관리되는 ID를 설정할 수 없지만 서비스 보안 주체를 사용하여 추가 계정에 대해 원하는 권한을 제공할 수 있습니다.
+
+****

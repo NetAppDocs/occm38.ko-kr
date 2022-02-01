@@ -1,0 +1,191 @@
+---
+sidebar: sidebar 
+permalink: task_tiering_onprem_storagegrid.html 
+keywords: data tiering, fabricpool, cloud tiering, tiering cold data, tiering inactive data, tiering aff, tiering fas, tiering ontap, tiering volumes, tier data, tier cold data, tier fas, tier aff, tier ontap, storagegrid, tier to storagegrid, fabricpool storagegrid 
+summary: 데이터를 StorageGRID에 계층화하여 온프레미스 ONTAP 클러스터의 여유 공간을 확보 데이터 계층화는 NetApp의 Cloud Tiering 서비스를 통해 제공됩니다. 
+---
+= 사내 ONTAP 클러스터에서 StorageGRID로 데이터 계층화
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+데이터를 StorageGRID에 계층화하여 온프레미스 ONTAP 클러스터의 여유 공간을 확보 데이터 계층화는 NetApp의 Cloud Tiering 서비스를 통해 제공됩니다.
+
+
+
+== 빠른 시작
+
+다음 단계를 따라 빠르게 시작하거나 나머지 섹션으로 스크롤하여 자세한 내용을 확인하십시오.
+
+
+
+==== 데이터를 StorageGRID에 계층화할 준비를 합니다
+
+[role="quick-margin-para"]
+다음이 필요합니다.
+
+* ONTAP 9.4 이상을 실행하는 All-SSD 애그리게이트를 포함한 AFF 또는 FAS 시스템, 사용자 지정 포트를 통해 StorageGRID에 연결
+* S3 권한이 있는 AWS 액세스 키가 있는 StorageGRID 10.3 이상
+* 구내에 설치된 커넥터.
+* ONTAP 클러스터, StorageGRID 및 Cloud Tiering 서비스에 대한 아웃바운드 HTTPS 연결을 지원하는 커넥터용 네트워킹.
+
+
+
+
+==== 계층화 설정
+
+[role="quick-margin-para"]
+사내 작업 환경을 선택하고 * 계층화 설정 * 을 클릭한 다음 표시되는 메시지에 따라 데이터를 StorageGRID에 계층화합니다.
+
+
+
+== 요구 사항
+
+ONTAP 클러스터에 대한 지원을 확인하고, 네트워킹을 설정하고, 오브젝트 스토리지를 준비합니다.
+
+다음 이미지는 각 구성 요소와 이러한 구성 요소 간에 준비해야 하는 연결을 보여 줍니다.
+
+image:diagram_cloud_tiering_storagegrid.png["사내 서비스 커넥터에 연결된 Cloud Tiering 서비스, ONTAP 클러스터에 연결된 서비스 커넥터, ONTAP 클러스터와 오브젝트 스토리지 간의 연결을 보여 주는 아키텍처 이미지입니다. 활성 데이터는 ONTAP 클러스터에 있고 비활성 데이터는 오브젝트 스토리지에 상주합니다."]
+
+
+NOTE: Connector와 StorageGRID 간의 통신은 오브젝트 스토리지 설정만 해당됩니다.
+
+
+
+=== ONTAP 클러스터 준비
+
+데이터를 StorageGRID에 계층화할 때 ONTAP 클러스터는 다음 요구사항을 충족해야 합니다.
+
+지원되는 ONTAP 플랫폼:: Cloud Tiering은 FAS 시스템에서 AFF 시스템과 모든 SSD 애그리게이트를 지원합니다.
+지원되는 ONTAP 버전입니다:: ONTAP 9.4 이상
+라이센싱:: 데이터를 StorageGRID로 계층화할 때 ONTAP 클러스터에는 FabricPool 라이센스가 필요하지 않습니다.
+클러스터 네트워킹 요구 사항::
++
+--
+* ONTAP 클러스터는 사용자가 지정한 포트를 통해 StorageGRID에 HTTPS 연결을 시작합니다(계층화 설정 중에 포트 구성 가능).
++
+ONTAP는 오브젝트 스토리지 간에 데이터를 읽고 씁니다. 오브젝트 스토리지는 한 번도 시작되고, 응답 하기만 합니다.
+
+* Connector에서 인바운드 연결이 필요하며, 이는 구내에 상주해야 합니다.
++
+클러스터와 Cloud Tiering 서비스를 연결할 필요가 없습니다.
+
+* 인터클러스터 LIF는 계층적 볼륨을 호스팅하는 각 ONTAP 노드에 필요합니다. LIF는 ONTAP가 오브젝트 스토리지에 연결하는 데 사용해야 하는 _IPspace_와 연결되어 있어야 합니다.
++
+IPspace를 사용하면 네트워크 트래픽을 분리할 수 있으므로 개인 정보 보호 및 보안을 위해 클라이언트 트래픽을 분리할 수 있습니다. http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-69120CF0-F188-434F-913E-33ACB8751A5D.html["IPspace에 대해 자세히 알아보십시오"^].
+
++
+데이터 계층화를 설정할 때 Cloud Tiering에서 사용할 IPspace를 묻는 메시지를 표시합니다. 각 LIF가 연결되는 IPspace를 선택해야 합니다. 이는 여러분이 생성한 "기본" IPspace 또는 사용자 지정 IPspace가 될 수 있습니다.
+
+
+
+--
+
+
+link:https://raw.githubusercontent.com/NetAppDocs/cloud-tiering/master/_include/supported_volumes.adoc[""]
+
+
+NOTE: Cloud Tiering은 ONTAP 9.5부터 FlexGroup 볼륨을 지원합니다. 설치 프로그램은 다른 볼륨과 동일하게 작동합니다.
+
+
+
+=== StorageGRID 준비 중
+
+StorageGRID는 다음 요구 사항을 충족해야 합니다.
+
+지원되는 StorageGRID 버전:: StorageGRID 10.3 이상이 지원됩니다.
+S3 자격 증명::
++
+--
+이러한 액세스 키는 다음 권한을 가진 사용자와 연결되어야 합니다.
+
+[source, json]
+----
+"s3:ListAllMyBuckets",
+"s3:ListBucket",
+"s3:GetObject",
+"s3:PutObject",
+"s3:DeleteObject",
+"s3:CreateBucket"
+----
+--
+오브젝트 버전 관리:: 오브젝트 저장소 버킷에서 StorageGRID 오브젝트 버전 관리를 사용하도록 설정하면 안 됩니다.
+
+
+
+
+=== 커넥터 작성 또는 전환
+
+데이터를 클라우드에 계층화하려면 Connector가 필요합니다. 데이터를 StorageGRID에 계층화할 때 Connector를 사내에서 사용할 수 있어야 합니다. 새 커넥터를 설치하거나 현재 선택한 커넥터가 내부에 있는지 확인해야 합니다.
+
+* link:concept_connectors.html["커넥터에 대해 자세히 알아보십시오"]
+* link:reference_cloud_mgr_reqs.html["커넥터 호스트 요구 사항"]
+* link:task_installing_linux.html["기존 Linux 호스트에 커넥터 설치"]
+* link:task_managing_connectors.html["커넥터 간 전환"]
+
+
+
+
+=== 커넥터를 위한 네트워킹 준비
+
+커넥터에 필요한 네트워크 연결이 있는지 확인합니다.
+
+.단계
+. 커넥터가 설치된 네트워크에서 다음 연결을 사용할 수 있는지 확인합니다.
++
+** 포트 443(HTTPS)을 통해 Cloud Tiering 서비스에 대한 아웃바운드 인터넷 연결
+** 포트 443을 통해 StorageGRID에 HTTPS로 연결합니다
+** ONTAP 클러스터에 대한 포트 443을 통한 HTTPS 연결
+
+
+
+
+
+
+== 첫 번째 클러스터에서 StorageGRID로 비활성 데이터 계층화
+
+환경을 준비한 후 첫 번째 클러스터에서 비활성 데이터의 계층화를 시작합니다.
+
+.무엇을 &#8217;필요로 할거야
+* link:task_discovering_ontap.html["온프레미스 작업 환경"].
+* 필요한 S3 권한이 있는 AWS 액세스 키
+
+
+.단계
+. 온프레미스 클러스터를 선택합니다.
+. Setup Tiering * 을 클릭합니다.
++
+image:screenshot_setup_tiering_onprem.gif["온-프레미스 ONTAP 작업 환경을 선택한 후 화면 오른쪽에 표시되는 설치 계층화 옵션을 보여 주는 스크린샷"]
+
++
+이제 계층화 대시보드에 있습니다.
+
+. 클러스터 옆에 있는 * 계층화 설정 * 을 클릭합니다.
+. Tiering Setup * 페이지의 단계를 완료합니다.
++
+.. * 제공업체 선택 *: StorageGRID를 선택합니다.
+.. * 서버 *: StorageGRID 서버의 FQDN을 입력하고 ONTAP가 StorageGRID와 HTTPS 통신에 사용할 포트를 입력한 다음 필요한 S3 권한이 있는 AWS 계정에 대한 액세스 키 및 암호 키를 입력합니다.
+.. * Bucket *: 계층화된 데이터에 대한 새 버킷을 추가하거나 기존 버킷을 선택합니다.
+.. * 클러스터 네트워크 *: ONTAP가 오브젝트 스토리지에 연결하는 데 사용해야 하는 IPspace를 선택하고 * 계속 * 을 클릭합니다.
++
+올바른 IPspace를 선택하면 클라우드 계층화를 통해 ONTAP에서 클라우드 공급자의 오브젝트 스토리지로의 연결을 설정할 수 있습니다.
+
+
+
+. 계층화할 볼륨을 선택하려면 * 계속 * 을 클릭합니다.
+. 계층 볼륨 * 페이지에서 각 볼륨에 대한 계층화를 설정합니다. 를 클릭합니다 image:screenshot_edit_icon.gif["볼륨 계층화를 위해 표의 각 행 끝에 표시되는 편집 아이콘의 스크린샷"] 아이콘을 클릭하고 계층화 정책을 선택한 다음 필요에 따라 냉각 날짜를 조정하고 * 적용 * 을 클릭합니다.
++
+link:concept_cloud_tiering.html#volume-tiering-policies["볼륨 계층화 정책에 대해 자세히 알아보십시오"].
+
++
+image:https://docs.netapp.com/us-en/cloud-tiering/media/screenshot_volumes_select.gif["소스 볼륨 선택 페이지에서 선택한 볼륨을 보여 주는 스크린샷"]
+
+
+
+클러스터의 볼륨에서 StorageGRID로 데이터 계층화를 설정했습니다.
+
+클러스터에 클러스터를 추가하거나 활성 데이터와 비활성 데이터에 대한 정보를 검토할 수 있습니다. 자세한 내용은 을 참조하십시오 link:task_managing_tiering.html["클러스터에서 데이터 계층화 관리"].

@@ -1,0 +1,195 @@
+---
+sidebar: sidebar 
+permalink: faq_cloud_compliance.html 
+keywords: faq, frequently asked questions, questions 
+summary: 이 FAQ는 질문에 대한 간단한 답변을 찾는 경우에 도움이 될 수 있습니다. 
+---
+= 클라우드 규정 준수에 대한 FAQ
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+이 FAQ는 질문에 대한 간단한 답변을 찾는 경우에 도움이 될 수 있습니다.
+
+
+
+== 클라우드 규정 준수란?
+
+클라우드 규정 준수 는 인공 지능(AI) 기반 기술을 사용하는 클라우드 오퍼링으로, 조직에서 Azure NetApp Files 구성, AWS 또는 Azure에서 호스팅되는 Cloud Volumes ONTAP 시스템, Amazon S3 버킷 및 데이터베이스 전반의 중요 데이터를 파악하고 데이터 컨텍스트를 이해하는 데 도움을 줍니다.
+
+Cloud Compliance는 GDPR, CCPA, HIPAA 등과 같은 데이터 개인 정보 보호 및 민감도에 대한 새로운 데이터 규정 준수 규정을 해결하기 위해 사전 정의된 매개 변수(예: 중요 정보 유형 및 범주)를 제공합니다.
+
+
+
+== 클라우드 규정 준수를 사용해야 하는 이유는 무엇입니까?
+
+Cloud Compliance는 데이터를 통해 다음과 같은 이점을 제공합니다.
+
+* 데이터 규정 준수 및 개인정보 보호 규정 준수
+* 데이터 보존 정책 준수
+* GDPR, CCPA, HIPAA 및 기타 데이터 개인 정보 보호 규정에 따라 데이터 주체에 대응하여 특정 데이터를 쉽게 찾고 보고할 수 있습니다.
+
+
+
+
+== 클라우드 규정 준수의 일반적인 사용 사례는 무엇입니까?
+
+* 개인 식별 정보(PII)를 식별합니다.
+* GDPR 및 CCPA 개인 정보 보호 규정에서 요구하는 광범위한 중요 정보를 식별합니다.
+* 새로운 데이터 개인 정보 보호 규정 및 예정된 데이터 개인 정보 보호 규정을 준수합니다.
+
+
+https://cloud.netapp.com/cloud-compliance["클라우드 규정 준수 사용 사례에 대해 자세히 알아보십시오"^].
+
+
+
+== Cloud Compliance로 스캔할 수 있는 데이터 유형은 무엇입니까?
+
+Cloud Compliance는 Cloud Volumes ONTAP 및 Azure NetApp Files에서 관리하는 NFS 및 CIFS 프로토콜을 통해 비정형 데이터 스캔을 지원합니다. Cloud Compliance는 Amazon S3 버킷에 저장된 데이터도 스캔할 수 있습니다.
+
+또한 Cloud Compliance는 Cloud Manager로 관리할 필요가 없는 데이터베이스를 어디서나 스캔할 수 있습니다.
+
+link:concept_cloud_compliance.html#how-scans-work["스캔 작동 방식에 대해 알아보십시오"].
+
+
+
+== 지원되는 클라우드 공급자는 무엇입니까?
+
+Cloud Compliance는 Cloud Manager의 일부로 작동하며 현재 AWS 및 Azure를 지원합니다. 이를 통해 조직은 다양한 클라우드 공급자 전반에서 통합된 개인 정보 보호 가시성을 확보할 수 있습니다. Google Cloud Platform(GCP) 지원이 곧 추가될 예정입니다.
+
+
+
+== 클라우드 규정 준수에 어떻게 액세스합니까?
+
+Cloud Manager를 통해 클라우드 규정 준수를 운영 및 관리합니다. Cloud Manager의 * 규정 준수 * 탭에서 클라우드 규정 준수 기능에 액세스할 수 있습니다.
+
+
+
+== 클라우드 규정 준수는 어떻게 작동합니까?
+
+Cloud Compliance는 Cloud Manager 시스템 및 스토리지 시스템과 함께 또 다른 인공 지능 계층을 구축합니다. 그런 다음 볼륨, 버킷 및 데이터베이스의 데이터를 검색하고 검색된 데이터 인사이트를 인덱싱합니다.
+
+link:concept_cloud_compliance.html["클라우드 규정 준수 방식에 대해 자세히 알아보십시오"].
+
+
+
+== 클라우드 규정 준수 비용은 얼마입니까?
+
+Cloud Compliance 사용 비용은 스캔 중인 데이터의 양에 따라 다릅니다. Cloud Manager 작업 공간에서 Cloud Compliance에서 스캔하는 첫 1TB의 데이터는 무료입니다. AWS 또는 Azure Marketplace에 가입해야 해당 시점 이후에 데이터를 계속 스캔할 수 있습니다. 을 참조하십시오 https://cloud.netapp.com/cloud-compliance#pricing["가격"^] 를 참조하십시오.
+
+
+
+== Cloud Compliance는 내 데이터를 얼마나 자주 스캔합니까?
+
+데이터는 자주 변경되므로 Cloud Compliance는 데이터에 영향을 주지 않고 데이터를 지속적으로 검사합니다. 초기 데이터 스캔에는 시간이 오래 걸릴 수 있지만 후속 스캔에서는 증분 변경 사항만 스캔하므로 시스템 스캔 시간이 줄어듭니다.
+
+link:concept_cloud_compliance.html#how-scans-work["스캔 작동 방식에 대해 알아보십시오"].
+
+
+
+== 클라우드 규정 준수에서 보고서를 제공합니까?
+
+예. Cloud Compliance에서 제공하는 정보는 조직의 다른 이해 관계자와 관련이 있을 수 있으므로 보고서를 생성하여 통찰력을 공유할 수 있습니다.
+
+클라우드 규정 준수에 대한 다음 보고서가 제공됩니다.
+
+개인 정보 보호 위험 평가 보고서:: 개인 정보 보호 관련 정보와 개인 정보 보호 위험 점수를 제공합니다. link:task_generating_compliance_reports.html["자세한 정보"].
+데이터 주체 액세스 요청 보고서:: 데이터 주체의 특정 이름 또는 개인 식별자에 관한 정보가 포함된 모든 파일의 보고서를 추출할 수 있습니다. link:task_responding_to_dsar.html["자세한 정보"].
+PCI DSS 보고서:: 파일 전체에서 신용 카드 정보의 배포를 식별하는 데 도움이 됩니다. link:task_generating_compliance_reports.html["자세한 정보"].
+HIPAA 보고서:: 파일에 대한 상태 정보 배포를 식별하는 데 도움이 됩니다. link:task_generating_compliance_reports.html["자세한 정보"].
+특정 정보 유형에 대한 보고서입니다:: 개인 데이터와 민감한 개인 데이터가 포함된 식별된 파일에 대한 세부 정보가 포함된 보고서를 사용할 수 있습니다. 범주 및 파일 유형별로 분류된 파일도 볼 수 있습니다. link:task_controlling_private_data.html["자세한 정보"].
+
+
+
+
+== 클라우드 규정 준수에 필요한 인스턴스 또는 VM 유형은 무엇입니까?
+
+* Azure에서 클라우드 규정 준수는 512GB 디스크가 있는 Standard_D16s_v3 VM에서 실행됩니다.
+* AWS에서 Cloud Compliance는 500GB GP2 디스크를 사용하는 m5.4x대용량 인스턴스에서 실행됩니다.
++
+m5.4x4Large를 사용할 수 없는 지역에서는 Cloud Compliance가 대신 m4.4x4대형 인스턴스에서 실행됩니다.
+
+
+
+
+NOTE: 인스턴스/VM 유형의 변경 또는 크기 조정은 지원되지 않습니다. 제공된 기본 크기를 사용해야 합니다.
+
+link:concept_cloud_compliance.html["클라우드 규정 준수 방식에 대해 자세히 알아보십시오"].
+
+
+
+== 스캔 성능이 달라집니까?
+
+스캔 성능은 클라우드 환경의 네트워크 대역폭과 평균 파일 크기에 따라 달라질 수 있습니다.
+
+
+
+== 지원되는 파일 유형은 무엇입니까?
+
+Cloud Compliance는 모든 파일에서 범주 및 메타데이터 정보를 검색하고 대시보드의 파일 유형 섹션에 모든 파일 유형을 표시합니다.
+
+Cloud Compliance에서 PII(개인 식별 정보)를 감지하거나 DSAR 검색을 수행할 때 .pdf, .DOCX, .DOC, .PPTX, .XLS, XLSX, .csv, .TXT, .rtf 및 .JSON.
+
+
+
+== 클라우드 규정 준수를 어떻게 활성화합니까?
+
+먼저 Cloud Manager에서 Cloud Compliance 인스턴스를 구축해야 합니다. 인스턴스가 실행 중이면 * Compliance * 탭에서 기존 작업 환경 및 데이터베이스에서 활성화하거나 특정 작업 환경을 선택할 수 있습니다.
+
+link:task_getting_started_compliance.html["시작하는 방법을 알아보십시오"].
+
+
+NOTE: Cloud Compliance를 활성화하면 즉시 초기 스캔이 됩니다. 준수 결과는 잠시 후에 표시됩니다.
+
+
+
+== 클라우드 규정 준수를 비활성화하려면 어떻게 해야 합니까?
+
+개별 작업 환경을 선택한 후 작업 환경 페이지에서 클라우드 규정 준수를 비활성화할 수 있습니다.
+
+link:task_managing_compliance.html["자세한 정보"].
+
+
+NOTE: Cloud Compliance 인스턴스를 완전히 제거하려면 클라우드 공급자의 포털에서 Cloud Compliance 인스턴스를 수동으로 제거해야 합니다.
+
+
+
+== Cloud Volumes ONTAP에서 데이터 계층화를 활성화하면 어떻게 됩니까?
+
+오브젝트 스토리지에 콜드 데이터를 계층화하는 Cloud Volumes ONTAP 시스템에서 클라우드 규정 준수를 활성화할 수 있습니다. 데이터 계층화를 사용할 경우 Cloud Compliance는 디스크에 있는 데이터와 오브젝트 스토리지에 대한 콜드 데이터 등 모든 데이터를 검사합니다.
+
+규정 준수 검사에서는 콜드 데이터를 가열하지 않으며 오브젝트 스토리지까지 차갑게 유지됩니다.
+
+
+
+== 클라우드 규정 준수를 사용하여 사내 ONTAP 스토리지를 검색할 수 있습니까?
+
+온-프레미스 ONTAP 작업 환경에서 직접 데이터를 스캔하는 것은 지원되지 않습니다. 하지만 사내 NFS 또는 CIFS 데이터를 Cloud Volumes ONTAP 작업 환경에 복제하고 해당 볼륨에 대한 규정 준수를 활성화하여 온프레미스 ONTAP 데이터를 스캔할 수 있습니다. NetApp은 Cloud Volumes Service와 같은 추가 클라우드 오퍼링을 통해 클라우드 규정 준수를 지원할 계획입니다. 
+
+link:task_scanning_onprem.html["자세한 정보"].
+
+
+
+== Cloud Compliance는 내 조직에 알림을 전송할 수 있습니까?
+
+아니요. 하지만 조직 내부에서 공유할 수 있는 상태 보고서를 다운로드할 수 있습니다.
+
+
+
+== 조직의 필요에 맞게 서비스를 사용자 정의할 수 있습니까?
+
+Cloud Compliance는 즉각적인 데이터 통찰력을 제공합니다. 이러한 통찰력을 추출하여 조직의 요구에 활용할 수 있습니다.
+
+
+
+== 클라우드 규정 준수 정보를 특정 사용자로 제한할 수 있습니까?
+
+예, Cloud Compliance는 Cloud Manager와 완벽하게 통합됩니다. Cloud Manager 사용자는 작업 영역 권한에 따라 볼 수 있는 작업 환경에 대한 정보만 볼 수 있습니다.
+
+또한 특정 사용자가 클라우드 규정 준수 설정을 관리할 수 없는 상태에서 클라우드 규정 준수 검사 결과만 볼 수 있도록 허용하려면 해당 사용자에게 _Cloud Compliance Viewer_역할을 할당할 수 있습니다.
+
+link:concept_cloud_compliance.html#user-access-to-compliance-information["자세한 정보"].

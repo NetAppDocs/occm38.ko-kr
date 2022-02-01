@@ -1,0 +1,99 @@
+---
+sidebar: sidebar 
+permalink: task_licensing_cloud_tiering.html 
+keywords: subscribe, trial, marketplace, subscription, paygo, pay, pay as you go, aws, tiering, cloud tiering 
+summary: 사용한 만큼만 지불하는 가입형, FabricPool이라고 하는 ONTAP 계층화 라이센스 또는 둘 모두를 결합하여 Cloud Tiering에 비용을 지불하십시오. 사용한 만큼 비용을 지불하려는 경우 콜드 데이터를 계층화하려는 클라우드 공급자에 대한 마켓플레이스를 구독해야 합니다. 모든 마켓플레이스에서 구독할 필요가 없습니다. 
+---
+= Cloud Tiering의 라이센스 설정
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+사용한 만큼만 지불하는 가입형, _FabricPool_라는 ONTAP 계층화 라이센스 또는 두 가지를 함께 사용하면 Cloud Tiering에 비용을 지불할 수 있습니다. 사용한 만큼 비용을 지불하려는 경우 콜드 데이터를 계층화하려는 클라우드 공급자에 대한 마켓플레이스를 구독해야 합니다. 모든 마켓플레이스에서 구독할 필요가 없습니다.
+
+추가 내용을 읽기 전에 몇 가지 참고 사항을 확인하십시오.
+
+* FabricPool 라이센스가 이미 클러스터에 설치되어 있는 경우, 다른 작업은 필요하지 않습니다.
+* 클라우드 공급자의 마켓플레이스에서 Cloud Manager 구독을 이미 구독한 경우 Cloud Tiering도 자동으로 구독됩니다. Cloud Tiering * Licensing * 탭에서 활성 서브스크립션을 확인할 수 있습니다. 다시 가입하지 않아도 됩니다.
+* 데이터를 StorageGRID로 계층화할 경우 비용이 발생하지 않습니다. BYOL 라이센스 또는 PAYGO 등록이 필요하지 않습니다.
+
+
+link:concept_cloud_tiering.html["Cloud Tiering의 라이센스 기능에 대해 자세히 알아보십시오"].
+
+
+
+== AWS Marketplace에서 구독
+
+AWS Marketplace에서 Cloud Tiering을 구독하여 ONTAP 클러스터에서 AWS S3로 데이터 계층화를 위한 용량제 구독 설정
+
+[[subscribe-aws]]
+.단계
+. Cloud Manager에서 * Tiering > Licensing * 을 클릭합니다.
+. AWS Marketplace에서 * Subscribe * 를 클릭한 다음 * Continue * 를 클릭합니다.
+. AWS Marketplace에서 구독한 다음 Cloud Central에 다시 로그인하여 등록을 완료합니다.
++
+다음 비디오는 프로세스를 보여 줍니다.
+
++
+video::video_subscribing_aws_tiering.mp4[width=848,height=480]
+
+
+
+
+== Azure 마켓플레이스에서 구독
+
+Azure Marketplace에서 Cloud Tiering을 구독하여 ONTAP 클러스터에서 Azure Blob 스토리지까지 데이터 계층화에 대한 용량제 구독 설정
+
+[[subscribe-azure]]
+.단계
+. Cloud Manager에서 * Tiering > Licensing * 을 클릭합니다.
+. Azure Marketplace에서 * Subscribe * 를 클릭한 다음 * Continue * 를 클릭합니다.
+. Azure Marketplace에서 구독한 다음 Cloud Central에 다시 로그인하여 등록을 완료합니다.
++
+다음 비디오는 프로세스를 보여 줍니다.
+
++
+video::video_subscribing_azure_tiering.mp4[width=848,height=480]
+
+
+
+
+== GCP Marketplace에서 구독
+
+GCP Marketplace에서 Cloud Tiering을 구독하여 ONTAP 클러스터에서 Google Cloud 스토리지까지 데이터 계층화를 위한 용량제 구독을 설정하십시오.
+
+.단계
+. Cloud Manager에서 * Tiering > Licensing * 을 클릭합니다.
+. GCP Marketplace에서 * Subscribe * 를 클릭한 다음 * Continue * 를 클릭합니다.
+. GCP Marketplace를 구독한 다음 Cloud Central에 다시 로그인하여 등록을 완료하십시오.
++
+[[subscribe-GCP]] 다음 비디오에서는 프로세스를 보여 줍니다.
+
++
+video::video_subscribing_gcp_tiering.mp4[width=848,height=480]
+
+
+
+
+== ONTAP에 계층화 라이센스 추가
+
+NetApp에서 ONTAP FabricPool 라이센스를 구입하여 자체 라이센스를 가져 오십시오.
+
+.단계
+. FabricPool 라이센스가 없는 경우 mailto:ng-cloud-tiering@netapp.com?subject=Licensing [문의하기]을 참조하십시오.
+. Cloud Manager에서 * Tiering > Licensing * 을 클릭합니다.
+. 클러스터 목록 표에서 온프레미스 ONTAP 클러스터에 대해 * BYOL(라이센스 활성화) * 을 클릭합니다.
++
+image:screenshot_activate_license.gif["온프레미스 클러스터에 대한 라이센스를 활성화할 수 있는 라이센스 페이지의 스크린샷."]
+
+. 라이센스의 일련 번호를 입력한 다음 일련 번호와 관련된 NetApp Support 사이트 계정을 입력합니다.
+. 라이센스 활성화 * 를 클릭합니다.
+
+
+Cloud Tiering은 라이센스를 등록하고 클러스터에 설치합니다.
+
+나중에 추가 용량을 구입하면 클러스터의 라이센스가 자동으로 새 용량으로 업데이트됩니다. 클러스터에 새 NetApp 라이센스 파일(NLF)을 적용할 필요가 없습니다.

@@ -1,0 +1,20 @@
+---
+sidebar: sidebar 
+permalink: reference_issues.html 
+keywords: issues, bugs, known issues 
+summary: 알려진 문제점은 이 제품 릴리스를 성공적으로 사용하지 못하게 만들 수 있는 문제를 식별합니다. 
+---
+= 알려진 문제
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+알려진 문제점은 이 제품 릴리스를 성공적으로 사용하지 못하게 만들 수 있는 문제를 식별합니다.
+
+이번 Cloud Manager 릴리즈에는 알려진 문제가 없습니다.
+
+에서 Cloud Volumes ONTAP에 대해 알려진 문제를 찾을 수 있습니다 https://docs.netapp.com/us-en/cloud-volumes-ontap/["Cloud Volumes ONTAP 릴리즈 노트"^] 및 ONTAP 소프트웨어의 일반.

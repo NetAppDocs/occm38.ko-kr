@@ -1,0 +1,73 @@
+---
+sidebar: sidebar 
+permalink: reference_user_roles.html 
+keywords: user, users, roles, role, task, permission, permissions, tasks, admin, Account Admin, Workspace Admin, Cloud Compliance Viewer 
+summary: 계정 관리자, 작업 영역 관리자 및 클라우드 규정 준수 뷰어 역할은 사용자에게 특정 권한을 제공합니다. 
+---
+= 역할
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+계정 관리자, 작업 영역 관리자 및 클라우드 규정 준수 뷰어 역할은 사용자에게 특정 권한을 제공합니다.
+
+[cols="31,23,23,23"]
+|===
+| 작업 | 계정 관리자 | 작업 영역 관리자 | Cloud Compliance Viewer를 참조하십시오 
+
+
+| 작업 환경 관리 | 예 | 예 | 아니요 
+
+
+| 작업 환경에 대한 서비스를 활성화합니다 | 예 | 예 | 아니요 
+
+
+| 데이터 복제 상태를 봅니다 | 예 | 예 | 아니요 
+
+
+| 타임라인을 봅니다 | 예 | 예 | 아니요 
+
+
+| 작업 공간 간 전환 | 예 | 예 | 예 
+
+
+| 준수 검사 결과를 봅니다 | 예 | 예 | 예 
+
+
+| 작업 환경을 삭제합니다 | 예 | 아니요 | 아니요 
+
+
+| Kubernetes 클러스터를 작업 환경에 연결 | 예 | 아니요 | 아니요 
+
+
+| Cloud Volumes ONTAP 보고서를 받습니다 | 예 | 아니요 | 아니요 
+
+
+| 커넥터 작성 | 예 | 아니요 | 아니요 
+
+
+| Cloud Central 계정 관리 | 예 | 아니요 | 아니요 
+
+
+| 자격 증명 관리 | 예 | 아니요 | 아니요 
+
+
+| Cloud Manager 설정을 수정합니다 | 예 | 아니요 | 아니요 
+
+
+| 지원 대시보드 보기 및 관리 | 예 | 아니요 | 아니요 
+
+
+| Cloud Manager에서 작업 환경을 제거합니다 | 예 | 아니요 | 아니요 
+
+
+| HTTPS 인증서를 설치합니다 | 예 | 아니요 | 아니요 
+|===
+.관련 링크
+* link:task_setting_up_cloud_central_accounts.html["Cloud Central 계정에서 작업 영역 및 사용자 설정"^]
+* link:task_managing_cloud_central_accounts.html["Cloud Central 계정에서 작업 영역 및 사용자 관리"^]
+

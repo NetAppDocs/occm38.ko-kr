@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: concept_evaluating.html 
+keywords: free trial, evaluation, evaluate, eval license, evaluation license, 30-day trial, 30 day trial, 30 day free trial 
+summary: 소프트웨어 비용을 지불하기 전에 Cloud Volumes ONTAP를 평가할 수 있습니다. 가장 일반적인 방법은 첫 번째 Cloud Volumes ONTAP 시스템의 PAYGO 버전을 실행하여 30일 무료 평가판을 얻는 것입니다. 평가 BYOL 라이센스도 옵션입니다. 
+---
+= 평가 중
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+소프트웨어 비용을 지불하기 전에 Cloud Volumes ONTAP를 평가할 수 있습니다. 가장 일반적인 방법은 첫 번째 Cloud Volumes ONTAP 시스템의 PAYGO 버전을 실행하여 30일 무료 평가판을 얻는 것입니다. 평가 BYOL 라이센스도 옵션입니다.
+
+개념 증명에 대한 도움이 필요한 경우 에 문의하십시오 https://cloud.netapp.com/contact-cds["영업 팀"^] 또는 에서 사용할 수 있는 채팅 옵션을 통해 에 연락할 수 있습니다 그리고 Cloud Manager 내에서.
+
+
+
+== PAYGO 30일 무료 평가판
+
+Cloud Volumes ONTAP를 사용한 만큼만 지불하려는 경우 30일 무료 평가판을 사용할 수 있습니다. 지급인 계정에 첫 번째 Cloud Volumes ONTAP 시스템을 만들어 Cloud Manager에서 Cloud Volumes ONTAP 30일 무료 평가판을 시작할 수 있습니다.
+
+인스턴스에 대해 시간별 소프트웨어 라이센스 비용이 발생하지 않지만, 클라우드 공급자의 인프라 비용은 계속 적용됩니다.
+
+무료 평가판은 만료 시 유료 시간별 구독으로 자동 변환됩니다. 시간 제한 내에 인스턴스를 종료하는 경우, 배포한 다음 인스턴스가 무료 평가판의 일부가 아닙니다(30일 이내에 배포된 경우에도).
+
+클라우드 공급자를 통해 선불 종량제 평가판을 받을 수 있으며 어떤 방법으로도 확장할 수 없습니다.
+
+
+
+== BYOL의 평가 라이센스
+
+평가 BYOL 라이센스는 Cloud Volumes ONTAP에 대해 NetApp의 라이센스를 구매하여 해당 라이센스를 구매하는 고객에게 제공되는 옵션입니다. 어카운트 팀, 세일즈 엔지니어 또는 파트너로부터 평가 라이센스를 받을 수 있습니다.
+
+평가 키는 30일간 사용할 수 있으며, 생성 날짜에 관계없이 30일 동안 여러 번 사용할 수 있습니다.
+
+30일이 지나면 매일 종료되므로 미리 계획하는 것이 좋습니다. 현재 위치 업그레이드에 대한 평가 라이센스 위에 새로운 BYOL 라이센스를 적용할 수 있습니다. 단일 노드 시스템을 다시 시작해야 합니다. 귀하의 호스팅 데이터는 평가 기간 종료 시 * 삭제되지 * 않습니다 *.
+
+
+TIP: 평가판 라이센스를 사용할 때는 Cloud Volumes ONTAP 소프트웨어를 업그레이드할 수 없습니다.

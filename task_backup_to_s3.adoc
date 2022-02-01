@@ -1,0 +1,169 @@
+---
+sidebar: sidebar 
+permalink: task_backup_to_s3.html 
+keywords: backing up, back up, backup, backup cloud volumes ontap, back up cloud volumes ontap, cloud volumes ontap, aws, aws s3, amazon s3, s3 bucket, back up volumes, Backup to Cloud, cloud backup service 
+summary: 몇 가지 단계를 완료하여 Cloud Volumes ONTAP에서 Amazon S3로 데이터 백업을 시작하십시오. 
+---
+= Amazon S3에 데이터 백업
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+몇 가지 단계를 완료하여 Cloud Volumes ONTAP에서 Amazon S3로 데이터 백업을 시작하십시오.
+
+
+
+== 빠른 시작
+
+다음 단계를 따라 빠르게 시작하거나 나머지 섹션으로 스크롤하여 자세한 내용을 확인하십시오.
+
+
+
+==== 구성에 대한 지원을 확인합니다
+
+* AWS에서 Cloud Volumes ONTAP 9.6 이상을 실행하고 있습니다.
+* 에 가입했습니다 https://aws.amazon.com/marketplace/pp/B07QX2QLXX["Cloud Manager Marketplace 백업 오퍼링"^]또는 을(를) 구입한 경우 link:task_managing_licenses.html#adding-and-updating-your-backup-byol-license["활성화합니다"^] Backup to Cloud BYOL 라이센스: NetApp
+* Cloud Manager에 사용 권한을 제공하는 IAM 역할에는 최신 버전의 S3 권한이 포함됩니다 https://mysupport.netapp.com/site/info/cloud-manager-policies["Cloud Manager 정책"^].
+
+
+
+
+==== 새 시스템이나 기존 시스템에서 클라우드로 백업 을 설정합니다
+
+* 새 시스템: 클라우드로 백업은 작업 환경 마법사에서 기본적으로 활성화됩니다. 옵션을 활성 상태로 유지해야 합니다.
+* 기존 시스템: 작업 환경을 선택하고 오른쪽 패널의 Backup to Cloud 서비스 옆에 있는 * Activate * 를 클릭한 다음 설정 마법사를 따릅니다.
++
+image:screenshot_backup_to_s3_icon.gif["작업 환경을 선택한 후 사용할 수 있는 Cloud로 백업 활성화 버튼이 표시된 스크린샷"]
+
+
+
+
+
+==== 백업 정책을 정의합니다
+
+[role="quick-margin-para"]
+기본 정책은 매일 볼륨을 백업하고 각 볼륨의 최근 30개 백업 복사본을 유지합니다. 주별 또는 월별 백업으로 변경하거나 더 많은 옵션을 제공하는 시스템 정의 정책 중 하나를 선택합니다. 보존할 백업 복사본 수를 변경할 수도 있습니다.
+
+[role="quick-margin-para"]
+image:screenshot_backup_settings.png["백업 일정 및 보존 기간을 선택할 수 있는 클라우드로 백업 설정을 보여 주는 스크린샷"]
+
+
+
+==== 백업할 볼륨을 선택합니다
+
+[role="quick-margin-para"]
+Select Volumes 페이지에서 백업할 볼륨을 식별합니다.
+
+
+
+==== 필요에 따라 데이터를 복원합니다
+
+[role="quick-margin-para"]
+백업 목록에서 볼륨을 선택하고 백업을 선택한 다음 백업에서 새 볼륨으로 데이터를 복원합니다.
+
+[role="quick-margin-para"]
+image:screenshot_backup_to_s3_restore_icon.gif["볼륨을 선택한 후 백업에 대한 복원 아이콘의 스크린샷"]
+
+
+
+== 요구 사항
+
+S3에 볼륨을 백업하기 전에 다음 요구 사항을 읽고 지원되는 구성이 있는지 확인합니다.
+
+지원되는 ONTAP 버전:: Cloud Volumes ONTAP 9.6 이상
+지원되는 AWS 영역:: 클라우드 백업은 모든 AWS 지역에서 지원됩니다 https://cloud.netapp.com/cloud-volumes-global-regions["Cloud Volumes ONTAP가 지원되는 경우"^].
+라이센스 요구 사항::
++
+--
+Backup to Cloud BYOL 라이센스의 경우 AWS Backup to Cloud에 가입하지 않아도 됩니다. 라이센스 기간 및 용량 동안 서비스를 사용할 수 있도록 NetApp의 일련 번호가 필요합니다. 을 참조하십시오 link:task_managing_licenses.html#adding-and-updating-your-backup-byol-license["Backup BYOL 라이센스 추가 및 업데이트"^].
+
+그리고 백업이 위치할 스토리지 공간에 대한 AWS 서브스크립션을 보유하고 있어야 합니다.
+
+--
+AWS 권한이 필요합니다::
++
+--
+다음은 정책의 특정 사용 권한입니다.
+
+[source, json]
+----
+{
+            "Sid": "backupPolicy",
+            "Effect": "Allow",
+            "Action": [
+                "s3:DeleteBucket",
+                "s3:GetLifecycleConfiguration",
+                "s3:PutLifecycleConfiguration",
+                "s3:PutBucketTagging",
+                "s3:ListBucketVersions",
+                "s3:GetObject",
+                "s3:ListBucket",
+                "s3:ListAllMyBuckets",
+                "s3:GetBucketTagging",
+                "s3:GetBucketLocation",
+                "s3:GetBucketPolicyStatus",
+                "s3:GetBucketPublicAccessBlock",
+                "s3:GetBucketAcl",
+                "s3:GetBucketPolicy",
+                "s3:PutBucketPublicAccessBlock"
+            ],
+            "Resource": [
+                "arn:aws:s3:::netapp-backup-*"
+            ]
+        },
+----
+--
+
+
+
+
+== 새로운 시스템에서 클라우드로 백업 지원
+
+클라우드 백업은 작업 환경 마법사에서 기본적으로 설정됩니다. 옵션을 활성 상태로 유지해야 합니다.
+
+.단계
+. Create Cloud Volumes ONTAP * 를 클릭합니다.
+. 클라우드 공급자로 Amazon Web Services를 선택하고 단일 노드 또는 HA 시스템을 선택합니다.
+. 세부 정보 및 자격 증명 페이지를 입력합니다.
+. 서비스 페이지에서 서비스를 활성화된 상태로 두고 * 계속 * 을 클릭합니다.
++
+image:screenshot_backup_to_s3.gif["에는 작업 환경 마법사의 클라우드로 백업 옵션이 나와 있습니다."]
+
+. 마법사의 페이지를 완료하여 시스템을 구축합니다.
+
+
+Backup to Cloud는 시스템에서 활성화되어 매일 볼륨을 백업하며 최근 30개의 백업 복사본을 보존합니다.
+
+link:task_managing_backups.html["백업 스케줄 변경, 볼륨 복원 등을 통해 백업을 관리할 수 있습니다"^].
+
+
+
+== 기존 시스템에서 클라우드로 백업 지원
+
+작업 환경에서 언제든지 직접 클라우드로 백업할 수 있습니다.
+
+.단계
+. 작업 환경을 선택하고 오른쪽 패널에서 Backup to Cloud 서비스 옆에 있는 * Activate * 를 클릭합니다.
++
+image:screenshot_backup_to_s3_icon.gif["작업 환경을 선택한 후 사용할 수 있는 클라우드로 백업 설정 단추를 보여 주는 스크린샷"]
+
+. 백업 일정 및 보존 값을 정의하고 * Continue * 를 클릭합니다.
++
+image:screenshot_backup_settings.png["스케줄 및 백업 보존을 선택할 수 있는 Cloud로 백업 설정을 보여 주는 스크린샷"]
+
++
+을 참조하십시오 link:concept_backup_to_cloud.html#the-schedule-is-daily-weekly-monthly-or-a-combination["기존 정책 목록입니다"^].
+
+. 백업할 볼륨을 선택하고 * Activate * 를 클릭합니다.
++
+image:screenshot_backup_select_volumes.png["백업할 볼륨을 선택하는 스크린샷"]
+
+
+
+클라우드로 백업 선택한 각 볼륨의 초기 백업을 시작합니다.
+
+link:task_managing_backups.html["백업 스케줄 변경, 볼륨 복원 등을 통해 백업을 관리할 수 있습니다"^].

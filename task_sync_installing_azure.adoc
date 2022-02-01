@@ -1,0 +1,103 @@
+---
+sidebar: sidebar 
+permalink: task_sync_installing_azure.html 
+keywords: data broker, install, azure, networking, permissions, regions, install data broker in azure, install in azure, deploy in azure, deploy data broker in azure, networking requirements, port, ports, 443, port 443, ntp, network time protocol, azure data broker 
+summary: 동기화 관계를 만들 때 Azure Data Broker 옵션을 선택하여 VNET의 새 가상 머신에 데이터 브로커 소프트웨어를 배포합니다. Cloud Sync는 설치 프로세스를 안내하지만 설치 준비에 도움이 되도록 이 페이지에서 요구 사항과 단계를 반복합니다. 
+---
+= Azure에서 데이터 브로커 설치
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+동기화 관계를 만들 때 Azure Data Broker 옵션을 선택하여 VNET의 새 가상 머신에 데이터 브로커 소프트웨어를 배포합니다. Cloud Sync는 설치 프로세스를 안내하지만 설치 준비에 도움이 되도록 이 페이지에서 요구 사항과 단계를 반복합니다.
+
+클라우드 또는 사내에 있는 기존 Linux 호스트에 데이터 브로커를 설치할 수도 있습니다. link:task_sync_installing_linux.html["자세한 정보"].
+
+
+
+== 지원되는 Azure 지역
+
+중국, 미국 정부 및 미국 국방부 지역을 제외한 모든 지역이 지원됩니다.
+
+
+
+== 네트워킹 요구 사항
+
+* 데이터 브로커는 포트 443을 통해 Cloud Sync 서비스를 폴링할 수 있도록 아웃바운드 인터넷 연결이 필요합니다.
++
+Cloud Sync는 Azure에 데이터 브로커를 배포할 때 필요한 아웃바운드 통신을 지원하는 보안 그룹을 생성합니다.
+
++
+아웃바운드 연결을 제한해야 하는 경우 를 참조하십시오 link:reference_sync_networking.html["데이터 브로커가 연락하는 끝점 목록입니다"].
+
+* 소스, 타겟 및 데이터 브로커가 NTP(Network Time Protocol) 서비스를 사용하도록 구성하는 것이 좋습니다. 세 구성 요소 간의 시간 차이는 5분을 초과해서는 안 됩니다.
+
+
+
+
+== 인증 방법
+
+데이터 브로커를 구축할 때는 암호 또는 SSH 공개-개인 키 쌍과 같은 인증 방법을 선택해야 합니다.
+
+키 쌍 생성에 대한 도움말은 을 참조하십시오 https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys["Azure 설명서: Azure에서 Linux VM용 SSH 공개-개인 키 쌍을 생성하고 사용합니다"^].
+
+
+
+== 데이터 브로커 설치
+
+동기화 관계를 생성할 때 Azure에서 데이터 브로커를 설치할 수 있습니다.
+
+.단계
+. 새 동기화 만들기 * 를 클릭합니다.
+. 동기화 관계 정의 * 페이지에서 소스 및 대상을 선택하고 * 계속 * 을 클릭합니다.
++
+데이터 브로커 * 페이지가 나타날 때까지 페이지를 완료합니다.
+
+. 데이터 브로커 * 페이지에서 * 데이터 브로커 * 만들기 를 클릭한 다음 * Microsoft Azure * 를 선택합니다.
++
+이미 데이터 브로커가 있는 경우 을 클릭해야 합니다 image:screenshot_plus_icon.gif["더하기 아이콘이 있는 경우의 스크린샷"] 아이콘을 먼저 클릭합니다.
+
++
+image:screenshot_create_data_broker.gif["AWS, Azure, GCP 및 온프레미스 데이터 브로커 중에서 선택할 수 있는 Data Broker 페이지의 스크린샷"]
+
+. 데이터 브로커의 이름을 입력하고 * 계속 * 을 클릭합니다.
+. 메시지가 표시되면 Microsoft 계정에 로그인합니다. 메시지가 표시되지 않으면 * Azure에 로그인 * 을 클릭합니다.
++
+이 양식은 Microsoft에서 소유하고 호스팅됩니다. 자격 증명이 NetApp에 제공되지 않습니다.
+
+. 데이터 브로커의 위치를 선택하고 가상 시스템에 대한 기본 세부 정보를 입력합니다.
++
+image:screenshot_azure_data_broker.gif["가입, Azure 지역, VNET, 서브넷, VM 이름, 사용자 이름, 인증 방법 및 리소스 그룹"]
+
+. 계속 * 을 클릭하고 배포가 완료될 때까지 페이지를 열어 둡니다.
++
+이 프로세스는 최대 7분 정도 소요될 수 있습니다.
+
+. Cloud Sync에서 데이터 브로커를 사용할 수 있게 되면 * 계속 * 을 클릭합니다.
+. 마법사의 페이지를 완료하여 새 동기화 관계를 생성합니다.
+
+
+Azure에서 데이터 브로커를 구축하고 새로운 동기화 관계를 생성했습니다. 이 데이터 브로커를 추가 동기화 관계에 사용할 수 있습니다.
+
+.관리자 동의가 필요하다는 메시지를 받았습니까?
+****
+Cloud Sync에서 사용자 대신 조직의 리소스에 액세스할 수 있는 권한이 필요하므로 관리자 승인이 필요하다는 메시지가 나타나면 다음 두 가지 옵션을 사용할 수 있습니다.
+
+. AD 관리자에게 다음 권한을 제공하도록 요청하십시오.
++
+Azure에서 * 관리 센터 > Azure AD > 사용자 및 그룹 > 사용자 설정 * 으로 이동하여 * 사용자가 회사 데이터에 액세스하는 앱에 대신 * 사용자 동의를 할 수 있습니다 *.
+
+. AD 관리자에게 다음 URL(관리자 동의 엔드포인트)을 사용하여 * CloudSync-AzureDataBrokerCreator * 에 대해 사용자 대신 동의하도록 요청하십시오.
++
+\https://login.microsoftonline.com/{FILL 여기서 귀하의 테넌트 ID} /v2.0/adminConsent?client_id=8ee4ca3a-bafa-4831-97cc-5a38923cab85 & redirect_Uri=https://cloudsync.netapp.com&scope=https://management.azure.com/user_impersonationhttps://graph.microsoft.com/User.Read
+
++
+URL에 표시된 것처럼 앱 URL은 \https://cloudsync.netapp.com 이고 응용 프로그램 클라이언트 ID는 8ee4ca3a-bafa-4831-97cc-5a38923cab85입니다.
+
+
+
+****

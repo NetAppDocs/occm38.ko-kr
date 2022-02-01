@@ -1,0 +1,254 @@
+---
+sidebar: sidebar 
+permalink: reference_permissions.html 
+keywords: permissions, actions, API, aws, azure, json, gcp, aws permissions, azure permissions, gcp permissions 
+summary: Cloud Manager를 사용하려면 클라우드 공급자에서 작업을 수행할 수 있는 권한이 필요합니다. 이러한 사용 권한은 NetApp에서 제공하는 정책에 포함됩니다. Cloud Manager가 이러한 사용 권한을 통해 수행하는 작업을 이해하기를 원할 수 있습니다. 
+---
+= Cloud Manager에서 클라우드 공급자 권한을 사용하는 방법
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager를 사용하려면 클라우드 공급자에서 작업을 수행할 수 있는 권한이 필요합니다. 이러한 권한은 에 포함되어 있습니다 https://mysupport.netapp.com/site/info/cloud-manager-policies["NetApp에서 제공하는 정책"^]. Cloud Manager가 이러한 사용 권한을 통해 수행하는 작업을 이해하기를 원할 수 있습니다.
+
+
+
+== Cloud Manager에서 AWS 권한을 통해 수행하는 것
+
+Cloud Manager는 AWS 계정을 사용하여 EC2, S3, CloudFormation, IAM, 보안 토큰 서비스(STS) 및 키 관리 서비스(KMS).
+
+[cols="50,50"]
+|===
+| 작업 | 목적 
+
+
+| "EC2:StartInstances", "EC2:StopInstances", "EC2:DescribeInstances", "EC2:DescribeInstanceStatus", "EC2:RunInstances", "EC2: TerminateInstances", "EC2: ModifyInstanceAttribute", | Cloud Volumes ONTAP 인스턴스를 시작하고 인스턴스를 중지, 시작 및 모니터링합니다. 
+
+
+| "EC2: DescribeInstanceAttribute", | 지원되는 인스턴스 유형에 대해 향상된 네트워킹이 활성화되어 있는지 확인합니다. 
+
+
+| "EC2: DescribeRouteTables", "EC2: DescribeImages", | Cloud Volumes ONTAP HA 구성을 시작합니다. 
+
+
+| "EC2:CreateTags", | Cloud Manager가 만드는 모든 리소스에 "WorkingEnvironment" 및 "WorkingEnvironmentId" 태그를 지정합니다. Cloud Manager는 유지보수 및 비용 할당에 이러한 태그를 사용합니다. 
+
+
+| "EC2:CreateVolume", "EC2:DescribeVolumes", "EC2:ModifyVolumeAttribute", "EC2:AttachVolume", "EC2:DeleteVolume", "EC2: DetachVolume(EC2: 멈춤쇠 볼륨)", | Cloud Volumes ONTAP가 백엔드 스토리지로 사용하는 EBS 볼륨을 관리합니다. 
+
+
+| "EC2:CreateSecurityGroup", "EC2:DeleteSecurityGroup", "EC2:DescribeSecurityGroups", "EC2:RevokeSecurityGroupEgress", "EC2:AuthorizeSecurityGroupEgress", "EC2:AuthorizeSecurityGroupIngress", "EC2:RevokeSecurityGroupIngress", | Cloud Volumes ONTAP에 대해 미리 정의된 보안 그룹을 만듭니다. 
+
+
+| "EC2:CreateNetworkInterface", "EC2:DescribeNetworkInterfaces", "EC2:DeleteNetworkInterface", "EC2:ModifyNetworkInterfaceAttribute", | 대상 서브넷에서 Cloud Volumes ONTAP에 대한 네트워크 인터페이스를 생성하고 관리합니다. 
+
+
+| "EC2: DescribeSubnet", "EC2: DescribeVpcs", | Cloud Volumes ONTAP 에 대한 새 작업 환경을 만들 때 필요한 대상 서브넷 및 보안 그룹 목록을 가져옵니다. 
+
+
+| "EC2: DescribeDhcpOptions", | Cloud Volumes ONTAP 인스턴스를 시작할 때 DNS 서버와 기본 도메인 이름을 결정합니다. 
+
+
+| "EC2:CreateSnapshot", "EC2:DeleteSnapshot", "EC2:DescribeSnapshots", | 초기 설정 중에 및 Cloud Volumes ONTAP 인스턴스가 중지될 때마다 EBS 볼륨의 스냅샷을 생성합니다. 
+
+
+| "EC2:GetConsoleOutput", | AutoSupport 메시지에 첨부된 Cloud Volumes ONTAP 콘솔을 캡처합니다. 
+
+
+| "EC2: 설명", | 인스턴스를 시작할 때 사용 가능한 키 쌍 목록을 가져옵니다. 
+
+
+| "EC2: 설명 영역", | 사용 가능한 AWS 영역 목록을 가져옵니다. 
+
+
+| "EC2:DeleteTags", "EC2: DescribeTags", | Cloud Volumes ONTAP 인스턴스와 관련된 리소스의 태그를 관리합니다. 
+
+
+| "CloudFormation:CreateStack", "CloudFormation:DeleteStack", "CloudFormation:DescribeStacks", "CloudFormation:DescribeStackEvents", "CloudFormation:ValidateTemplate", | Cloud Volumes ONTAP 인스턴스를 시작합니다. 
+
+
+| "IAM:PassRole", "IAM:CreateRole", "IAM:DeleteRole", "IAM:PutRolePolicy", "IAM:CreateInstanceProfile", "IAM:DeleteRolePolicy", "IAM:AddRoleToInstanceProfile", "IAM:RemoveRoleFromInstanceProfile", "IAM:DeleteInstanceProfile", | Cloud Volumes ONTAP HA 구성을 시작합니다. 
+
+
+| "IAM:ListInstanceProfiles", "STS:DecodeAuthorizationMessage", "EC2:AssociateIamInstanceProfile", "EC2:DescribeIamInstanceProfileAssociations", "EC2:DisconnectateIamInstanceProfile", | Cloud Volumes ONTAP 인스턴스의 인스턴스 프로파일을 관리합니다. 
+
+
+| "S3:GetBucketTagging", "S3:GetBucketLocation", "S3:ListAllMyBucket", "S3:ListBucket" | Cloud Manager를 NetApp Data Fabric Cloud Sync 서비스와 통합할 수 있도록 AWS S3 버킷에 대한 정보 확보 
+
+
+| "S3:CreateBucket", "S3:DeleteBucket", "S3:GetLifecycleConfiguration", "S3:PutLifecycleConfiguration", "S3:PutketTagging", "S3:ListBuckketVersions", "S3:GetBuckketPolicyStatus", "S3:GetBuckketPublicAccessBlock", "S3:GetBuckketAcl", "S3:GetBuckketPolicy", "S3:PutBucketPublicAccessBlock" | Cloud Volumes ONTAP 시스템이 데이터 계층화를 위한 용량 계층으로 사용하는 S3 버킷을 관리합니다. 
+
+
+| "kms:List * ", "kms:ReEncrypt * ", "kms:설명 * ", "kms:CreateGrant", | AWS KMS(키 관리 서비스)를 사용하여 Cloud Volumes ONTAP의 데이터 암호화를 지원합니다. 
+
+
+| "CE:GetReservationUtilization", "CE:GetDimensionValues", "CE:GetCostAndUsage", "CE:GetTags" | Cloud Volumes ONTAP에 대한 AWS 비용 데이터를 가져옵니다. 
+
+
+| "EC2:CreatePlacementGroup", "EC2:DeletePlacementGroup" | 단일 AWS Availability Zone에 HA 구성을 구축하면 Cloud Manager가 두 개의 HA 노드를 시작하고 AWS Spread 배치 그룹에서 중재자를 실행합니다. 
+
+
+| "EC2: DescribeReservedInstances편리" | Cloud Manager는 Cloud Compliance 배포의 일부로 권한을 사용하여 사용할 인스턴스 유형을 선택합니다. 
+
+
+| "S3:DeleteBucket", "S3:GetLifecycleConfiguration", "S3:PutLifecycleConfiguration", "S3:PutketTagging", "S3:ListBuckketVersions", "S3:GetObject", "S3:ListBucket", "S3:ListAllMyBucket", "S3:GetBuckTagging", "S3:GetBuckketLocation" "S3:GetBuckketPolicyStatus", "S3:GetBuckketPublicAccessBlock", "S3:GetBuckketAcl", "S3:GetBuckketPolicy", "S3:PutketPublicAccessBlock" | Cloud Manager는 Backup to S3 서비스를 활성화할 때 이러한 권한을 사용합니다. 
+|===
+
+
+== Cloud Manager가 Azure 권한으로 수행하는 기능
+
+Cloud Manager Azure 정책에는 Cloud Manager가 Azure에서 Cloud Volumes ONTAP를 배포하고 관리하는 데 필요한 권한이 포함되어 있습니다.
+
+[cols="50,50"]
+|===
+| 작업 | 목적 
+
+
+| "Microsoft.Compute/locations/operations/read", "Microsoft.Compute/locations/vmSizes/read", "Microsoft.Compute/operations/read", "Microsoft.Compute/virtualMachines/instanceView/read","Microsoft.Compute/virtualMachines/powerOff/action", "Microsoft.Compute/virtualMachines/read", "Microsoft.Compute/virtualMachines/restart/action", "Microsoft.Compute/virtualMachines/start/action", "Microsoft.Compute/virtualMachines/deallocate/action","Microsoft.Compute/virtualMachines/vmSizes/read", "Microsoft.Compute/virtualMachines/write", | Cloud Volumes ONTAP를 생성하고 시스템 상태를 중지, 시작, 삭제 및 가져옵니다. 
+
+
+| "Microsoft.Compute/images/write"," Microsoft.Compute/images/read", | VHD에서 Cloud Volumes ONTAP 배포를 활성화합니다. 
+
+
+| "Microsoft.Compute/disks/delete", "Microsoft.Compute/disks/read", "Microsoft.Compute/disks/write", "Microsoft.Storage/checkknameAvailability/read", "Microsoft.Storage/operations/read", "Microsoft.Storage/storageAccounts/listkeys/action", "Microsoft.Storage/storageAccounts/read", "Microsoft.Storage/storageAccounts/REV/ACTION", "Microsoft.Storage/storageAccounts/write", "Microsoft.Storage/storageAccounts/delete", "Microsoft.Storage/en사용법/read", | Azure 스토리지 계정 및 디스크를 관리하고 디스크를 Cloud Volumes ONTAP에 연결합니다. 
+
+
+| "Microsoft.Network/networkInterfaces/read", "Microsoft.Network/networkInterfaces/write"," Microsoft.Network/networkInterfaces/join/action", | 대상 서브넷에서 Cloud Volumes ONTAP에 대한 네트워크 인터페이스를 생성하고 관리합니다. 
+
+
+| "Microsoft.Network/networkSecurityGroups/read", "Microsoft.Network/networkSecurityGroups/write"," Microsoft.Network/networkSecurityGroups/join/action", | Cloud Volumes ONTAP에 대해 미리 정의된 네트워크 보안 그룹을 생성합니다. 
+
+
+| "Microsoft.Resources/Subscriptions/locations/read", "Microsoft.Network/locations/operationResults/read", "Microsoft.Network/locations/operations/read", "Microsoft.Network/virtualNetworks/read"," Microsoft.Network/virtualNetworks/checkIpAddressAvailability/read", "Microsoft.Network/virtualNetworks/subnets/read", "Microsoft.Network/virtualNetworks/subnets/virtualMachines/read", "Microsoft.Network/virtualNetworks/virtualMachines/read","Microsoft.Network/virtualNetworks/subnets/join/action", | 지역, 대상 VNET 및 서브넷에 대한 네트워크 정보를 가져오고 Cloud Volumes ONTAP를 VNets에 추가합니다. 
+
+
+| "Microsoft.Network/virtualNetworks/subnets/write"," Microsoft.Network/routeTables/join/action", | 데이터 계층화를 위한 VNET 서비스 엔드포인트를 활성화합니다. 
+
+
+| "Microsoft.Resources/Deployments/operations/read", "Microsoft.Resources/Deployments/read", "Microsoft.Resources/Deployments/Write", | 템플릿에서 Cloud Volumes ONTAP를 배포합니다. 
+
+
+| "Microsoft.Resources/Deployments/operations/read", "Microsoft.Resources/Deployments/read", "Microsoft.Resources/Deployments/write", "Microsoft.Resources/resources/read", "Microsoft.Resources/Subscriptions/operationresults/read", "Microsoft.Resources/Subscriptions/resourceGroups/delete", "Microsoft.Resources/Subscriptions/resourceGroups/read", "Microsoft.Resources/Subscriptions/resourcegroups/resourceGroups/read", "Microsoft.Resources/Subscriptions/resourceGroups/write", | Cloud Volumes ONTAP에 대한 리소스 그룹을 생성하고 관리합니다. 
+
+
+| "Microsoft.Compute/snapshots/write", "Microsoft.Compute/snapshots/read"," Microsoft.Compute/disks/beginGetAccess/action" | Azure 관리 스냅샷을 생성하고 관리합니다. 
+
+
+| "Microsoft.Compute/availabilitySets/write"," Microsoft.Compute/availabilitySets/read", | Cloud Volumes ONTAP의 가용성 세트를 생성하고 관리합니다. 
+
+
+| "Microsoft.MarketplaceOrdering/offerstypes/publishers/Offers/Plans/Agreement/read", "Microsoft.MarketplaceOrdering/offerstypes/publisherTypes/publishers/Offers/Plans/Agreement/write" | Azure Marketplace에서 프로그래밍 방식으로 배포할 수 있습니다. 
+
+
+| "Microsoft.Network/loadBalancers/read", "Microsoft.Network/loadBalancers/write", "Microsoft.Network/loadBalancers/delete", "Microsoft.Network/loadBalancers/backendAddressPools/read","Microsoft.Network/loadBalancers/backendAddressPools/join/action", "Microsoft.Network/loadBalancers/frontendIPConfigurations/read", "Microsoft.Network/loadBalancers/loadBalancingRules/read", "Microsoft.Network/loadBalancers/probes/read","Microsoft.Network/loadBalancers/probes/join/action", | HA 쌍에 대한 Azure 로드 밸런서를 관리합니다. 
+
+
+| "Microsoft.Authorization/lock/ *" | Azure 디스크의 잠금 관리를 활성화합니다. 
+
+
+| "Microsoft.Authorization/roleDefinitions/write", "Microsoft.Authorization/roleAssignments/write", "Microsoft.Web/sites/ *" | HA 쌍의 페일오버 관리 
+
+
+| "Microsoft.Network/privateEndpoints/write", "Microsoft.Storage/storageAccounts/PrivateEndpointConnectionsApproval/action", "Microsoft.Storage/storageAccounts/privateEndpointConnections/read", "Microsoft.Network/privateEndpoints/read", "Microsoft.Network/privateDnsZones/write", "Microsoft.Network/privateDnsZones/virtualNetworkLinks/write", "Microsoft.Network/virtualNetworks/join/action", "Microsoft.Network/privateDnsZones/A/write", "Microsoft.Network/privateDnsZones/read","Microsoft.Network/privateDnsZones/virtualNetworkLinks/read", | 전용 엔드포인트를 관리할 수 있습니다. 전용 엔드포인트는 서브넷 외부에 접속이 제공되지 않을 때 사용됩니다. Cloud Manager는 서브넷 내에서 내부 연결만 제공하는 HA용 스토리지 계정을 생성합니다. 
+
+
+| "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/delete", | Cloud Manager에서 Azure NetApp Files의 볼륨을 삭제할 수 있습니다. 
+
+
+| "Microsoft.Resources/Deployments/operationStates/read" | Azure에서는 일부 가상 시스템 배포에 대해 이 권한이 필요합니다(배포 중에 사용되는 기본 물리적 하드웨어에 따라 다름). 
+
+
+| "Microsoft.Resources/Deployments/operationStates/read", "Microsoft.Insights/Metrics/Read", "Microsoft.Compute/virtualMachines/extensions/write", "Microsoft.Compute/virtualMachines/extensions/read"," Microsoft.Compute/virtualMachines/extensions/delete", "Microsoft.Compute/virtualMachines/delete", "Microsoft.Network/networkInterfaces/delete", "Microsoft.Network/networkSecurityGroups/delete", "Microsoft.Resources/Deployments/delete", | 글로벌 파일 캐시를 사용할 수 있습니다. 
+
+
+| "Microsoft.Compute/diskEncryptionSets/read" 참조하십시오 | Cloud Manager를 사용하면 단일 노드 Cloud Volumes ONTAP 시스템에서 다른 계정의 외부 키를 사용하여 Azure 관리 디스크를 암호화할 수 있습니다. 이 기능은 API를 사용하여 지원됩니다. 
+|===
+
+
+== Cloud Manager에서 GCP 권한으로 수행하는 권한입니다
+
+GCP용 Cloud Manager 정책에는 Cloud Manager가 Cloud Volumes ONTAP를 구현 및 관리하는 데 필요한 권한이 포함되어 있습니다.
+
+[cols="50,50"]
+|===
+| 작업 | 목적 
+
+
+| -compute.disks.create-compute.disks.createSnapshot-compute.disks.delete -compute.disks.get-compute.disks.list -compute.disks.setLabels -compute.disks.us e | Cloud Volumes ONTAP용 디스크를 생성하고 관리합니다. 
+
+
+| -compute.w방화벽.create-compute.firewalls.delete-compute.w방화벽.get-compute.w방화벽.list를 참조하십시오 | Cloud Volumes ONTAP에 대한 방화벽 규칙을 만듭니다. 
+
+
+| -compute.globalOperations.get | 작업 상태를 확인합니다. 
+
+
+| -compute.images.get-compute.images.getFromFamily-compute.images.list-compute.images.useReadOnly 를 참조하십시오 | VM 인스턴스의 이미지를 가져옵니다. 
+
+
+| compute.instances.attachDisk - compute.instances.detachDisk 으로 문의하십시오 | Cloud Volumes ONTAP에 디스크를 연결 및 분리합니다. 
+
+
+| compute.instances.create - compute.instances.delete 으로 문의하십시오 | Cloud Volumes ONTAP VM 인스턴스를 생성 및 삭제합니다. 
+
+
+| compute.instances.get 으로 문의하십시오 | VM 인스턴스를 나열합니다. 
+
+
+| compute.instances.getSerialPortOutput 으로 문의하십시오 | 콘솔 로그를 가져옵니다. 
+
+
+| compute.instances.list 으로 문의하십시오 | 영역에 있는 인스턴스 목록을 검색합니다. 
+
+
+| compute.instances.setDeletionProtection 으로 문의하십시오 | 인스턴스에 대한 삭제 보호를 설정합니다. 
+
+
+| compute.instances.setLabels 으로 문의하십시오 | 를 눌러 라벨을 추가합니다. 
+
+
+| compute.instances.setMachineType 으로 문의하십시오 | Cloud Volumes ONTAP의 기계 유형을 변경합니다. 
+
+
+| compute.instances.setMetadata 으로 문의하십시오 | 를 눌러 메타데이터를 추가합니다. 
+
+
+| compute.instances.setTags 으로 문의하십시오 | 방화벽 규칙에 대한 태그를 추가하려면 
+
+
+| compute.instances.start - compute.instances.stop - compute.instances.updateDisplayDevice | Cloud Volumes ONTAP를 시작 및 중지합니다. 
+
+
+| -compute.machineTypes.get | 를 클릭하여 qoutas를 확인하십시오. 
+
+
+| compute.projects.get 으로 문의하십시오 | 여러 프로젝트를 지원합니다. 
+
+
+| -compute.snapshots.create-compute.snapshots.delete-compute.snapshots.get-compute.snapshots.list-compute.snapshots.setLabels 를 참조하십시오 | 영구 디스크 스냅샷을 생성하고 관리합니다. 
+
+
+| -compute.networks.get -compute.networks.list -compute.regions.get-compute.regions.list-compute.subnetworks.get-compute.subnetworks.list-compute.zoneOperations.get-compute.zones.get-compute.zones.list 를 참조하십시오 | 새 Cloud Volumes ONTAP 가상 머신 인스턴스를 생성하는 데 필요한 네트워킹 정보를 가져옵니다. 
+
+
+| deploymentmanager.compositeTypes.get -deploymentmanager.compositeTypes.list -deploymentmanager.deployments.create -deploymentmanager.deployments.delete -deploymentmanager.deployments.get -deploymentmanager.deployments.list deploymentmanager.manifests.get-deploymentmanager.manager.manifests.list.deploymentmanager.operations.get-deploymentmanager.resources.get-deploymentmanager.resources.list.list.deploymentmanager.deploymentmanager.deploymentmanager.deploymentmanager.type.deploymentmanager.deploymentmanager.deploymentmanager.type.get.type.get | Google Cloud Deployment Manager를 사용하여 Cloud Volumes ONTAP 가상 머신 인스턴스를 구축합니다. 
+
+
+| logging.logEntrs.list-logging.privateLogEntrs.list 를 참조하십시오 | 스택 로그 드라이브를 가져옵니다. 
+
+
+| resourcemanager.projects.get 으로 문의하십시오 | 여러 프로젝트를 지원합니다. 
+
+
+| -storage.버킷.create-storage.buckets.delete-storage.버킷.get-storage.버킷.list-storage.버킷.update | 데이터 계층화를 위한 Google Cloud Storage 버킷 생성 및 관리 
+
+
+| -cloudkms.cryptoKeyVersions.useToEncrypt -cloudkms.cryptoKeys.get-cloudkms.cryptoKeys.list-cloudkms.keyring.list를 참조하십시오 | 클라우드 키 관리 서비스(Cloud Volumes ONTAP 포함)에서 고객이 관리하는 암호화 키를 사용하려면 
+
+
+| compute.instances.setServiceAccount - iam.serviceAccounts.getIamPolicy - iam.serviceAccounts.list | Cloud Volumes ONTAP 인스턴스에서 서비스 계정을 설정하려면 이 서비스 계정은 Google Cloud Storage 버킷에 대한 데이터 계층화 권한을 제공합니다. 
+|===

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar 
+permalink: task_signing_up.html 
+keywords: netapp cloud central, sign up, sign up to cloud central, create account 
+summary: NetApp Cloud Central에 등록하여 NetApp의 클라우드 서비스에 액세스할 수 있습니다. 
+---
+= NetApp Cloud Central에 등록
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetApp Cloud Central에 등록하여 NetApp의 클라우드 서비스에 액세스할 수 있습니다.
+
+.단계
+. 웹 브라우저를 열고 로 이동합니다 https://cloud.netapp.com/["NetApp Cloud Central에서"^].
+. 등록 * 을 클릭합니다.
+. 양식을 작성하고 * 등록 * 을 클릭합니다.
++
+image:screenshot_cloud_central_signup.gif["Cloud Central에 대한 등록 양식의 스크린샷으로, 이메일 주소, 암호, 회사, 이름 및 전화 번호를 입력합니다."]
+
+. NetApp Cloud Central에서 이메일을 받을 때까지 기다립니다.
+. 이메일의 링크를 클릭하여 이메일 주소를 확인합니다.
+
+
+이제 Cloud Central 사용자 로그인이 활성화되었습니다.

@@ -1,0 +1,226 @@
+---
+sidebar: sidebar 
+permalink: task_deploy_cloud_compliance.html 
+keywords: cloud compliance, get started, deploy cloud compliance, outbound internet, endpoints, cloud compliance internet, web browser connectivity, cloud compliance access, privacy, compliance 
+summary: Cloud Manager 작업 공간에 Cloud Compliance 인스턴스를 구축하는 몇 가지 단계를 완료하십시오. 
+---
+= 클라우드 규정 준수 구현
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Manager 작업 공간에 Cloud Compliance 인스턴스를 구축하는 몇 가지 단계를 완료하십시오.
+
+
+
+== 빠른 시작
+
+다음 단계를 따라 빠르게 시작하거나 나머지 섹션으로 스크롤하여 자세한 내용을 확인하십시오.
+
+
+
+==== 커넥터를 작성합니다
+
+[role="quick-margin-para"]
+Connector가 없는 경우 Azure 또는 AWS에서 Connector를 생성합니다. 을 참조하십시오 link:task_creating_connectors_aws.html["AWS에서 커넥터 생성"] 또는 .
+
+
+
+==== 사전 요구 사항을 검토합니다
+
+[role="quick-margin-para"]
+클라우드 환경이 클라우드 규정 준수 인스턴스에 대한 vCPU 16개, 인스턴스에 대한 아웃바운드 인터넷 액세스, 포트 80을 통한 Connector와 Cloud Compliance 간 접속 등 사전 요구 사항을 충족할 수 있는지 확인합니다. <<Reviewing prerequisites,전체 목록을 참조하십시오>>.
+
+
+
+==== 클라우드 규정 준수 구현
+
+[role="quick-margin-para"]
+설치 마법사를 시작하여 Cloud Manager에 Cloud Compliance 인스턴스를 구축합니다.
+
+
+
+==== 클라우드 규정 준수 서비스를 구독하십시오
+
+[role="quick-margin-para"]
+Cloud Manager에서 Cloud Compliance에서 검사하는 첫 번째 1TB의 데이터는 무료입니다. AWS 또는 Azure Marketplace에 가입해야 해당 시점 이후에 데이터를 계속 스캔할 수 있습니다.
+
+
+
+== 커넥터 작성
+
+Connector가 없는 경우 Azure 또는 AWS에서 Connector를 생성합니다. 을 참조하십시오 link:task_creating_connectors_aws.html["AWS에서 커넥터 생성"] 또는 . 대부분의 경우, 대부분의 경우 Cloud Compliance 활성화를 시도하기 전에 Connector가 설정되어 있을 수 있습니다 하지만 지금 설정해야 하는 경우가 있습니다.
+
+Cloud Compliance를 위해 AWS 또는 Azure에서 Connector를 사용해야 하는 몇 가지 시나리오가 있습니다.
+
+* AWS 또는 AWS S3 버킷에서 Cloud Volumes ONTAP의 데이터를 스캔할 때는 AWS의 커넥터를 사용합니다.
+* Azure 또는 Azure NetApp Files의 Cloud Volumes ONTAP에서 데이터를 스캔할 때 Azure의 커넥터를 사용합니다.
+* 커넥터 중 하나를 사용하여 데이터베이스를 스캔할 수 있습니다.
+
+
+보시다시피 을 사용해야 하는 몇 가지 상황이 있을 수 있습니다 link:concept_connectors.html#when-to-use-multiple-connectors["다중 커넥터"].
+
+
+NOTE: Azure NetApp Files를 스캔할 계획이라면 스캔할 볼륨과 동일한 영역에 배포해야 합니다.
+
+
+
+== 사전 요구 사항 검토
+
+Cloud Compliance를 구축하기 전에 다음 필수 구성 요소를 검토하여 지원되는 구성이 있는지 확인하십시오.
+
+아웃바운드 인터넷 액세스를 활성화합니다::
++
+--
+[cols="43,57"]
+|===
+| 엔드포인트 | 목적 
+
+
+| https://cloudmanager.cloud.netapp.com 으로 문의하십시오 | Cloud Central 계정을 포함한 Cloud Manager 서비스와 통신합니다. 
+
+
+| https://netapp-cloud-account.auth0.com \https://auth0.com 으로 문의하십시오 | NetApp Cloud Central과 통신하여 중앙 집중식 사용자 인증 제공 
+
+
+| https://cloud-compliance-support-netapp.s3.us-west-2.amazonaws.com\https://hub.docker.com\https://auth.docker.io\https://registry-1.docker.io\https://index.docker.io/\https://dseasb33srnrn.cloudfront.net/\https://production.cloudflare.docker.com/ | 소프트웨어 이미지, 매니페스트 및 템플릿에 대한 액세스를 제공합니다. 
+
+
+| https://kinesis.us-east-1.amazonaws.com 으로 문의하십시오 | NetApp에서 감사 레코드의 데이터를 스트리밍할 수 있습니다. 
+
+
+| https://cognito-idp.us-east-1.amazonaws.com \https://cognito-identity.us-east-1.amazonaws.com 으로 문의하십시오 | Cloud Compliance에서 매니페스트와 템플릿을 액세스 및 다운로드하고 로그 및 메트릭을 전송할 수 있습니다. 
+|===
+--
+Cloud Manager에 필요한 권한이 있는지 확인합니다:: Cloud Manager에 리소스를 구축하고 Cloud Compliance 인스턴스에 대한 보안 그룹을 생성할 수 있는 권한이 있는지 확인합니다. 에서 최신 Cloud Manager 사용 권한을 찾을 수 있습니다 https://mysupport.netapp.com/site/info/cloud-manager-policies["NetApp에서 제공하는 정책"^].
+vCPU 한도를 확인하십시오::
++
+--
+AWS에서 인스턴스 제품군은 _ 온디맨드 표준 인스턴스 _ 입니다. Azure에서 인스턴스 제품군은 _Standard DSv3 Family_입니다.
+
+vCPU 제한에 대한 자세한 내용은 다음을 참조하십시오.
+
+* https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html["AWS 문서: Amazon EC2 서비스 제한"^]
+* https://docs.microsoft.com/en-us/azure/virtual-machines/linux/quotas["Azure 설명서: 가상 머신 vCPU 할당량"^]
+
+
+--
+Cloud Manager가 클라우드 규정 준수에 액세스할 수 있는지 확인합니다::
++
+--
+이 연결을 통해 Cloud Compliance 인스턴스를 구축하고 Compliance 탭에서 정보를 볼 수 있습니다.
+
+--
+Azure NetApp Files의 검색을 설정합니다:: Azure NetApp Files의 볼륨을 스캔하기 전에 link:task_manage_anf.html["구성을 검색하려면 Cloud Manager를 설정해야 합니다"^].
+클라우드 규정 준수를 지속적으로 실행할 수 있어야 합니다:: 데이터를 지속적으로 스캔하려면 클라우드 규정 준수 인스턴스가 계속 켜져 있어야 합니다.
+클라우드 규정 준수에 대한 웹 브라우저 연결 보장::
++
+--
+Cloud Compliance 인스턴스는 개인 IP 주소를 사용하여 인덱싱된 데이터에 인터넷에서 액세스할 수 없도록 합니다. 따라서 Cloud Manager에 액세스하는 데 사용하는 웹 브라우저에는 해당 프라이빗 IP 주소에 연결되어 있어야 합니다. 이러한 연결은 AWS 또는 Azure(예: VPN)에 직접 연결되거나 Cloud Compliance 인스턴스와 같은 네트워크 내에 있는 호스트에서 발생할 수 있습니다.
+
+--
+
+
+
+
+== 클라우드 규정 준수 인스턴스 구축
+
+각 Cloud Manager 인스턴스에 대해 Cloud Compliance 인스턴스를 구축합니다.
+
+.단계
+. Cloud Manager에서 * Cloud Compliance * 를 클릭합니다.
+. 클라우드 규정 준수 활성화 * 를 클릭하여 구축 마법사를 시작합니다.
++
+image:screenshot_cloud_compliance_deploy_start.png["클라우드 규정 준수 활성화 버튼을 선택하여 클라우드 규정 준수를 구축하는 스크린샷"]
+
+. 구축 단계를 진행할 때 마법사가 진행률을 표시합니다. 문제가 발생할 경우 중지하고 입력을 요청합니다.
++
+image:screenshot_cloud_compliance_wizard_start.png["새 인스턴스를 배포하기 위한 클라우드 규정 준수 마법사 스크린샷"]
+
+. 인스턴스가 배포되면 * Continue to configuration * 을 클릭하여 _Scan Configuration_페이지로 이동합니다.
+
+
+Cloud Manager는 클라우드 공급업체에 클라우드 규정 준수 인스턴스를 구축합니다.
+
+스캔 구성 페이지에서 규정 준수를 검사할 작업 환경, 볼륨 및 버킷을 선택할 수 있습니다. 특정 데이터베이스 스키마를 스캔하기 위해 데이터베이스 서버에 연결할 수도 있습니다. 이러한 데이터 소스에서 클라우드 규정 준수를 활성화합니다.
+
+
+
+== 클라우드 규정 준수 서비스 가입
+
+Cloud Manager 작업 공간에서 Cloud Compliance에서 스캔하는 첫 1TB의 데이터는 무료입니다. AWS 또는 Azure Marketplace에 가입해야 해당 시점 이후에 데이터를 계속 스캔할 수 있습니다.
+
+언제든지 구독할 수 있으며 데이터 양이 1TB를 초과할 때까지 요금이 청구되지 않습니다. Cloud Compliance Dashboard에서 스캔되는 총 데이터 양을 항상 확인할 수 있습니다. 지금 가입(_Subscribe Now_) 단추를 사용하면 준비가 되면 쉽게 가입할 수 있습니다.
+
+image:screenshot_compliance_subscribe.png["검사 중인 데이터의 양과 서비스 가입을 위한 가입 버튼을 보여주는 스크린샷"]
+
+* 참고: * 클라우드 규정 준수(Cloud Compliance)에서 구독하라는 메시지가 나타나지만 이미 Azure 구독을 보유하고 있는 경우 이전 * Cloud Manager * 구독을 사용하고 있는 것이며 새로운 * NetApp Cloud Manager * 구독으로 변경해야 합니다. 을 참조하십시오<<Changing to the new Cloud Manager plan in Azure,Azure에서 새로운 NetApp Cloud Manager 계획으로 변경>> 를 참조하십시오.
+
+이러한 단계는 _ 계정 관리자 _ 역할을 가진 사용자가 완료해야 합니다.
+
+. Cloud Manager 콘솔의 오른쪽 위에서 설정 아이콘을 클릭하고 * 자격 증명 * 을 선택합니다.
++
+image:screenshot_settings_icon.gif["설정 아이콘을 선택할 수 있는 Cloud Manager의 오른쪽 상단 배너 스크린샷"]
+
+. AWS 인스턴스 프로파일 또는 Azure 관리 서비스 ID에 대한 자격 증명을 찾습니다.
++
+구독은 인스턴스 프로필 또는 관리 서비스 ID에 추가해야 합니다. 그렇지 않으면 충전이 작동하지 않습니다.
+
++
+이미 구독이 있는 경우 모든 설정이 완료되며, 다른 작업은 필요하지 않습니다.
+
++
+image:screenshot_profile_subscription.gif["활성 구독이 있는 인스턴스 프로필을 보여 주는 자격 증명 페이지의 스크린 샷"]
+
+. 구독이 아직 없는 경우 자격 증명 위에 마우스를 올려 놓고 작업 메뉴를 클릭합니다.
+. 구독 추가 * 를 클릭합니다.
++
+image:screenshot_add_subscription.gif["자격 증명 페이지의 메뉴 스크린샷 자격 증명에 구독을 추가하는 단추가 표시됩니다."]
+
+. 구독 추가 * 를 클릭하고 * 계속 * 을 클릭한 다음 단계를 따릅니다.
++
+다음 비디오에서는 마켓플레이스 구독을 AWS 구독에 연결하는 방법을 보여줍니다.
+
++
+video::video_subscribing_aws.mp4[width=848,height=480]
++
+다음 비디오에서는 마켓플레이스 구독을 Azure 구독에 연결하는 방법을 보여 줍니다.
+
++
+video::video_subscribing_azure.mp4[width=848,height=480]
+
+
+
+
+== Azure에서 새로운 Cloud Manager 계획으로 변경
+
+Cloud Compliance는 2020년 10월 7일 * NetApp Cloud Manager * 라는 Azure 마켓플레이스 구독에 추가되었습니다. 원래 Azure * Cloud Manager * 에 이미 가입되어 있으면 Cloud Compliance를 사용할 수 없습니다.
+
+다음 단계를 따라 새로운 * NetApp Cloud Manager * 가입을 선택한 다음, 이전 * Cloud Manager * 가입을 제거해야 합니다.
+
+
+NOTE: 기존 구독에서 특별 비공개 제안을 받은 경우 NetApp에 연락하여 규정 준수를 포함한 새로운 특별 비공개 제안을 발행해야 합니다.
+
+이러한 단계는 위에서 설명한 대로 새 구독을 추가하는 것과 비슷하지만 몇 가지 면에서 다릅니다.
+
+. Cloud Manager 콘솔의 오른쪽 위에서 설정 아이콘을 클릭하고 * 자격 증명 * 을 선택합니다.
+. 구독을 변경할 Azure Managed Service Identity에 대한 자격 증명을 찾고 자격 증명 위에 마우스를 올려 놓고 * Associate Subscription * 을 클릭합니다.
++
+현재 마켓플레이스 구독에 대한 세부 정보가 표시됩니다.
+
+. 구독 추가 * 를 클릭하고 * 계속 * 을 클릭한 다음 단계를 따릅니다. 새 구독을 만들기 위해 Azure 포털로 리디렉션됩니다.
+. Cloud Manager * 가 아닌 클라우드 규정 준수에 대한 액세스를 제공하는 계획 * NetApp Cloud Manager * 를 선택하십시오.
+. 동영상의 단계를 따라 마켓플레이스 구독을 Azure 구독에 연결합니다.
++
+video::video_subscribing_azure.mp4[width=848,height=480]
+. Cloud Manager로 돌아가서 새 구독을 선택하고 * Associate * 를 클릭합니다.
+. 구독이 변경되었는지 확인하려면 자격 증명 카드의 구독 위에 있는 "I" 위로 마우스를 가져갑니다.
++
+이제 Azure 포털에서 이전 구독을 취소할 수 있습니다.
+
+. Azure 포털에서 SaaS(Software as a Service)로 이동하여 구독을 선택한 다음 * 구독 취소 * 를 클릭합니다.
+
