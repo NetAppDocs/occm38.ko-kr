@@ -1,0 +1,2714 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head class="at-element-marker">
+  <title>Cloud Volumes ONTAP 시스템 수정</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Cloud Volumes ONTAP 시스템 수정" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/ko-kr/occm38/task_modifying_ontap_cloud.html" />
+	<meta property="og:description" content="스토리지 요구사항이 변경됨에 따라 Cloud Volumes ONTAP 시스템의 구성을 변경해야 할 수도 있습니다. 예를 들어, 선불 종량제 구성 간에 변경하거나 인스턴스 또는 VM 유형을 변경할 수 있습니다." />
+  <meta property="og:image" content="https://docs.netapp.com/ko-kr/occm38/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/>
+  
+  <meta http-equiv="nss-product" content="OnCommand Cloud Manager"/>
+  
+  <meta name="description" content="스토리지 요구사항이 변경됨에 따라 Cloud Volumes ONTAP 시스템의 구성을 변경해야 할 수도 있습니다. 예를 들어, 선불 종량제 구성 간에 변경하거나 인스턴스 또는 VM 유형을 변경할 수 있습니다.">
+  <meta name="keywords" content=" license, licensing, install, instance type, virtual machine type, VM type, change, modify, configuration, subscription, paygo, pay-as-you-go, pay as you go, byol, password, MTU, jumbo frames, c4.xlarge, c4.8xlarge, HA pair, file, license file, install, upload, change, modify, svm, storage virtual machine, password, route tables, nlf, gcp, machine type, virtual machine type, vm instance, write speed, high write speed, normal write speed, storage VM, storage virtual machine, SVM, modify SVM name, change SVM name">
+  
+  
+
+  <!-- Icons -->
+  <link rel="icon" href="/ko-kr/occm38/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed -->
+  
+
+  <!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Controls AsciiDoctor Admonition Blocks -->
+  <link rel="stylesheet" type="text/css" href="/ko-kr/occm38/css/font-awesome.min.css">
+
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/ko-kr/occm38/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel="stylesheet" type="text/css" href="/ko-kr/occm38/css/netapp.css">
+
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" type="text/css" href="/ko-kr/occm38/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/ko-kr/occm38/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/ko-kr/occm38/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/ko-kr/occm38/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/ko-kr/occm38/css/www-netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/ko-kr/occm38/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/ko-kr/occm38/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/ko-kr/occm38/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/ko-kr/occm38/css/na-pagenav.css' type='text/css'>
+
+  
+  <link rel="stylesheet" href="/ko-kr/occm38/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/ko-kr/occm38/css/tabbed-blocks.css" type="text/css">
+  <link rel="stylesheet" href='/ko-kr/occm38/css/product-family.css' type="text/css">
+  
+
+  
+  <link rel='stylesheet' href='/ko-kr/occm38/css/na-feature.css' type='text/css'>
+  
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+  
+    <script src='/ko-kr/occm38/js/na-search.js'></script>
+  
+
+  
+  <script src='/ko-kr/occm38/js/na-pagenav.js'></script>
+  
+
+  <link rel='stylesheet' href='/ko-kr/occm38/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/ko-kr/occm38/css/prism-netapp.css' type='text/css'>
+
+
+  <script src='/ko-kr/occm38/js/na-utility.js'></script>
+  <script src='/ko-kr/occm38/js/clouddocs.js'></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    var head = document.getElementsByTagName('head')[0];
+    var adobe = document.createElement("script");
+    adobe.type = "text/javascript";
+    adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+    head.appendChild(adobe);
+  }
+  </script>
+  <script src='/ko-kr/occm38/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/ko-kr/occm38/js/toc.js'></script>
+  <script src='/ko-kr/occm38/js/customscripts.js'></script>
+
+  <script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-81697994-3"></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-81697994-3');
+  }
+  </script>
+  <script src='/ko-kr/occm38/js/version-dropdown.js'></script>
+  <script src='/ko-kr/occm38/js/product-family.js'></script>
+  <script src='/ko-kr/occm38/js/FileSaver.min.js'></script>
+  <script src='/ko-kr/occm38/js/jszip-utils.min.js'></script>
+  <script src='/ko-kr/occm38/js/jszip.min.js'></script>
+  <script src='/ko-kr/occm38/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">제품 및 솔루션</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">지원 및 교육</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">커뮤니티</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">블로그</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">고객 성공 사례</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">연락처</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">연락처</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/ko-kr/occm38/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/ko-kr/occm38/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/ko-kr/occm38/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/ko-kr/occm38/search.html"
+          data-type="widget" 
+          data-placeholder="설명서 검색" 
+          data-no-results-found="{query}에 대한 결과를 찾을 수 없음" 
+          data-did-you-mean="{suggestion}을(를) 검색해보십시오." 
+          data-no-results-found-did-you-mean="{query}에 대한 결과를 찾을 수 없습니다. {suggestion}을(를) 검색하려 하셨습니까?" 
+          data-results-found="{hitCount}개의 결과를 찾음"  
+          data-sk-es-pf-indexes=""></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ko-kr/occm38/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="ie-i18n" class="n-property-bar__lang-selector">
+      <div id="ie-i18n-menu">
+      <span class="ie-i18n-lang">한국어</span>
+        <button class="ie-i18n-icon-container" type="button">
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ko-kr/occm38/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none;">
+        <div class="n-language-selector-menu">
+          <ul class="n-menu__list">
+            <li class="n-menu__list-column">
+              <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ko-kr/occm38/task_modifying_ontap_cloud.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/us-en/occm38/task_modifying_ontap_cloud.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ja-jp/occm38/task_modifying_ontap_cloud.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-cn/occm38/task_modifying_ontap_cloud.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
+                </li></ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" id="sidebar-height">
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+    <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>사용 가능한 PDF<span>
+    </span>
+  </a>
+</div>
+<div class="n-pdf-body-container">
+  <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+        <a target="_blank" href="/ko-kr/occm38/pdfs/fullsite-sidebar/Cloud_Manager_및_Cloud_Volumes_ONTAP_설명서.pdf" >
+          <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>이 문서 사이트의 PDF</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/릴리스_정보.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            릴리스 정보
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/클라우드_관리자.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            클라우드 관리자
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/Cloud_Manager를_시작하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            Cloud Manager를 시작하십시오
+          </a>
+          
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/Cloud_Central_계정을_설정합니다.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            Cloud Central 계정을 설정합니다
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/커넥터를_설정합니다.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            커넥터를 설정합니다
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/Cloud_Volumes_ONTAP_관리.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            Cloud Volumes ONTAP 관리
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/학습.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            학습
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/스토리지.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            스토리지
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/고가용성_쌍.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            고가용성 쌍
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/AWS에서_시작하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            AWS에서 시작하십시오
+          </a>
+          
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/네트워크_설정.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            네트워크 설정
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/Azure에서_시작하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            Azure에서 시작하십시오
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/GCP에서_시작하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            GCP에서 시작하십시오
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/스토리지_프로비저닝_및_관리.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            스토리지 프로비저닝 및 관리
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/성능을_모니터링합니다.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            성능을 모니터링합니다
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/관리.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            관리
+          </a>
+          
+
+
+
+
+
+
+
+
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
+  <a target="_blank" href="/ko-kr/occm38/pdfs/pages/task_modifying_ontap_cloud.pdf" >
+    <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+    PDF of this page
+  </a>
+</li>
+
+</ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/파일_서비스를_사용하여_볼륨_프로비저닝.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            파일 서비스를 사용하여 볼륨 프로비저닝
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/Azure_NetApp_Files.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            Azure NetApp Files
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/AWS_환경을_위한_Cloud_Volumes_Service.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            AWS 환경을 위한 Cloud Volumes Service
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/참조하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            참조하십시오
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/GCP용_Cloud_Volumes_Service.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            GCP용 Cloud Volumes Service
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/ONTAP_클러스터_관리.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            ONTAP 클러스터 관리
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/클라우드에_백업.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            클라우드에 백업
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/시작하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            시작하십시오
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/데이터를_복사하고_동기화합니다.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            데이터를 복사하고 동기화합니다
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/시작하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            시작하십시오
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/데이터_브로커를_설치하는_방법.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            데이터 브로커를 설치하는 방법
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/자습서.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            자습서
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/개인정보_데이터_보호_파악.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            개인정보 데이터 보호 파악
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/시작하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            시작하십시오
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/데이터_소스에서_스캔을_활성화합니다.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            데이터 소스에서 스캔을 활성화합니다
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/실시간_글로벌_파일_공유를_활성화합니다.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            실시간 글로벌 파일 공유를 활성화합니다
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/클라우드_컴퓨팅_비용_최적화.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            클라우드 컴퓨팅 비용 최적화
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/데이터를_클라우드에_계층화.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            데이터를 클라우드에 계층화
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/시작하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            시작하십시오
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/참조하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            참조하십시오
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/Cloud_Manager_관리.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            Cloud Manager 관리
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/커넥터_관리.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            커넥터 관리
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/커넥터를_작성하는_더_많은_방법.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            커넥터를 작성하는 더 많은 방법
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/자격_증명_관리.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            자격 증명 관리
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/설치하고.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            설치하고
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/Azure를_지원합니다.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            Azure를 지원합니다
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/GCP.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            GCP
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/참조하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            참조하십시오
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/ko-kr/occm38/pdfs/sidebar/API_및_자동화_사용.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf.png" width="16" height="16"/>
+            API 및 자동화 사용
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+</li></ul>
+  <div class="zip-pdf-link-container" style="display: none;">   
+    <a href="#" id="zipPdf">
+      <img src="/ko-kr/occm38/images/pdf-zip.png" width="16" height="16"/>
+      <pre>별도의 PDF 문서 모음<span class="zip-size"></span></pre>
+    </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+</div>
+<script>
+  $("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+  });
+</script><div class="sidebar-nav-container">
+  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/index.html">
+        Cloud Manager 문서
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 릴리스 정보</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 클라우드 관리자</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_new_occm.html">
+        새로운 소식
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_saas.html">
+        SaaS로 전환
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_issues.html">
+        알려진 문제
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_limitations.html">
+        알려진 제한 사항
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="https://docs.netapp.com/us-en/cloud-volumes-ontap/">
+        Cloud Volumes ONTAP
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_key_changes.html">
+        중요한 변화
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cloud Manager를 시작하십시오</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_overview.html">
+        Cloud Manager에 대해 자세히 알아보십시오
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_networking.html">
+        네트워킹 개요
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_signing_up.html">
+        Cloud Central에 가입하십시오
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_logging_in.html">
+        Cloud Manager에 로그인합니다
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cloud Central 계정을 설정합니다</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_cloud_central_accounts.html">
+        Cloud Central 계정에 대해 알아보십시오
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_setting_up_cloud_central_accounts.html">
+        계정을 설정합니다
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 커넥터를 설정합니다</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_connectors.html">
+        커넥터에 대해 자세히 알아보십시오
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_networking_cloud_manager.html">
+        네트워킹 요구 사항
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_creating_connectors_aws.html">
+        AWS에서 커넥터를 생성합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_creating_connectors_azure.html">
+        Azure에서 커넥터를 만듭니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_creating_connectors_gcp.html">
+        GCP에서 커넥터를 생성합니다
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_whats_next.html">
+        다음 단계로 넘어갑니다
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cloud Volumes ONTAP 관리</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 학습</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_overview_cvo.html">
+        개요
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 스토리지</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_storage.html">
+        디스크와 애그리게이트
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_data_tiering.html">
+        데이터 계층화
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_storage_management.html">
+        스토리지 관리
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_flash_cache.html">
+        Flash Cache를 참조하십시오
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_worm.html">
+        WORM 스토리지
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 고가용성 쌍</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_ha.html">
+        AWS의 HA 쌍
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_ha_azure.html">
+        Azure의 HA 쌍
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_evaluating.html">
+        평가 중
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_licensing.html">
+        라이센싱
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_security.html">
+        보안
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_performance.html">
+        성능
+      </a></li><li class=" "><a class="na-navbar-padding" href="https://docs.netapp.com/us-en/cloud-volumes-ontap/index.html">
+        지원되는 구성
+      </a></li><li class=" "><a class="na-navbar-padding" href="https://cloud.netapp.com/cloud-volumes-global-regions">
+        지원 지역
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_default_configs.html">
+        기본 구성
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> AWS에서 시작하십시오</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_getting_started_aws.html">
+        빠른 시작
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_planning_your_config.html">
+        구성을 계획합니다
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 네트워크 설정</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_networking_aws.html">
+        네트워킹 요구 사항
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_setting_up_transit_gateway.html">
+        AWS 전송 게이트웨이를 설정합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_security_groups.html">
+        AWS의 보안 그룹 규칙
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_setting_up_kms.html">
+        AWS KMS를 설정합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_deploying_otc_aws.html">
+        AWS에서 시스템을 시작합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="https://docs.netapp.com/us-en/occm/media/c2s.pdf">
+        AWS C2S에서 시작하십시오
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Azure에서 시작하십시오</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_getting_started_azure.html">
+        빠른 시작
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_planning_your_config_azure.html">
+        구성을 계획합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_networking_azure.html">
+        네트워크 설정
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_deploying_otc_azure.html">
+        Azure에서 시스템을 시작합니다
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> GCP에서 시작하십시오</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_getting_started_gcp.html">
+        빠른 시작
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_planning_your_config_gcp.html">
+        구성을 계획합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_networking_gcp.html">
+        네트워크 설정
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_setting_up_gcp_encryption.html">
+        고객이 관리하는 암호화 키를 사용합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_deploying_gcp.html">
+        GCP에서 시스템을 시작합니다
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 스토리지 프로비저닝 및 관리</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_provisioning_storage.html">
+        볼륨, 애그리게이트 및 LUN 생성
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_managing_storage.html">
+        볼륨 및 애그리게이트 관리
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_tiering.html">
+        비활성 데이터를 오브젝트 스토리지에 계층화합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_managing_svms.html">
+        스토리지 VM 관리
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_connecting_kubernetes.html">
+        ONTAP를 영구 스토리지로 사용합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_encrypting_volumes.html">
+        NetApp 암호화로 볼륨 암호화
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_replicating_data.html">
+        데이터 복제
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 성능을 모니터링합니다</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_monitoring.html">
+        모니터링에 대해 자세히 알아보십시오
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_getting_started_monitoring.html">
+        시작하십시오
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_protecting_ransomware.html">
+        랜섬웨어 보호 향상
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 관리</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_registering.html">
+        선불 종량제 시스템을 등록합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_setting_up_ontap_cloud.html">
+        Cloud Volumes ONTAP를 설정합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_managing_licenses.html">
+        BYOL 라이센스 관리
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_updating_ontap_cloud.html">
+        소프트웨어 업데이트
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/ko-kr/occm38/task_modifying_ontap_cloud.html">
+        시스템 구성을 수정합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_managing_state.html">
+        시스템을 중지하고 시동합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_monitoring_costs.html">
+        AWS 비용 모니터링
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_connecting_to_otc.html">
+        Cloud Volumes ONTAP에 연결합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_adding_ontap_cloud.html">
+        기존 시스템을 추가합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_deleting_working_env.html">
+        시스템을 삭제합니다
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 파일 서비스를 사용하여 볼륨 프로비저닝</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Azure NetApp Files</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_azure_netapp_files.html">
+        Azure NetApp Files에 대해 자세히 알아보십시오
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_manage_anf.html">
+        Azure NetApp Files를 설정합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_manage_anf_volumes.html">
+        볼륨 생성 및 관리
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> AWS 환경을 위한 Cloud Volumes Service</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_cvs_aws.html">
+        Cloud Volumes Service for AWS에 대해 자세히 알아보십시오
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_manage_cvs_aws.html">
+        클라우드 볼륨을 구축 및 관리
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_manage_cloud_volumes_snapshots.html">
+        클라우드 볼륨 스냅샷을 관리합니다
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 참조하십시오</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_cvs_service_levels_and_quotas.html">
+        서비스 수준 및 할당된 용량
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_security_groups_windows_ad_servers.html">
+        Windows AD 서버에 대한 AWS 보안 그룹 설정
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> GCP용 Cloud Volumes Service</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_cvs_gcp.html">
+        Cloud Volumes Service for GCP에 대해 알아보십시오
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_setup_cvs_gcp.html">
+        Cloud Volumes Service for GCP를 설정합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_manage_cvs_gcp.html">
+        클라우드 볼륨 생성 및 관리
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_manage_cloud_volumes_gcp_snapshots.html">
+        클라우드 볼륨 스냅샷을 관리합니다
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ONTAP 클러스터 관리</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_discovering_ontap.html">
+        ONTAP 클러스터에 대해 알아보십시오
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_provisioning_ontap.html">
+        ONTAP 볼륨 관리
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 클라우드에 백업</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_backup_to_cloud.html">
+        클라우드 백업에 대해 자세히 알아보십시오
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 시작하십시오</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_backup_to_s3.html">
+        Amazon S3에 백업
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_backup_to_azure.html">
+        Azure Blob 저장소에 백업
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_backup_from_onprem.html">
+        사내 ONTAP 시스템에서 백업합니다
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_managing_backups.html">
+        백업 관리 및 데이터 복원
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 데이터를 복사하고 동기화합니다</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_cloud_sync.html">
+        Cloud Sync에 대해 자세히 알아보십시오
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 시작하십시오</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_sync_quick_start.html">
+        빠른 시작
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_sync_requirements.html">
+        소스와 타겟을 준비합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_sync_networking.html">
+        네트워킹을 준비합니다
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 데이터 브로커를 설치하는 방법</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_sync_installing_aws.html">
+        AWS에 설치
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_sync_installing_azure.html">
+        Azure에 설치합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_sync_installing_gcp.html">
+        GCP에 설치합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_sync_installing_linux.html">
+        Linux 호스트에 설치합니다
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_sync_creating_relationships.html">
+        동기화 관계를 생성합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_sync_licensing.html">
+        동기화 관계에 대한 비용 지불
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 자습서</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_sync_copying_acls.html">
+        공유 간에 ACL을 복사합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_sync_nfs_encryption.html">
+        사용 중인 NFS 데이터를 암호화합니다
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_sync_managing_relationships.html">
+        동기화 관계를 관리합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/api_sync.html">
+        API를 참조하십시오
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/faq_sync.html">
+        FAQ 를 참조하십시오
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 개인정보 데이터 보호 파악</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_cloud_compliance.html">
+        클라우드 규정 준수에 대해 알아보십시오
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 시작하십시오</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_deploy_cloud_compliance.html">
+        클라우드 규정 준수 구현
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 데이터 소스에서 스캔을 활성화합니다</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_getting_started_compliance.html">
+        Cloud Volumes ONTAP and Azure NetApp Files를 참조하십시오
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_scanning_s3.html">
+        Amazon S3 버킷
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_scanning_databases.html">
+        데이터베이스 스키마
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_scanning_onprem.html">
+        사내 ONTAP 데이터
+      </a></li></ul></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_controlling_private_data.html">
+        데이터에 대한 가시성 및 제어 기능 확보
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_generating_compliance_reports.html">
+        보고서를 생성합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_responding_to_dsar.html">
+        SAR에 응답합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_managing_compliance.html">
+        클라우드 규정 준수 해제
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/faq_cloud_compliance.html">
+        FAQ 를 참조하십시오
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 실시간 글로벌 파일 공유를 활성화합니다</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_gfc.html">
+        글로벌 파일 캐시에 대해 알아보십시오
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_before_you_begin_to_deploy_gfc.html">
+        글로벌 파일 캐시 배포를 시작하기 전에
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_gfc_getting_started.html">
+        시작하기
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/download_gfc_resources.html">
+        Global File Cache Edge 구축을 시작하기 전에
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_deploy_gfc_edge_instances.html">
+        Global File Cache Edge 구축
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_gfc_enduser_training.html">
+        최종 사용자 교육
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_gfc_additional_information.html">
+        추가 정보
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 클라우드 컴퓨팅 비용 최적화</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_compute.html">
+        컴퓨팅 서비스에 대해 자세히 알아보십시오
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_getting_started_compute.html">
+        시작하십시오
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 데이터를 클라우드에 계층화</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_cloud_tiering.html">
+        Cloud Tiering에 대해 알아보십시오
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 시작하십시오</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_tiering_onprem_aws.html">
+        데이터를 Amazon S3에 계층화합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_tiering_onprem_azure.html">
+        Azure Blob 저장소에 데이터 계층화
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_tiering_onprem_gcp.html">
+        데이터를 Google Cloud Storage에 계층화합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_tiering_onprem_storagegrid.html">
+        데이터를 StorageGRID에 계층화합니다
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_licensing_cloud_tiering.html">
+        라이센스를 설정합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_managing_tiering.html">
+        데이터 계층화 관리
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/faq_cloud_tiering.html">
+        FAQ 를 참조하십시오
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 참조하십시오</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_aws_support.html">
+        지원되는 Amazon S3 스토리지 클래스 및 지역
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_azure_support.html">
+        지원되는 Azure 액세스 계층 및 지역
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_google_support.html">
+        지원되는 Google Cloud 스토리지 클래스 및 지역
+      </a></li></ul></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_viewing_amazon_s3.html">
+        Amazon S3 버킷을 봅니다
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cloud Manager 관리</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_finding_system_id.html">
+        시스템 ID를 찾습니다
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 커넥터 관리</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_managing_connectors.html">
+        기존 커넥터 관리
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 커넥터를 작성하는 더 많은 방법</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_cloud_mgr_reqs.html">
+        커넥터 호스트 요구 사항
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_launching_aws_mktp.html">
+        AWS Marketplace에서 생성
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_launching_azure_mktp.html">
+        Azure Marketplace에서 생성
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_installing_linux.html">
+        소프트웨어를 수동으로 설치합니다
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_connector_default_config.html">
+        기본 구성
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 자격 증명 관리</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 설치하고</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_accounts_aws.html">
+        AWS 자격 증명에 대해 알아보십시오
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_adding_aws_accounts.html">
+        AWS 자격 증명 관리
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Azure를 지원합니다</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_accounts_azure.html">
+        Azure 자격 증명에 대해 알아보십시오
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_adding_azure_accounts.html">
+        Azure 자격 증명을 관리합니다
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> GCP</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/concept_accounts_gcp.html">
+        GCP 자격 증명에 대해 알아보십시오
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_adding_gcp_accounts.html">
+        GCP 자격 증명을 관리합니다
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_adding_nss_accounts.html">
+        NetApp Support 사이트 자격 증명
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_managing_cloud_central_accounts.html">
+        계정을 관리합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_installing_https_cert.html">
+        HTTPS 인증서를 설치합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_removing.html">
+        작업 환경을 제거합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_configuring_proxy.html">
+        프록시 설정을 구성합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/task_overriding_cifs_locks.html">
+        Azure에서 CIFS 잠금을 재정의합니다
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 참조하십시오</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_user_roles.html">
+        사용자 역할
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_permissions.html">
+        권한
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_aws_marketplace.html">
+        AWS 마켓플레이스 페이지를 참조하십시오
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> API 및 자동화 사용</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="https://docs.netapp.com/us-en/occm/api.html">
+        API 개발자 가이드 를 참조하십시오
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_infrastructure_as_code.html">
+        DevOps 툴을 사용하여 자동화
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services">
+        문제를 해결합니다
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_additional_info.html">
+        관련 링크
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_earlier_versions.html">
+        이전 버전
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ko-kr/occm38/reference_legal_notices.html">
+        법적 고지
+      </a></li></ul>
+</div>
+<script>
+  window.onscroll = () => {
+    const value = -40 - (document.body.scrollHeight - (window.innerHeight + document.scrollingElement.scrollTop));
+    
+    document.getElementById("sidebar-height").style.bottom = Math.max(0,value) + "px";
+};
+</script>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container -->
+    <article class="page-content">
+      <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://www.netapp.com">홈</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">설명서</a>
+        </li>
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/ko-kr/occm38/">Cloud&nbsp;Manager&nbsp;3.8</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          Cloud Volumes ONTAP 시스템 수정
+        </li>
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      
+<div class="ie-notification">
+  <span class="ie-notification-highlight">이 설명서의 내용은 Cloud Manager의 이전 릴리즈를 대상으로 합니다.</span><br>
+  <span><a href="https://docs.netapp.com/ko-kr/occm/">최신 릴리즈를 보려면 문서로 이동하십시오.</a></span>
+</div>
+<div class="ie-nmt-disclaimer">
+  <span>
+    <div class="ie-nmt-disclaimer-container">
+      <div class="ie-nmt-disclaimer-icon">
+        <svg class="luci-icon" aria-hidden="true">
+          <use xlink:href="/ko-kr/occm38/common/svg/sprite.svg#circle-info">
+        </svg>
+      </div>
+      <div class="ie-nmt-disclaimer-content">
+        <span> 본 한국어 번역은 사용자 편의를 위해 제공되는 기계 번역입니다. 영어 버전과 한국어 버전이 서로 어긋나는 경우에는 언제나 영어 버전이 우선합니다. </span>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </span>
+</div><div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">Cloud Volumes ONTAP 시스템 수정</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2022-02-01 08:35:47 +0000">02/01/2022</time>
+    
+  
+
+<span>기여자
+  <a target="_blank" href="https://github.com/netapp-bcammett">
+    <img  class="avatar avatar-small"
+          alt="netapp-bcammett"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/18287750?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+</span>
+
+
+</p>
+
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>스토리지 요구사항이 변경됨에 따라 Cloud Volumes ONTAP 시스템의 구성을 변경해야 할 수도 있습니다. 예를 들어, 선불 종량제 구성 간에 변경하거나 인스턴스 또는 VM 유형을 변경할 수 있습니다.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cloud-volumes-ontap의-인스턴스-또는-시스템-유형-변경">Cloud Volumes ONTAP의 인스턴스 또는 시스템 유형 변경</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>AWS, Azure 또는 GCP에서 Cloud Volumes ONTAP를 시작할 때 여러 인스턴스 또는 시스템 유형 중에서 선택할 수 있습니다. 필요에 따라 크기가 작거나 너무 큰 것으로 판단될 경우 언제든지 인스턴스 또는 컴퓨터 유형을 변경할 수 있습니다.</p>
+</div>
+<div class="ulist">
+<div class="title">이 작업에 대해</div>
+<ul>
+<li>
+<p>Cloud Volumes ONTAP HA 쌍(기본 설정)에서 자동 반환이 활성화되어 있어야 합니다. 그렇지 않으면 작업이 실패합니다.</p>
+<div class="paragraph">
+<p><a href="http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-hacg/GUID-3F50DE15-0D01-49A5-BEFD-D529713EC1FA.html" target="_blank" rel="noopener">"ONTAP 9 설명서: 자동 반환 구성을 위한 명령입니다"</a></p>
+</div>
+</li>
+<li>
+<p>인스턴스 또는 시스템 유형을 변경하면 클라우드 공급자 서비스 요금이 영향을 받습니다.</p>
+</li>
+<li>
+<p>Cloud Volumes ONTAP가 다시 시작됩니다.</p>
+<div class="paragraph">
+<p>단일 노드 시스템의 경우 입출력이 중단됩니다.</p>
+</div>
+<div class="paragraph">
+<p>HA 쌍의 경우 변경은 무중단 것입니다. HA 쌍이 계속해서 데이터를 제공합니다.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/occm38/images/tip.svg" alt="팁">
+</td>
+<td class="content">
+Cloud Manager는 테이크오버를 시작하고 Giveback을 기다리면서 한 번에 하나의 노드를 정상적으로 변경합니다. NetApp의 QA 팀은 이 프로세스 중에 파일 쓰기와 읽기를 모두 테스트했지만 클라이언트 측에서는 문제가 발생하지 않았습니다. 접속이 변경됨에 따라 입출력 레벨에서 재시도 횟수가 확인되었지만 애플리케이션 계층은 NFS/CIFS 연결의 이러한 짧은 "재연결"을 극복했습니다.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">단계</div>
+<ol class="arabic">
+<li>
+<p>작업 환경에서 메뉴 아이콘을 클릭한 다음 * AWS의 라이센스 또는 인스턴스 변경 *, Azure의 경우 라이센스 또는 VM * 변경, GCP의 경우 * 라이센스 또는 시스템 변경 * 을 클릭합니다.</p>
+</li>
+<li>
+<p>선불 종량제 구성을 사용하는 경우 필요에 따라 다른 라이센스를 선택할 수 있습니다.</p>
+</li>
+<li>
+<p>인스턴스 또는 시스템 유형을 선택하고 확인란을 선택하여 변경의 영향을 이해했는지 확인한 다음 * 확인 * 을 클릭합니다.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP가 새 구성으로 재부팅됩니다.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="용량제-구성-간-전환">용량제 구성 간 전환</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>선불 종량제 Cloud Volumes ONTAP 시스템을 시작한 후 언제든지 라이센스를 수정하여 Explore, Standard 및 Premium 구성을 변경할 수 있습니다. 라이센스를 변경하면 물리적 용량 제한이 증가하거나 감소하며, 다양한 AWS 인스턴스 유형 또는 Azure 가상 머신 유형 중에서 선택할 수 있습니다.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/occm38/images/note.svg" alt="참고">
+</td>
+<td class="content">
+GCP에서는 각 용량제 구성에 대해 단일 시스템 유형을 사용할 수 있습니다. 다른 컴퓨터 유형 중에서 선택할 수 없습니다.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>선불 종량제 라이센스 간 변경에는 다음과 같은 사항이 있습니다.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cloud Volumes ONTAP가 다시 시작됩니다.</p>
+<div class="paragraph">
+<p>단일 노드 시스템의 경우 입출력이 중단됩니다.</p>
+</div>
+<div class="paragraph">
+<p>HA 쌍의 경우 변경은 무중단 것입니다. HA 쌍이 계속해서 데이터를 제공합니다.</p>
+</div>
+</li>
+<li>
+<p>인스턴스 또는 시스템 유형을 변경하면 클라우드 공급자 서비스 요금이 영향을 받습니다.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">단계</div>
+<ol class="arabic">
+<li>
+<p>작업 환경에서 메뉴 아이콘을 클릭한 다음 * AWS의 라이센스 또는 인스턴스 변경 *, Azure의 경우 라이센스 또는 VM * 변경, GCP의 경우 * 라이센스 또는 시스템 변경 * 을 클릭합니다.</p>
+</li>
+<li>
+<p>사용권 유형과 인스턴스 유형 또는 시스템 유형을 선택하고 확인란을 선택하여 변경의 영향을 이해했는지 확인한 다음 * 확인 * 을 클릭합니다.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP는 새 라이센스, 인스턴스 유형 또는 시스템 유형 또는 둘 모두로 재부팅됩니다.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="대체-cloud-volumes-ontap-구성으로-이동">대체 Cloud Volumes ONTAP 구성으로 이동</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>사용한 만큼만 지불하는 가입과 BYOL 가입형 또는 단일 Cloud Volumes ONTAP 시스템과 HA 쌍 간에 전환하려면 새 시스템을 구축한 다음 기존 시스템에서 새 시스템으로 데이터를 복제해야 합니다.</p>
+</div>
+<div class="olist arabic">
+<div class="title">단계</div>
+<ol class="arabic">
+<li>
+<p>새 Cloud Volumes ONTAP 작업 환경을 만듭니다.</p>
+<div class="paragraph">
+<p><a href="task_deploying_otc_aws.html">"AWS에서 Cloud Volumes ONTAP 실행"</a></p>
+</div>
+</li>
+<li>
+<p><a href="task_replicating_data.html">"일회성 데이터 복제를 설정합니다"</a> 복제해야 하는 각 볼륨의 시스템 간.</p>
+</li>
+<li>
+<p>더 이상 필요하지 않은 Cloud Volumes ONTAP 시스템을 종료합니다 <a href="task_deleting_working_env.html">"원래 작업 환경 삭제"</a>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="쓰기-속도를-정상-또는-높으로-변경합니다">쓰기 속도를 정상 또는 높으로 변경합니다</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cloud Manager를 사용하면 단일 노드 Cloud Volumes ONTAP 시스템에 대해 쓰기 속도 설정을 선택할 수 있습니다. 기본 쓰기 속도는 정상입니다. 워크로드에 빠른 쓰기 성능이 필요한 경우 빠른 쓰기 속도로 변경할 수 있습니다. 쓰기 속도를 변경하려면 먼저 해야 합니다 <a href="task_planning_your_config.html#choosing-a-write-speed">"정상 설정과 높음 설정의 차이를 이해합니다"</a>.</p>
+</div>
+<div class="ulist">
+<div class="title">이 작업에 대해</div>
+<ul>
+<li>
+<p>볼륨 또는 애그리게이트 생성과 같은 작업이 진행 중이 아닌지 확인합니다.</p>
+</li>
+<li>
+<p>이 변경 사항은 Cloud Volumes ONTAP를 다시 시작합니다. 즉, 입출력이 중단됩니다.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">단계</div>
+<ol class="arabic">
+<li>
+<p>작업 환경에서 메뉴 아이콘을 클릭한 다음 * 고급 &gt; 작성 속도 * 를 클릭합니다.</p>
+</li>
+<li>
+<p>Normal * (정상 *) 또는 * High * (높음 *)를 선택합니다.</p>
+<div class="paragraph">
+<p>높음 을 선택한 경우 "이해했습니다&#8230;&#8203;" 문장을 읽고 확인란을 선택하여 확인해야 합니다.</p>
+</div>
+</li>
+<li>
+<p>저장 * 을 클릭하고 확인 메시지를 검토한 다음 * 진행 * 을 클릭합니다.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="스토리지-vm-이름-수정">스토리지 VM 이름 수정</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cloud Manager에서 Cloud Volumes ONTAP을 위해 생성한 단일 스토리지 VM(SVM)의 이름을 자동으로 지정합니다. 엄격한 명명 규칙이 있으면 SVM의 이름을 수정할 수 있습니다. 예를 들어, ONTAP 클러스터에 대한 SVM의 이름을 일치시키는 이름을 지정할 수 있습니다.</p>
+</div>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP에 대해 추가 SVM을 생성한 경우 Cloud Manager에서 SVM의 이름을 바꿀 수 없습니다. System Manager 또는 CLI를 사용하여 Cloud Volumes ONTAP에서 직접 변경해야 합니다.</p>
+</div>
+<div class="olist arabic">
+<div class="title">단계</div>
+<ol class="arabic">
+<li>
+<p>작업 환경에서 메뉴 아이콘을 클릭한 다음 * 정보 * 를 클릭합니다.</p>
+</li>
+<li>
+<p>스토리지 VM 이름 오른쪽에 있는 편집 아이콘을 클릭합니다.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_svm.gif" alt="스크린샷: SVM 이름 필드를 표시하고 SVM 이름을 수정하려면 클릭해야 하는 편집 아이콘을 표시합니다."></span></p>
+</div>
+</li>
+<li>
+<p>Modify SVM Name(SVM 이름 수정) 대화 상자에서 이름을 변경한 다음 * Save * (저장 *)를 클릭합니다.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cloud-volumes-ontap-암호-변경">Cloud Volumes ONTAP 암호 변경</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cloud Volumes ONTAP에는 클러스터 관리자 계정이 포함되어 있습니다. 필요한 경우 Cloud Manager에서 이 계정의 암호를 변경할 수 있습니다.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/occm38/images/important.svg" alt="중요">
+</td>
+<td class="content">
+System Manager 또는 CLI를 통해 admin 계정의 암호를 변경하지 마십시오. 암호는 Cloud Manager에 반영되지 않습니다. 따라서 Cloud Manager에서 인스턴스를 제대로 모니터링할 수 없습니다.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<div class="title">단계</div>
+<ol class="arabic">
+<li>
+<p>작업 환경에서 메뉴 아이콘을 클릭한 다음 * 고급 &gt; 암호 설정 * 을 클릭합니다.</p>
+</li>
+<li>
+<p>새 암호를 두 번 입력한 다음 * 저장 * 을 클릭합니다.</p>
+<div class="paragraph">
+<p>새 암호는 마지막으로 사용한 6개의 암호 중 하나와 달라야 합니다.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="c4-4x4xlarge-및-c4-8xlarge-인스턴스의-네트워크-mtu-변경">c4.4x4xLarge 및 c4.8xLarge 인스턴스의 네트워크 MTU 변경</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>기본적으로 Cloud Volumes ONTAP는 AWS에서 c4.4x4xLarge 인스턴스 또는 c4.8xLarge 인스턴스를 선택할 때 9,000 MTU(점보 프레임이라고도 함)를 사용하도록 구성됩니다. 네트워크 구성에 더 적합한 경우 네트워크 MTU를 1,500바이트로 변경할 수 있습니다.</p>
+</div>
+<div class="paragraph">
+<p>9,000바이트의 네트워크 최대 전송 단위(MTU)는 특정 구성에 대해 가능한 가장 높은 최대 네트워크 처리량을 제공할 수 있습니다.</p>
+</div>
+<div class="paragraph">
+<p>9,000 MTU는 동일한 VPC의 클라이언트가 Cloud Volumes ONTAP 시스템과 통신하고 일부 또는 모든 클라이언트가 9,000 MTU를 지원하는 경우에 적합합니다. 트래픽이 VPC를 벗어나면 패킷 조각화가 발생하여 성능이 저하될 수 있습니다.</p>
+</div>
+<div class="paragraph">
+<p>VPC 외부의 클라이언트 또는 시스템이 Cloud Volumes ONTAP 시스템과 통신할 경우 1,500바이트의 네트워크 MTU가 적합합니다.</p>
+</div>
+<div class="olist arabic">
+<div class="title">단계</div>
+<ol class="arabic">
+<li>
+<p>작업 환경에서 메뉴 아이콘을 클릭한 다음 * 고급 &gt; 네트워크 사용률 * 을 클릭합니다.</p>
+</li>
+<li>
+<p>표준 * 또는 * 점보 프레임 * 을 선택합니다.</p>
+</li>
+<li>
+<p>변경 * 을 클릭합니다.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="여러-aws-azs에서-ha-쌍과-연결된-경로-테이블을-변경합니다">여러 AWS AZs에서 HA 쌍과 연결된 경로 테이블을 변경합니다</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>HA 쌍의 부동 IP 주소에 대한 라우트가 포함된 AWS 라우트 테이블을 수정할 수 있습니다. 새로운 NFS 또는 CIFS 클라이언트가 AWS의 HA 쌍에 액세스해야 하는 경우 이 작업을 수행할 수 있습니다.</p>
+</div>
+<div class="olist arabic">
+<div class="title">단계</div>
+<ol class="arabic">
+<li>
+<p>작업 환경에서 메뉴 아이콘을 클릭한 다음 * 정보 * 를 클릭합니다.</p>
+</li>
+<li>
+<p>배관 테이블 * 을 클릭합니다.</p>
+</li>
+<li>
+<p>선택한 라우팅 테이블 목록을 수정하고 * 저장 * 을 클릭합니다.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Cloud Manager에서 AWS 요청을 보내 경로 테이블을 수정합니다.</p>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+  <div class="page-nav-toolbar">
+    <div id="version-dropdown"></div>
+    <div class="page-nav-contribute"  >
+      <a target="_blank" href="https://github.com/NetAppDocs/occm38/issues/new?body=Page%3A%20[Cloud Volumes ONTAP 시스템 수정](https://docs.netapp.com/ko-kr/occm38/task_modifying_ontap_cloud.html)" class="page-nav-contribute-link" role="button"><img src="/ko-kr/occm38/images/discuss-sm.svg" class="github-icon" />문서 변경 요청</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/occm38/blob/main/task_modifying_ontap_cloud.adoc" class="page-nav-contribute-link" role="button"><img src="/ko-kr/occm38/images/edit-sm.svg" class="github-icon" />이 페이지 편집</a>
+      <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/ko-kr/occm38/images/article-sm.svg" class="github-icon" />기여하는 방법 자세히 알아보기</a>
+    </div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">이 페이지의 내용</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  <div style="clear: both"></div><!-- Main needs to have height -->
+</div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+            <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
+            </li>
+
+</ul>
+</div>
+<div class="n-footer__social-links">
+<ul class="n-footer__social-link-list">
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com" target="_blank" title="blog" alt="blog">
+<span class="n-footer__social-link-text">blog</span>
+<svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+  <title>blog@</title>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ko-kr/occm38/common/svg/sprite.svg#blog"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/" target="_blank" title="community" alt="community">
+<span class="n-footer__social-link-text">community</span>
+<svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+<title>community@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ko-kr/occm38/common/svg/sprite.svg#comments"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp" target="_blank" title="twitter" alt="twitter">
+<span class="n-footer__social-link-text">twitter</span>
+<svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+<title>twitter@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ko-kr/occm38/common/svg/sprite.svg#twitter"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp" target="_blank" title="facebook" alt="facebook">
+<span class="n-footer__social-link-text">facebook</span>
+<svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+<title>facebook@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ko-kr/occm38/common/svg/sprite.svg#facebook"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-linkedin" href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+<span class="n-footer__social-link-text">linkedin</span>
+<svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+<title>linkedin@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ko-kr/occm38/common/svg/sprite.svg#linkedin"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-youtube" href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+<span class="n-footer__social-link-text">youtube</span>
+<svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+<title>youtube@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ko-kr/occm38/common/svg/sprite.svg#youtube"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-slideshare" href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+<span class="n-footer__social-link-text">slideshare</span>
+<svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+<title>slideshare@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ko-kr/occm38/common/svg/sprite.svg#slideshare"></use>
+</svg>
+
+</a>
+</li>
+</ul>
+</div>
+
+</div>
+<div class="n-footer__bottom-right">
+  <p class="n-footer__fine-print">웹 사이트에 대한 피드백이 있으십니까?<a target="_self" href="javascript:netapp_mailto()" class="n-footer__copyright">의견을 공유해 주십시오</a>
+  <a href="https://docs.netapp.com/ko-kr/announcements/" class="n-footer__copyright">공지 사항</a>
+  </p>
+</div>
+</div>
+</div>
+</footer>
+
+      </div>
+
+      <!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/ko-kr/occm38/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/ko-kr/occm38/js/prism.js'></script>
+      <script type="text/javascript" src='/ko-kr/occm38/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/ko-kr/occm38/js/www-ntap.js'></script>
+    <script src='/ko-kr/occm38/js/tabbed-blocks.js'></script>
+  </body>
+
+  
+</html>
