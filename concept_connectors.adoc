@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: concept_connectors.html 
-keywords: concept, connectors, learn about connectors, service connectors, what are connectors, what is a connector, what\'s a connector, days, 14 days 
+keywords: 'concept, connectors, learn about connectors, service connectors, what are connectors, what is a connector, what"s a connector, days, 14 days' 
 summary: 대부분의 경우 클라우드나 온프레미스 네트워크에 커넥터를 구축해야 합니다. Connector를 사용하면 Cloud Manager에서 퍼블릭 클라우드 환경 내의 리소스와 프로세스를 관리할 수 있습니다. 
 ---
 = 커넥터에 대해 자세히 알아보십시오
