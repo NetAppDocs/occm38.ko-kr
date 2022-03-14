@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: task_deploying_gcp.html 
-keywords: Cloud Volumes ONTAP, deploying, launching, creating, deploy, launch, create, gcp, BYOL, license key, serial number, location, license, preconfigured packages, programmatic deployments, disk size, write speed, access control, volume protection, usage profile, register, CIFS share, quota, qtree 
+keywords: Cloud Volumes ONTAP, deploying, launching, creating, deploy, launch, create, gcp, BYOL, license key, serial number, location, license, preconfigured packages, programmatic deployments, disk size, write speed, access control, volume protection, usage profile, register, CIFS share, quota, qtree, google, google cloud 
 summary: 작업 환경을 생성하여 GCP에서 단일 노드 Cloud Volumes ONTAP 시스템을 시작할 수 있습니다. 
 ---
 = GCP에서 Cloud Volumes ONTAP를 시작합니다
