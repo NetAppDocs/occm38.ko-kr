@@ -6,6 +6,7 @@ summary: Cloud Manager를 사용하면 볼륨, 애그리게이트, CIFS 서버�
 ---
 = 기존 스토리지 관리
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP에서 Azure Blob 저장소로 데이터 백업을 �
 ---
 = Azure Blob 저장소에 데이터 백업
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -86,7 +87,7 @@ Azure Blob 저장소에 볼륨을 백업하기 전에 다음 요구 사항을 �
 
 지원되는 ONTAP 버전:: Cloud Volumes ONTAP 9.7 이상
 지원되는 Azure 지역:: 클라우드 백업은 모든 Azure 지역에서 지원됩니다 https://cloud.netapp.com/cloud-volumes-global-regions["Cloud Volumes ONTAP가 지원되는 경우"^].
-라이센스 요구 사항::
+라이센스 요구 사항:: Backup to Cloud PAYGO 라이센스의 경우, 클라우드로 백업을 활성화하기 전에 Azure Marketplace에 가입해야 합니다. Cloud Backup to Cloud에 대한 청구는 이 구독을 통해 이루어집니다. link:task_deploying_otc_azure.html["작업 환경 마법사의 세부 정보 및 자격 증명 페이지에서 구독할 수 있습니다"^].
 +
 --
 Backup to Cloud BYOL 라이센스의 경우, 라이센스 기간 및 용량 동안 서비스를 사용할 수 있도록 지원하는 NetApp의 일련 번호가 필요합니다. 을 참조하십시오 link:task_managing_licenses.html#adding-and-updating-your-backup-byol-license["Backup BYOL 라이센스 추가 및 업데이트"^].

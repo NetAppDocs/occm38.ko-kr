@@ -6,6 +6,7 @@ summary: 조직의 개인 데이터 및 민감한 개인 데이터에 대한 세
 ---
 = 프라이빗 데이터에 대한 가시성 및 제어 확보
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

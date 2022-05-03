@@ -6,6 +6,7 @@ summary: 소스와 타겟이 지원되는지 확인하고 설정하여 데이터
 ---
 = 소스 및 타겟 준비
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

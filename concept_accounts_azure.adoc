@@ -6,6 +6,7 @@ summary: Cloud Manager를 사용하면 Cloud Volumes ONTAP 구축 시 사용할 
 ---
 = Azure 자격 증명 및 권한
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -51,7 +52,7 @@ image:screenshot_accounts_switch_azure.gif["세부 정보 및 amp;Credentials �
 
 .Marketplace 구축 및 온프레미스 배포는 어떻습니까?
 ****
-위 섹션에서는 NetApp Cloud Central에서 제공하는 Connector의 권장 구축 방법에 대해 설명합니다. 에서 Azure에 Connector를 배포할 수도 있습니다 link:task_launching_azure_mktp.html["Azure 마켓플레이스 를 참조하십시오"], 그리고 당신은 할 수 있다 .
+위 섹션에서는 NetApp Cloud Central에서 제공하는 Connector의 권장 구축 방법에 대해 설명합니다. 에서 Azure에 Connector를 배포할 수도 있습니다 link:task_launching_azure_mktp.html["Azure 마켓플레이스 를 참조하십시오"], 그리고 당신은 할 수 있다 link:task_installing_linux.html["Connector On-Premises를 설치합니다"].
 
 Marketplace를 사용하는 경우 사용 권한이 동일한 방식으로 제공됩니다. Connector에 대해 관리되는 ID를 수동으로 만들고 설정한 다음 추가 계정에 대한 사용 권한을 제공하면 됩니다.
 

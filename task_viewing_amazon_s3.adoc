@@ -6,6 +6,7 @@ summary: AWS에 Connector를 설치한 후 Cloud Manager는 AWS 계정에 상주
 ---
 = Amazon S3 버킷을 봅니다
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

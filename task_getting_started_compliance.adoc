@@ -6,6 +6,7 @@ summary: AWS 또는 Azure의 Azure NetApp Files 또는 Cloud Volumes ONTAP용 Cl
 ---
 = Cloud Volumes ONTAP 및 Azure NetApp Files용 클라우드 규정 준수 시작하기
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

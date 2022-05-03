@@ -6,6 +6,7 @@ summary: NetApp Cloud Sync 서비스는 데이터를 클라우드 또는 온프�
 ---
 = Cloud Sync 개요
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -75,7 +76,7 @@ Cloud Sync 사용과 관련된 비용에는 리소스 비용 및 서비스 비�
 
 AWS 또는 Azure에서 Cloud Sync 서비스를 구독하면 시간 단위로 지불하거나 연간 비용을 지불할 수 있습니다. link:task_sync_licensing.html["AWS 또는 Azure를 통해 가입할 수 있습니다"]를 선택합니다.
 
-시간별 구독::
+시간별 구독:: 시간 단위 용량제 구독을 통해 Cloud Sync 서비스는 생성한 동기화 관계의 수를 기준으로 시간 단위로 요금을 부과합니다.
 +
 --
 * https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-sync-service?tab=PlansAndPrice["Azure에서 가격을 확인할 수 있습니다"^]
@@ -83,7 +84,7 @@ AWS 또는 Azure에서 Cloud Sync 서비스를 구독하면 시간 단위로 지
 
 
 --
-연간 구독::
+연간 구독:: 연간 구독은 사전에 지불하는 20개의 동기화 관계에 대한 라이센스를 제공합니다. 동기화 관계가 20개를 초과하고 Azure를 통해 구독한 경우 시간 단위로 추가 관계를 결제해야 합니다.
 +
 --
 https://aws.amazon.com/marketplace/pp/B06XX5V3M2["AWS에서 연간 가격 보기"^]

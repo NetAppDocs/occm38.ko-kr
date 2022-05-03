@@ -6,6 +6,7 @@ summary: BYOL 시스템을 구축하려면 NetApp Support 사이트 계정을 Cl
 ---
 = Cloud Manager에 NetApp Support 사이트 계정 추가
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

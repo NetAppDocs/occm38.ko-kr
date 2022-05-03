@@ -6,6 +6,7 @@ summary: Cloud Manager를 사용하면 Cloud Volumes Service for Google Cloud �
 ---
 = Google Cloud용 Cloud Volumes Service의 볼륨을 생성하고 관리합니다
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

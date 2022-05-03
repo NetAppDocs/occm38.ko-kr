@@ -6,6 +6,7 @@ summary: Cloud Central 계정은 멀티 테넌시를 제공하고 Cloud Manager 
 ---
 = 계정 설정: 사용자, 작업 영역, 커넥터 및 구독
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

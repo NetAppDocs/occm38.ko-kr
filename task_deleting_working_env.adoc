@@ -6,6 +6,7 @@ summary: AWS 또는 Azure가 아니라 Cloud Manager에서 Cloud Volumes ONTAP �
 ---
 = Cloud Volumes ONTAP 작업 환경 삭제
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

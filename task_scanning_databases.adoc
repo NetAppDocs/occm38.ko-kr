@@ -6,6 +6,7 @@ summary: Cloud Compliance를 사용하여 데이터베이스 스키마 스캔을
 ---
 = 데이터베이스 스키마를 검색하는 중입니다
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

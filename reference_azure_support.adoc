@@ -6,6 +6,7 @@ summary: Cloud Tiering은 핫 액세스 계층 및 대부분의 영역을 지원
 ---
 = 지원되는 Azure Blob 액세스 계층 및 지역
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

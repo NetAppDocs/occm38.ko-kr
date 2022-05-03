@@ -6,6 +6,7 @@ summary: 웹 UI를 통해 제공되는 Cloud Sync 기능은 RESTful API를 통�
 ---
 = Cloud Sync API
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

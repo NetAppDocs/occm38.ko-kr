@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP에서 클라우드 스토리지를 사용하는 방
 ---
 = 디스크와 애그리게이트
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -37,7 +38,7 @@ TIP: 클라우드 공급자로부터 구입한 총 스토리지 양은 _raw capa
 
 AWS에서 Cloud Volumes ONTAP는 사용자 데이터에 EBS 스토리지를 사용하고, 일부 EC2 인스턴스 유형에서 로컬 NVMe 스토리지를 Flash Cache로 사용합니다.
 
-EBS 스토리지::
+EBS 스토리지:: AWS에서는 aggregate에 동일한 크기의 디스크를 최대 6개까지 포함할 수 있습니다. 최대 디스크 크기는 16TB입니다.
 +
 --
 기본 EBS 디스크 유형은 범용 SSD, 프로비저닝된 IOPS SSD, 처리량 최적화 HDD 또는 콜드 HDD가 될 수 있습니다. EBS 디스크를 Amazon S3와 에 페어링할 수 있습니다 link:concept_data_tiering.html["비활성 데이터를 저비용 오브젝트 스토리지로 계층화합니다"].
@@ -72,7 +73,7 @@ NOTE: 콜드 HDD 디스크는 HA 구성 및 데이터 계층화에서 지원되�
 
 Azure에서는 aggregate가 동일한 크기의 디스크를 최대 12개까지 포함할 수 있습니다. 디스크 유형과 최대 디스크 크기는 단일 노드 시스템을 사용하는지 HA 쌍을 사용하는지에 따라 달라집니다.
 
-단일 노드 시스템::
+단일 노드 시스템:: 단일 노드 시스템에서는 세 가지 유형의 Azure 관리 디스크를 사용할 수 있습니다.
 +
 --
 * _Premium SSD 관리 디스크_ 높은 비용으로 I/O 집약적인 작업 부하에 높은 성능을 제공합니다.

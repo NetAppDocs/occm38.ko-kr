@@ -6,6 +6,7 @@ summary: Cloud Manager에서 온프레미스 ONTAP 클러스터를 검색할 경
 ---
 = ONTAP 클러스터용 스토리지 관리
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

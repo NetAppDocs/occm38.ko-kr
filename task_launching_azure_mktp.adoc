@@ -6,6 +6,7 @@ summary: Cloud Manager에서 직접 Connector를 생성하는 것이 가장 좋�
 ---
 = Azure Marketplace에서 커넥터 만들기
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

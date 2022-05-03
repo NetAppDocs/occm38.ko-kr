@@ -6,6 +6,7 @@ summary: Google Cloud 계정을 사용하여 프로젝트에 Cloud Manager를 �
 ---
 = Google Cloud 프로젝트, 권한 및 계정
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: Cloud Manager를 사용하면 Cloud Volumes Service for AWS 가입을 �
 ---
 = Cloud Volumes Service for AWS 관리
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

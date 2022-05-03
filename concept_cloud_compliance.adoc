@@ -6,6 +6,7 @@ summary: 'Cloud Compliance는 Cloud Manager의 데이터 개인 정보 보호 �
 ---
 = 클라우드 규정 준수에 대해 알아보십시오
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -119,7 +120,7 @@ image:diagram_cloud_compliance_scan.png["클라우드 공급자가 실행 중인
 
 초기 스캔 후 Cloud Compliance는 각 볼륨을 지속적으로 검사하여 증분 변경 사항을 감지합니다(인스턴스 실행을 유지하는 것이 중요한 이유).
 
-에서 스캔을 활성화 및 비활성화할 수 있습니다 link:task_getting_started_compliance.html#enabling-and-disabling-compliance-scans-on-volumes["볼륨 레벨"^], 에서 , 및 에 있습니다 .
+에서 스캔을 활성화 및 비활성화할 수 있습니다 link:task_getting_started_compliance.html#enabling-and-disabling-compliance-scans-on-volumes["볼륨 레벨"^], 에서 link:task_scanning_s3.html#enabling-and-disabling-compliance-scans-on-s3-buckets["버킷 수평"^], 및 에 있습니다 link:task_scanning_databases.html#enabling-and-disabling-compliance-scans-on-database-schemas["데이터베이스 스키마 수준입니다"^].
 
 
 
@@ -159,4 +160,4 @@ SaaS 모드에서 Cloud Manager를 사용할 경우 Cloud Manager에 대한 연�
 * Cloud Compliance Viewer * 역할의 사용자는 규정 준수 정보를 보고 액세스 권한이 있는 시스템에 대한 보고서만 생성할 수 있습니다. 이러한 사용자는 볼륨, 버킷 또는 데이터베이스 스키마 스캔을 활성화/비활성화할 수 없습니다.
 
 
-link:reference_user_roles.html["Cloud Manager 역할에 대해 자세히 알아보십시오"^] 및 방법 을 참조하십시오 .
+link:reference_user_roles.html["Cloud Manager 역할에 대해 자세히 알아보십시오"^] 및 방법 을 참조하십시오 link:task_managing_cloud_central_accounts.html#adding-users["특정 역할을 가진 사용자를 추가합니다"^].

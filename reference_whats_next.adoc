@@ -6,6 +6,7 @@ summary: 로그인한 후 Cloud Manager를 설정했으므로 사용자는 작�
 ---
 = 다음 단계로 넘어갑니다
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

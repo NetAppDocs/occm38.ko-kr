@@ -6,6 +6,7 @@ summary: Cloud Sync 서비스를 시작하는 데 몇 가지 단계가 포함되
 ---
 = Cloud Sync를 빠르게 시작합니다
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

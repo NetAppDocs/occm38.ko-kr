@@ -6,6 +6,7 @@ summary: NetApp Cloud Central에 등록하여 NetApp의 클라우드 서비스�
 ---
 = NetApp Cloud Central에 등록
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

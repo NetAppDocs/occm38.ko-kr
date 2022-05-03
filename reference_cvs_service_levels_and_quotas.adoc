@@ -6,6 +6,7 @@ summary: AWS용 Cloud Volumes Service 비용은 선택한 서비스 수준과 �
 ---
 = 서비스 수준 및 할당된 용량
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -112,7 +113,7 @@ Cloud Volumes Service for AWS는 3가지 서비스 수준을 지원합니다. �
 
 맨 왼쪽 열은 용량을 나타내고 다른 열은 서비스 수준에 따라 각 용량 지점에서 사용 가능한 MB/s를 정의합니다.
 
-을 참조하십시오 link:https://aws.amazon.com/marketplace/pp/B07MF4GHYW?qid=1595869056263&sr=0-2&ref_=srh_res_product_title["계약 서브스크립션 가격"] 및  를 참조하십시오.
+을 참조하십시오 link:https://aws.amazon.com/marketplace/pp/B07MF4GHYW?qid=1595869056263&sr=0-2&ref_=srh_res_product_title["계약 서브스크립션 가격"] 및 link:https://aws.amazon.com/marketplace/pp/B0848MXK74?qid=1595869056263&sr=0-1&ref_=srh_res_product_title["용량제 구독"^] 를 참조하십시오.
 
 [cols="15,15,15,15"]
 |===

@@ -6,6 +6,7 @@ summary: Cloud Compliance는 Amazon S3 버킷을 스캔하여 S3 오브젝트 �
 ---
 = Amazon S3에 대한 클라우드 규정 준수 시작하기
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -56,7 +57,7 @@ Amazon S3 작업 환경을 선택하고 * 규정 준수 활성화 * 를 클릭�
 다음 요구사항은 S3 버킷 스캔에만 적용됩니다.
 
 [[policy-requirements]]
-Cloud Compliance 인스턴스에 대해 IAM 역할을 설정합니다::
+Cloud Compliance 인스턴스에 대해 IAM 역할을 설정합니다:: Cloud Compliance는 계정의 S3 버킷에 연결하고 이를 스캔할 수 있는 권한이 필요합니다. 아래에 나열된 권한을 포함하는 IAM 역할을 설정합니다. Cloud Manager는 Amazon S3 작업 환경에서 Cloud Compliance를 활성화할 때 IAM 역할을 선택하라는 메시지를 표시합니다.
 +
 --
 [source, json]
@@ -89,7 +90,7 @@ Cloud Compliance 인스턴스에 대해 IAM 역할을 설정합니다::
 }
 ----
 --
-Cloud Compliance에서 Amazon S3로 연결 제공::
+Cloud Compliance에서 Amazon S3로 연결 제공:: 클라우드 규정 준수에는 Amazon S3에 대한 연결이 필요합니다. 이 연결을 제공하는 가장 좋은 방법은 VPC 엔드포인트를 통해 S3 서비스로 연결하는 것입니다. 자세한 내용은 을 참조하십시오 https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpce-gateway.html#create-gateway-endpoint["AWS 설명서: 게이트웨이 엔드포인트 생성"^].
 +
 --
 VPC 엔드포인트를 생성할 때 Cloud Compliance 인스턴스에 해당하는 지역, VPC 및 라우트 테이블을 선택해야 합니다. 또한 S3 엔드포인트에 대한 트래픽을 활성화하는 아웃바운드 HTTPS 규칙을 추가하려면 보안 그룹을 수정해야 합니다. 그렇지 않으면, Cloud Compliance를 S3 서비스에 연결할 수 없습니다.

@@ -6,6 +6,7 @@ summary: 동기화 관계를 생성할 때 사내 Linux 호스트 또는 클라�
 ---
 = Linux 호스트에 데이터 브로커 설치
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -60,7 +61,7 @@ SELinux는 데이터 브로커 소프트웨어 업데이트를 차단하는 정�
 S3 버킷을 포함하는 동기화 관계에 데이터 브로커를 사용할 계획이라면, AWS 액세스를 위한 Linux 호스트를 준비해야 합니다. 데이터 브로커를 설치할 때는 프로그래밍 방식의 액세스와 특정 권한이 있는 AWS 사용자에게 AWS 키를 제공해야 합니다.
 
 .단계
-. 을 사용하여 IAM 정책을 생성합니다 https://s3.amazonaws.com/metadata.datafabric.io/docs/on_prem_iam_policy.json["NetApp에서 제공하는 정책입니다"^]..
+. 을 사용하여 IAM 정책을 생성합니다 https://s3.amazonaws.com/metadata.datafabric.io/docs/on_prem_iam_policy.json["NetApp에서 제공하는 정책입니다"^]. https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html["AWS 지침을 확인하십시오"^].
 . 프로그래밍 방식으로 액세스할 수 있는 IAM 사용자를 생성합니다. https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html["AWS 지침을 확인하십시오"^].
 +
 데이터 브로커 소프트웨어를 설치할 때는 AWS 키를 지정해야 하므로 AWS 키를 반드시 복사해야 합니다.

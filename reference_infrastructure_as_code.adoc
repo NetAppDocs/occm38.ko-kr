@@ -6,6 +6,7 @@ summary: 이 페이지의 리소스를 사용하여 Cloud Manager 및 Cloud Volu
 ---
 = 코드로서 인프라를 위한 자동화 리소스
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

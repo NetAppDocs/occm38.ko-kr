@@ -6,6 +6,7 @@ summary: 초기 설정을 수행한 후 나중에 사용자, 작업 영역, 커�
 ---
 = 사용자, 작업 영역, 커넥터 및 구독 관리
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

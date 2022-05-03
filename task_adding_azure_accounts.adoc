@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP 시스템을 생성할 때 해당 시스템에서 �
 ---
 = Cloud Manager에 대한 Azure 자격 증명 및 구독 관리
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP BYOL 시스템 라이센스를 추가하여 용량�
 ---
 = Cloud Volumes ONTAP용 BYOL 라이센스 관리
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

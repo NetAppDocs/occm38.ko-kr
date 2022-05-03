@@ -6,6 +6,7 @@ summary: Cloud Manager에서 Azure NetApp Files 작업 환경을 생성하여 Ne
 ---
 = Azure NetApp Files 설정
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

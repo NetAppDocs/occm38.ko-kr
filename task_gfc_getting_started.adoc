@@ -6,6 +6,7 @@ summary: Cloud Manager를 사용하여 작업 환경에 글로벌 파일 캐시 
 ---
 = 시작하기
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -34,7 +35,7 @@ Cloud Manager를 사용하여 작업 환경에 글로벌 파일 캐시 관리 �
 ==== Cloud Volumes ONTAP 구축
 
 [role="quick-margin-para"]
-Azure 또는 AWS에 Cloud Volumes ONTAP를 구축하고 SMB 파일 공유를 구성합니다. 자세한 내용은 을 참조하십시오 link:task_deploying_otc_azure.html["Azure에서 Cloud Volumes ONTAP 실행"^] 또는 .
+Azure 또는 AWS에 Cloud Volumes ONTAP를 구축하고 SMB 파일 공유를 구성합니다. 자세한 내용은 을 참조하십시오 link:task_deploying_otc_azure.html["Azure에서 Cloud Volumes ONTAP 실행"^] 또는 link:task_deploying_otc_aws.html["AWS에서 Cloud Volumes ONTAP 실행"^].
 
 
 
@@ -68,7 +69,7 @@ Cloud Volumes ONTAP 인스턴스와 동일한 작업 환경에 글로벌 파일 
 
 === Cloud Volumes ONTAP를 스토리지 플랫폼으로 구축
 
-현재 릴리즈에서는 글로벌 파일 캐시가 Azure 또는 AWS에 구축된 Cloud Volumes ONTAP를 지원합니다. 자세한 사전 요구 사항, 요구 사항 및 배포 지침은 을 참조하십시오 link:task_deploying_otc_azure.html["Azure에서 Cloud Volumes ONTAP 실행"^] 또는 .
+현재 릴리즈에서는 글로벌 파일 캐시가 Azure 또는 AWS에 구축된 Cloud Volumes ONTAP를 지원합니다. 자세한 사전 요구 사항, 요구 사항 및 배포 지침은 을 참조하십시오 link:task_deploying_otc_azure.html["Azure에서 Cloud Volumes ONTAP 실행"^] 또는 link:task_deploying_otc_aws.html["AWS에서 Cloud Volumes ONTAP 실행"^].
 
 다음과 같은 추가 글로벌 파일 캐시 요구 사항에 유의하십시오.
 

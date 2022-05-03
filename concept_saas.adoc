@@ -6,6 +6,7 @@ summary: 또한 Cloud Manager를 위한 서비스형 소프트웨어 경험을 �
 ---
 = Cloud Manager를 SaaS로 전환
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

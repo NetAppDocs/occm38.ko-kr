@@ -6,6 +6,7 @@ summary: 몇 가지 단계로 Cloud Volumes ONTAP for AWS를 시작하십시오.
 ---
 = Cloud Volumes ONTAP for AWS 시작하기
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -20,7 +21,7 @@ summary: 몇 가지 단계로 Cloud Volumes ONTAP for AWS를 시작하십시오.
 ==== 커넥터를 작성합니다
 
 [role="quick-margin-para"]
-가 없는 경우 link:concept_connectors.html["커넥터"] 그러나 계정 관리자는 계정을 만들어야 합니다. .
+가 없는 경우 link:concept_connectors.html["커넥터"] 그러나 계정 관리자는 계정을 만들어야 합니다. link:task_creating_connectors_aws.html["AWS에서 커넥터를 생성하는 방법에 대해 알아보십시오"].
 
 [role="quick-margin-para"]
 첫 번째 Cloud Volumes ONTAP 작업 환경을 생성할 때 아직 커넥터가 없는 경우 Cloud Manager에서 커넥터를 배포할지 묻는 메시지를 표시합니다.

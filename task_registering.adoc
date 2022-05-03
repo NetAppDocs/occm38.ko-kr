@@ -6,6 +6,7 @@ summary: NetApp의 지원은 Cloud Volumes ONTAP Explore, Standard 및 Premium �
 ---
 = 선불 종량제 시스템을 등록하는 중입니다
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

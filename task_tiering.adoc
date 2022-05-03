@@ -6,6 +6,7 @@ summary: 사용 빈도가 높은 데이터를 위한 SSD 또는 HDD 성능 계�
 ---
 = 비활성 데이터를 저비용 오브젝트 스토리지로 계층화
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -113,7 +114,7 @@ https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_
 .. Predefined_Storage Admin_role을 계층화 서비스 계정에 할당합니다.
 .. Connector 서비스 계정을 계층화 서비스 계정에 _ 서비스 계정 사용자 _ 로 추가합니다.
 +
-사용자 역할을 제공할 수 있습니다 https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account["계층화 서비스 계정을 생성할 때 마법사의 3단계에서"], 또는.
+사용자 역할을 제공할 수 있습니다 https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account["계층화 서비스 계정을 생성할 때 마법사의 3단계에서"], 또는 https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_user_for_a_service_account["서비스 계정이 생성된 후 역할을 부여합니다"^].
 
 +
 Cloud Volumes ONTAP 작업 환경을 생성할 때 나중에 계층화 서비스 계정을 선택해야 합니다.

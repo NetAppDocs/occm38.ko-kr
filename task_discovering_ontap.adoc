@@ -6,6 +6,7 @@ summary: Cloud Manager를 사용하면 사내 환경, NetApp 프라이빗 스토
 ---
 = ONTAP 클러스터 검색
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

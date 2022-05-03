@@ -6,6 +6,7 @@ summary: 'Cloud Manager 인터페이스는 로 이동하여 SaaS 기반 사용�
 ---
 = Cloud Manager에 로그인
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

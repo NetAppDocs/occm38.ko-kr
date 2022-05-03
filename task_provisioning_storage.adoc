@@ -6,6 +6,7 @@ summary: 볼륨 및 애그리게이트를 관리하여 Cloud Manager에서 Cloud
 ---
 = 스토리지 프로비저닝
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: Cloud Sync에 대한 도움말을 얻고 포럼, 채팅 서비스, 비�
 ---
 = Cloud Sync 기술 FAQ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

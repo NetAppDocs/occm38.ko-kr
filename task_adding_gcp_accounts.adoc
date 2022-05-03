@@ -6,6 +6,7 @@ summary: 데이터 계층화를 위해 Cloud Volumes ONTAP 9.6 시스템과 함�
 ---
 = Cloud Manager의 GCP 자격 증명 및 구독 관리
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

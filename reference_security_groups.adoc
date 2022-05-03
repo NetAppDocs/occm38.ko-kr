@@ -6,6 +6,7 @@ summary: Cloud Manager는 Cloud Manager와 Cloud Volumes ONTAP가 성공적으�
 ---
 = AWS의 보안 그룹 규칙
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

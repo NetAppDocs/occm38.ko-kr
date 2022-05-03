@@ -6,6 +6,7 @@ summary: Cloud Manager에는 일반적으로 새로운 기능, 개선 사항 및
 ---
 = Cloud Manager 3.8의 새로운 기능
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -17,8 +18,8 @@ Cloud Manager에는 일반적으로 새로운 기능, 개선 사항 및 버그 �
 
 
 TIP: 이전 릴리스를 찾으십니까?link:https://docs.netapp.com/us-en/occm37/reference_new_occm.html["3.7의 새로운 기능"^]
-
-
+link:https://docs.netapp.com/us-en/occm36/reference_new_occm.html["3.6의 새로운 기능"^]
+link:https://docs.netapp.com/us-en/occm35/reference_new_occm.html["3.5의 새로운 기능"^]
 
 
 
@@ -230,7 +231,7 @@ image:screenshot_connector_remove.gif["비활성 커넥터를 제거할 수 있�
 
 * 이제 현재 클라우드 공급자 자격 증명과 연결된 마켓플레이스 구독을 교체할 수 있습니다. 청구 방식을 변경해야 하는 경우 이 변경 사항을 통해 올바른 마켓플레이스 구독을 통해 비용을 청구할 수 있습니다.
 +
-자세히 알아보기 link:task_adding_aws_accounts.html["AWS에서"], , 및 .
+자세히 알아보기 link:task_adding_aws_accounts.html["AWS에서"], link:task_adding_azure_accounts.html["Azure에서"], 및 link:task_adding_gcp_accounts.html["GCP에서"].
 
 
 

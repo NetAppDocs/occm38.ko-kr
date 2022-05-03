@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP 성능 모니터링을 시작하려면 몇 가지 �
 ---
 = AWS에서 Cloud Volumes ONTAP 모니터링
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -60,7 +61,7 @@ Monitoring * 을 클릭하고 볼륨의 성능 데이터를 확인합니다.
 지원되는 Cloud Volumes ONTAP 버전:: AWS의 모든 Cloud Volumes ONTAP 버전
 Cloud Insights 요구 사항:: 새 Cloud Insights 고객이어야 합니다. Cloud Insights 테넌트가 이미 있는 경우에는 모니터링이 지원되지 않습니다.
 Cloud Central의 이메일 주소입니다:: Cloud Central 사용자 계정의 이메일 주소는 회사 이메일 주소여야 합니다. Cloud Insights 테넌트를 생성할 때 Gmail 및 Hotmail과 같은 무료 이메일 도메인은 지원되지 않습니다.
-획득 장치에 대한 네트워킹::
+획득 장치에 대한 네트워킹:: 획득 장치는 양방향/상호 인증을 사용하여 Cloud Insights 서버에 연결합니다. 인증을 받으려면 클라이언트 인증서를 Cloud Insights 서버로 전달해야 합니다. 이 작업을 수행하려면 데이터 암호를 해독하지 않고 http 요청을 Cloud Insights 서버로 전달하도록 프록시를 설정해야 합니다.
 +
 --
 획득 장치는 다음 두 개의 끝점을 사용하여 Cloud Insights와 통신합니다. 획득 장치 서버와 Cloud Insights 사이에 방화벽이 있는 경우 방화벽 규칙을 구성할 때 다음 엔드포인트가 필요합니다.
@@ -78,7 +79,7 @@ https://cg0c586a-ee05-45rb-a5ac-333b5ae7718d7.c01.cloudinsights.netapp.com
 Cloud Insights 도메인 및 테넌트 ID를 확인하는 데 도움이 필요한 경우 제품 내 채팅을 통해 문의하십시오.
 
 --
-커넥터용 네트워킹::
+커넥터용 네트워킹:: 획득 장치와 마찬가지로 커넥터는 Cloud Insights 테넌트에 대한 아웃바운드 연결을 가져야 합니다. 그러나 커넥터 접촉부가 약간 다른 끝점입니다. 테넌트 호스트 URL에 단축된 테넌트 ID를 사용하여 연결합니다.
 +
 --
  https://<your-short-tenant-ID>.<Cloud Insights Domain>

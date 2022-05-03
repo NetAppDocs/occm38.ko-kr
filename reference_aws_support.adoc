@@ -6,6 +6,7 @@ summary: Cloud Tiering은 여러 S3 스토리지 클래스와 대부분의 영�
 ---
 = 지원되는 S3 스토리지 클래스 및 지역
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

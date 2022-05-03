@@ -5,6 +5,7 @@ summary: Cloud Manager를 사용하면 IT 전문가 및 클라우드 설계자�
 ---
 = Cloud Manager 및 Cloud Volumes ONTAP 설명서
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

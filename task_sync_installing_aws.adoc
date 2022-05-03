@@ -6,6 +6,7 @@ summary: 동기화 관계를 생성할 때 AWS Data Broker 옵션을 선택하�
 ---
 = AWS에서 데이터 브로커 설치
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

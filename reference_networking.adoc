@@ -6,6 +6,7 @@ summary: 사용자가 Cloud Manager에 로그인하기 전에 웹 브라우저�
 ---
 = 네트워킹 개요
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

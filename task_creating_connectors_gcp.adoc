@@ -6,6 +6,7 @@ summary: 대부분의 Cloud Manager 기능을 사용하려면 계정 관리자�
 ---
 = Cloud Manager에서 GCP에 Connector 생성
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -38,7 +39,7 @@ https://cloud.google.com/iam/docs/creating-custom-roles#iam-custom-roles-create-
 Cloud Manager에서 서비스 계정을 생성하면 Connector VM에 이 서비스 계정을 연결합니다.
 
 +
-.. https://cloud.google.com/iam/docs/creating-custom-roles#iam-custom-roles-create-gcloud["GCP에서 역할을 생성합니다"^] 여기에는 에 정의된 권한이 포함됩니다. gcloud 명령줄을 사용해야 합니다.
+.. https://cloud.google.com/iam/docs/creating-custom-roles#iam-custom-roles-create-gcloud["GCP에서 역할을 생성합니다"^] 여기에는 에 정의된 권한이 포함됩니다 https://occm-sample-policies.s3.amazonaws.com/Policy_for_Cloud_Manager_3.8.0_GCP.yaml["GCP에 대한 Cloud Manager 정책입니다"^]. gcloud 명령줄을 사용해야 합니다.
 +
 이 YAML 파일에 포함된 사용 권한은 2a단계의 사용 권한과 다릅니다.
 

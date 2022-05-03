@@ -6,6 +6,7 @@ summary: Cloud Manager에 처음 로그인하면 NetApp Cloud Central 계정을 
 ---
 = Cloud Central 계정에서 작업 영역 및 사용자 설정
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

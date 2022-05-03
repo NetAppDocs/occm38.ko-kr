@@ -6,6 +6,7 @@ summary: 이 FAQ는 새로운 Cloud Manager SaaS 릴리즈와 관련된 주요 �
 ---
 = Cloud Manager SaaS에 대한 FAQ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

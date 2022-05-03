@@ -6,6 +6,7 @@ summary: Connector가 공용 클라우드 환경 내에서 리소스와 프로�
 ---
 = 커넥터에 대한 네트워킹 요구 사항
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

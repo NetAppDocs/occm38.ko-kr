@@ -6,6 +6,7 @@ summary: 회사에 엄격한 보안 정책이 있는 경우 전송 중 데이터
 ---
 = 전송 중 데이터 암호화를 사용하여 NFS 데이터 동기화
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

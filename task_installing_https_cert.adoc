@@ -6,6 +6,7 @@ summary: '기본적으로 Cloud Manager는 웹 콘솔에 대한 HTTPS 액세스�
 ---
 = 보안 액세스를 위한 HTTPS 인증서 관리
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

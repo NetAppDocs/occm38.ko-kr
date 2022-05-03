@@ -6,6 +6,7 @@ summary: 대부분의 Cloud Manager 기능을 사용하려면 계정 관리자�
 ---
 = Cloud Manager에서 AWS에 커넥터 생성
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -15,7 +16,7 @@ summary: 대부분의 Cloud Manager 기능을 사용하려면 계정 관리자�
 [role="lead"]
 대부분의 Cloud Manager 기능을 사용하려면 계정 관리자가 _Connector_를 배포해야 합니다. link:concept_connectors.html["커넥터가 필요한 시기를 알아보십시오"]. Connector를 사용하면 Cloud Manager에서 퍼블릭 클라우드 환경 내의 리소스와 프로세스를 관리할 수 있습니다.
 
-이 페이지에서는 Cloud Manager에서 직접 AWS에 Connector를 생성하는 방법에 대해 설명합니다. 또한 에 대한 옵션도 있습니다 link:task_launching_aws_mktp.html["AWS Marketplace에서 Connector를 생성합니다"], 또는 을 눌러 로 이동합니다 .
+이 페이지에서는 Cloud Manager에서 직접 AWS에 Connector를 생성하는 방법에 대해 설명합니다. 또한 에 대한 옵션도 있습니다 link:task_launching_aws_mktp.html["AWS Marketplace에서 Connector를 생성합니다"], 또는 을 눌러 로 이동합니다 link:task_installing_linux.html["소프트웨어를 다운로드하여 자신의 호스트에 설치합니다"].
 
 이러한 단계는 계정 관리자 역할을 가진 사용자가 완료해야 합니다. 작업 영역 관리자가 연결선을 만들 수 없습니다.
 

@@ -6,6 +6,7 @@ summary: AWS Marketplace for Cloud Manager와 Cloud Volumes ONTAP에서 다양�
 ---
 = Cloud Manager 및 Cloud Volumes ONTAP에 대한 AWS 마켓플레이스 페이지
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

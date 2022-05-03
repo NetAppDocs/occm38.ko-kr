@@ -6,6 +6,7 @@ summary: 각 볼륨에 대한 스냅샷 정책을 생성하여 이전 시간에 
 ---
 = 클라우드 볼륨 스냅샷을 관리합니다
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

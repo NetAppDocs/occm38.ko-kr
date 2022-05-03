@@ -6,6 +6,7 @@ summary: 콜드 데이터를 저비용 오브젝트 스토리지로 자동 계�
 ---
 = 데이터 계층화 개요
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -29,14 +30,14 @@ NOTE: FabricPool(데이터 계층화)를 사용하기 위해 기능 라이센스
 AWS에서 데이터 계층화를 활성화하면 Cloud Volumes ONTAP은 EBS를 핫 데이터의 성능 계층으로, AWS S3를 비활성 데이터의 용량 계층으로 사용합니다.
 
 성능 계층:: 성능 계층은 범용 SSD, 프로비저닝된 IOPS SSD 또는 처리량 최적화 HDD가 될 수 있습니다.
-용량 계층::
+용량 계층:: Cloud Volumes ONTAP 시스템은 _Standard_storage 클래스를 사용하여 비활성 데이터를 단일 S3 버킷에 계층화합니다. 표준은 여러 가용성 영역에 걸쳐 자주 액세스하는 데이터에 적합합니다.
 +
 --
 
 NOTE: Cloud Manager에서 각 작업 환경에 대해 단일 S3 버킷을 생성하고 이를 Fabric-pool-_cluster unique identifier_로 지정합니다. 각 볼륨에 대해 다른 S3 버킷이 생성되지 않습니다.
 
 --
-스토리지 클래스::
+스토리지 클래스:: AWS의 계층형 데이터에 대한 기본 스토리지 클래스는 _Standard_입니다. 비활성 데이터에 액세스할 계획이 없는 경우 스토리지 클래스를 _Intelligent Tiering_, _One-Zone Infrequent Access_ 또는 _Standard - Infrequent Access_ 중 하나로 변경하여 스토리지 비용을 절감할 수 있습니다. 스토리지 클래스를 변경하면 비활성 데이터가 표준 스토리지 클래스에서 시작되어 30일 후에 액세스하지 않는 경우 선택한 스토리지 클래스로 전환됩니다.
 +
 --
 데이터에 액세스하는 경우 액세스 비용이 더 높아지므로 스토리지 클래스를 변경하기 전에 이 점을 고려해야 합니다. https://aws.amazon.com/s3/storage-classes["Amazon S3 스토리지 클래스에 대해 자세히 알아보십시오"^].
@@ -55,14 +56,14 @@ NOTE: Cloud Manager에서 각 작업 환경에 대해 단일 S3 버킷을 생성
 Azure에서 데이터 계층화를 활성화하면 Cloud Volumes ONTAP는 Azure 관리 디스크를 핫 데이터의 성능 계층으로, Azure Blob 스토리지를 비활성 데이터의 용량 계층으로 사용합니다.
 
 성능 계층:: 성능 계층은 SSD 또는 HDD가 될 수 있습니다.
-용량 계층::
+용량 계층:: Cloud Volumes ONTAP 시스템은 Azure_hot_storage 계층을 사용하여 비활성 데이터를 단일 Blob 컨테이너에 계층화합니다. 핫 계층은 자주 액세스하는 데이터에 적합합니다.
 +
 --
 
 NOTE: Cloud Manager에서 각 Cloud Volumes ONTAP 작업 환경에 대한 단일 컨테이너로 새 스토리지 계정을 생성할 수 있습니다. 스토리지 계정의 이름은 임의로 지정됩니다. 각 볼륨에 대해 다른 컨테이너가 생성되지 않습니다.
 
 --
-스토리지 액세스 계층::
+스토리지 액세스 계층:: Azure의 계층화된 데이터에 대한 기본 스토리지 액세스 계층은 _hot_tier입니다. 비활성 데이터에 액세스할 계획이 없는 경우 _cool_storage 계층으로 변경하여 스토리지 비용을 절감할 수 있습니다. 스토리지 계층을 변경하면 비활성 데이터가 핫 스토리지 계층에서 시작되어 30일 후에 데이터에 액세스하지 않는 경우 냉각 스토리지 계층으로 전환됩니다.
 +
 --
 데이터에 액세스하는 경우 액세스 비용이 더 높아지므로 스토리지 계층을 변경하기 전에 이 점을 고려해야 합니다. https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers["Azure Blob 스토리지 액세스 계층에 대해 자세히 알아보십시오"^].
@@ -81,14 +82,14 @@ NOTE: Cloud Manager에서 각 Cloud Volumes ONTAP 작업 환경에 대한 단일
 GCP에서 데이터 계층화를 활성화하면 Cloud Volumes ONTAP는 영구 디스크를 핫 데이터의 성능 계층으로, Google Cloud Storage 버킷을 비활성 데이터의 용량 계층으로 사용합니다.
 
 성능 계층:: 성능 계층은 SSD 또는 HDD(표준 디스크)일 수 있습니다.
-용량 계층::
+용량 계층:: Cloud Volumes ONTAP 시스템은 _Regional_storage 클래스를 사용하여 비활성 데이터를 단일 Google Cloud 스토리지 버킷에 계층화합니다.
 +
 --
 
 NOTE: Cloud Manager에서 각 작업 환경에 대해 단일 버킷을 생성하고 이를 Fabric-pool-_cluster unique identifier_로 지정합니다. 각 볼륨에 대해 다른 버킷이 생성되지 않습니다.
 
 --
-스토리지 클래스::
+스토리지 클래스:: 계층화된 데이터에 대한 기본 스토리지 클래스는 _Standard Storage_class입니다. 데이터에 자주 액세스하지 않는 경우 _Nearline Storage_ 또는 _Coldline Storage_ 로 변경하여 스토리지 비용을 절감할 수 있습니다. 스토리지 클래스를 변경하면 비활성 데이터가 표준 스토리지 클래스에서 시작되어 30일 후에 데이터에 액세스하지 않는 경우 선택한 스토리지 클래스로 전환됩니다.
 +
 --
 데이터에 액세스하는 경우 액세스 비용이 더 높아지므로 스토리지 클래스를 변경하기 전에 이 점을 고려해야 합니다. https://cloud.google.com/storage/docs/storage-classes["Google Cloud Storage용 스토리지 클래스에 대해 자세히 알아보십시오"^].
@@ -116,19 +117,19 @@ NOTE: Cloud Manager에서 각 작업 환경에 대해 단일 버킷을 생성하
 
 볼륨을 생성 또는 수정할 때 Cloud Manager를 사용하여 다음 볼륨 계층화 정책 중에서 선택할 수 있습니다.
 
-스냅샷만::
+스냅샷만:: Aggregate가 50% 용량에 도달하면 Cloud Volumes ONTAP는 활성 파일 시스템과 연결되지 않은 스냅샷 복사본의 콜드 사용자 데이터를 용량 계층으로 이동합니다. 냉각 기간은 약 2일입니다.
 +
 --
 읽으면 용량 계층의 콜드 데이터 블록이 핫 상태가 되고 성능 계층으로 이동합니다.
 
 --
-모두::
+모두:: 모든 데이터(메타데이터 제외)는 즉시 오브젝트 스토리지에 대해 콜드 및 계층화되도록 빨리 표시됩니다. 볼륨의 새 블록이 냉각될 때까지 48시간 동안 기다릴 필요가 없습니다. 모든 정책을 설정하기 전에 볼륨에 있는 블록이 콜드 상태가 되려면 48시간이 걸립니다.
 +
 --
 읽으면 클라우드 계층의 콜드 데이터 블록이 콜드 상태를 유지하고 성능 계층에 다시 기록되지 않습니다. 이 정책은 ONTAP 9.6부터 사용할 수 있습니다.
 
 --
-자동::
+자동:: Aggregate가 50% 용량에 도달하면 Cloud Volumes ONTAP는 볼륨의 콜드 데이터 블록을 용량 계층에 계층화합니다. 콜드 데이터에는 스냅샷 복사본뿐만 아니라 액티브 파일 시스템의 콜드 사용자 데이터도 포함됩니다. 냉각 기간은 약 31일입니다.
 +
 --
 이 정책은 Cloud Volumes ONTAP 9.4부터 지원됩니다.

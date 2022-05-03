@@ -6,6 +6,7 @@ summary: 스토리지 요구사항이 변경됨에 따라 Cloud Volumes ONTAP �
 ---
 = Cloud Volumes ONTAP 시스템 수정
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -86,8 +87,8 @@ Cloud Volumes ONTAP는 새 라이센스, 인스턴스 유형 또는 시스템 �
 . 새 Cloud Volumes ONTAP 작업 환경을 만듭니다.
 +
 link:task_deploying_otc_aws.html["AWS에서 Cloud Volumes ONTAP 실행"]
-
-
+link:task_deploying_otc_azure.html["Azure에서 Cloud Volumes ONTAP 실행"]
+link:task_deploying_gcp.html["GCP에서 Cloud Volumes ONTAP를 시작합니다"]
 
 . link:task_replicating_data.html["일회성 데이터 복제를 설정합니다"] 복제해야 하는 각 볼륨의 시스템 간.
 . 더 이상 필요하지 않은 Cloud Volumes ONTAP 시스템을 종료합니다 link:task_deleting_working_env.html["원래 작업 환경 삭제"].

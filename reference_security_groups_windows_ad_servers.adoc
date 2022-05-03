@@ -7,6 +7,7 @@ summary: '클라우드 볼륨과 함께 Windows AD(Active Directory) 서버를 �
 = Windows AD 서버에 대한 AWS 보안 그룹 설정
 :toc: macro
 :hardbreaks:
+:allow-uri-read: 
 :toc: 
 :nofooter: 
 :icons: font

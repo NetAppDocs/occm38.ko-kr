@@ -6,6 +6,7 @@ summary: 커넥터 문제를 해결해야 하는 경우 커넥터 구성 방법�
 ---
 = Connector의 기본 설정
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

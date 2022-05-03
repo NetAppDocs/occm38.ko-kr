@@ -6,6 +6,7 @@ summary: 클라우드 및 원격 사무소에 Global File Cache를 구축하기 
 ---
 = 글로벌 파일 캐시 배포를 시작하기 전에
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

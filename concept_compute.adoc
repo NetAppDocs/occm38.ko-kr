@@ -6,6 +6,7 @@ summary: Cloud Manager는 Spot의 Cloud Analyzer 서비스를 활용하여 클�
 ---
 = 컴퓨팅 서비스에 대해 자세히 알아보십시오
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

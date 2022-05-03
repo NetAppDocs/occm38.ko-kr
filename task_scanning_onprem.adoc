@@ -6,6 +6,7 @@ summary: 온프레미스 데이터를 Cloud Volumes ONTAP 작업 환경으로 �
 ---
 = SnapMirror를 사용하여 클라우드 규정 준수 기능을 통해 사내 ONTAP 데이터를 스캔합니다
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: Azure에서 Cloud Volumes ONTAP를 구축할 때 워크로드 요구사
 ---
 = Azure에서 Cloud Volumes ONTAP 구성 계획
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -37,7 +38,7 @@ https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_limits_azure_97.html
 
 Cloud Volumes ONTAP 시스템을 사이징하면 성능 및 용량 요구사항을 충족하는 데 도움이 될 수 있습니다. VM 유형, 디스크 유형 및 디스크 크기를 선택할 때 고려해야 할 몇 가지 주요 사항은 다음과 같습니다.
 
-가상 머신 유형입니다::
+가상 머신 유형입니다:: 에서 지원되는 가상 머신 유형을 확인합니다 http://docs.netapp.com/cloud-volumes-ontap/us-en/index.html["Cloud Volumes ONTAP 릴리즈 노트"^] 지원되는 각 VM 유형에 대한 세부 정보를 검토합니다. 각 VM 유형은 특정 수의 데이터 디스크를 지원합니다.
 +
 --
 * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-general#dsv2-series["Azure 설명서: 범용 가상 머신 크기"^]
@@ -45,7 +46,7 @@ Cloud Volumes ONTAP 시스템을 사이징하면 성능 및 용량 요구사항�
 
 
 --
-Azure 디스크 유형입니다::
+Azure 디스크 유형입니다:: Cloud Volumes ONTAP용 볼륨을 생성할 때 Cloud Volumes ONTAP가 디스크로 사용하는 기본 클라우드 스토리지를 선택해야 합니다.
 +
 --
 HA 시스템은 프리미엄 페이지 Blob을 사용합니다. 한편, 단일 노드 시스템에서는 두 가지 유형의 Azure 관리 디스크를 사용할 수 있습니다.
@@ -59,7 +60,7 @@ HA 시스템은 프리미엄 페이지 Blob을 사용합니다. 한편, 단일 �
 
 
 --
-Azure 디스크 크기입니다::
+Azure 디스크 크기입니다:: Cloud Volumes ONTAP 인스턴스를 시작할 때 Aggregate의 기본 디스크 크기를 선택해야 합니다. Cloud Manager에서는 이 디스크 크기를 초기 aggregate와 단순 프로비저닝 옵션을 사용할 때 생성되는 추가 애그리게이트에 사용합니다. 에서는 기본적으로 와는 다른 디스크 크기를 사용하는 애그리게이트를 생성할 수 있습니다 link:task_provisioning_storage.html#creating-aggregates["고급 할당 옵션을 사용합니다"].
 +
 --
 

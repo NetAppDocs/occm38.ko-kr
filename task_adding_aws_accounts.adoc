@@ -6,6 +6,7 @@ summary: 다른 AWS 계정에 Cloud Volumes ONTAP를 구축하려는 경우 해�
 ---
 = Cloud Manager의 AWS 자격 증명 및 구독 관리
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

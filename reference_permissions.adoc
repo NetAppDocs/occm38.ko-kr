@@ -6,6 +6,7 @@ summary: Cloud Manager를 사용하려면 클라우드 공급자에서 작업을
 ---
 = Cloud Manager에서 클라우드 공급자 권한을 사용하는 방법
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

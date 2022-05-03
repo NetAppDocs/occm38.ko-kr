@@ -6,6 +6,7 @@ summary: Cloud Tiering은 표준 스토리지 클래스와 대부분의 영역�
 ---
 = 지원되는 Google Cloud 스토리지 클래스 및 지역
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

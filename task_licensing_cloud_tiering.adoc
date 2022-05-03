@@ -6,6 +6,7 @@ summary: 사용한 만큼만 지불하는 가입형, FabricPool이라고 하는 
 ---
 = Cloud Tiering의 라이센스 설정
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: 작업 환경을 설정한 후 Azure NetApp Files 계정, 용량 풀, �
 ---
 = Azure NetApp Files용 볼륨 생성 및 관리
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

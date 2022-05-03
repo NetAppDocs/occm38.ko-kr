@@ -6,6 +6,7 @@ summary: 다음 링크를 사용하여 글로벌 파일 캐시 및 기타 NetApp
 ---
 = 추가 정보
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

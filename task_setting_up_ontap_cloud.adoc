@@ -6,6 +6,7 @@ summary: Cloud Volumes ONTAP를 구축한 후에는 NTP를 사용하여 시스�
 ---
 = Cloud Volumes ONTAP 설정
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

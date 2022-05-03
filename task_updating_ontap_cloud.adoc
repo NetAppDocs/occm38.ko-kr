@@ -6,6 +6,7 @@ summary: Cloud Manager에는 현재 Cloud Volumes ONTAP 릴리즈로 업그레�
 ---
 = Cloud Volumes ONTAP 소프트웨어를 업데이트하는 중입니다
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

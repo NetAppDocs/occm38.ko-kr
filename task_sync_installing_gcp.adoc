@@ -6,6 +6,7 @@ summary: 동기화 관계를 생성할 때 GCP Data Broker 옵션을 선택하�
 ---
 = Google Cloud Platform에서 데이터 브로커 설치
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

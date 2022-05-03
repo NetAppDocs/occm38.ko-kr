@@ -6,6 +6,7 @@ summary: AWS에 Cloud Volumes ONTAP를 구축할 때 워크로드 요구사항�
 ---
 = AWS에서 Cloud Volumes ONTAP 구성 계획
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -52,7 +53,7 @@ Cloud Volumes ONTAP 시스템을 사이징하면 성능 및 용량 요구사항�
 
 --
 EBS 디스크 유형입니다:: 범용 SSD는 Cloud Volumes ONTAP의 가장 일반적인 디스크 유형입니다. EBS 디스크의 사용 사례를 보려면 을 참조하십시오 http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html["AWS 설명서:EBS 볼륨 유형"^].
-EBS 디스크 크기입니다::
+EBS 디스크 크기입니다:: Cloud Volumes ONTAP 시스템을 시작할 때 초기 디스크 크기를 선택해야 합니다. 그 이후에는 가능합니다 link:concept_storage_management.html["Cloud Manager로 시스템 용량을 관리할 수 있습니다"]하지만 원하는 경우 link:task_provisioning_storage.html#creating-aggregates["스스로 애그리게이트를 빌드하십시오"]다음 사항에 유의하십시오.
 +
 --
 * Aggregate의 모든 디스크는 동일한 크기여야 합니다.

@@ -6,6 +6,7 @@ summary: Connector 소프트웨어는 특정 운영 체제 요구 사항, RAM �
 ---
 = 커넥터 호스트 요구 사항
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

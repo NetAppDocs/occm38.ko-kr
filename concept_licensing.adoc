@@ -6,6 +6,7 @@ summary: 각 Cloud Volumes ONTAP BYOL 시스템에는 활성 서브스크립션�
 ---
 = 라이센싱
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

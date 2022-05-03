@@ -6,6 +6,7 @@ summary: 시작하려면 NetApp 담당자가 Cloud Manager 시스템을 식별�
 ---
 = Cloud Manager 시스템 ID 찾기
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: 데이터를 Azure Blob 저장소에 계층화하여 온프레미스 ON
 ---
 = 사내 ONTAP 클러스터에서 Azure Blob 스토리지로 데이터 계층화
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -48,7 +49,7 @@ Cloud Manager에서 온프레미스 작업 환경을 선택하고 * Setup Tierin
 무료 평가판이 끝나면 용량제 구독, ONTAP 계층화 라이센스 또는 다음 두 가지를 결합하여 Cloud Tiering에 대한 비용을 지불하십시오.
 
 * Azure Marketplace에서 구독하려면 * Tiering > Licensing * 을 클릭하고 * Subscribe * 를 클릭한 다음 표시되는 메시지를 따릅니다.
-* 계층화 라이센스를 추가하려면 mailto:ng-cloud-tiering@netapp.com?subject=Licensing[구매해야 하는 경우 당사에 문의]을 클릭한 다음 .
+* 계층화 라이센스를 추가하려면 mailto:ng-cloud-tiering@netapp.com?subject=Licensing[구매해야 하는 경우 당사에 문의]을 클릭한 다음 link:task_licensing_cloud_tiering.html["Cloud Tiering에서 클러스터에 추가하십시오"].
 
 
 
@@ -96,9 +97,8 @@ IPspace를 사용하면 네트워크 트래픽을 분리할 수 있으므로 개
 
 
 --
+지원되는 볼륨 및 애그리게이트:: Cloud Tiering이 계층화할 수 있는 총 볼륨 수가 ONTAP 시스템의 볼륨 수보다 적을 수 있습니다. 이는 볼륨을 일부 애그리게이트로 계층화할 수 없기 때문입니다. 예를 들어, SnapLock 볼륨이나 MetroCluster 구성에서는 데이터를 계층화할 수 없습니다. 에 대한 ONTAP 설명서를 참조하십시오 link:http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/GUID-8E421CC9-1DE1-492F-A84C-9EB1B0177807.html["FabricPool에서 지원하지 않는 기능 또는 기능입니다"^].
 
-
-link:https://raw.githubusercontent.com/NetAppDocs/cloud-tiering/master/_include/supported_volumes.adoc[""]
 
 
 NOTE: Cloud Tiering은 ONTAP 9.5부터 FlexGroup 볼륨을 지원합니다. 설치 프로그램은 다른 볼륨과 동일하게 작동합니다.

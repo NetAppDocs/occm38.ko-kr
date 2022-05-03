@@ -6,6 +6,7 @@ summary: 몇 가지 단계를 통해 Cloud Volumes ONTAP for GCP를 시작해 �
 ---
 = Google Cloud용 Cloud Volumes ONTAP 시작하기
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -20,7 +21,7 @@ summary: 몇 가지 단계를 통해 Cloud Volumes ONTAP for GCP를 시작해 �
 ==== 커넥터를 작성합니다
 
 [role="quick-margin-para"]
-가 없는 경우 link:concept_connectors.html["커넥터"] 그러나 계정 관리자는 계정을 만들어야 합니다. .
+가 없는 경우 link:concept_connectors.html["커넥터"] 그러나 계정 관리자는 계정을 만들어야 합니다. link:task_creating_connectors_gcp.html["GCP에서 커넥터를 생성하는 방법을 알아보십시오"].
 
 [role="quick-margin-para"]
 첫 번째 Cloud Volumes ONTAP 작업 환경을 생성할 때 아직 커넥터가 없는 경우 Cloud Manager에서 커넥터를 배포할지 묻는 메시지를 표시합니다.
@@ -59,7 +60,7 @@ Cloud Volumes ONTAP에서 저렴한 오브젝트 스토리지(Google 클라우�
 ** Predefined_Storage Admin_role을 계층화 서비스 계정에 할당합니다.
 ** Connector 서비스 계정을 계층화 서비스 계정에 _ 서비스 계정 사용자 _ 로 추가합니다.
 +
-사용자 역할을 제공할 수 있습니다 https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account["계층화 서비스 계정을 생성할 때 마법사의 3단계에서"], 또는.
+사용자 역할을 제공할 수 있습니다 https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account["계층화 서비스 계정을 생성할 때 마법사의 3단계에서"], 또는 https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_user_for_a_service_account["서비스 계정이 생성된 후 역할을 부여합니다"^].
 
 +
 Cloud Volumes ONTAP 작업 환경을 생성할 때 나중에 계층화 서비스 계정을 선택해야 합니다.

@@ -1587,7 +1587,6 @@
   <block id="c11c35c69f52a72c03891a6bd06ddb07" category="list-text">인터클러스터 LIF는 계층적 볼륨을 호스팅하는 각 ONTAP 노드에 필요합니다. LIF는 ONTAP가 오브젝트 스토리지에 연결하는 데 사용해야 하는 _IPspace_와 연결되어 있어야 합니다.</block>
   <block id="cfff9c55ea85b0db9b604bdef2f48d4d" category="paragraph">IPspace를 사용하면 네트워크 트래픽을 분리할 수 있으므로 개인 정보 보호 및 보안을 위해 클라이언트 트래픽을 분리할 수 있습니다.<block ref="099fdf6e8ad70f15bd41fe67513de18c" category="inline-link-rx"></block>.</block>
   <block id="96788f015626d24d63f6f02843be51c3" category="paragraph">데이터 계층화를 설정할 때 Cloud Tiering에서 사용할 IPspace를 묻는 메시지를 표시합니다. 각 LIF가 연결되는 IPspace를 선택해야 합니다. 이는 여러분이 생성한 "기본" IPspace 또는 사용자 지정 IPspace가 될 수 있습니다.</block>
-  <block id="5256a5fac0172e085440941ea452e8ce" category="paragraph"><block ref="5256a5fac0172e085440941ea452e8ce" category="inline-link-macro-rx"></block></block>
   <block id="3cb09efd98df836314cbd254dcf63296" category="admonition">Cloud Tiering은 ONTAP 9.5부터 FlexGroup 볼륨을 지원합니다. 설치 프로그램은 다른 볼륨과 동일하게 작동합니다.</block>
   <block id="6be12c1b6627a3a9bb2aa4cb185fc866" category="section-title">StorageGRID 준비 중</block>
   <block id="36fe0b0906c418ae57a5a0bdc228ec2b" category="paragraph">StorageGRID는 다음 요구 사항을 충족해야 합니다.</block>
@@ -8107,4 +8106,7 @@
   <block id="20bcee4b46f64e2ca105ae61831c7509" category="sidebar">DevOps 툴을 사용하여 자동화</block>
   <block id="7a4e5e5bc542eae2d10e3506f839f2ae" category="sidebar">문제를 해결합니다</block>
   <block id="93168a8084b3e838d2932c4734bd234e" category="sidebar">이전 버전</block>
+  <block id="ac711435545c1b14c721179de8ab94a0" category="list-text">지원되는 볼륨 및 애그리게이트</block>
+  <block id="cbd3171b775ecc9b275479726c41ccec" category="inline-link-macro">FabricPool에서 지원하지 않는 기능 또는 기능입니다</block>
+  <block id="80be9dc982f371739dd1f289a1ea008c" category="list-text">Cloud Tiering이 계층화할 수 있는 총 볼륨 수가 ONTAP 시스템의 볼륨 수보다 적을 수 있습니다. 이는 볼륨을 일부 애그리게이트로 계층화할 수 없기 때문입니다. 예를 들어, SnapLock 볼륨이나 MetroCluster 구성에서는 데이터를 계층화할 수 없습니다. 에 대한 ONTAP 설명서를 참조하십시오 <block ref="735d4f7c28454cb31dcb5e7ad1dd69d6" category="inline-link-macro-rx"></block>.</block>
 </blocks>

@@ -6,6 +6,7 @@ summary: '피험자의 전체 이름 또는 알려진 식별자(예: 이메일 �
 ---
 = 데이터 주체 액세스 요청에 응답
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

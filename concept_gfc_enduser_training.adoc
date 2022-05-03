@@ -6,6 +6,7 @@ summary: 글로벌 파일 캐시를 통해 공유 파일에 액세스하는 모�
 ---
 = 최종 사용자 교육
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

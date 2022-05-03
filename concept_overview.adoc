@@ -6,6 +6,7 @@ summary: Cloud Manager를 사용하면 IT 전문가 및 클라우드 설계자�
 ---
 = Cloud Manager에 대해 자세히 알아보십시오
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -21,9 +22,9 @@ Cloud Manager를 사용하면 IT 전문가 및 클라우드 설계자가 NetApp�
 Cloud Manager는 엔터프라이즈급 SaaS 기반 관리 플랫폼으로, 데이터의 위치에 상관없이 데이터를 제어할 수 있습니다.
 
 * 설정 및 사용 https://cloud.netapp.com/ontap-cloud["Cloud Volumes ONTAP"^] 클라우드 전반에서 효율적인 멀티 프로토콜 데이터 관리
-* 파일 스토리지 서비스 설정 및 사용: https://cloud.netapp.com/azure-netapp-files["Azure NetApp Files"^],, 및.
+* 파일 스토리지 서비스 설정 및 사용: https://cloud.netapp.com/azure-netapp-files["Azure NetApp Files"^], https://cloud.netapp.com/cloud-volumes-service-for-aws["AWS 환경을 위한 Cloud Volumes Service"^], 및 https://cloud.netapp.com/cloud-volumes-service-for-gcp["Google Cloud용 Cloud Volumes Service"^].
 * 볼륨 생성, 클라우드에 백업, 하이브리드 클라우드 간 데이터 복제, 콜드 데이터를 클라우드로 계층화하여 온프레미스 ONTAP 클러스터를 검색하고 관리할 수 있습니다.
-* 같은 통합 클라우드 서비스 및 소프트웨어 지원 https://cloud.netapp.com/cloud-compliance["클라우드 규정 준수"^],,,등.
+* 같은 통합 클라우드 서비스 및 소프트웨어 지원 https://cloud.netapp.com/cloud-compliance["클라우드 규정 준수"^], https://cloud.netapp.com/cloud-insights["Cloud Insights"^], https://cloud.netapp.com/cloud-backup-service["Cloud Backup Service"^], https://netapp.io/persistent-storage-provisioner-for-kubernetes/["트라이던트"^]등.
 
 
 https://cloud.netapp.com/cloud-manager["Cloud Manager에 대해 자세히 알아보십시오"^].
@@ -58,7 +59,7 @@ Cloud Manager는 를 통해 액세스할 수 있습니다 https://cloudmanager.n
 
 === NetApp Cloud Central에서
 
-https://cloud.netapp.com["NetApp Cloud Central에서"^] 액세스 및 관리를 위한 중앙 집중식 위치를 제공합니다. 중앙 집중식 사용자 인증을 통해 동일한 자격 증명 세트를 사용하여 Cloud Manager와 Cloud Insights 같은 다른 클라우드 서비스에 액세스할 수 있습니다.
+https://cloud.netapp.com["NetApp Cloud Central에서"^] 액세스 및 관리를 위한 중앙 집중식 위치를 제공합니다 https://www.netapp.com/us/products/cloud-services/use-cases-for-netapp-cloud-services.aspx["NetApp 클라우드 서비스"^]. 중앙 집중식 사용자 인증을 통해 동일한 자격 증명 세트를 사용하여 Cloud Manager와 Cloud Insights 같은 다른 클라우드 서비스에 액세스할 수 있습니다.
 
 Cloud Manager에 처음 로그인하면 _Cloud Central 계정 _ 을(를) 생성하라는 메시지가 표시됩니다. 이 계정은 다중 테넌시를 제공하며 사용자가 isolated_worksaces_에서 사용자 및 리소스를 구성할 수 있도록 합니다.
 

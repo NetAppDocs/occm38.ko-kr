@@ -6,6 +6,7 @@ summary: 사용 중인 환경이 모든 요구 사항을 충족하는지 확인�
 ---
 = 글로벌 파일 캐시 에지 인스턴스 배포
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
