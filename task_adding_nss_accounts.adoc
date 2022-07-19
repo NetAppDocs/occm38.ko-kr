@@ -18,7 +18,7 @@ BYOL 시스템을 구축하려면 NetApp Support 사이트 계정을 Cloud Manag
 
 다음 비디오에서 Cloud Manager에 NetApp Support 사이트 계정을 추가하는 방법을 알아보십시오. 또는 아래로 스크롤하여 단계를 읽습니다.
 
-video::V2fLTyztqYQ[youtube, width=848,height=480]
+video::V2fLTyztqYQ[youtube,width=848,height=480]
 Cloud Manager 설정을 변경하려면 먼저 Connector를 생성해야 합니다. link:concept_connectors.html#how-to-create-a-connector["자세히 알아보기"].
 
 .단계

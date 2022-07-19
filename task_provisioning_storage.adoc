@@ -210,4 +210,4 @@ Cloud Manager에서는 현재 FlexCache 볼륨을 관리할 수 없지만 ONTAP 
 
 NOTE: 라이센스를 생성하려면 Cloud Manager에서 \https://ipa-signer.cloudmanager.netapp.com 에 액세스해야 합니다. 방화벽에서 이 URL에 액세스할 수 있는지 확인합니다.
 
-video::PBNPVRUeT1o[youtube, width=848,height=480]
+video::PBNPVRUeT1o[youtube,width=848,height=480]

@@ -22,7 +22,7 @@ NetApp Cloud Sync 서비스는 데이터를 클라우드 또는 온프레미스�
 
 Cloud Sync에 대한 개요는 다음 비디오에서 확인할 수 있습니다.
 
-video::oZNJtLvgNfQ[youtube, width=848,height=480]
+video::oZNJtLvgNfQ[youtube,width=848,height=480]
 
 
 == Cloud Sync의 작동 방식
