@@ -143,7 +143,7 @@ NOTE: 옵션에 *_On-Premise_Data Broker * 라는 레이블이 표시되어 있�
 '<URI>-o data_broker_installer.sh -x <proxy_username>:<proxy_password>@<proxy_host>:<proxy_port>'
 
 +
-URI입니다:: Cloud Sync 설치 파일의 URI가 지침 페이지에 표시됩니다. 이 내용은 화면의 지시에 따라 온-프렘 데이터 브로커를 배포할 때 로드됩니다. 이 URI는 링크가 동적으로 생성되고 한 번만 사용할 수 있으므로 여기서 반복되지 않습니다. <<Installing the data broker,다음 단계에 따라 Cloud Sync에서 URI를 가져옵니다>>.
+URI입니다:: Cloud Sync 설치 파일의 URI가 지침 페이지에 표시됩니다. 이 내용은 화면의 지시에 따라 온-프렘 데이터 브로커를 배포할 때 로드됩니다. 이 URI는 링크가 동적으로 생성되고 한 번만 사용할 수 있으므로 여기서 반복되지 않습니다.  the data broker,다음 단계에 따라 Cloud Sync에서 URI를 가져옵니다.
 
 
 
@@ -167,8 +167,8 @@ sudo -s chmod + x data_broker_installer.sh. /data_broker_installer.sh -a <AWS_ac
 sudo -s chmod + x data_broker_installer.sh. /data_broker_installer.sh -a <AWS_access_key> -s <AWS_secret_key> -g <absolute_path_to_the_json_file> -h <proxy_host> -p <proxy_username> -w <proxy_password>
 
 +
-AWS 키:: 사용자가 준비해야 하는 키입니다 <<Enabling access to AWS,다음 단계를 따릅니다>>. AWS 키는 데이터 브로커에 저장되며 사내 또는 클라우드 네트워크에서 실행됩니다. NetApp은 데이터 브로커 외에 다른 키는 사용하지 않습니다.
-JSON 파일:: 미리 준비해야 하는 서비스 계정 키가 포함된 JSON 파일입니다 <<Enabling access to Google Cloud,다음 단계를 따릅니다>>.
+AWS 키:: 사용자가 준비해야 하는 키입니다  access to AWS,다음 단계를 따릅니다. AWS 키는 데이터 브로커에 저장되며 사내 또는 클라우드 네트워크에서 실행됩니다. NetApp은 데이터 브로커 외에 다른 키는 사용하지 않습니다.
+JSON 파일:: 미리 준비해야 하는 서비스 계정 키가 포함된 JSON 파일입니다  access to Google Cloud,다음 단계를 따릅니다.
 
 
 

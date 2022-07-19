@@ -92,7 +92,7 @@ image:screenshot_create_data_broker.gif["AWS, Azure, GCP 및 온프레미스 데
 video::video_cloud_sync.mp4[width=848,height=480]
 . AWS 액세스 키를 입력한 경우, 인스턴스에 대한 위치를 선택하고 키 쌍을 선택한 다음 공용 IP 주소 활성화 여부를 선택한 다음 기존 IAM 역할을 선택하거나 필드를 비워 Cloud Sync에서 역할을 생성합니다.
 +
-IAM 역할을 직접 선택할 경우 <<iam,필요한 권한을 제공해야 합니다>>.
+IAM 역할을 직접 선택할 경우 ,필요한 권한을 제공해야 합니다.
 
 +
 image:screenshot_aws_data_broker.gif["AWS에서 데이터 브로커를 구축할 때 제공해야 하는 정보의 스크린샷"]

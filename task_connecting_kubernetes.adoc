@@ -32,7 +32,7 @@ NOTE: Kubernetes 기능은 온프레미스 ONTAP 클러스터에서는 지원되
 ==== 사전 요구 사항을 검토합니다
 
 [role="quick-margin-para"]
-Kubernetes 클러스터와 Cloud Volumes ONTAP 간의 연결, Kubernetes 클러스터와 Connector 간 연결, 1.14의 최소 Kubernetes 버전, 클러스터에 최소 1개의 작업자 노드 등 전제 조건을 충족할 수 있어야 합니다. <<Reviewing prerequisites,전체 목록을 참조하십시오>>.
+Kubernetes 클러스터와 Cloud Volumes ONTAP 간의 연결, Kubernetes 클러스터와 Connector 간 연결, 1.14의 최소 Kubernetes 버전, 클러스터에 최소 1개의 작업자 노드 등 전제 조건을 충족할 수 있어야 합니다.  prerequisites,전체 목록을 참조하십시오.
 
 
 

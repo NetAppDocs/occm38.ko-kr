@@ -23,8 +23,8 @@ NOTE: Cloud Manager에서 Connector를 구축한 경우 Cloud Manager는 Connect
 
 * 선택 *
 
-* <<Granting permissions by providing AWS keys>>
-* <<Granting permissions by assuming IAM roles in other accounts>>
+*  permissions by providing AWS keys
+*  permissions by assuming IAM roles in other accounts
 
 
 .AWS 자격 증명을 안전하게 회전하려면 어떻게 해야 합니까?
@@ -56,7 +56,7 @@ https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html["AW
 
 
 
-이제 계정에 필요한 권한이 있습니다. <<Adding AWS credentials to Cloud Manager,이제 Cloud Manager에 추가할 수 있습니다>>.
+이제 계정에 필요한 권한이 있습니다.  AWS credentials to Cloud Manager,이제 Cloud Manager에 추가할 수 있습니다.
 
 
 
@@ -100,7 +100,7 @@ image:screenshot_iam_create_role.gif["AWS IAM 콘솔에서 역할 생성 페이�
 
 
 
-이제 계정에 필요한 권한이 있습니다. <<Adding AWS credentials to Cloud Manager,이제 Cloud Manager에 추가할 수 있습니다>>.
+이제 계정에 필요한 권한이 있습니다.  AWS credentials to Cloud Manager,이제 Cloud Manager에 추가할 수 있습니다.
 
 
 

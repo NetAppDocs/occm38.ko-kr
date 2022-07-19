@@ -34,7 +34,7 @@ Connector가 없는 경우 Azure 또는 AWS에서 Connector를 생성합니다. 
 ==== 사전 요구 사항을 검토합니다
 
 [role="quick-margin-para"]
-클라우드 환경이 클라우드 규정 준수 인스턴스에 대한 vCPU 16개, 인스턴스에 대한 아웃바운드 인터넷 액세스, 포트 80을 통한 Connector와 Cloud Compliance 간 접속 등 사전 요구 사항을 충족할 수 있는지 확인합니다. <<Reviewing prerequisites,전체 목록을 참조하십시오>>.
+클라우드 환경이 클라우드 규정 준수 인스턴스에 대한 vCPU 16개, 인스턴스에 대한 아웃바운드 인터넷 액세스, 포트 80을 통한 Connector와 Cloud Compliance 간 접속 등 사전 요구 사항을 충족할 수 있는지 확인합니다.  prerequisites,전체 목록을 참조하십시오.
 
 
 
@@ -159,7 +159,7 @@ Cloud Manager 작업 공간에서 Cloud Compliance에서 스캔하는 첫 1TB의
 
 image:screenshot_compliance_subscribe.png["검사 중인 데이터의 양과 서비스 가입을 위한 가입 버튼을 보여주는 스크린샷"]
 
-* 참고: * 클라우드 규정 준수(Cloud Compliance)에서 구독하라는 메시지가 나타나지만 이미 Azure 구독을 보유하고 있는 경우 이전 * Cloud Manager * 구독을 사용하고 있는 것이며 새로운 * NetApp Cloud Manager * 구독으로 변경해야 합니다. 을 참조하십시오<<Changing to the new Cloud Manager plan in Azure,Azure에서 새로운 NetApp Cloud Manager 계획으로 변경>> 를 참조하십시오.
+* 참고: * 클라우드 규정 준수(Cloud Compliance)에서 구독하라는 메시지가 나타나지만 이미 Azure 구독을 보유하고 있는 경우 이전 * Cloud Manager * 구독을 사용하고 있는 것이며 새로운 * NetApp Cloud Manager * 구독으로 변경해야 합니다. 을 참조하십시오 to the new Cloud Manager plan in Azure,Azure에서 새로운 NetApp Cloud Manager 계획으로 변경 를 참조하십시오.
 
 이러한 단계는 _ 계정 관리자 _ 역할을 가진 사용자가 완료해야 합니다.
 

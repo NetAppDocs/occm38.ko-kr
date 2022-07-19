@@ -104,7 +104,7 @@ Backup to Cloud BYOL 라이센스의 경우, 라이센스 기간 및 용량 동�
 클라우드 백업은 작업 환경 마법사에서 기본적으로 설정됩니다. 옵션을 활성 상태로 유지해야 합니다.
 
 
-NOTE: 리소스 그룹의 이름을 선택하려면 * Cloud Volumes ONTAP 배포 시 * 클라우드로 백업 * 을 비활성화합니다. 의 단계를 따릅니다 <<enabling-backup-to-cloud-on-an-existing-system,기존 시스템에서 클라우드로 백업 가능>> Backup to Cloud를 활성화하고 리소스 그룹을 선택합니다.
+NOTE: 리소스 그룹의 이름을 선택하려면 * Cloud Volumes ONTAP 배포 시 * 클라우드로 백업 * 을 비활성화합니다. 의 단계를 따릅니다 ,기존 시스템에서 클라우드로 백업 가능 Backup to Cloud를 활성화하고 리소스 그룹을 선택합니다.
 
 .단계
 . Create Cloud Volumes ONTAP * 를 클릭합니다.

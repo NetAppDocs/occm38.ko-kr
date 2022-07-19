@@ -32,11 +32,11 @@ Cloud Manager는 Azure에서 작업을 수행할 수 있는 권한이 필요합�
 image:diagram_azure_authentication.png["API 호출을 수행하기 전에 Cloud Manager가 Azure Active Directory에서 인증 및 인증을 받는 것을 보여 주는 개념적 이미지입니다. Active Directory에서 Cloud Manager Operator 역할은 권한을 정의합니다. Cloud Manger 애플리케이션을 나타내는 하나 이상의 Azure 구독 및 서비스 보안 주체 개체에 연결됩니다."]
 
 .단계
-. <<Creating an Azure Active Directory application,Azure Active Directory 응용 프로그램을 만듭니다>>.
-. <<Assigning the application to a role,애플리케이션에 역할을 할당합니다>>.
-. <<Adding Windows Azure Service Management API permissions,Windows Azure 서비스 관리 API 권한을 추가합니다>>.
-. <<Getting the application ID and directory ID,애플리케이션 ID 및 디렉토리 ID를 가져옵니다>>.
-. <<Creating a client secret,클라이언트 암호를 생성합니다>>.
+.  an Azure Active Directory application,Azure Active Directory 응용 프로그램을 만듭니다.
+.  the application to a role,애플리케이션에 역할을 할당합니다.
+.  Windows Azure Service Management API permissions,Windows Azure 서비스 관리 API 권한을 추가합니다.
+.  the application ID and directory ID,애플리케이션 ID 및 디렉토리 ID를 가져옵니다.
+.  a client secret,클라이언트 암호를 생성합니다.
 
 
 
@@ -197,9 +197,9 @@ image:screenshot_settings_icon.gif["Cloud Manager 콘솔의 오른쪽 위에 설
 . 자격 증명 추가 * 를 클릭하고 * Microsoft Azure * 를 선택합니다.
 . 필요한 권한을 부여하는 Azure Active Directory 서비스 보안 주체에 대한 정보를 입력합니다.
 +
-** 응용 프로그램(클라이언트) ID: 을 참조하십시오 <<Getting the application ID and directory ID>>.
-** 디렉토리(테넌트) ID: 을 참조하십시오 <<Getting the application ID and directory ID>>.
-** 클라이언트 암호: 을 참조하십시오 <<Creating a client secret>>.
+** 응용 프로그램(클라이언트) ID: 을 참조하십시오  the application ID and directory ID.
+** 디렉토리(테넌트) ID: 을 참조하십시오  the application ID and directory ID.
+** 클라이언트 암호: 을 참조하십시오  a client secret.
 
 
 . 정책 요구 사항이 충족되었는지 확인한 다음 * 계속 * 을 클릭합니다.
