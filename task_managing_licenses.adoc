@@ -62,6 +62,7 @@ image:screenshot_system_license.gif["시스템 라이센스를 추가하고 시�
 . 라이선스 추가 * 를 클릭합니다.
 
 
+.결과
 Cloud Manager는 Cloud Volumes ONTAP 시스템에 새 라이센스 파일을 설치합니다.
 
 
@@ -83,6 +84,7 @@ image:screenshot_system_license.gif["시스템 라이센스를 추가하고 시�
 . Update License * 를 클릭합니다.
 
 
+.결과
 Cloud Manager는 Cloud Volumes ONTAP 시스템에서 라이센스를 업데이트합니다.
 
 
@@ -112,4 +114,5 @@ image:screenshot_backup_byol_license_add.png["Backup BYOL 라이센스를 추가
 
 
 
+.결과
 Cloud Manager는 Backup to Cloud 서비스가 활성화되도록 라이센스를 추가하거나 업데이트합니다.

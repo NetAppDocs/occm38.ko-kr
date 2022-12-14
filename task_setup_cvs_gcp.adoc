@@ -24,21 +24,21 @@ Cloud Manager에서 Cloud Volumes Service for Google Cloud 작업 환경을 생�
 
 
 
-==== Cloud Volumes Service API를 활성화합니다
+==== image:number1.png["1번"] Cloud Volumes Service API를 활성화합니다
 
 [role="quick-margin-para"]
 Google에서 Cloud Volumes Service for GCP API를 활성화하여 Cloud Manager가 가입 및 클라우드 볼륨을 관리할 수 있도록 합니다.
 
 
 
-==== GCP 서비스 계정을 생성하고 자격 증명을 다운로드합니다
+==== image:number2.png["2번"] GCP 서비스 계정을 생성하고 자격 증명을 다운로드합니다
 
 [role="quick-margin-para"]
 Google에서 Cloud Manager가 Cloud Volumes Service for GCP 계정에 액세스할 수 있도록 GCP 서비스 계정 및 역할을 생성합니다.
 
 
 
-==== Cloud Volumes Service for GCP 작업 환경을 생성합니다
+==== image:number3.png["3번"] Cloud Volumes Service for GCP 작업 환경을 생성합니다
 
 [role="quick-margin-para"]
 Cloud Manager에서 * 작업 환경 추가 * > * Google Cloud * > * Cloud Volumes Service * 를 클릭한 다음 서비스 계정 및 Google Cloud 프로젝트에 대한 세부 정보를 제공합니다.
@@ -101,6 +101,7 @@ Google Cloud Console에서 볼륨을 이미 생성했는지, 또는 Cloud Volume
 
 TIP: 여러 GCP 프로젝트에 구독과 볼륨이 있는 경우 각 프로젝트에 대해 이 작업을 수행해야 합니다.
 
+.시작하기 전에
 각 프로젝트에 대한 구독을 추가할 때 다음 정보를 사용할 수 있어야 합니다.
 
 * 서비스 계정 자격 증명(다운로드한 JSON 개인 키)
@@ -126,6 +127,7 @@ image:screenshot_add_cvs_gcp_credentials.png["Cloud Volumes Service for GCP 구�
 
 
 
+.결과
 Cloud Manager는 Google Cloud용 Cloud Volumes Service 작업 환경을 표시합니다.
 
 image:screenshot_cvs_gcp_cloud.png["Google Cloud 작업 환경을 위한 Cloud Volumes Service 스크린샷"]
@@ -134,4 +136,5 @@ image:screenshot_cvs_gcp_cloud.png["Google Cloud 작업 환경을 위한 Cloud V
 
 이 구독에 대한 클라우드 볼륨이 없는 경우 지금 생성하십시오.
 
+.다음 단계
 link:task_manage_cvs_gcp.html["볼륨 생성 및 관리를 시작합니다"].

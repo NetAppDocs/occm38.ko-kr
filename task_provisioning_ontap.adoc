@@ -21,8 +21,10 @@ Cloud Manager에서 ONTAP 클러스터를 검색할 경우 작업 환경을 열�
 
 Cloud Manager를 사용하면 ONTAP 클러스터에서 NFS, CIFS 및 iSCSI 볼륨을 프로비저닝할 수 있습니다.
 
+.시작하기 전에
 데이터 프로토콜은 System Manager 또는 CLI를 사용하여 클러스터에서 설정해야 합니다.
 
+.이 작업에 대해
 기존 애그리게이트에서 볼륨을 생성할 수 있습니다. Cloud Manager에서 새 애그리게이트를 생성할 수 없습니다.
 
 .단계

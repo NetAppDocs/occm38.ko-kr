@@ -57,28 +57,28 @@ Cloud Manager에서 AWS 환경을 위한 Cloud Volumes Service 또는 볼륨을 
 
 
 
-==== 구성에 대한 지원을 확인합니다
+==== image:number1.png["1번"] 구성에 대한 지원을 확인합니다
 
 [role="quick-margin-para"]
 Cloud Volumes Service용 AWS를 설정했으며 이 중 하나를 구독해야 합니다 https://aws.amazon.com/marketplace/search/results?x=0&y=0&searchTerms=netapp+cloud+volumes+service["AWS 마켓플레이스에서의 NetApp Cloud Volumes Service 오퍼링"^].
 
 
 
-==== Cloud Volumes Service for AWS 구독을 추가합니다
+==== image:number2.png["2번"] Cloud Volumes Service for AWS 구독을 추가합니다
 
 [role="quick-margin-para"]
 Cloud Volumes Service for AWS 서브스크립션을 기반으로 볼륨에 대한 작업 환경을 생성해야 합니다.
 
 
 
-==== 클라우드 볼륨을 생성합니다
+==== image:number3.png["3번"] 클라우드 볼륨을 생성합니다
 
 [role="quick-margin-para"]
 이 구독에 대해 이미 존재하는 클라우드 볼륨이 새로운 작업 환경에 나타납니다. 그렇지 않으면 Cloud Manager에서 새 볼륨을 생성합니다.
 
 
 
-==== 클라우드 볼륨을 마운트합니다
+==== image:number4.png["4번"] 클라우드 볼륨을 마운트합니다
 
 [role="quick-margin-para"]
 새 클라우드 볼륨을 AWS 인스턴스에 마운트하여 사용자가 스토리지를 사용할 수 있도록 합니다.

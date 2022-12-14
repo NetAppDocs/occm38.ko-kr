@@ -26,7 +26,7 @@ link:concept_cloud_sync.html["라이센스 작동 방식에 대해 자세히 알
 ****
 
 
-== AWS 구독
+== [[AWS]]AWS 가입
 
 AWS를 사용하면 사용한 만큼만 지불하거나 연간 단위로 비용을 지불할 수 있습니다.
 
@@ -50,10 +50,11 @@ video::video_cloud_sync_registering.mp4[width=848,height=480]
 
 
 
-== Azure에서 구독
+== [[Azure]] Azure에서 가입
 
 Azure를 사용하면 사용한 만큼만 지불하거나 연간 단위로 비용을 지불할 수 있습니다.
 
+.필요한 것
 관련 구독에 참가자 또는 소유자 권한이 있는 Azure 사용자 계정입니다.
 
 .단계
@@ -75,7 +76,7 @@ video::video_cloud_sync_registering_azure.mp4[width=848,height=480]
 
 
 
-== NetApp에서 라이센스를 구매하여 Cloud Sync에 추가
+== [[라이센스]] NetApp에서 라이센스를 구입하고 Cloud Sync에 추가합니다
 
 동기화 관계를 사전에 결제하려면 하나 이상의 라이센스를 구입하여 Cloud Sync 서비스에 추가해야 합니다.
 

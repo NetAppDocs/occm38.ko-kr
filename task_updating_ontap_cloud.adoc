@@ -30,7 +30,7 @@ Cloud Volumes ONTAP 업그레이드는 Cloud Manager에서 완료해야 합니�
 
 image:screenshot_cot_upgrade.gif["스크린샷: 작업 환경을 선택한 후 작업 환경 페이지에 표시되는 새 버전 사용 가능 알림을 표시합니다."]
 
-이 알림에서 업그레이드 프로세스를 시작하여 S3 버킷에서 소프트웨어 이미지를 가져온 다음 이미지를 설치한 다음 시스템을 다시 시작하여 프로세스를 자동화할 수 있습니다. 자세한 내용은 을 참조하십시오  Cloud Volumes ONTAP from Cloud Manager notifications.
+이 알림에서 업그레이드 프로세스를 시작하여 S3 버킷에서 소프트웨어 이미지를 가져온 다음 이미지를 설치한 다음 시스템을 다시 시작하여 프로세스를 자동화할 수 있습니다. 자세한 내용은 을 참조하십시오 <<Cloud Manager 알림에서 Cloud Volumes ONTAP 업그레이드>>.
 
 
 NOTE: AWS의 HA 시스템에서 Cloud Manager는 업그레이드 프로세스의 일부로 HA 중재자를 업그레이드할 수 있습니다.
@@ -46,14 +46,14 @@ NOTE: AWS의 HA 시스템에서 Cloud Manager는 업그레이드 프로세스의
 이 옵션은 Cloud Manager가 S3 버킷에 액세스하여 소프트웨어를 업그레이드할 수 없거나 패치가 제공되었거나 소프트웨어를 특정 버전으로 다운그레이드하려는 경우에 유용합니다.
 
 +
-자세한 내용은 을 참조하십시오  or downgrading Cloud Volumes ONTAP by using an HTTP or FTP server.
+자세한 내용은 을 참조하십시오 <<HTTP 또는 FTP 서버를 사용하여 Cloud Volumes ONTAP 업그레이드 또는 다운그레이드>>.
 
 * 시스템의 대체 이미지를 사용하여 소프트웨어를 업데이트합니다
 +
 이 옵션을 사용하여 대체 소프트웨어 이미지를 기본 이미지로 만들어 이전 버전으로 다운그레이드할 수 있습니다. HA 쌍에는 이 옵션을 사용할 수 없습니다.
 
 +
-자세한 내용은 을 참조하십시오  Cloud Volumes ONTAP by using a local image.
+자세한 내용은 을 참조하십시오 <<로컬 이미지를 사용하여 Cloud Volumes ONTAP 다운그레이드>>.
 
 
 
@@ -63,11 +63,11 @@ NOTE: AWS의 HA 시스템에서 Cloud Manager는 업그레이드 프로세스의
 
 업그레이드 또는 다운그레이드를 수행하기 전에 시스템이 준비되었는지 확인하고 필요한 구성을 변경해야 합니다.
 
-*  for downtime
-*  version requirements
-*  that automatic giveback is still enabled
-*  SnapMirror transfers
-*  that aggregates are online
+* <<다운타임을 계획 중입니다>>
+* <<버전 요구 사항 검토>>
+* <<자동 반환이 아직 활성화되어 있는지 확인>>
+* <<SnapMirror 전송 일시 중지>>
+* <<애그리게이트가 온라인 상태인지 확인>>
 
 
 
@@ -100,6 +100,7 @@ http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-hacg/GUID-3F50DE15-0D
 
 Cloud Volumes ONTAP 시스템에 활성 SnapMirror 관계가 있는 경우 Cloud Volumes ONTAP 소프트웨어를 업데이트하기 전에 전송을 일시 중지하는 것이 좋습니다. 전송을 일시 중단하면 SnapMirror 장애가 방지됩니다. 대상 시스템에서 전송을 일시 중지해야 합니다.
 
+.이 작업에 대해
 다음 단계에서는 버전 9.3 이상에서 System Manager를 사용하는 방법을 설명합니다.
 
 .단계
@@ -114,6 +115,7 @@ Cloud Volumes ONTAP 시스템에 활성 SnapMirror 관계가 있는 경우 Cloud
 
 소프트웨어를 업데이트하기 전에 Cloud Volumes ONTAP용 애그리게이트가 온라인 상태여야 합니다. 애그리게이트는 대부분의 구성에서 온라인 상태여야 하지만, 그렇지 않을 경우 온라인 상태로 전환할 수 있습니다.
 
+.이 작업에 대해
 다음 단계에서는 버전 9.3 이상에서 System Manager를 사용하는 방법을 설명합니다.
 
 .단계
@@ -137,6 +139,7 @@ image:screenshot_aggr_state.gif["스크린샷: 집계에 대한 정보를 볼 �
 
 Cloud Manager는 새로운 버전의 Cloud Volumes ONTAP를 사용할 수 있을 때 통지합니다. 알림을 클릭하여 업그레이드 프로세스를 시작합니다.
 
+.시작하기 전에
 Cloud Volumes ONTAP 시스템에서 볼륨 또는 애그리게이트 생성과 같은 Cloud Manager 작업이 진행 중이지 않아야 합니다.
 
 .단계
@@ -154,8 +157,10 @@ image:screenshot_cot_upgrade.gif["스크린샷: 작업 환경을 선택한 후 �
 . 검토 및 승인 페이지에서 중요한 메모를 읽고 * 이해했습니다... * 를 선택한 다음 * Go * 를 클릭합니다.
 
 
+.결과
 Cloud Manager가 소프트웨어 업그레이드를 시작합니다. 소프트웨어 업데이트가 완료되면 작업 환경에서 작업을 수행할 수 있습니다.
 
+.작업을 마친 후
 SnapMirror 전송을 일시 중지한 경우 System Manager를 사용하여 전송을 다시 시작합니다.
 
 
@@ -179,8 +184,10 @@ NOTE: 미리 정의된 Cloud Volumes ONTAP 보안 그룹은 기본적으로 아�
 . 계속하려면 * Proceed * (진행 *)를 클릭합니다.
 
 
+.결과
 Cloud Manager가 소프트웨어 업데이트를 시작합니다. 소프트웨어 업데이트가 완료되면 작업 환경에서 작업을 수행할 수 있습니다.
 
+.작업을 마친 후
 SnapMirror 전송을 일시 중지한 경우 System Manager를 사용하여 전송을 다시 시작합니다.
 
 
@@ -191,6 +198,7 @@ SnapMirror 전송을 일시 중지한 경우 System Manager를 사용하여 전�
 
 각 Cloud Volumes ONTAP 시스템에는 실행 중인 현재 이미지와 부팅할 수 있는 대체 이미지의 두 소프트웨어 이미지가 포함될 수 있습니다. Cloud Manager에서 대체 이미지를 기본 이미지로 변경할 수 있습니다. 현재 이미지에 문제가 있는 경우 이 옵션을 사용하여 이전 버전의 Cloud Volumes ONTAP로 다운그레이드할 수 있습니다.
 
+.이 작업에 대해
 이 다운그레이드 프로세스는 단일 Cloud Volumes ONTAP 시스템에서만 사용할 수 있습니다. HA 쌍에는 사용할 수 없습니다.
 
 .단계
@@ -199,6 +207,8 @@ SnapMirror 전송을 일시 중지한 경우 System Manager를 사용하여 전�
 . 계속하려면 * Proceed * (진행 *)를 클릭합니다.
 
 
+.결과
 Cloud Manager가 소프트웨어 업데이트를 시작합니다. 소프트웨어 업데이트가 완료되면 작업 환경에서 작업을 수행할 수 있습니다.
 
+.작업을 마친 후
 SnapMirror 전송을 일시 중지한 경우 System Manager를 사용하여 전송을 다시 시작합니다.

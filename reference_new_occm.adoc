@@ -54,11 +54,11 @@ Cloud Tiering의 두 가지 업데이트가 릴리스되었습니다.
 
 == Cloud Manager 3.8.9(2020년 10월 4일)
 
-*  Compliance enhancements
-*  Volumes Service for AWS enhancements
-*  Sync integration
-*  management enhancements
-*  for Government regions
+* <<클라우드 규정 준수 강화>>
+* <<Cloud Volumes Service for AWS 개선사항>>
+* <<Cloud Sync 통합>>
+* <<계정 관리 기능이 향상되었습니다>>
+* <<정부 지역 변경>>
 
 
 
@@ -162,12 +162,12 @@ link:concept_gfc.html["글로벌 파일 캐시에 대해 자세히 알아보십�
 
 == Cloud Manager 3.8.8(2020년 9월 9일)
 
-*  for Cloud Volumes Service for Google Cloud
-*  to Cloud now supports on-premises ONTAP clusters
-*  to Cloud enhancements
-*  Compliance enhancements
-*  navigation
-*  improvements
+* <<Cloud Volumes Service for Google Cloud 지원>>
+* <<이제 클라우드 백업 시 사내 ONTAP 클러스터가 지원됩니다>>
+* <<클라우드 백업 기능이 향상되었습니다>>
+* <<클라우드 규정 준수 강화>>
+* <<내비게이션 새로 고침>>
+* <<관리 개선 사항>>
 
 
 
@@ -253,13 +253,13 @@ https://occm-sample-policies.s3.amazonaws.com/Policy_for_cloud_Manager_Azure_3.8
 
 == Cloud Manager 3.8.7(2020년 8월 3일)
 
-*  software-as-a-service experience
-*  Volumes ONTAP enhancements
-*  NetApp Files enhancements
-*  Volumes Service for AWS enhancements
-*  Compliance enhancements
-*  to Cloud enhancements
-*  for Global File Cache
+* <<새로운 서비스형 소프트웨어 경험>>
+* <<Cloud Volumes ONTAP의 향상된 기능>>
+* <<Azure NetApp Files의 향상된 기능>>
+* <<Cloud Volumes Service for AWS 개선사항>>
+* <<클라우드 규정 준수 강화>>
+* <<클라우드 백업 기능이 향상되었습니다>>
+* <<글로벌 파일 캐시 지원>>
 
 
 
@@ -488,8 +488,8 @@ https://cloudmanagerinfraprod.azurecr.io 으로 문의하십시오
 
 == Cloud Manager 3.8.6(2020년 7월 6일)
 
-*  for iSCSI volumes
-*  for the All tiering policy
+* <<iSCSI 볼륨 지원>>
+* <<All 계층화 정책 지원>>
 
 
 
@@ -519,9 +519,9 @@ NetApp은 Cloud Manager를 위한 서비스형 소프트웨어 경험을 소개�
 
 == Cloud Manager 3.8.5(2020년 5월 31일)
 
-*  subscription required in the Azure Marketplace
-*  to Cloud enhancements
-*  Compliance enhancements
+* <<Azure Marketplace에서 새로운 구독을 신청해야 합니다>>
+* <<클라우드 백업 기능이 향상되었습니다>>
+* <<클라우드 규정 준수 강화>>
 
 
 
@@ -601,11 +601,11 @@ Cloud Manager 3.8.4에는 다음과 같은 개선 사항이 포함되어 있습�
 
 == Cloud Manager 3.8.3(2020년 4월 5일)
 
-*  Tiering integration
-*  migration to Azure NetApp Files
-*  Compliance enhancements
-*  to S3 enhancements
-*  volumes using APIs
+* <<Cloud Tiering 통합>>
+* <<Azure NetApp Files로 데이터 마이그레이션>>
+* <<클라우드 규정 준수 강화>>
+* <<S3로 백업 기능이 향상되었습니다>>
+* <<API를 사용하는 iSCSI 볼륨>>
 
 
 
@@ -683,10 +683,10 @@ Cloud Compliance는 이제 데이터를 9개의 추가 메타데이터 범주로
 
 == Cloud Manager 3.8.2(2020년 3월 1일)
 
-*  S3 working environments
-*  Compliance enhancements
-*  version for volumes
-*  for Azure US Gov regions
+* <<Amazon S3 작업 환경>>
+* <<클라우드 규정 준수 강화>>
+* <<볼륨의 NFS 버전입니다>>
+* <<Azure US Gov 지역 지원>>
 
 
 
@@ -786,9 +786,9 @@ NetApp은 새로운 EC2 인스턴스에 대한 지원과 Cloud Volumes ONTAP 9.6
 
 == Cloud Manager 3.8.1(2020년 2월 2일)
 
-*  Compliance enhancements
-*  to accounts and subscriptions
-*  enhancements
+* <<클라우드 규정 준수 강화>>
+* <<계정 및 구독의 향상된 기능>>
+* <<타임라인 개선>>
 
 
 
@@ -869,8 +869,8 @@ image:screenshot_timeline.gif["Cloud Manager에 표시되는 타임라인의 스
 
 == Cloud Manager 3.8(2020년 1월 8일)
 
-*  enhancements in Azure
-*  tiering enhancements in GCP
+* <<Azure의 HA 기능 향상>>
+* <<GCP의 데이터 계층화 향상 기능>>
 
 
 

@@ -32,35 +32,35 @@ Cloud Manager를 사용하여 작업 환경에 글로벌 파일 캐시 관리 �
 
 
 
-==== Cloud Volumes ONTAP 구축
+==== image:number1.png["1번"] Cloud Volumes ONTAP 구축
 
 [role="quick-margin-para"]
 Azure 또는 AWS에 Cloud Volumes ONTAP를 구축하고 SMB 파일 공유를 구성합니다. 자세한 내용은 을 참조하십시오 link:task_deploying_otc_azure.html["Azure에서 Cloud Volumes ONTAP 실행"^] 또는 link:task_deploying_otc_aws.html["AWS에서 Cloud Volumes ONTAP 실행"^].
 
 
 
-==== 글로벌 파일 캐시 관리 서버를 배포합니다
+==== image:number2.png["2번"] 글로벌 파일 캐시 관리 서버를 배포합니다
 
 [role="quick-margin-para"]
 Cloud Volumes ONTAP 인스턴스와 동일한 작업 환경에 글로벌 파일 캐시 관리 서버의 인스턴스를 배포합니다.
 
 
 
-==== 글로벌 파일 캐시 Core를 배포합니다
+==== image:number3.png["3번"] 글로벌 파일 캐시 Core를 배포합니다
 
 [role="quick-margin-para"]
 Cloud Volumes ONTAP 인스턴스와 동일한 작업 환경에 글로벌 파일 캐시 코어의 인스턴스 또는 여러 인스턴스를 배포하여 Active Directory 도메인에 연결합니다.
 
 
 
-==== 라이센스 글로벌 파일 캐시
+==== image:number4.png["4번"] 라이센스 글로벌 파일 캐시
 
 [role="quick-margin-para"]
 글로벌 파일 캐시 코어 인스턴스에서 글로벌 파일 캐시 라이선스 관리 서버(LMS) 서비스를 구성합니다. NSS 자격 증명 또는 NetApp에서 제공하는 고객 ID가 있어야 구독을 활성화할 수 있습니다.
 
 
 
-==== 글로벌 파일 캐시 에지 인스턴스를 구축합니다
+==== image:number5.png["5번"] 글로벌 파일 캐시 에지 인스턴스를 구축합니다
 
 [role="quick-margin-para"]
 을 참조하십시오 link:task_deploy_gfc_edge_instances.html["Global File Cache Edge 인스턴스 구축"^] 각 원격 위치에 Global File Cache Edge 인스턴스를 구축합니다. Cloud Manager를 사용하면 이 단계를 수행할 수 없습니다.
@@ -162,6 +162,7 @@ image:screenshot_gfc_license2.png["글로벌 파일 캐시 라이센스 등록 �
 
 
 
+.다음 단계
 구성을 지원하기 위해 여러 글로벌 파일 캐시 코어를 배포해야 한다고 결정한 경우 대시보드에서 * 코어 인스턴스 추가 * 를 클릭하고 배포 마법사를 따릅니다.
 
 Core 배포를 완료한 후에는 다음을 수행해야 합니다 link:download_gfc_resources.html["글로벌 파일 캐시 에지 인스턴스를 구축합니다"^] 원격 사무소 각각에 대해

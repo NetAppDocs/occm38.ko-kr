@@ -27,4 +27,5 @@ image:screenshot_cloud_central_signup.gif["Cloud Central에 대한 등록 양식
 . 이메일의 링크를 클릭하여 이메일 주소를 확인합니다.
 
 
+.결과
 이제 Cloud Central 사용자 로그인이 활성화되었습니다.

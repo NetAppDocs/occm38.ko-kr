@@ -63,7 +63,7 @@ image:screenshot_backup_manage_volumes_page.png["볼륨 관리 페이지에서 �
 
 
 
-* 참고: * 볼륨이 백업되지 않도록 하는 경우 클라우드 공급자가 백업이 사용하는 용량에 대한 객체 스토리지 비용을 계속 청구합니다  backups,백업을 삭제합니다.
+* 참고: * 볼륨이 백업되지 않도록 하는 경우 클라우드 공급자가 백업이 사용하는 용량에 대한 객체 스토리지 비용을 계속 청구합니다 <<백업을 삭제하는 중입니다,백업을 삭제합니다>>.
 
 
 
@@ -100,6 +100,7 @@ image:screenshot_backup_to_s3_restore_options.gif["복원 옵션을 보여 주�
 
 
 
+.결과
 Cloud Manager는 선택한 백업을 기반으로 새 볼륨을 생성합니다. 가능합니다 link:task_managing_storage.html#managing-existing-volumes["이 새 볼륨을 관리합니다"^] 필요에 따라.
 
 

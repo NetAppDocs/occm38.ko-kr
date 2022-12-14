@@ -27,6 +27,7 @@ NOTE: 커넥터를 생성하려면 계정 관리자여야 합니다. 첫 번째 
 * BYOL 시스템을 구축하려면 각 노드에 대해 20자리의 일련 번호(라이센스 키)가 필요합니다.
 
 
+.이 작업에 대해
 Cloud Manager는 Azure에서 Cloud Volumes ONTAP 시스템을 생성할 때 리소스 그룹, 네트워크 인터페이스, 스토리지 계정 등과 같은 여러 Azure 개체를 생성합니다. 마법사 마지막에서 리소스 요약을 검토할 수 있습니다.
 
 [WARNING]
@@ -210,6 +211,7 @@ image:screenshot_cot_vol.gif["스크린샷: Cloud Volumes ONTAP 인스턴스에 
 
 
 
+.결과
 Cloud Manager는 Cloud Volumes ONTAP 시스템을 구축합니다. 타임라인에서 진행 상황을 추적할 수 있습니다.
 
 Cloud Volumes ONTAP 시스템을 배포하는 데 문제가 있으면 오류 메시지를 검토합니다. 작업 환경을 선택하고 * 환경 다시 작성 * 을 클릭할 수도 있습니다.

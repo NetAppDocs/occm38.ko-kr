@@ -22,6 +22,7 @@ Cloud Volumes ONTAP를 Cloud Manager에서 중지하고 시작하여 클라우�
 
 특정 시간 간격 동안 Cloud Volumes ONTAP를 종료하여 컴퓨팅 비용을 낮출 수 있습니다. 이 작업을 수동으로 수행하는 대신 Cloud Manager를 구성하여 시스템을 자동으로 종료한 다음 특정 시간에 다시 시작할 수 있습니다.
 
+.이 작업에 대해
 Cloud Volumes ONTAP 시스템의 자동 종료를 예약하면, Cloud Manager가 활성 데이터 전송이 진행 중인 경우 종료를 연기합니다. 전송이 완료된 후 Cloud Manager가 시스템을 종료합니다.
 
 이 작업은 HA 2노드에서 두 노드의 자동 종료를 예약합니다.
@@ -49,6 +50,7 @@ image:screenshot_shutdown.gif["스크린샷: 48시간 동안 매주 주말 오�
 . 저장 * 을 클릭합니다.
 
 
+.결과
 Cloud Manager가 일정을 저장합니다. 일정이 설정되었음을 나타내기 위해 시계 아이콘이 변경됩니다. image:screenshot_shutdown_icon_scheduled.gif["스크린샷: 일정이 정의된 후 자동 종료 아이콘을 표시합니다."]
 
 
@@ -57,6 +59,7 @@ Cloud Manager가 일정을 저장합니다. 일정이 설정되었음을 나타�
 
 Cloud Volumes ONTAP를 중지하면 계산 비용이 절약되고 루트 및 부팅 디스크의 스냅샷이 생성되므로 문제 해결에 도움이 됩니다.
 
+.이 작업에 대해
 HA 쌍을 중지하면 Cloud Manager가 두 노드를 모두 종료합니다.
 
 .단계

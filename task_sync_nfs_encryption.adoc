@@ -136,4 +136,5 @@ image:screenshot_nfs_encryption_review.gif["검토 화면을 보여주는 스크
 
 
 
+.결과
 Cloud Sync에서 새 동기화 관계 생성을 시작합니다. 완료되면 * Dashboard * 에서 View를 클릭하여 새 관계에 대한 세부 정보를 봅니다.

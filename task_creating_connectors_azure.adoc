@@ -80,6 +80,7 @@ NOTE: Azure SetupAsService 는 에 제공된 기본 이름입니다 https://mysu
 
 
 
+.결과
 이제 Azure 사용자는 Cloud Manager에서 Connector를 배포하는 데 필요한 권한을 갖게 됩니다.
 
 
@@ -88,7 +89,7 @@ NOTE: Azure SetupAsService 는 에 제공된 기본 이름입니다 https://mysu
 
 Cloud Manager를 사용하면 사용자 인터페이스에서 직접 Azure에 Connector를 생성할 수 있습니다.
 
-.무엇을 &#8217;필요로 할거야
+.필요한 것
 * 를 클릭합니다 https://mysupport.netapp.com/site/info/cloud-manager-policies["필수 권한"^] 를 참조하십시오.
 * Azure 구독.
 * 선택한 Azure 지역에서 VNET 및 서브넷입니다.
@@ -134,4 +135,5 @@ NOTE: 커넥터 를 시작하지 않으면 커넥터로 들어오는 트래픽�
 
 
 
+.작업을 마친 후
 작업 영역 관리자가 이러한 커넥터를 사용하여 Cloud Volumes ONTAP 시스템을 만들 수 있도록 작업 영역과 커넥터를 연결해야 합니다. Account Admins만 있는 경우에는 Connector를 작업 영역과 연결할 필요가 없습니다. 계정 관리자는 기본적으로 Cloud Manager의 모든 작업 영역에 액세스할 수 있습니다. link:task_setting_up_cloud_central_accounts.html#associating-connectors-with-workspaces["자세한 정보"].

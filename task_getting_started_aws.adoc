@@ -18,7 +18,7 @@ summary: 몇 가지 단계로 Cloud Volumes ONTAP for AWS를 시작하십시오.
 
 
 
-==== 커넥터를 작성합니다
+==== image:number1.png["1번"] 커넥터를 작성합니다
 
 [role="quick-margin-para"]
 가 없는 경우 link:concept_connectors.html["커넥터"] 그러나 계정 관리자는 계정을 만들어야 합니다. link:task_creating_connectors_aws.html["AWS에서 커넥터를 생성하는 방법에 대해 알아보십시오"].
@@ -28,15 +28,16 @@ summary: 몇 가지 단계로 Cloud Volumes ONTAP for AWS를 시작하십시오.
 
 
 
-==== 구성을 계획합니다
+==== image:number2.png["2번"] 구성을 계획합니다
 
 [role="quick-margin-para"]
 Cloud Manager는 워크로드 요구사항에 맞게 사전 구성된 패키지를 제공하거나 자체 구성을 생성할 수 있습니다. 자신의 구성을 선택하는 경우 사용 가능한 옵션을 이해해야 합니다. link:task_planning_your_config.html["자세한 정보"].
 
 
 
-==== 네트워크 설정
+==== image:number3.png["3번"] 네트워크 설정
 
+[role="quick-margin-list"]
 . VPC와 서브넷이 커넥터와 Cloud Volumes ONTAP 간의 연결을 지원하는지 확인합니다.
 . 커넥터 및 Cloud Volumes ONTAP가 여러 엔드포인트에 연결할 수 있도록 타겟 VPC에서 아웃바운드 인터넷 액세스를 활성화합니다.
 +
@@ -53,14 +54,14 @@ link:reference_networking_aws.html["네트워킹 요구 사항에 대해 자세�
 
 
 
-==== AWS KMS를 설정합니다
+==== image:number4.png["4번"] AWS KMS를 설정합니다
 
 [role="quick-margin-para"]
 Cloud Volumes ONTAP에서 아마존 암호화를 사용하려면 활성 CMK(고객 마스터 키)가 있는지 확인해야 합니다. 또한 Connector에 대한 권한을 제공하는 IAM 역할을 _KEY USER_로 추가하여 각 CMK에 대한 키 정책을 수정해야 합니다. link:task_setting_up_kms.html["자세한 정보"].
 
 
 
-==== Cloud Manager를 사용하여 Cloud Volumes ONTAP를 실행합니다
+==== image:number5.png["5번"] Cloud Manager를 사용하여 Cloud Volumes ONTAP를 실행합니다
 
 [role="quick-margin-para"]
 작업 환경 추가 * 를 클릭하고 배포할 시스템 유형을 선택한 다음 마법사의 단계를 완료합니다. link:task_deploying_otc_aws.html["단계별 지침을 읽습니다"].

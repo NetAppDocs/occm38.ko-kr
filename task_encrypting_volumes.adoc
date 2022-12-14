@@ -23,6 +23,7 @@ Cloud Volumes ONTAP 9.7부터는 외부 키 관리자를 설정한 후 새 애�
 
 Cloud Volumes ONTAP는 온보드 키 관리를 지원하지 않습니다.
 
+.필요한 것
 Cloud Volumes ONTAP 시스템은 NetApp 지원에 등록해야 합니다. Cloud Manager 3.7.1부터 NetApp 볼륨 암호화 라이센스가 NetApp 지원에 등록된 각 Cloud Volumes ONTAP 시스템에 자동으로 설치됩니다.
 
 * link:task_adding_nss_accounts.html["Cloud Manager에 NetApp Support 사이트 계정 추가"]

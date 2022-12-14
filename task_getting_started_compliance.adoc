@@ -24,25 +24,26 @@ Cloud Volumes ONTAP 또는 Azure NetApp Files용 클라우드 규정 준수를 �
 
 
 
-==== 클라우드 규정 준수 인스턴스 구축
+==== image:number1.png["1번"] 클라우드 규정 준수 인스턴스 구축
 
 [role="quick-margin-para"]
 link:task_deploy_cloud_compliance.html["Cloud Manager에서 클라우드 규정 준수 구축"^] 이미 배포된 인스턴스가 없는 경우
 
 
 
-==== 작업 환경에서 클라우드 규정 준수 지원
+==== image:number2.png["2번"] 작업 환경에서 클라우드 규정 준수 지원
 
 [role="quick-margin-para"]
 Cloud Compliance * 를 클릭하고 * Configuration * 탭을 선택한 다음 특정 작업 환경에 대한 규정 준수 검사를 활성화합니다.
 
 
 
-==== 볼륨에 대한 액세스를 확인합니다
+==== image:number3.png["3번"] 볼륨에 대한 액세스를 확인합니다
 
 [role="quick-margin-para"]
 이제 Cloud Compliance를 사용하도록 설정했으므로 볼륨에 액세스할 수 있는지 확인합니다.
 
+[role="quick-margin-list"]
 * 클라우드 규정 준수 인스턴스에는 각 Cloud Volumes ONTAP 서브넷 또는 Azure NetApp Files 서브넷에 대한 네트워크 연결이 필요합니다.
 * Cloud Volumes ONTAP의 보안 그룹은 클라우드 규정 준수 인스턴스로부터 인바운드 연결을 허용해야 합니다.
 * NFS 볼륨 엑스포트 정책은 Cloud Compliance 인스턴스에서 액세스할 수 있어야 합니다.
@@ -54,7 +55,7 @@ Cloud Compliance * > * Scan Configuration * > * Edit CIFS Credentials * 를 클�
 
 
 
-==== 스캔할 볼륨을 구성합니다
+==== image:number4.png["4번"] 스캔할 볼륨을 구성합니다
 
 [role="quick-margin-para"]
 스캔할 볼륨을 선택하면 Cloud Compliance에서 스캔을 시작합니다.
@@ -79,8 +80,9 @@ image:screenshot_cloud_compliance_we_scan_config.png["Cloud Compliance 인스턴
 
 
 
-을 참조하십시오  and disabling compliance scans on volumes,볼륨에서 규정 준수 검사 활성화 및 비활성화 를 참조하십시오.
+을 참조하십시오 <<볼륨에서 규정 준수 검사 활성화 및 비활성화,볼륨에서 규정 준수 검사 활성화 및 비활성화>> 를 참조하십시오.
 
+.결과
 Cloud Compliance는 각 작업 환경에서 데이터 스캔을 시작합니다. Cloud Compliance에서 초기 스캔을 마치면 Compliance 대시보드에서 결과를 얻을 수 있습니다. 소요되는 시간은 데이터 양에 따라 다릅니다. 몇 분 또는 몇 시간이 걸릴 수도 있습니다.
 
 
@@ -165,6 +167,7 @@ TIP: 작업 환경에 추가된 새 볼륨은 * Activate Compliance for All Volu
 
 image:screenshot_cloud_compliance_dp_volumes.png["데이터 보호 볼륨을 스캔하도록 선택할 수 있는 DP 볼륨에 대한 액세스 활성화 버튼이 표시된 스크린샷"]
 
+.단계
 이러한 데이터 보호 볼륨을 스캔하려는 경우:
 
 . 페이지 맨 위에 있는 * DP 볼륨에 대한 액세스 활성화 * 버튼을 클릭합니다.

@@ -38,6 +38,7 @@ https://mysupport.netapp.com/site/info/cloud-manager-policies["NetApp Cloud Mana
 . 이전 단계에서 생성한 정책을 Cloud Manager에서 Connector를 생성할 IAM 사용자에게 연결합니다.
 
 
+.결과
 이제 AWS 사용자에게 Cloud Manager에서 Connector를 생성하는 데 필요한 권한이 있습니다. Cloud Manager에서 메시지가 표시되면 이 사용자에 대한 AWS 액세스 키를 지정해야 합니다.
 
 
@@ -46,7 +47,7 @@ https://mysupport.netapp.com/site/info/cloud-manager-policies["NetApp Cloud Mana
 
 Cloud Manager를 사용하면 AWS에서 사용자 인터페이스에서 직접 Connector를 생성할 수 있습니다.
 
-.무엇을 &#8217;필요로 할거야
+.필요한 것
 * 가 있는 IAM 사용자를 위한 AWS 액세스 키 및 암호 키입니다 https://mysupport.netapp.com/site/info/cloud-manager-policies["필수 권한"^].
 * 선택한 AWS 지역에서 VPC, 서브넷 및 키 쌍을 제공합니다.
 
@@ -83,4 +84,5 @@ NOTE: 커넥터 를 시작하지 않으면 커넥터로 들어오는 트래픽�
 
 
 
+.작업을 마친 후
 작업 영역 관리자가 이러한 커넥터를 사용하여 Cloud Volumes ONTAP 시스템을 만들 수 있도록 작업 영역과 커넥터를 연결해야 합니다. Account Admins만 있는 경우에는 Connector를 작업 영역과 연결할 필요가 없습니다. 계정 관리자는 기본적으로 Cloud Manager의 모든 작업 영역에 액세스할 수 있습니다. link:task_setting_up_cloud_central_accounts.html#associating-connectors-with-workspaces["자세한 정보"].

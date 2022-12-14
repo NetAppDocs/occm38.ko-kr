@@ -16,6 +16,7 @@ summary: 시작하려면 NetApp 담당자가 Cloud Manager 시스템을 식별�
 [role="lead"]
 시작하려면 NetApp 담당자가 Cloud Manager 시스템 ID를 물어볼 수 있습니다. ID는 일반적으로 라이센스 및 문제 해결 목적으로 사용됩니다.
 
+.필요한 것
 Cloud Manager 설정을 변경하려면 먼저 Connector를 생성해야 합니다. link:concept_connectors.html#how-to-create-a-connector["자세히 알아보기"].
 
 .단계

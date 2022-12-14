@@ -24,31 +24,33 @@ summary: 데이터를 Amazon S3에 계층화하여 온프레미스 ONTAP 클러�
 
 
 
-==== Amazon S3에 데이터를 계층화할 준비를 합니다
+==== image:number1.png["1번"] Amazon S3에 데이터를 계층화할 준비를 합니다
 
 [role="quick-margin-para"]
 다음이 필요합니다.
 
+[role="quick-margin-list"]
 * ONTAP 9.2 이상을 실행 중이며 Amazon S3에 HTTPS 연결을 가진 All-SSD 애그리게이트를 가진 AFF 또는 FAS 시스템.
-* 및 액세스 키가 있는 AWS 계정  Amazon S3,필요한 권한 따라서 ONTAP 클러스터는 S3의 내외부로 비활성 데이터를 계층화할 수 있습니다.
+* 및 액세스 키가 있는 AWS 계정 <<Amazon S3 준비 중,필요한 권한>> 따라서 ONTAP 클러스터는 S3의 내외부로 비활성 데이터를 계층화할 수 있습니다.
 * AWS VPC 또는 사내에 설치된 커넥터
 * ONTAP 클러스터, S3 스토리지 및 Cloud Tiering 서비스에 대한 아웃바운드 HTTPS 연결을 지원하는 커넥터용 네트워킹.
 
 
 
 
-==== 계층화 설정
+==== image:number2.png["2번"] 계층화 설정
 
 [role="quick-margin-para"]
 Cloud Manager에서 사내 작업 환경을 선택하고 * Setup Tiering * 을 클릭한 다음 표시되는 메시지에 따라 데이터를 Amazon S3에 계층화합니다.
 
 
 
-==== 라이센스를 설정합니다
+==== image:number3.png["3번"] 라이센스를 설정합니다
 
 [role="quick-margin-para"]
 무료 평가판이 끝나면 용량제 구독, ONTAP 계층화 라이센스 또는 다음 두 가지를 결합하여 Cloud Tiering에 대한 비용을 지불하십시오.
 
+[role="quick-margin-list"]
 * AWS Marketplace에서 가입하려면 * Tiering > Licensing * 을 클릭하고 * Subscribe * 를 클릭한 다음 표시되는 메시지를 따릅니다.
 * 계층화 라이센스를 사용하여 비용을 지불하려면 mailto:ng-cloud-tiering@netapp.com?subject=Licensing [구매해야 하는 경우 당사에 문의]를 클릭한 다음 link:task_licensing_cloud_tiering.html["Cloud Tiering에서 클러스터에 추가하십시오"].
 
@@ -175,7 +177,7 @@ https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
 
 AWS 환경을 준비한 후 첫 번째 클러스터에서 비활성 데이터 계층화를 시작합니다.
 
-.무엇을 &#8217;필요로 할거야
+.필요한 것
 * link:task_discovering_ontap.html["온프레미스 작업 환경"].
 * 필요한 S3 권한이 있는 IAM 사용자를 위한 AWS 액세스 키입니다.
 
@@ -223,8 +225,10 @@ image:https://docs.netapp.com/us-en/cloud-tiering/media/screenshot_volumes_selec
 
 
 
+.결과
 클러스터의 볼륨에서 S3 오브젝트 스토리지로 데이터 계층화를 성공적으로 설정했습니다.
 
+.다음 단계
 link:task_licensing_cloud_tiering.html["Cloud Tiering 서비스에 가입해야 합니다"].
 
 또한 클러스터를 추가하거나 클러스터에서 활성 데이터와 비활성 데이터에 대한 정보를 검토할 수 있습니다. 자세한 내용은 을 참조하십시오 link:task_managing_tiering.html["클러스터에서 데이터 계층화 관리"].

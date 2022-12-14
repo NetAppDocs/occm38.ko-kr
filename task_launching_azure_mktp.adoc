@@ -67,6 +67,7 @@ image:screenshot_set_up_cloud_manager.gif["Cloud Central 계정을 선택하고 
 
 
 
+.결과
 이제 커넥터가 설치되고 설정되었습니다. Azure에서 Cloud Volumes ONTAP를 배포하기 전에 Azure 사용 권한을 부여해야 합니다.
 
 
@@ -123,4 +124,5 @@ NOTE: Cloud Manager Operator는 에 제공된 기본 이름입니다 https://mys
 
 
 
+.결과
 이제 Connector는 퍼블릭 클라우드 환경 내의 리소스 및 프로세스를 관리하는 데 필요한 권한을 갖습니다. 새로운 작업 환경을 만들 때 Cloud Manager가 이 Connector를 자동으로 사용합니다. 그러나 둘 이상의 커넥터가 있는 경우 이 작업을 수행해야 합니다 link:task_managing_connectors.html["둘 사이를 전환합니다"].

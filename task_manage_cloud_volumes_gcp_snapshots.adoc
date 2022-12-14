@@ -116,4 +116,5 @@ image:screenshot_cvs_restore_snapshot.png["새 볼륨으로 복구할 스냅샷 
 
 
 
+.작업을 마친 후
 를 계속 진행합니다 link:task_manage_cvs_gcp.html#mount-cloud-volumes["클라우드 볼륨을 마운트합니다"^].

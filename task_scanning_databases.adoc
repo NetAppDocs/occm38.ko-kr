@@ -24,28 +24,28 @@ Cloud Compliance를 사용하여 데이터베이스 스키마 스캔을 시작�
 
 
 
-==== 데이터베이스 사전 요구 사항을 검토합니다
+==== image:number1.png["1번"] 데이터베이스 사전 요구 사항을 검토합니다
 
 [role="quick-margin-para"]
 데이터베이스가 지원되고 데이터베이스에 연결하는 데 필요한 정보가 있는지 확인합니다.
 
 
 
-==== 클라우드 규정 준수 인스턴스 구축
+==== image:number2.png["2번"] 클라우드 규정 준수 인스턴스 구축
 
 [role="quick-margin-para"]
 link:task_deploy_cloud_compliance.html["Cloud Manager에서 클라우드 규정 준수 구축"^] 이미 배포된 인스턴스가 없는 경우
 
 
 
-==== 데이터베이스 서버를 추가합니다
+==== image:number3.png["3번"] 데이터베이스 서버를 추가합니다
 
 [role="quick-margin-para"]
 액세스할 데이터베이스 서버를 추가합니다.
 
 
 
-==== 스키마를 선택합니다
+==== image:number4.png["4번"] 스키마를 선택합니다
 
 [role="quick-margin-para"]
 스캔할 스키마를 선택합니다.
@@ -133,6 +133,7 @@ image:screenshot_compliance_select_schemas.png["스캔할 스키마를 선택할
 
 
 
+.결과
 Cloud Compliance는 사용자가 활성화한 데이터베이스 스키마 스캔을 시작합니다. 오류가 있는 경우 오류를 해결하는 데 필요한 작업과 함께 상태 열에 표시됩니다.
 
 
