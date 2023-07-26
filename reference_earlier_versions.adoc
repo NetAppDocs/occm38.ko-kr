@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: reference_earlier_versions.html 
-keywords: documentation, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7 
+keywords: documentation, 3.6, 3.7 
 summary: 최신 버전을 실행하지 않는 경우 Cloud Manager의 이전 릴리스에 대한 설명서를 사용할 수 있습니다. 
 ---
 = 더 빠른 버전의 Cloud Manager 설명서
@@ -18,8 +18,4 @@ summary: 최신 버전을 실행하지 않는 경우 Cloud Manager의 이전 릴
 
 * https://docs.netapp.com/us-en/occm37/["Cloud Manager 3.7"^]
 * https://docs.netapp.com/us-en/occm36/["Cloud Manager 3.6"^]
-* https://docs.netapp.com/us-en/occm35/["Cloud Manager 3.5"^]
-* https://docs.netapp.com/us-en/occm34/["Cloud Manager 3.4"^]
-* https://mysupport.netapp.com/documentation/docweb/index.html?productID=62509["Cloud Manager 3.3"^]
-* https://mysupport.netapp.com/documentation/docweb/index.html?productID=62391["Cloud Manager 3.2"^]
 
