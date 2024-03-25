@@ -8029,9 +8029,6 @@
   <block id="20bcee4b46f64e2ca105ae61831c7509" category="sidebar">DevOps 툴을 사용하여 자동화</block>
   <block id="7a4e5e5bc542eae2d10e3506f839f2ae" category="sidebar">문제를 해결합니다</block>
   <block id="93168a8084b3e838d2932c4734bd234e" category="sidebar">이전 버전</block>
-  <block id="ac711435545c1b14c721179de8ab94a0" category="list-text">지원되는 볼륨 및 애그리게이트</block>
-  <block id="cbd3171b775ecc9b275479726c41ccec" category="inline-link-macro">FabricPool에서 지원하지 않는 기능 또는 기능입니다</block>
-  <block id="80be9dc982f371739dd1f289a1ea008c" category="list-text">Cloud Tiering이 계층화할 수 있는 총 볼륨 수가 ONTAP 시스템의 볼륨 수보다 적을 수 있습니다. 이는 볼륨을 일부 애그리게이트로 계층화할 수 없기 때문입니다. 예를 들어, SnapLock 볼륨이나 MetroCluster 구성에서는 데이터를 계층화할 수 없습니다. 에 대한 ONTAP 설명서를 참조하십시오 <block ref="735d4f7c28454cb31dcb5e7ad1dd69d6" category="inline-link-macro-rx"></block>.</block>
   <block id="8eea62084ca7e541d918e823422bd82e" category="paragraph-title">결과</block>
   <block id="d59db7846bd10b6d60d21543df9faa9e" category="paragraph-title">필요한 것</block>
   <block id="6e5bc02812454d72aa1b3361bc2f6c73" category="inline-image-macro">1번</block>
@@ -8139,4 +8136,5 @@
   <block id="1514a9e798eb61fcbaf1fddb8eb82097" category="paragraph">NetApp BlueXP는 Cloud Manager를 통해 제공되는 기능을 확장하고 개선합니다.</block>
   <block id="ab226d70455b3dcdb3cf804792103d43" category="inline-link">BlueXP 문서로 이동합니다</block>
   <block id="50523074a17d5fe93be8e3f013a747de" category="paragraph"><block ref="50523074a17d5fe93be8e3f013a747de" category="inline-link-rx"></block></block>
+  <block id="c20c1f7ac23768f21f88dd6e7ca4456d" category="paragraph">&lt;stdin&gt;에 해결되지 않은 지시어가 있습니다 - include:: https://raw.githubusercontent.com/NetAppDocs/cloud-tiering/master/_include/supported_volumes.adoc []</block>
 </blocks>

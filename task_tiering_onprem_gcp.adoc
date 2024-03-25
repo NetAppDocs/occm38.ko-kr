@@ -100,8 +100,9 @@ IPspace를 사용하면 네트워크 트래픽을 분리할 수 있으므로 개
 
 
 --
-지원되는 볼륨 및 애그리게이트:: Cloud Tiering이 계층화할 수 있는 총 볼륨 수가 ONTAP 시스템의 볼륨 수보다 적을 수 있습니다. 이는 볼륨을 일부 애그리게이트로 계층화할 수 없기 때문입니다. 예를 들어, SnapLock 볼륨이나 MetroCluster 구성에서는 데이터를 계층화할 수 없습니다. 에 대한 ONTAP 설명서를 참조하십시오 link:http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/GUID-8E421CC9-1DE1-492F-A84C-9EB1B0177807.html["FabricPool에서 지원하지 않는 기능 또는 기능입니다"^].
 
+
+<stdin>에 해결되지 않은 지시어가 있습니다 - include:: https://raw.githubusercontent.com/NetAppDocs/cloud-tiering/master/_include/supported_volumes.adoc []
 
 
 NOTE: Cloud Tiering은 FlexGroup 볼륨을 지원합니다. 설치 프로그램은 다른 볼륨과 동일하게 작동합니다.
