@@ -7436,14 +7436,6 @@
   <block id="7c0081c8b734a7b5f9ce7c5d265ac4ee" category="list-text"><block ref="7c0081c8b734a7b5f9ce7c5d265ac4ee" category="inline-link-rx"></block></block>
   <block id="0bf65d2b559533c88cc79b3840d69e6d" category="inline-link">Cloud Manager 3.6</block>
   <block id="e53b2df33a1dac75704245860415ceff" category="list-text"><block ref="e53b2df33a1dac75704245860415ceff" category="inline-link-rx"></block></block>
-  <block id="ecc216112e51b5fcf9a16ded8dabf7d3" category="inline-link">Cloud Manager 3.5</block>
-  <block id="cfc918b9915ac614a17310f450bf2721" category="list-text"><block ref="cfc918b9915ac614a17310f450bf2721" category="inline-link-rx"></block></block>
-  <block id="e3d94d1f3408c8379bdf78d363454ce1" category="inline-link">Cloud Manager 3.4</block>
-  <block id="38de804ea38bf38231c886d96da268e7" category="list-text"><block ref="38de804ea38bf38231c886d96da268e7" category="inline-link-rx"></block></block>
-  <block id="071d13764bfb9458bd760c388f1767ba" category="inline-link">Cloud Manager 3.3</block>
-  <block id="16402a155f06e6eb36ecc0f5c23fe0c3" category="list-text"><block ref="16402a155f06e6eb36ecc0f5c23fe0c3" category="inline-link-rx"></block></block>
-  <block id="5762b1cbe884ee9e94cfac52c83c4e93" category="inline-link">Cloud Manager 3.2</block>
-  <block id="512d31465e67eb0eaa423ce8c234959e" category="list-text"><block ref="512d31465e67eb0eaa423ce8c234959e" category="inline-link-rx"></block></block>
   <block id="b13cf55f0ce2b751f69001054e37fd7b" category="summary">Cloud Tiering은 여러 S3 스토리지 클래스와 대부분의 영역을 지원합니다.</block>
   <block id="ddc0d211eedc82ce253724f39188a145" category="doc">지원되는 S3 스토리지 클래스 및 지역</block>
   <block id="bd250f06da2f8ae5d4760be390e9dd10" category="paragraph">Cloud Tiering은 수명주기 규칙을 적용하여 30일 후에 데이터가 _Standard_Storage 클래스에서 다른 스토리지 클래스로 전환될 수 있습니다. 다음 스토리지 클래스 중에서 선택할 수 있습니다.</block>
@@ -8143,4 +8135,8 @@
   <block id="8793b102a57051bc0a69b6370c03bf9c" category="section-title"><block ref="37140c340d57bff74ec463795f4bc377" category="inline-image-macro-rx" type="image"></block> Cloud Manager를 사용하여 Cloud Volumes ONTAP를 실행합니다</block>
   <block id="5ccc745272c52ce1868d5bcf2b07705a" category="section-title">작업 영역 관리자의 작업 영역 관리</block>
   <block id="1cf32fb78afaf111cd4c8421dc8592a6" category="section-title">Connector의 작업 영역 관리</block>
+  <block id="9b9477e579c3b44dd623d5a6e1ea8d78" category="section-title">BlueXP</block>
+  <block id="1514a9e798eb61fcbaf1fddb8eb82097" category="paragraph">NetApp BlueXP는 Cloud Manager를 통해 제공되는 기능을 확장하고 개선합니다.</block>
+  <block id="ab226d70455b3dcdb3cf804792103d43" category="inline-link">BlueXP 문서로 이동합니다</block>
+  <block id="50523074a17d5fe93be8e3f013a747de" category="paragraph"><block ref="50523074a17d5fe93be8e3f013a747de" category="inline-link-rx"></block></block>
 </blocks>
