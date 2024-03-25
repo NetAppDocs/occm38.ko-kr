@@ -1,0 +1,4564 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head class="at-element-marker">
+  <title>글로벌 파일 캐시 에지 인스턴스 배포</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="글로벌 파일 캐시 에지 인스턴스 배포" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/ko-kr/occm38/task_deploy_gfc_edge_instances.html" />
+	<meta property="og:description" content="사용 중인 환경이 모든 요구 사항을 충족하는지 확인한 후에는 각 원격 사무소에 Global File Cache Edge 소프트웨어를 설치합니다." />
+  <meta property="og:image" content="https://docs.netapp.com/ko-kr/occm38/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta http-equiv="nss-product" content="OnCommand Cloud Manager"/><meta name="description" content="사용 중인 환경이 모든 요구 사항을 충족하는지 확인한 후에는 각 원격 사무소에 Global File Cache Edge 소프트웨어를 설치합니다.">
+  <meta name="keywords" content=" global file cache, edge"><!-- Icons -->
+  <link rel="icon" href="/ko-kr/occm38/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+
+  <!-- Combined CSS -->
+  <link rel="stylesheet" type="text/css" href="/ko-kr/occm38/css/ie-netappdocs.css">
+
+  
+  <link rel="stylesheet" href="/ko-kr/occm38/css/ie-landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/ko-kr/occm38/css/ie-tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel="canonical" href="https://docs.netapp.com/ko-kr/occm38/task_deploy_gfc_edge_instances.html" />
+  <link rel="alternate" hreflang="x-default" href="https://docs.netapp.com/us-en/occm38/task_deploy_gfc_edge_instances.html" />
+  <link rel="alternate" hreflang="ko" href="https://docs.netapp.com/ko-kr/occm38/task_deploy_gfc_edge_instances.html" />
+  <link rel="alternate" hreflang="en" href="https://docs.netapp.com/us-en/occm38/task_deploy_gfc_edge_instances.html" />
+  <link rel="alternate" hreflang="ja" href="https://docs.netapp.com/ja-jp/occm38/task_deploy_gfc_edge_instances.html" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://docs.netapp.com/zh-cn/occm38/task_deploy_gfc_edge_instances.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://docs.netapp.com/zh-tw/occm38/task_deploy_gfc_edge_instances.html" />
+  <link rel="alternate" hreflang="de" href="https://docs.netapp.com/de-de/occm38/task_deploy_gfc_edge_instances.html" />
+  <link rel="alternate" hreflang="es" href="https://docs.netapp.com/es-es/occm38/task_deploy_gfc_edge_instances.html" />
+  <link rel="alternate" hreflang="fr" href="https://docs.netapp.com/fr-fr/occm38/task_deploy_gfc_edge_instances.html" />
+  <link rel="alternate" hreflang="it" href="https://docs.netapp.com/it-it/occm38/task_deploy_gfc_edge_instances.html" />
+  <!-- Top level site integrations -->
+<script type="text/javascript" src="https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js"></script>
+    <script type="text/javascript" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" charset="UTF-8" data-document-language="true" data-domain-script="72570c5c-fe30-465f-b0e0-b77f7fb4ae34"></script>
+    <script type="text/javascript">function OptanonWrapper() { }</script>
+    <script type="text/plain" class="optanon-category-C0002" src="https://assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js"></script>
+    <script class="optanon-category-C0001">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAttribute('data-ot-ignore'));j.setAttribute('class','optanon-category-C0001');j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+'';f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MD73T9M');</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+      const MASTHEAD_OFFSET = 65;
+      const SECTIONS = $("main h2, main h3");
+      // PAGE NAV - Init
+      if (SECTIONS.length == 0) {
+        // remove if there is no elements
+        /*
+        $("#ie-right-navbar").remove();
+        $("#ie-right-navbar-collapse").remove();
+        */
+      } else {
+        $(".page-nav-title").css('display', 'block');
+        for (var i = 0; i < SECTIONS.length; i++) {
+          var sectionId = $(SECTIONS[i]).attr('id');
+          var sectionName = $(SECTIONS[i]).text();
+          var subClass = $(SECTIONS[i]).is("h3") ? ' page-nav__sublink' : '';
+          $("#page-menu").append('<li class="page-nav-item"><a href="#' + sectionId + '" class="page-nav__link' + subClass + '">' + sectionName + '</a></li>');
+        }
+      }
+    });
+  </script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/ko-kr/occm38/js/na-search.js'></script><script src='/ko-kr/occm38/js/ie-clouddocs.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><script>
+    /*
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+      */
+  </script>
+  <script src='/ko-kr/occm38/js/custom-dropdown.js'></script>
+  <script src='/ko-kr/occm38/js/FileSaver.min.js'></script>
+  <script src='/ko-kr/occm38/js/jszip-utils.min.js'></script>
+  <script src='/ko-kr/occm38/js/jszip.min.js'></script><script src='/ko-kr/occm38/js/ie-pdf-ux.js'></script></head>
+
+
+  <body class role="document" data-flavor="">
+    <div class="skip-to-main">
+      <a href="#main" >Skip to main content</a>
+    </div><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MD73T9M"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><div id="page" class="">
+      <div id="ie-phone-menu" class=""></div>
+      <div id="ie-content-wrap" class="">
+        <nav id="ie-new-header">
+    <ul>
+        <li id="ie-phone-menu-button">
+            <a href="#">
+                <image id="" src="/ko-kr/occm38/images/hamburger.svg" alt="menu" />
+            </a>
+        </li>
+
+        <li>
+            <a href="https://www.netapp.com/kr">
+                <image id="ie-header-logo" src="/ko-kr/occm38/images/netapp_logo.svg" alt="netapp" />
+            </a>
+        </li>
+        <li id="ie-header-docs">
+            <a href="https://www.netapp.com/support-and-training/documentation/">문서</a>
+        </li>
+
+        <!-- Empty container to push header left with or without lang selector -->
+        <li id="empty-container" style="margin-left: auto">
+        </li>
+        <!-- Start Language Selector --><li id="ie-language-dropdown">
+            <div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+                <div class="custom-dropdown-select custom-dropdown-select-lang">
+                    <img src="/ko-kr/occm38/images/language_white_24dp.svg" class="n-globe__icon" />
+                    <span class="lang-name">한국어</span>
+                    <img src="/ko-kr/occm38/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/ko-kr/occm38/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu"><li>
+                        <a href="https://docs.netapp.com/ko-kr/occm38/task_deploy_gfc_edge_instances.html"
+                            target="_self"><span translate="no" class="notranslate">한국어</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/us-en/occm38/task_deploy_gfc_edge_instances.html"
+                            target="_self"><span translate="no" class="notranslate">English</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ja-jp/occm38/task_deploy_gfc_edge_instances.html"
+                            target="_self"><span translate="no" class="notranslate">日本語</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-cn/occm38/task_deploy_gfc_edge_instances.html"
+                            target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-tw/occm38/task_deploy_gfc_edge_instances.html"
+                            target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/de-de/occm38/task_deploy_gfc_edge_instances.html"
+                            target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/es-es/occm38/task_deploy_gfc_edge_instances.html"
+                            target="_self"><span translate="no" class="notranslate">Español</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/fr-fr/occm38/task_deploy_gfc_edge_instances.html"
+                            target="_self"><span translate="no" class="notranslate">Français</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/it-it/occm38/task_deploy_gfc_edge_instances.html"
+                            target="_self"><span translate="no" class="notranslate">Italiano</span></a>
+                    </li></ul>
+            </div>
+            </li>
+        <!-- End Language Selector -->
+
+
+        <li id="ie-allnetapp">
+            <div id="allnetapp-dropdown" class="custom-dropdown custom-dropdown-allnetapp">
+                <div class="custom-dropdown-select custom-dropdown-select-allnetapp">
+                    <img src="/ko-kr/occm38/images/apps_white_24dp.svg" alt="" class="allnetapp-icon" />
+                    <span class="allnetapp-name">모든 NetApp</span>
+                    <img src="/ko-kr/occm38/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/ko-kr/occm38/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu allnetapp-dropdown">
+                    <li>
+                        <a href="https://bluexp.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">BlueXP</span></a>
+                    </li>
+                    <li>
+                        <a href="https://mysupport.netapp.com/site/"
+                            target="_self"><span translate="no" class="notranslate">지원</span></a>
+                    </li>
+                    <li>
+                        <a href="https://kb.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">기술 자료</span></a>
+                    </li>
+                    <li>
+                        <a href="https://www.netapp.com/ko/support-and-training/netapp-learning-services/"
+                            target="_self"><span translate="no" class="notranslate">교육</span></a>
+                    </li>
+                </ul>
+            </div>
+
+        </li>
+
+    </ul>
+</nav>
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+
+<div id="ie-new-sidebar-collapse" style="display: none">
+    <img id="sidebar-expand" class="ie-searchbox-icon" src="/ko-kr/occm38/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-new-sidebar">
+    <div id="ie-product-identity-lockup">
+        <div id="sidebar-collapse" class="">
+            <img src="/ko-kr/occm38/images/double_arrow.svg" alt="" />
+        </div>
+        <div id="ie-breadcrumb" class="">
+  <ul class="ie-breadcrumb">
+    <li class="">
+      <a href="https://docs.netapp.com">모든 문서</a>
+    </li>
+    
+    
+
+    
+  </ul>
+  
+  <div class="ie-product-name" >
+    <!--<a href="/ko-kr/occm38/">-->
+      Cloud Manager 3.8
+    <!--</a>-->
+  </div>
+</div>
+
+            
+
+        
+        
+
+<div id="ie-searchbox" class="ie-searchbox-sidebar ">
+    <img class="ie-searchbox-icon" src="/ko-kr/occm38/images/loupe.svg" alt=""/>
+    <div id="react-search" 
+        data-search-html="/ko-kr/occm38/search.html" 
+        data-type="widget"
+        data-placeholder="설명서 검색"
+        data-no-results-found="{query}에 대한 결과를 찾을 수 없습니다"
+        data-did-you-mean="{suggestion}을(를) 검색하십시오."
+        data-no-results-found-did-you-mean="{query}에 대한 결과가 없습니다. {suggestion}을(를) 찾고 계시는 건가요?"
+        data-results-found="{hitCount}개의 결과를 찾았습니다"
+        data-error-message="오류가 발생했습니다. 다시 시도해 주십시오."
+        data-error-reset="검색 재설정"
+        data-sk-es-pf-indexes="" 
+        data-flavor="">
+    </div>
+</div>
+        
+    </div>
+    <div id="ie-new-toc"><script>
+  let sidebarAccordion = true;
+
+  /* specific css rules for Mac */
+  if(navigator.platform.match('Mac') !== null) {
+    document.body.setAttribute('class', 'OSX');
+  }
+
+</script>
+
+<div id="ie-sidebar-container">
+  <ul id="ie-sidebar-list" ><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Manager 문서"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/index.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ko-kr/occm38/index.html">
+        Cloud Manager 문서
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="릴리스 정보"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 릴리스 정보</div>-->
+         릴리스 정보
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="클라우드 관리자"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 클라우드 관리자</div>-->
+         클라우드 관리자
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="새로운 소식"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_new_occm.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/reference_new_occm.html">
+        새로운 소식
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SaaS로 전환"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_saas.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/concept_saas.html">
+        SaaS로 전환
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="알려진 문제"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_issues.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/reference_issues.html">
+        알려진 문제
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="알려진 제한 사항"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_limitations.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/reference_limitations.html">
+        알려진 제한 사항
+      </a></li></ul></li><li 
+      data-pdf-exists="false" 
+      data-pdf-filename="Cloud Volumes ONTAP"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="https://docs.netapp.com/us-en/cloud-volumes-ontap/" 
+    ><a class="ie-sidebar-menuitem-2 " href="https://docs.netapp.com/us-en/cloud-volumes-ontap/">
+        Cloud Volumes ONTAP
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="중요한 변화"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_key_changes.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ko-kr/occm38/reference_key_changes.html">
+        중요한 변화
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Manager를 시작하십시오"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Cloud Manager를 시작하십시오</div>-->
+         Cloud Manager를 시작하십시오
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Manager에 대해 자세히 알아보십시오"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_overview.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/concept_overview.html">
+        Cloud Manager에 대해 자세히 알아보십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="네트워킹 개요"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_networking.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/reference_networking.html">
+        네트워킹 개요
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Central에 가입하십시오"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_signing_up.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/task_signing_up.html">
+        Cloud Central에 가입하십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Manager에 로그인합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_logging_in.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/task_logging_in.html">
+        Cloud Manager에 로그인합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Central 계정을 설정합니다"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Cloud Central 계정을 설정합니다</div>-->
+         Cloud Central 계정을 설정합니다
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Central 계정에 대해 알아보십시오"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_cloud_central_accounts.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/concept_cloud_central_accounts.html">
+        Cloud Central 계정에 대해 알아보십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="계정을 설정합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_setting_up_cloud_central_accounts.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_setting_up_cloud_central_accounts.html">
+        계정을 설정합니다
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="커넥터를 설정합니다"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 커넥터를 설정합니다</div>-->
+         커넥터를 설정합니다
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="커넥터에 대해 자세히 알아보십시오"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_connectors.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/concept_connectors.html">
+        커넥터에 대해 자세히 알아보십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="네트워킹 요구 사항"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_networking_cloud_manager.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/reference_networking_cloud_manager.html">
+        네트워킹 요구 사항
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS에서 커넥터를 생성합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_creating_connectors_aws.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_creating_connectors_aws.html">
+        AWS에서 커넥터를 생성합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure에서 커넥터를 만듭니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_creating_connectors_azure.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_creating_connectors_azure.html">
+        Azure에서 커넥터를 만듭니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="GCP에서 커넥터를 생성합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_creating_connectors_gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_creating_connectors_gcp.html">
+        GCP에서 커넥터를 생성합니다
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="다음 단계로 넘어갑니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_whats_next.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/reference_whats_next.html">
+        다음 단계로 넘어갑니다
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes ONTAP 관리"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Cloud Volumes ONTAP 관리</div>-->
+         Cloud Volumes ONTAP 관리
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="학습"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 학습</div>-->
+         학습
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="개요"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_overview_cvo.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/concept_overview_cvo.html">
+        개요
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="스토리지"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 스토리지</div>-->
+         스토리지
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="디스크와 애그리게이트"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_storage.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/concept_storage.html">
+        디스크와 애그리게이트
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="데이터 계층화"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_data_tiering.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/concept_data_tiering.html">
+        데이터 계층화
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="스토리지 관리"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_storage_management.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/concept_storage_management.html">
+        스토리지 관리
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Flash Cache를 참조하십시오"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_flash_cache.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/concept_flash_cache.html">
+        Flash Cache를 참조하십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="WORM 스토리지"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_worm.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/concept_worm.html">
+        WORM 스토리지
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="고가용성 쌍"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 고가용성 쌍</div>-->
+         고가용성 쌍
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS의 HA 쌍"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_ha.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/concept_ha.html">
+        AWS의 HA 쌍
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure의 HA 쌍"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_ha_azure.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/concept_ha_azure.html">
+        Azure의 HA 쌍
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="평가 중"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_evaluating.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/concept_evaluating.html">
+        평가 중
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="라이센싱"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_licensing.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/concept_licensing.html">
+        라이센싱
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="보안"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_security.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/concept_security.html">
+        보안
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="성능"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_performance.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/concept_performance.html">
+        성능
+      </a></li><li 
+      data-pdf-exists="false" 
+      data-pdf-filename="지원되는 구성"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="https://docs.netapp.com/us-en/cloud-volumes-ontap/index.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="https://docs.netapp.com/us-en/cloud-volumes-ontap/index.html">
+        지원되는 구성
+      </a></li><li 
+      data-pdf-exists="false" 
+      data-pdf-filename="지원 지역"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="https://cloud.netapp.com/cloud-volumes-global-regions" 
+    ><a class="ie-sidebar-menuitem-3 " href="https://cloud.netapp.com/cloud-volumes-global-regions">
+        지원 지역
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="기본 구성"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_default_configs.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/reference_default_configs.html">
+        기본 구성
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS에서 시작하십시오"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> AWS에서 시작하십시오</div>-->
+         AWS에서 시작하십시오
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="빠른 시작"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_getting_started_aws.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_getting_started_aws.html">
+        빠른 시작
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="구성을 계획합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_planning_your_config.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_planning_your_config.html">
+        구성을 계획합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="네트워크 설정"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 네트워크 설정</div>-->
+         네트워크 설정
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="네트워킹 요구 사항"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_networking_aws.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/reference_networking_aws.html">
+        네트워킹 요구 사항
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS 전송 게이트웨이를 설정합니다"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_setting_up_transit_gateway.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/task_setting_up_transit_gateway.html">
+        AWS 전송 게이트웨이를 설정합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS의 보안 그룹 규칙"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_security_groups.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/reference_security_groups.html">
+        AWS의 보안 그룹 규칙
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS KMS를 설정합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_setting_up_kms.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_setting_up_kms.html">
+        AWS KMS를 설정합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS에서 시스템을 시작합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_deploying_otc_aws.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_deploying_otc_aws.html">
+        AWS에서 시스템을 시작합니다
+      </a></li><li 
+      data-pdf-exists="false" 
+      data-pdf-filename="AWS C2S에서 시작하십시오"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="https://docs.netapp.com/us-en/occm/media/c2s.pdf" 
+    ><a class="ie-sidebar-menuitem-3 " href="https://docs.netapp.com/us-en/occm/media/c2s.pdf">
+        AWS C2S에서 시작하십시오
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure에서 시작하십시오"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Azure에서 시작하십시오</div>-->
+         Azure에서 시작하십시오
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="빠른 시작"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_getting_started_azure.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_getting_started_azure.html">
+        빠른 시작
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="구성을 계획합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_planning_your_config_azure.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_planning_your_config_azure.html">
+        구성을 계획합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="네트워크 설정"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_networking_azure.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/reference_networking_azure.html">
+        네트워크 설정
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure에서 시스템을 시작합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_deploying_otc_azure.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_deploying_otc_azure.html">
+        Azure에서 시스템을 시작합니다
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="GCP에서 시작하십시오"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> GCP에서 시작하십시오</div>-->
+         GCP에서 시작하십시오
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="빠른 시작"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_getting_started_gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_getting_started_gcp.html">
+        빠른 시작
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="구성을 계획합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_planning_your_config_gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_planning_your_config_gcp.html">
+        구성을 계획합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="네트워크 설정"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_networking_gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/reference_networking_gcp.html">
+        네트워크 설정
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="고객이 관리하는 암호화 키를 사용합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_setting_up_gcp_encryption.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_setting_up_gcp_encryption.html">
+        고객이 관리하는 암호화 키를 사용합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="GCP에서 시스템을 시작합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_deploying_gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_deploying_gcp.html">
+        GCP에서 시스템을 시작합니다
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="스토리지 프로비저닝 및 관리"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 스토리지 프로비저닝 및 관리</div>-->
+         스토리지 프로비저닝 및 관리
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="볼륨, 애그리게이트 및 LUN 생성"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_provisioning_storage.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_provisioning_storage.html">
+        볼륨, 애그리게이트 및 LUN 생성
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="볼륨 및 애그리게이트 관리"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_managing_storage.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_managing_storage.html">
+        볼륨 및 애그리게이트 관리
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="비활성 데이터를 오브젝트 스토리지에 계층화합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_tiering.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_tiering.html">
+        비활성 데이터를 오브젝트 스토리지에 계층화합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="스토리지 VM 관리"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_managing_svms.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_managing_svms.html">
+        스토리지 VM 관리
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ONTAP를 영구 스토리지로 사용합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_connecting_kubernetes.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_connecting_kubernetes.html">
+        ONTAP를 영구 스토리지로 사용합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="NetApp 암호화로 볼륨 암호화"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_encrypting_volumes.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_encrypting_volumes.html">
+        NetApp 암호화로 볼륨 암호화
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="데이터 복제"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_replicating_data.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/task_replicating_data.html">
+        데이터 복제
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="성능을 모니터링합니다"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 성능을 모니터링합니다</div>-->
+         성능을 모니터링합니다
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="모니터링에 대해 자세히 알아보십시오"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_monitoring.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/concept_monitoring.html">
+        모니터링에 대해 자세히 알아보십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="시작하십시오"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_getting_started_monitoring.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_getting_started_monitoring.html">
+        시작하십시오
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="랜섬웨어 보호 향상"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_protecting_ransomware.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/task_protecting_ransomware.html">
+        랜섬웨어 보호 향상
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="관리"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 관리</div>-->
+         관리
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="선불 종량제 시스템을 등록합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_registering.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_registering.html">
+        선불 종량제 시스템을 등록합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes ONTAP를 설정합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_setting_up_ontap_cloud.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_setting_up_ontap_cloud.html">
+        Cloud Volumes ONTAP를 설정합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="BYOL 라이센스 관리"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_managing_licenses.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_managing_licenses.html">
+        BYOL 라이센스 관리
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="소프트웨어 업데이트"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_updating_ontap_cloud.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_updating_ontap_cloud.html">
+        소프트웨어 업데이트
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="시스템 구성을 수정합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_modifying_ontap_cloud.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_modifying_ontap_cloud.html">
+        시스템 구성을 수정합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="시스템을 중지하고 시동합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_managing_state.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_managing_state.html">
+        시스템을 중지하고 시동합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS 비용 모니터링"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_monitoring_costs.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_monitoring_costs.html">
+        AWS 비용 모니터링
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes ONTAP에 연결합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_connecting_to_otc.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_connecting_to_otc.html">
+        Cloud Volumes ONTAP에 연결합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="기존 시스템을 추가합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_adding_ontap_cloud.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_adding_ontap_cloud.html">
+        기존 시스템을 추가합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="시스템을 삭제합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_deleting_working_env.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_deleting_working_env.html">
+        시스템을 삭제합니다
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="파일 서비스를 사용하여 볼륨 프로비저닝"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 파일 서비스를 사용하여 볼륨 프로비저닝</div>-->
+         파일 서비스를 사용하여 볼륨 프로비저닝
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure NetApp Files"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Azure NetApp Files</div>-->
+         Azure NetApp Files
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure NetApp Files에 대해 자세히 알아보십시오"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_azure_netapp_files.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/concept_azure_netapp_files.html">
+        Azure NetApp Files에 대해 자세히 알아보십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure NetApp Files를 설정합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_manage_anf.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_manage_anf.html">
+        Azure NetApp Files를 설정합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="볼륨 생성 및 관리"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_manage_anf_volumes.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_manage_anf_volumes.html">
+        볼륨 생성 및 관리
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS 환경을 위한 Cloud Volumes Service"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> AWS 환경을 위한 Cloud Volumes Service</div>-->
+         AWS 환경을 위한 Cloud Volumes Service
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes Service for AWS에 대해 자세히 알아보십시오"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_cvs_aws.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/concept_cvs_aws.html">
+        Cloud Volumes Service for AWS에 대해 자세히 알아보십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="클라우드 볼륨을 구축 및 관리"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_manage_cvs_aws.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_manage_cvs_aws.html">
+        클라우드 볼륨을 구축 및 관리
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="클라우드 볼륨 스냅샷을 관리합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_manage_cloud_volumes_snapshots.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_manage_cloud_volumes_snapshots.html">
+        클라우드 볼륨 스냅샷을 관리합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="참조하십시오"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 참조하십시오</div>-->
+         참조하십시오
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="서비스 수준 및 할당된 용량"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_cvs_service_levels_and_quotas.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/reference_cvs_service_levels_and_quotas.html">
+        서비스 수준 및 할당된 용량
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Windows AD 서버에 대한 AWS 보안 그룹 설정"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_security_groups_windows_ad_servers.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/reference_security_groups_windows_ad_servers.html">
+        Windows AD 서버에 대한 AWS 보안 그룹 설정
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="GCP용 Cloud Volumes Service"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> GCP용 Cloud Volumes Service</div>-->
+         GCP용 Cloud Volumes Service
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes Service for GCP에 대해 알아보십시오"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_cvs_gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/concept_cvs_gcp.html">
+        Cloud Volumes Service for GCP에 대해 알아보십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes Service for GCP를 설정합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_setup_cvs_gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_setup_cvs_gcp.html">
+        Cloud Volumes Service for GCP를 설정합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="클라우드 볼륨 생성 및 관리"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_manage_cvs_gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_manage_cvs_gcp.html">
+        클라우드 볼륨 생성 및 관리
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="클라우드 볼륨 스냅샷을 관리합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_manage_cloud_volumes_gcp_snapshots.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_manage_cloud_volumes_gcp_snapshots.html">
+        클라우드 볼륨 스냅샷을 관리합니다
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ONTAP 클러스터 관리"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ONTAP 클러스터 관리</div>-->
+         ONTAP 클러스터 관리
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ONTAP 클러스터에 대해 알아보십시오"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_discovering_ontap.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/task_discovering_ontap.html">
+        ONTAP 클러스터에 대해 알아보십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ONTAP 볼륨 관리"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_provisioning_ontap.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/task_provisioning_ontap.html">
+        ONTAP 볼륨 관리
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="클라우드에 백업"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 클라우드에 백업</div>-->
+         클라우드에 백업
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="클라우드 백업에 대해 자세히 알아보십시오"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_backup_to_cloud.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/concept_backup_to_cloud.html">
+        클라우드 백업에 대해 자세히 알아보십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="시작하십시오"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 시작하십시오</div>-->
+         시작하십시오
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Amazon S3에 백업"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_backup_to_s3.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_backup_to_s3.html">
+        Amazon S3에 백업
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure Blob 저장소에 백업"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_backup_to_azure.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_backup_to_azure.html">
+        Azure Blob 저장소에 백업
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="사내 ONTAP 시스템에서 백업합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_backup_from_onprem.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_backup_from_onprem.html">
+        사내 ONTAP 시스템에서 백업합니다
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="백업 관리 및 데이터 복원"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_managing_backups.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/task_managing_backups.html">
+        백업 관리 및 데이터 복원
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="데이터를 복사하고 동기화합니다"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 데이터를 복사하고 동기화합니다</div>-->
+         데이터를 복사하고 동기화합니다
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Sync에 대해 자세히 알아보십시오"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_cloud_sync.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/concept_cloud_sync.html">
+        Cloud Sync에 대해 자세히 알아보십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="시작하십시오"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 시작하십시오</div>-->
+         시작하십시오
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="빠른 시작"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_sync_quick_start.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_sync_quick_start.html">
+        빠른 시작
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="소스와 타겟을 준비합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_sync_requirements.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/reference_sync_requirements.html">
+        소스와 타겟을 준비합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="네트워킹을 준비합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_sync_networking.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/reference_sync_networking.html">
+        네트워킹을 준비합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="데이터 브로커를 설치하는 방법"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 데이터 브로커를 설치하는 방법</div>-->
+         데이터 브로커를 설치하는 방법
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS에 설치"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_sync_installing_aws.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/task_sync_installing_aws.html">
+        AWS에 설치
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure에 설치합니다"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_sync_installing_azure.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/task_sync_installing_azure.html">
+        Azure에 설치합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="GCP에 설치합니다"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_sync_installing_gcp.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/task_sync_installing_gcp.html">
+        GCP에 설치합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Linux 호스트에 설치합니다"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_sync_installing_linux.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/task_sync_installing_linux.html">
+        Linux 호스트에 설치합니다
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="동기화 관계를 생성합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_sync_creating_relationships.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_sync_creating_relationships.html">
+        동기화 관계를 생성합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="동기화 관계에 대한 비용 지불"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_sync_licensing.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_sync_licensing.html">
+        동기화 관계에 대한 비용 지불
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="자습서"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 자습서</div>-->
+         자습서
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="공유 간에 ACL을 복사합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_sync_copying_acls.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_sync_copying_acls.html">
+        공유 간에 ACL을 복사합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="사용 중인 NFS 데이터를 암호화합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_sync_nfs_encryption.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_sync_nfs_encryption.html">
+        사용 중인 NFS 데이터를 암호화합니다
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="동기화 관계를 관리합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_sync_managing_relationships.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/task_sync_managing_relationships.html">
+        동기화 관계를 관리합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="API를 참조하십시오"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/api_sync.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/api_sync.html">
+        API를 참조하십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="FAQ 를 참조하십시오"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/faq_sync.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/faq_sync.html">
+        FAQ 를 참조하십시오
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="개인정보 데이터 보호 파악"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 개인정보 데이터 보호 파악</div>-->
+         개인정보 데이터 보호 파악
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="클라우드 규정 준수에 대해 알아보십시오"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_cloud_compliance.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/concept_cloud_compliance.html">
+        클라우드 규정 준수에 대해 알아보십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="시작하십시오"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 시작하십시오</div>-->
+         시작하십시오
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="클라우드 규정 준수 구현"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_deploy_cloud_compliance.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_deploy_cloud_compliance.html">
+        클라우드 규정 준수 구현
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="데이터 소스에서 스캔을 활성화합니다"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 데이터 소스에서 스캔을 활성화합니다</div>-->
+         데이터 소스에서 스캔을 활성화합니다
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes ONTAP and Azure NetApp Files를 참조하십시오"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_getting_started_compliance.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/task_getting_started_compliance.html">
+        Cloud Volumes ONTAP and Azure NetApp Files를 참조하십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Amazon S3 버킷"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_scanning_s3.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/task_scanning_s3.html">
+        Amazon S3 버킷
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="데이터베이스 스키마"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_scanning_databases.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/task_scanning_databases.html">
+        데이터베이스 스키마
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="사내 ONTAP 데이터"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_scanning_onprem.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/task_scanning_onprem.html">
+        사내 ONTAP 데이터
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="데이터에 대한 가시성 및 제어 기능 확보"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_controlling_private_data.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/task_controlling_private_data.html">
+        데이터에 대한 가시성 및 제어 기능 확보
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="보고서를 생성합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_generating_compliance_reports.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/task_generating_compliance_reports.html">
+        보고서를 생성합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAR에 응답합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_responding_to_dsar.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/task_responding_to_dsar.html">
+        SAR에 응답합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="클라우드 규정 준수 해제"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_managing_compliance.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/task_managing_compliance.html">
+        클라우드 규정 준수 해제
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="FAQ 를 참조하십시오"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/faq_cloud_compliance.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/faq_cloud_compliance.html">
+        FAQ 를 참조하십시오
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="실시간 글로벌 파일 공유를 활성화합니다"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 실시간 글로벌 파일 공유를 활성화합니다</div>-->
+         실시간 글로벌 파일 공유를 활성화합니다
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="글로벌 파일 캐시에 대해 알아보십시오"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_gfc.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/concept_gfc.html">
+        글로벌 파일 캐시에 대해 알아보십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="글로벌 파일 캐시 배포를 시작하기 전에"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_before_you_begin_to_deploy_gfc.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/concept_before_you_begin_to_deploy_gfc.html">
+        글로벌 파일 캐시 배포를 시작하기 전에
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="시작하기"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_gfc_getting_started.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/task_gfc_getting_started.html">
+        시작하기
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Global File Cache Edge 구축을 시작하기 전에"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/download_gfc_resources.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/download_gfc_resources.html">
+        Global File Cache Edge 구축을 시작하기 전에
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Global File Cache Edge 구축"
+      data-li-level="2#" 
+      class="  ie-sidebar-selected    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_deploy_gfc_edge_instances.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/task_deploy_gfc_edge_instances.html">
+        Global File Cache Edge 구축
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="최종 사용자 교육"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_gfc_enduser_training.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/concept_gfc_enduser_training.html">
+        최종 사용자 교육
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="추가 정보"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_gfc_additional_information.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/reference_gfc_additional_information.html">
+        추가 정보
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="클라우드 컴퓨팅 비용 최적화"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 클라우드 컴퓨팅 비용 최적화</div>-->
+         클라우드 컴퓨팅 비용 최적화
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="컴퓨팅 서비스에 대해 자세히 알아보십시오"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_compute.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/concept_compute.html">
+        컴퓨팅 서비스에 대해 자세히 알아보십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="시작하십시오"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_getting_started_compute.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/task_getting_started_compute.html">
+        시작하십시오
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="데이터를 클라우드에 계층화"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 데이터를 클라우드에 계층화</div>-->
+         데이터를 클라우드에 계층화
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Tiering에 대해 알아보십시오"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_cloud_tiering.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/concept_cloud_tiering.html">
+        Cloud Tiering에 대해 알아보십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="시작하십시오"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 시작하십시오</div>-->
+         시작하십시오
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="데이터를 Amazon S3에 계층화합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_tiering_onprem_aws.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_tiering_onprem_aws.html">
+        데이터를 Amazon S3에 계층화합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure Blob 저장소에 데이터 계층화"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_tiering_onprem_azure.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_tiering_onprem_azure.html">
+        Azure Blob 저장소에 데이터 계층화
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="데이터를 Google Cloud Storage에 계층화합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_tiering_onprem_gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_tiering_onprem_gcp.html">
+        데이터를 Google Cloud Storage에 계층화합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="데이터를 StorageGRID에 계층화합니다"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_tiering_onprem_storagegrid.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_tiering_onprem_storagegrid.html">
+        데이터를 StorageGRID에 계층화합니다
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="라이센스를 설정합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_licensing_cloud_tiering.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/task_licensing_cloud_tiering.html">
+        라이센스를 설정합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="데이터 계층화 관리"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_managing_tiering.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/task_managing_tiering.html">
+        데이터 계층화 관리
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="FAQ 를 참조하십시오"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/faq_cloud_tiering.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/faq_cloud_tiering.html">
+        FAQ 를 참조하십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="참조하십시오"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 참조하십시오</div>-->
+         참조하십시오
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="지원되는 Amazon S3 스토리지 클래스 및 지역"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_aws_support.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/reference_aws_support.html">
+        지원되는 Amazon S3 스토리지 클래스 및 지역
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="지원되는 Azure 액세스 계층 및 지역"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_azure_support.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/reference_azure_support.html">
+        지원되는 Azure 액세스 계층 및 지역
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="지원되는 Google Cloud 스토리지 클래스 및 지역"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_google_support.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/reference_google_support.html">
+        지원되는 Google Cloud 스토리지 클래스 및 지역
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Amazon S3 버킷을 봅니다"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_viewing_amazon_s3.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ko-kr/occm38/task_viewing_amazon_s3.html">
+        Amazon S3 버킷을 봅니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Manager 관리"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Cloud Manager 관리</div>-->
+         Cloud Manager 관리
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="시스템 ID를 찾습니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_finding_system_id.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/task_finding_system_id.html">
+        시스템 ID를 찾습니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="커넥터 관리"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 커넥터 관리</div>-->
+         커넥터 관리
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="기존 커넥터 관리"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_managing_connectors.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_managing_connectors.html">
+        기존 커넥터 관리
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="커넥터를 작성하는 더 많은 방법"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 커넥터를 작성하는 더 많은 방법</div>-->
+         커넥터를 작성하는 더 많은 방법
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="커넥터 호스트 요구 사항"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_cloud_mgr_reqs.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/reference_cloud_mgr_reqs.html">
+        커넥터 호스트 요구 사항
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS Marketplace에서 생성"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_launching_aws_mktp.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/task_launching_aws_mktp.html">
+        AWS Marketplace에서 생성
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure Marketplace에서 생성"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_launching_azure_mktp.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/task_launching_azure_mktp.html">
+        Azure Marketplace에서 생성
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="소프트웨어를 수동으로 설치합니다"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_installing_linux.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/task_installing_linux.html">
+        소프트웨어를 수동으로 설치합니다
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="기본 구성"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_connector_default_config.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/reference_connector_default_config.html">
+        기본 구성
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="자격 증명 관리"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 자격 증명 관리</div>-->
+         자격 증명 관리
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="설치하고"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 설치하고</div>-->
+         설치하고
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS 자격 증명에 대해 알아보십시오"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_accounts_aws.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/concept_accounts_aws.html">
+        AWS 자격 증명에 대해 알아보십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS 자격 증명 관리"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_adding_aws_accounts.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/task_adding_aws_accounts.html">
+        AWS 자격 증명 관리
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure를 지원합니다"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Azure를 지원합니다</div>-->
+         Azure를 지원합니다
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure 자격 증명에 대해 알아보십시오"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_accounts_azure.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/concept_accounts_azure.html">
+        Azure 자격 증명에 대해 알아보십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure 자격 증명을 관리합니다"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_adding_azure_accounts.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/task_adding_azure_accounts.html">
+        Azure 자격 증명을 관리합니다
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="GCP"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> GCP</div>-->
+         GCP
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="GCP 자격 증명에 대해 알아보십시오"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/concept_accounts_gcp.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/concept_accounts_gcp.html">
+        GCP 자격 증명에 대해 알아보십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="GCP 자격 증명을 관리합니다"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_adding_gcp_accounts.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ko-kr/occm38/task_adding_gcp_accounts.html">
+        GCP 자격 증명을 관리합니다
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="NetApp Support 사이트 자격 증명"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_adding_nss_accounts.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/task_adding_nss_accounts.html">
+        NetApp Support 사이트 자격 증명
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="계정을 관리합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_managing_cloud_central_accounts.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/task_managing_cloud_central_accounts.html">
+        계정을 관리합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="HTTPS 인증서를 설치합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_installing_https_cert.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/task_installing_https_cert.html">
+        HTTPS 인증서를 설치합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="작업 환경을 제거합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_removing.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/task_removing.html">
+        작업 환경을 제거합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="프록시 설정을 구성합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_configuring_proxy.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/task_configuring_proxy.html">
+        프록시 설정을 구성합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure에서 CIFS 잠금을 재정의합니다"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/task_overriding_cifs_locks.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/task_overriding_cifs_locks.html">
+        Azure에서 CIFS 잠금을 재정의합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="참조하십시오"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 참조하십시오</div>-->
+         참조하십시오
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="사용자 역할"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_user_roles.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/reference_user_roles.html">
+        사용자 역할
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="권한"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_permissions.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/reference_permissions.html">
+        권한
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS 마켓플레이스 페이지를 참조하십시오"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_aws_marketplace.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ko-kr/occm38/reference_aws_marketplace.html">
+        AWS 마켓플레이스 페이지를 참조하십시오
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="API 및 자동화 사용"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ko-kr/occm38/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ko-kr/occm38/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> API 및 자동화 사용</div>-->
+         API 및 자동화 사용
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="false" 
+      data-pdf-filename="API 개발자 가이드 를 참조하십시오"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="https://docs.netapp.com/us-en/occm/api.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="https://docs.netapp.com/us-en/occm/api.html">
+        API 개발자 가이드 를 참조하십시오
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="DevOps 툴을 사용하여 자동화"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_infrastructure_as_code.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ko-kr/occm38/reference_infrastructure_as_code.html">
+        DevOps 툴을 사용하여 자동화
+      </a></li></ul></li><li 
+      data-pdf-exists="false" 
+      data-pdf-filename="문제를 해결합니다"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services" 
+    ><a class="ie-sidebar-menuitem-1 " href="https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services">
+        문제를 해결합니다
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="관련 링크"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_additional_info.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ko-kr/occm38/reference_additional_info.html">
+        관련 링크
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="이전 버전"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_earlier_versions.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ko-kr/occm38/reference_earlier_versions.html">
+        이전 버전
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="법적 고지"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/task_deploy_gfc_edge_instances.html" 
+      dale-entry-url="/reference_legal_notices.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ko-kr/occm38/reference_legal_notices.html">
+        법적 고지
+      </a></li></ul>
+</div>
+<script>
+
+  $(".ie-sidebar-button").click(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    expandedLI = $('li.ie-sidebar-expand')
+
+    const li = $(this).closest("li");
+
+    const parentsLI = $(li).parents('li');
+
+    expandedLI.map(element => {
+      if (sidebarAccordion && !li.hasClass('ie-sidebar-expand') && jQuery.inArray(expandedLI[element], parentsLI) == -1) {
+        $(expandedLI[element]).toggleClass('ie-sidebar-expand');
+        $(expandedLI[element]).children("ul").animate({ height: 'toggle' }, 400, function () {
+          $(li).children("ul").toggleClass('ie-sidebar-open');
+
+        })
+      }
+
+    })
+
+    $(li).toggleClass('ie-sidebar-expand');
+    $(li).children("ul").animate({ height: 'toggle' }, 400, function () {
+      $(li).children("ul").toggleClass('ie-sidebar-open');
+    })
+  });
+
+
+  
+    $("li.ie-sidebar-selected").parents('ul').toggleClass("ie-sidebar-open");
+    $("li.ie-sidebar-selected").toggleClass("ie-sidebar-expand")
+    $("ul.ie-sidebar-open").parent().toggleClass("ie-sidebar-expand");
+    $("li.ie-sidebar-selected").children('ul').toggleClass("ie-sidebar-open")
+  
+  
+</script>
+    </div>
+</div>
+<script>
+
+    
+    let sidebarScrollTopPosition = 0;
+    $("#ie-new-toc").on("scroll", function () {
+        if (sidebarScrollTopPosition == 0) {
+            $.cookie("sidebarScroll", $("#ie-new-toc").scrollTop(), {
+                path: "/ko-kr/occm38"
+            });
+        }
+
+        if ($("#ie-new-toc").scrollTop() > 0) {
+            $('#ie-product-identity-lockup').addClass('ie-addShadow');
+        } else {
+            $('#ie-product-identity-lockup').removeClass('ie-addShadow');
+        }
+    });
+
+    $(function () {
+        if ($.cookie("sidebarScroll")) {
+            $("#ie-new-toc").scrollTop($.cookie("sidebarScroll"));
+        }
+    });
+
+    function setSidebarBottom() {
+        const footerGap = PXinViewport($(".n-footer"));
+        document.getElementById("ie-new-sidebar").style.bottom = Math.max(0, footerGap) + "px";
+    }
+
+    window.onscroll = () => {
+        setSidebarBottom();
+    };
+
+    $("#sidebar-collapse").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        if ($.cookie("sidebarScroll")) {
+            sidebarScrollTopPosition = $.cookie("sidebarScroll");
+        }
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 350, function () {
+            $("#ie-new-sidebar-collapse").show();
+            $("#ie-new-sidebar").removeClass("open")
+            $("#ie-new-sidebar").addClass("close")
+            $("#ie-new-sidebar").removeAttr("style")
+        });
+        $(".ie-content-pane").animate({ width: (width + sidebarWidth), marginLeft: (marginLeft - sidebarWidth) }, 350, function () {
+            resizeContent()
+        })
+
+    });
+    $("#sidebar-expand").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 250, function () {
+            $('#ie-new-sidebar').css('display', 'flex');
+            $("#ie-new-sidebar-collapse").hide();
+            $("#ie-new-sidebar").removeClass("close")
+            $("#ie-new-sidebar").addClass("open")
+            setSidebarBottom();
+
+            if (sidebarScrollTopPosition != 0) {
+                $.cookie("sidebarScroll", sidebarScrollTopPosition, {
+                    path: "/ko-kr/occm38"
+                })
+                $("#ie-new-toc").scrollTop(sidebarScrollTopPosition);
+                sidebarScrollTopPosition = 0;
+            }
+        });
+        $(".ie-content-pane").animate({ width: (width - sidebarWidth), 'marginLeft': (marginLeft + sidebarWidth) }, 250, function () {
+            resizeContent()
+        })
+    });
+    function resizeContent() {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        const rightNavbarVisible =  $("#ie-right-navbar").css('display') && $("#ie-right-navbar").css('display') != 'none';
+        const sidebarVisible = $("#ie-new-sidebar").css('display') != 'none';
+        const rightNavbarWidth = $("#ie-right-navbar").width();
+        const rightNavbarCollapseWidth = $("#ie-right-navbar-collapse").width();
+        const rightNavbarCollapseVisible = $("#ie-right-navbar-collapse").css('display') && $("#ie-right-navbar-collapse").css('display') != 'none';
+        
+        if (rightNavbarVisible && sidebarVisible) {
+            $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarWidth}px)`)
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+        } else if (sidebarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarCollapseWidth}px)`)
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar").width()}px)`)
+            }
+
+        } else if (rightNavbarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            $(".ie-content-pane").width(`calc(100% - ${rightNavbarWidth}px)`)
+        } else {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${rightNavbarCollapseWidth}px)`);
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar-collapse").width()}px) `);
+            }
+            
+        }
+    }
+    $(window).on("resize load", function () {
+        setSidebarBottom();
+        resizeContent()
+    });
+
+
+</script>
+
+<div class="ie-content-pane ie-component-detail-content ie-component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content" id="main">
+      <!-- include utility.html -->
+      
+  <div class="ie-info-disclaimer" id="downlevel-banner">
+    <span>
+      <div class="ie-info-disclaimer-container">
+        <div class="ie-info-disclaimer-icon">
+          <img src="/ko-kr/occm38/images/notification-icons.svg" class="luci-icon" alt="" />
+        </div>
+        <div class="ie-info-disclaimer-content">
+          <span>이 제품의 최신 릴리즈를 사용할 수 있습니다.</span><br>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+    </span>
+  </div>
+<div class="ie-info-disclaimer">
+    <span>
+      <div class="ie-info-disclaimer-container">
+        <div class="ie-info-disclaimer-icon">
+          <img src="/ko-kr/occm38/images/notification-icons.svg" class="luci-icon" alt="" />
+        </div>
+        <div class="ie-info-disclaimer-content">
+          <span> 본 한국어 번역은 사용자 편의를 위해 제공되는 기계 번역입니다. 영어 버전과 한국어 버전이 서로 어긋나는 경우에는 언제나 영어 버전이 우선합니다. </span>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+    </span>
+  </div><div class="ie-component-detail-heading-wrap">
+  <h1 class="ie-component-detail-heading">글로벌 파일 캐시 에지 인스턴스 배포</h1>
+</div>
+
+<div id="ie-byline">
+  
+<div class="page-details">
+    
+        
+            <time datetime="2022-12-14 18:15:06 +0000">12/14/2022</time>
+        
+    
+    
+        <span>기여자
+        </span>
+    
+    
+</div>
+<div class="page-controls">
+    <div id="contribute-dropdown" class="custom-dropdown custom-dropdown-contrib" >
+        <div class="custom-dropdown-select custom-dropdown-select-contrib">
+        <span class="contrib-name"><img src="/ko-kr/occm38/images/discuss-sm.svg" alt="" class="github-icon" />변경 제안</span>
+        <img src="/ko-kr/occm38/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown invisible" />
+        <img src="/ko-kr/occm38/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup" />
+        </div>
+        <ul class="custom-dropdown-menu suggested-changes-dropdown"><li>
+                <a target="_blank" href="https://github.com/NetAppDocs/occm38.ko-kr/issues/new?template=new-from-page.yml&page-url=https://docs.netapp.com/ko-kr/occm38/task_deploy_gfc_edge_instances.html&page-title=글로벌 파일 캐시 에지 인스턴스 배포" class="page-nav-contribute-link" role="button">문서 변경사항 요청</a>
+            </li><li> 
+                <a target="_blank" href="https://github.com/NetAppDocs/occm38/blob/main/task_deploy_gfc_edge_instances.adoc" class="page-nav-contribute-link" role="button">이 페이지 편집</a>
+            </li><li><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  >기여하는 방법 알아보기</a></li>
+        </ul>
+    </div>
+    <div id="pdf-control-container">
+        <div class="n-pdf-header">
+            <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+                <img class="adobe-icon" src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>PDF<img src="/ko-kr/occm38/images/dropdown-arrow.svg" class="custom-icon" alt="" />
+            </a>
+        </div>
+        <div class="n-pdf-body-container">
+            <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+                    
+                    
+                    
+                    <a target="_blank" class="pdf-download-link" href="/ko-kr/occm38/pdfs/fullsite-sidebar/Cloud_Manager_및_Cloud_Volumes_ONTAP_설명서.pdf" >
+                    <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>이 문서 사이트의 PDF</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/릴리스_정보.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            릴리스 정보
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/클라우드_관리자.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            클라우드 관리자
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/Cloud_Manager를_시작하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Cloud Manager를 시작하십시오
+          </a>
+          
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/Cloud_Central_계정을_설정합니다.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Cloud Central 계정을 설정합니다
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/커넥터를_설정합니다.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            커넥터를 설정합니다
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/Cloud_Volumes_ONTAP_관리.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Cloud Volumes ONTAP 관리
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/학습.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            학습
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/스토리지.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            스토리지
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/고가용성_쌍.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            고가용성 쌍
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/AWS에서_시작하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            AWS에서 시작하십시오
+          </a>
+          
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/네트워크_설정.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            네트워크 설정
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/Azure에서_시작하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Azure에서 시작하십시오
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/GCP에서_시작하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            GCP에서 시작하십시오
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/스토리지_프로비저닝_및_관리.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            스토리지 프로비저닝 및 관리
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/성능을_모니터링합니다.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            성능을 모니터링합니다
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/관리.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            관리
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/파일_서비스를_사용하여_볼륨_프로비저닝.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            파일 서비스를 사용하여 볼륨 프로비저닝
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/Azure_NetApp_Files.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Azure NetApp Files
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/AWS_환경을_위한_Cloud_Volumes_Service.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            AWS 환경을 위한 Cloud Volumes Service
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/참조하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            참조하십시오
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/GCP용_Cloud_Volumes_Service.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            GCP용 Cloud Volumes Service
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/ONTAP_클러스터_관리.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ONTAP 클러스터 관리
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/클라우드에_백업.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            클라우드에 백업
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/시작하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            시작하십시오
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/데이터를_복사하고_동기화합니다.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            데이터를 복사하고 동기화합니다
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/시작하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            시작하십시오
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/데이터_브로커를_설치하는_방법.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            데이터 브로커를 설치하는 방법
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/자습서.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            자습서
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/개인정보_데이터_보호_파악.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            개인정보 데이터 보호 파악
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/시작하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            시작하십시오
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/데이터_소스에서_스캔을_활성화합니다.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            데이터 소스에서 스캔을 활성화합니다
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/실시간_글로벌_파일_공유를_활성화합니다.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            실시간 글로벌 파일 공유를 활성화합니다
+          </a>
+          
+
+
+
+
+
+
+
+
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/클라우드_컴퓨팅_비용_최적화.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            클라우드 컴퓨팅 비용 최적화
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/데이터를_클라우드에_계층화.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            데이터를 클라우드에 계층화
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/시작하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            시작하십시오
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/참조하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            참조하십시오
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/Cloud_Manager_관리.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Cloud Manager 관리
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/커넥터_관리.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            커넥터 관리
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/커넥터를_작성하는_더_많은_방법.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            커넥터를 작성하는 더 많은 방법
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/자격_증명_관리.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            자격 증명 관리
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/설치하고.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            설치하고
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/Azure를_지원합니다.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Azure를 지원합니다
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/GCP.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            GCP
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/참조하십시오.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            참조하십시오
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ko-kr/occm38/pdfs/sidebar/API_및_자동화_사용.pdf" 
+            
+          >
+            <img src="/ko-kr/occm38/images/pdf-icon.png" alt="" width="16" height="16"/>
+            API 및 자동화 사용
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+</li></ul>
+            <div class="zip-pdf-link-container" style="display: none;">   
+                <a href="#" id="zipPdf">
+                <img src="/ko-kr/occm38/images/pdf-zip.png" alt="" width="16" height="16"/>
+                <pre>별도의 PDF 문서 모음<span class="zip-size"></span></pre>
+                </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+        </div>
+    </div>        
+<script>
+$("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+$("#toggleButtonPdf").on('click', function(e){ 
+    e.stopPropagation();
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+});
+
+//hide is by clicking outside pdfcontainer
+$(document).on('click', function (e) {
+    if ($('#toggleContainerPdf').is(':visible') && !$('.n-pdf-body-container').is(e.target) && !$('.n-pdf-body-container').has(e.target).length)  {
+        
+        $("#toggleContainerPdf").toggle('display');
+        $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+        $("#toggleButtonPdf").removeClass("active");
+    }
+});
+</script>
+<script>
+    function getPdfLocation() {
+        const pdfLocation = window.scrollX + document.querySelector('#pdf-control-container').getBoundingClientRect().left
+        if (pdfLocation < 450) {
+            $(".n-pdf-body-container").addClass("block")
+        } else {
+            $(".n-pdf-body-container").removeClass("block")
+        }
+    
+    }
+    $( window ).on( "resize", function() {
+        getPdfLocation()
+} );
+</script>
+<script>
+    const pdfButtonWidth =  $(".n-pdf-header").width();
+    const pdfMenuWidth = $(".n-pdf-body-container").width();
+    $(".n-pdf-body-container").css('margin-left', `calc(${pdfButtonWidth - pdfMenuWidth}px)`);
+</script>
+</div>
+
+    
+
+</div>
+
+
+
+
+<div class="content-to-index">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>사용 중인 환경이 모든 요구 사항을 충족하는지 확인한 후에는 각 원격 사무소에 Global File Cache Edge 소프트웨어를 설치합니다.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="시작하기-전에">시작하기 전에</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>글로벌 파일 캐시 에지 구성 작업을 완료하려면 다음 정보가 필요합니다.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>각 글로벌 파일 캐시 인스턴스에 대한 정적 IP 주소입니다</p>
+</li>
+<li>
+<p>서브넷 마스크</p>
+</li>
+<li>
+<p>게이트웨이 IP 주소입니다</p>
+</li>
+<li>
+<p>각 글로벌 파일 캐시 서버에 할당하려는 FQDN입니다</p>
+</li>
+<li>
+<p>DNS 접미사(선택 사항)</p>
+</li>
+<li>
+<p>도메인에 있는 관리 사용자의 사용자 이름 및 암호입니다</p>
+</li>
+<li>
+<p>연결된 Core 서버의 FQDN 및/또는 IP 주소입니다</p>
+</li>
+<li>
+<p>지능형 파일 캐시로 사용할 볼륨입니다. 활성 데이터 세트의 크기의 2배 이상을 사용하는 것이 좋습니다. 이 형식은 NTFS로 포맷되고 Ds:\'로 지정되어야 합니다.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="일반적으로-사용되는-tcp-포트입니다">일반적으로 사용되는 TCP 포트입니다</h3>
+<div class="paragraph">
+<p>글로벌 파일 캐시 서비스에서 사용하는 TCP 포트가 여러 개 있습니다. 장치가 이러한 포트에서 통신할 수 있어야 하며 모든 WAN 최적화 장치 또는 방화벽 제한 정책에서 제외됩니다.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>글로벌 파일 캐시 라이센스 TCP 포트: 443</p>
+</li>
+<li>
+<p>글로벌 파일 캐시 TCP 포트: 6618-6630</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="글로벌-파일-캐시-가상-템플릿을-구축합니다">글로벌 파일 캐시 가상 템플릿을 구축합니다</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>가상 템플릿(.OVA 및 .vhd) 이미지에는 글로벌 파일 캐시 소프트웨어의 최신 버전이 포함되어 있습니다. '.OVA' 또는 '.vhd' 가상 머신(VM) 템플릿을 사용하여 글로벌 파일 캐시를 구축하는 경우 이 섹션에 설명된 단계를 따릅니다. 지정된 하이퍼바이저 플랫폼에 .ova 또는 .vhd 템플릿을 배포하는 방법을 알고 있는 것으로 가정합니다.</p>
+</div>
+<div class="paragraph">
+<p>리소스 예약을 비롯한 VM 기본 설정이 에 설명된 요구 사항과 일치하는지 확인합니다 <a href="download_gfc_resources.html#physical-hardware-requirements" target="_blank" rel="noopener">"가상 구축 요구 사항"</a>.</p>
+</div>
+<div class="olist arabic">
+<div class="title">단계</div>
+<ol class="arabic">
+<li>
+<p>다운로드한 템플릿에서 패키지를 추출합니다.</p>
+</li>
+<li>
+<p>가상 템플릿을 구축합니다. 배포를 시작하기 전에 다음 비디오를 참조하십시오.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://youtu.be/8MGuhITiXfs" target="_blank" rel="noopener">"VMware에 가상 템플릿을 구축합니다"</a></p>
+</li>
+<li>
+<p><a href="https://youtu.be/4zCX4iwi8aU" target="_blank" rel="noopener">"Hyper-V에 가상 템플릿을 구축합니다"</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>가상 템플릿을 구축하고 VM 설정을 구성한 후 VM을 시작합니다.</p>
+</li>
+<li>
+<p>초기 부팅 중에 Windows Server 2016 또는 2019 운영 체제가 처음 사용할 준비가 되면 올바른 드라이버를 설치하고 해당 하드웨어에 필요한 구성 요소를 설치하여 즉시 사용 가능한 환경을 완료하십시오.</p>
+</li>
+<li>
+<p>Global File Cache Edge 인스턴스의 기본 설치가 완료되면 Windows Server 2016 또는 2019 운영 체제가 로컬라이제이션 및 제품 키와 같은 운영 체제 세부 사항을 구성하기 위한 초기 구성 마법사를 안내합니다.</p>
+</li>
+<li>
+<p>초기 구성 마법사가 완료된 후 다음 자격 증명을 사용하여 Windows Server 2016 또는 2019 운영 체제에 로컬로 로그인합니다.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>사용자 이름: * FASTAdmin *</p>
+</li>
+<li>
+<p>암호: * Tal0nFAST! *</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Windows Server VM을 구성하고 조직의 Active Directory 도메인에 참가한 다음 글로벌 파일 캐시 에지 구성 섹션으로 이동합니다.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="글로벌-파일-캐시-에지-인스턴스를-구성합니다">글로벌 파일 캐시 에지 인스턴스를 구성합니다</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>글로벌 파일 캐시 에지 인스턴스는 글로벌 파일 캐시 Core에 연결하여 지사의 사용자가 데이터 센터 파일 서버 리소스에 액세스할 수 있도록 합니다.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/occm38/images/note.svg" alt="참고">
+</td>
+<td class="content">
+Edge 인스턴스는 구성을 시작하기 전에 Cloud Volumes ONTAP 배포의 일부로 라이센스가 부여되어야 합니다. 을 참조하십시오 <a href="concept_gfc.html#licensing" target="_blank" rel="noopener">"라이센싱"</a> 라이센스에 대한 자세한 내용은 를 참조하십시오.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Edge 인스턴스 수가 많기 때문에 구성에 하나 이상의 Global File Cache Core를 설치해야 하는 경우, 첫 번째 Core와 다른 Core에 연결하도록 일부 Edge 인스턴스를 구성합니다. 올바른 Core 인스턴스에 대해 FQDN 또는 IP 주소 및 기타 필수 정보가 있는지 확인합니다.</p>
+</div>
+<div class="paragraph">
+<p>Edge 인스턴스를 구성하려면 다음 단계를 완료하십시오.</p>
+</div>
+<div class="olist arabic">
+<div class="title">단계</div>
+<ol class="arabic">
+<li>
+<p>초기 구성 도우미 의 "에지 구성 단계" 섹션에 나열된 검사되지 않은 코어 구성 단계 옆에 있는 * 수행 * 을 클릭합니다. 그러면 새 탭인 GFC Edge가 열리고 section_Core instances_가 표시됩니다.</p>
+</li>
+<li>
+<p>글로벌 파일 캐시 코어 서버의 * Cloud Fabric ID * 를 제공합니다. Cloud Fabric ID는 일반적으로 NetBIOS 이름 또는 백엔드 파일 서버의 지리적 위치입니다.</p>
+</li>
+<li>
+<p>글로벌 파일 캐시 코어 서버의 * FQDN/IP 주소 * 제공:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>(선택 사항) Edge에서 Core로의 향상된 암호화를 위해 SSL 지원을 활성화하려면 * SSL * 상자를 선택합니다.</p>
+</li>
+<li>
+<p>Core에서 사용되는 서비스 계정의 자격 증명인 사용자 이름과 암호를 입력합니다.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>추가 * 를 클릭하여 글로벌 파일 캐시 코어 어플라이언스 추가를 확인합니다. 확인 상자가 나타납니다. 확인 * 을 클릭하여 해제합니다.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_gfc_edge_install1.png" alt="사용할 글로벌 파일 캐시 코어를 식별하는 에지 항목을 보여 주는 스크린샷."></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="global-file-cache-edge-소프트웨어를-업데이트합니다">Global File Cache Edge 소프트웨어를 업데이트합니다</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Global File Cache는 패치, 기능 향상 또는 새로운 기능/기능과 같은 소프트웨어 업데이트를 자주 릴리즈합니다. 가상 템플릿(".OVA" 및 '.vhd") 이미지에는 글로벌 파일 캐시 소프트웨어의 최신 버전이 포함되어 있지만, NetApp 지원 다운로드 포털에서 최신 버전을 사용할 수 있습니다.</p>
+</div>
+<div class="paragraph">
+<p>글로벌 파일 캐시 인스턴스가 최신 버전으로 업데이트되었는지 확인합니다.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/occm38/images/note.svg" alt="참고">
+</td>
+<td class="content">
+이 소프트웨어 패키지는 Microsoft Windows Server 2016 Standard 또는 Datacenter Edition 또는 Windows Server 2019 Standard 또는 Datacenter Edition에 새로 설치하는 데 사용하거나 업그레이드 전략의 일부로 사용할 수도 있습니다.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>글로벌 파일 캐시 설치 패키지를 업데이트하는 데 필요한 단계는 다음과 같습니다.</p>
+</div>
+<div class="olist arabic">
+<div class="title">단계</div>
+<ol class="arabic">
+<li>
+<p>최신 설치 패키지를 원하는 Windows Server 인스턴스에 저장한 후 두 번 클릭하여 설치 실행 파일을 실행합니다.</p>
+</li>
+<li>
+<p>다음 * 을 클릭하여 프로세스를 계속합니다.</p>
+</li>
+<li>
+<p>계속하려면 * 다음 * 을 클릭합니다.</p>
+</li>
+<li>
+<p>라이센스 계약에 동의하고 * Next * 를 클릭합니다.</p>
+</li>
+<li>
+<p>원하는 설치 대상 위치를 선택합니다.</p>
+<div class="paragraph">
+<p>기본 설치 위치를 사용하는 것이 좋습니다.</p>
+</div>
+</li>
+<li>
+<p>계속하려면 * 다음 * 을 클릭합니다.</p>
+</li>
+<li>
+<p>시작 메뉴 폴더를 선택합니다.</p>
+</li>
+<li>
+<p>계속하려면 * 다음 * 을 클릭합니다.</p>
+</li>
+<li>
+<p>원하는 설치 매개변수를 확인하고 * Install * 을 클릭하여 설치를 시작합니다.</p>
+<div class="paragraph">
+<p>설치 프로세스가 실행됩니다.</p>
+</div>
+</li>
+<li>
+<p>설치가 완료되면 메시지가 나타나면 서버를 재부팅합니다.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">다음 단계</div>
+<p>Global File Cache Edge 고급 구성에 대한 자세한 내용은 를 참조하십시오 <a href="https://repo.cloudsync.netapp.com/gfc/NetApp%20GFC%20-%20User%20Guide.pdf" target="_blank" rel="noopener">"NetApp 글로벌 파일 캐시 사용자 가이드 를 참조하십시오"</a>.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+<div id="ie-right-navbar-collapse" class="close">
+  <img id="navbar-expand" class="ie-searchbox-icon" src="/ko-kr/occm38/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-right-navbar" class="open">
+  <div id="right-navbar-collapse">
+    <img src="/ko-kr/occm38/images/double_arrow.svg" alt="" />
+  </div>
+  <div class="page-nav-container">
+    <nav class="page-nav-fixed">
+      <div class="page-nav-title">이 페이지에서</div>
+      <div class="page-nav-links">
+        <ul class="page-nav-inner" id="page-menu"></ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+<script>
+  resizeContent();
+  function setRightBarHeight() {
+    var h = 0;
+
+    // header 1
+    h += PXinViewport($('.n-footer'));
+    h += PXinViewport($('#ie-new-header'));
+
+    if ($('#ie-right-navbar').length) {
+      $('#ie-right-navbar').css({ height: `calc(100vh - ${h}px)` });
+    }
+    if ($('.page-nav-links').length) {
+      h += 98;
+      $('.page-nav-links').css({ height: `calc(100vh - ${h}px)` });
+    }
+  }
+
+  $(document).ready(function () {
+    // PAGE NAV - Click
+    const MASTHEAD_OFFSET = 65;
+    const SECTIONS = $("main h2, main h3");
+    let calculateActiveSection = false;
+    setTimeout(() => {
+      calculateActiveSection = true;
+    }, 100)
+
+    $(".page-nav__link").click(function (event) {
+      calculateActiveSection = false;
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      var target = $(event.target);
+      target.addClass('page-nav__link--active');
+      location.hash = event.target.hash;
+      setTimeout(() => {
+        calculateActiveSection = true;
+      }, 100)
+
+    });
+
+    // PAGE NAV - Scroll
+    $(window).on('resize scroll', function () {
+      if (calculateActiveSection) {
+        var activeSection = getActiveSection(SECTIONS, MASTHEAD_OFFSET);
+        if (activeSection) {
+          var activeHref = $(activeSection).attr('id');
+          $(".page-nav__link").removeClass('page-nav__link--active');
+          $("#page-menu a[href=#" + activeHref + "]").addClass('page-nav__link--active');
+          if (location.hash != "#" + activeHref) {
+            if (history.replaceState) {
+              history.replaceState(null, null, "#" + activeHref);
+            }
+          }
+        }
+      }
+    });
+
+    $(".n-pdf-button").click(function () {
+      $(this).toggleClass("active");
+    });
+
+    $.fn.isVisibleAndInViewport = function () {
+      var elementTop = $(this).offset().top;
+      var elementBottom = elementTop + $(this).outerHeight();
+
+      var viewportTop = $(window).scrollTop();
+      var viewportBottom = viewportTop + $(window).height();
+
+      return elementBottom > viewportTop && elementTop < viewportBottom && $(this).is(":visible");
+    };
+
+
+    $(window).on('resize scroll', function () {
+      setRightBarHeight();
+    });
+
+    $(window).trigger('resize');
+
+
+  });
+
+  $("#right-navbar-collapse").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 350, function () {
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+    });
+    $(".ie-content-pane").animate({ width: (width + rightNavbarWidth) }, 350, function () {
+      resizeContent()
+      setSidebarBottom();
+    })
+
+  });
+  $("#navbar-expand").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 250, function () {
+      $("#ie-right-navbar-collapse").removeClass("open")
+      $("#ie-right-navbar-collapse").addClass("close")
+      $("#ie-right-navbar").removeClass("close")
+      $("#ie-right-navbar").addClass("open")
+      setRightBarHeight();
+      setSidebarBottom();
+    });
+    $(".ie-content-pane").animate({ width: (width - rightNavbarWidth) }, 250, function () {
+      resizeContent()
+    })
+  });
+
+  function navbarResize() {
+    const rightNavbarResized = $("#ie-right-navbar-collapse").hasClass('resized');
+    if (window.innerWidth < 1024) {
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+      $("#ie-right-navbar").removeAttr("style")
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar-collapse").addClass("resized")
+    } else {
+      if (rightNavbarResized) {
+        $('#ie-right-navbar').removeClass('close');
+        $('#ie-right-navbar').addClass('open');
+        $("#ie-right-navbar-collapse").removeClass("resized")
+        $("#ie-right-navbar-collapse").removeClass("open")
+        $("#ie-right-navbar-collapse").addClass("close")
+      }
+    }
+    resizeContent()
+  }
+  navbarResize();
+  $(window).on('resize load', function () {
+    navbarResize()
+  });
+
+  function getActiveSection(sections, offset) {
+    var scrollPosition = $(window).scrollTop() + offset + 5;
+    var activeSection;
+    for (var i = 0; i < sections.length; i++) {
+      var el = $(sections[i]);
+      var activePosition = el.offset().top;
+      if (activePosition > scrollPosition) {
+        break;
+      }
+
+      activeSection = sections[i];
+    }
+
+    return activeSection;
+  }
+
+  $("a[href*=#]:not([href=#])").click(function () {
+    setTimeout(() => {
+      $(window).trigger('scroll');
+    }, 105)
+  })
+
+  const hashOnLoad = location.href.split("#")[1];
+  setTimeout(function () {
+    if (hashOnLoad) {
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      $("#page-menu a[href=#" + hashOnLoad + "]").addClass('page-nav__link--active');
+    }
+  }, 100)
+
+</script>
+
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+        <div class="n-footer__left">
+          <li class="n-footer__copyright-link">
+                    <a href="https://www.netapp.com/company/legal/copyright/">© 2024 NetApp, Inc.</a>
+          </li>
+        </div>
+        <div class="n-footer__center">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">이용 약관</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">개인 정보 보호 정책</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">쿠키 정책</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">쿠키 설정</a>
+            </li>
+          </ul>
+       </div>
+        <div class="n-footer__right">
+              <li class="n-footer__copyright-link">
+                <a target="_self" href="javascript:netapp_mailto()">이 페이지에 대한 피드백 보내기</a>
+              </li>
+        </div>
+     </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/ko-kr/occm38/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/ko-kr/occm38/js/prism.js'></script>
+      <script type="text/javascript" src='/ko-kr/occm38/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/ko-kr/occm38/js/ie-tabbed-blocks.js'></script>
+    <script src='/ko-kr/occm38/js/ie-sidebar.js'></script>
+  </body>
+
+</html>
